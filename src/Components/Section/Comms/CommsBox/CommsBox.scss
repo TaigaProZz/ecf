@@ -1,0 +1,16 @@
+.commsBox {
+  height: 80%;
+  background-color: #293045;
+  color: white;
+  border: none;
+  border-radius: 0;
+  margin: 10px;
+  padding: 10px;
+  .commsBoxTitle {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .commsBoxText {
+    font-size: 1.2rem;
+  }
+}

@@ -1,8 +1,46 @@
 @use "../../App" as app;
 
-.contactBtn {
-   background-color: app.$barColor;
+@media screen and (min-width: 701px) {
+  .horaire {
+    font-size: 1em;
+  }
+  .logoFooter {
+    width: 250px;
+    height: 120px;
+  } 
 }
+
+@media screen and (max-width: 700px) {
+  .horaire {
+    font-size: 0.5em;
+  }
+  .logoFooter {
+    width: 100px;
+    height: 60px;
+  } 
+}
+
+
+li.footerListElement {
+  list-style: none;
+}
+
+.logoFooter {
+  justify-content: flex-end;
+}
+
+.contactBtn {
+  font-family: app.$mainFont;
+  background-color: app.$barColor;
+}
+
+
+
+.horaire {
+  font-family: app.$mainFont;
+  text-align: left;
+}
+
 
 .center {
   display: flex;

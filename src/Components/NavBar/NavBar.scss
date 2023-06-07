@@ -1,6 +1,5 @@
 @use "../../App" as app;
 
-
 .logoNavbar {
   padding-left: 20px;
 }
@@ -10,6 +9,8 @@
 }
 
 .links {
+  color : app.$mainFontColor;
+
   font-family: app.$mainFont;
   font-variant: normal;
   font-style: normal;

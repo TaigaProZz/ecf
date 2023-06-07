@@ -19,23 +19,30 @@ function myFooter() {
         height:'200px',
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: 'space-between'
       }}
     >
-      <MDBContainer className=''>
+      <MDBContainer>
         <MDBRow>
-          <MDBCol size='6' md='4'>
-            sm="6" sm="4"
+          <MDBCol size='6' md='4' className='d-flex my-auto'>
+            <ul className='horaire'>
+              <li className='footerListElement'>lun.: 09:00 - 12:00, 14:00 - 18:20</li>
+              <li className='footerListElement'>mar.: 09:00 - 12:00, 14:00 - 18:20</li>
+              <li className='footerListElement'>mer.: 09:00 - 12:00, 14:00 - 18:20 </li>
+              <li className='footerListElement'>jeu.: 09:00 - 12:00, 14:00 - 18:20</li>
+              <li className='footerListElement'>ven.: 09:00 - 12:00, 14:00 - 18:20</li>
+              <li className='footerListElement'>sam.: 09:00 - 12:00, 14:00 - 18:20</li>
+              <li className='footerListElement'>dim. Fermé</li>
+            </ul> 
           </MDBCol>
-          <MDBCol size='6' md='4'>
-            <section className=''>
-              <p className='d-flex justify-content-center align-items-center'>
-                <Button className='contactBtn center'><BsEnvelopeFill />Nous contacter</Button>
-              </p>
-            </section>
+          <MDBCol size='6' md='4' className='d-flex my-auto justify-content-center'>   
+              <Button className='contactBtn center'><BsEnvelopeFill />Nous contacter</Button>
           </MDBCol>
-          <MDBCol size='6' md='4'>
-            sm="6" sm="4"
+          <MDBCol size='6' md='4' className='d-flex my-auto justify-content-center'>
+             <img className='logoFooter' 
+             src={require('../../Ressources/logo.png')}
+             alt="Garage V.Parrot Logo"
+            />
           </MDBCol>
         </MDBRow>
     

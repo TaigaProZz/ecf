@@ -1,11 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
-
+import './Home.scss';
+import FirstSection from './Sections/SectionWelcome';
+import SecondSection from './Sections/SectionPresentation';
+import ThirdSection from './Sections/SectionSale';
+import FourthSection from './Sections/SectionAllServices';
+import FifthSection from './Sections/SectionComms';
 
 function Home() {
   return (
-    <div className="home">
-      <h1>Home</h1>
+    <div>
+      <FirstSection />
+      <SecondSection />
+      <ThirdSection />
+      <FourthSection />
+      <FifthSection />
     </div>
   );
 }

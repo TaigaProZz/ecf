@@ -8,7 +8,7 @@ import './NavBar.scss';
 function myNav() {
   return (
   <Navbar className='myNav' variant="dark">
-    <Navbar.Brand className='logoNavbar' href="/home">
+    <Navbar.Brand className='logoNavbar' href="/">
        <img
        src={require('../../Ressources/logo.png')}
        width="103"
@@ -25,7 +25,7 @@ function myNav() {
         <Nav.Link href="/contact">Contact</Nav.Link>
       </Nav>
       <Nav className="ml-auto">
-        <Nav.Link href="#home">Logo connexion</Nav.Link>
+        <Nav.Link href="/login">Logo connexion</Nav.Link>
       </Nav>
     </Navbar.Collapse>
   </Navbar>

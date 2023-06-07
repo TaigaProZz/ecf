@@ -1,2 +1,19 @@
-$barColor: #293045;
 $mainFont: 'Francois One', sans-serif;
+$mainFontColor : aliceblue;
+$backgroundColor: #141B33;
+$barColor: #293045;
+$elementColor: #20273D;
+$buttonColor: #373D51;
+$buttonHoverColor: #4D5371;
+$inputColor: #3F4458;
+
+
+html, body, #root {
+  height: auto;
+  margin: 0;
+  padding: 0;
+  font-family: $mainFont;
+  background-color: $backgroundColor;
+
+}
+
