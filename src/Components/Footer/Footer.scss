@@ -1,0 +1,12 @@
+@use "../../App" as app;
+
+.contactBtn {
+   background-color: app.$barColor;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}

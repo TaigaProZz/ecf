@@ -1,0 +1,20 @@
+@use "../../App" as app;
+
+
+.logoNavbar {
+  padding-left: 20px;
+}
+.myNav {
+  height: 86px;
+  background-color: app.$barColor;
+}
+
+.links {
+  font-family: app.$mainFont;
+  font-variant: normal;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 34px;
+  text-align: center;
+}

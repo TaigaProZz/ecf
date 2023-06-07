@@ -1,22 +1,28 @@
 import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import './NavBar.css';
+import React from 'react';
 
-const navColor = {
-  backgroundColor: '#293045',
-  color: '#fff'
-}
+import Navbar from 'react-bootstrap/Navbar';
+import './NavBar.scss';
+
 
 function myNav() {
   return (
-    <Navbar className={navColor} bg="dark" variant="dark">
-    <Navbar.Brand className='home' href="#home">Mon Logo</Navbar.Brand>
+  <Navbar className='myNav' variant="dark">
+    <Navbar.Brand className='logoNavbar' href="/home">
+       <img
+       src={require('../../Ressources/logo.png')}
+       width="103"
+       height="47"
+       className="d-inline-block align-top"
+       alt="Garage V.Parrot Logo"
+     />
+    </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="mx-auto">
-        <Nav.Link href="#home">Accueil</Nav.Link>
-        <Nav.Link href="#about">Ventes</Nav.Link>
-        <Nav.Link href="#services">Contact</Nav.Link>
+      <Nav className="links mx-auto">
+        <Nav.Link href="/">Accueil</Nav.Link>
+        <Nav.Link href="/vente">Ventes</Nav.Link>
+        <Nav.Link href="/contact">Contact</Nav.Link>
       </Nav>
       <Nav className="ml-auto">
         <Nav.Link href="#home">Logo connexion</Nav.Link>

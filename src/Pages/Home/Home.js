@@ -1,11 +1,11 @@
-import NavBar from '../../Components/NavBar/NavBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
 
 
 function Home() {
   return (
-    <div className="Home">
-      <NavBar />
+    <div className="home">
+      <h1>Home</h1>
     </div>
   );
 }
