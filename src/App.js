@@ -3,10 +3,8 @@ import Home from './Pages/Home/Home';
 import Vente from './Pages/Vente/Vente';
 import Contact from './Pages/Contact/Contact';
 import NavBar from './Components/NavBar/NavBar';
-import Footer from './Components/Footer/Footer';
 import Login from './Pages/Login/Login';
 import Admin from './Pages/Admin/Admin';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -22,7 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />          
           <Route path="/admin" element={<Admin />} />               
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </BrowserRouter>
     </div>
   );

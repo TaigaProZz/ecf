@@ -5,7 +5,7 @@ import CommentBox from '../../../Components/Section/Comms/SendComms/SendComms';
 function SectionComms() {
   return (
     <div className='commsSection flex-wrap'>
-      <section className="mainSection">
+      <section className="darkSection">
         <Container>
           <Row>
             <Col>
