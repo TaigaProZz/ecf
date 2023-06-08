@@ -1,16 +1,25 @@
+import { Col, Container, Row } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+
+
 function SectionsSale() {
   return (
-    <section className="darkSection">
-      <div className="container">
-        <div className="row">
-          <div className="col-6">
-            <h1 className="title">3eme section</h1>
-          </div>
-          <div className="col-6">
+    <section className="darkHomeSection">
+      <Container>
+        <Row>
+          <Col>
+            <ul>
+              <li>Vente de véhicules d\’occasion</li>
+              <li>Reprise de vos véhicules</li>
+              
+            </ul>
+            <Button>Consulter la liste des véhicules en vente</Button>
+          </Col>
+          <Col>
             <img className="img" src={require('../../../Ressources/cars_buy.jpg')} alt="Garage V.Parrot Logo" />
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 }

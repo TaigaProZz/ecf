@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Home.scss';
+import './Sections/Sections.scss';
 import FirstSection from './Sections/SectionWelcome';
 import SecondSection from './Sections/SectionPresentation';
 import ThirdSection from './Sections/SectionSale';

@@ -1,15 +1,14 @@
 import { Container, Row, Col } from 'react-bootstrap';
-import CommsBox from '../../../Components/Section/Comms/CommsBox/CommsBox';
-import CommentBox from '../../../Components/Section/Comms/SendComms/SendComms';
+import CommsBox from '../../../Components/HomeSection/Comms/CommsBox/CommsBox';
+import CommentBox from '../../../Components/HomeSection/Comms/SendComms/SendComms';
 
 function SectionComms() {
   return (
-    <div className='commsSection flex-wrap'>
-      <section className="darkSection">
+      <section className="darkHomeSection">
         <Container>
           <Row>
             <Col>
-              <h1 className="subTitle center">Car l'avis de nos clients comptent...</h1>
+              <h1 className="subTitle">Car l'avis de nos clients comptent...</h1>
             </Col>
           </Row>
           <Row>
@@ -25,12 +24,11 @@ function SectionComms() {
           </Row>
           <Row>
             <Col>
-              <h1 className="subTitle center"><CommentBox /> </h1>
+              <h1 className="subTitle"><CommentBox /> </h1>
             </Col>
           </Row>
         </Container>
       </section>
-    </div>
   );
 }
 

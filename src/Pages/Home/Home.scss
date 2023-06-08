@@ -1,4 +1,4 @@
-@use "../../App" as app;
+@use "src/App" as app;
 
 .img {
   width: 100%;
@@ -15,35 +15,3 @@
 .subTitle {
   font-size: 3em;
 }
-
-.commsSection {
-
-}
-
-.mainSection {
-  height: 90vh;
-  line-height: 10;
-  border: 2px solid rgb(255, 0, 0);
-  padding: 1.5em;
-  background-color: app.$backgroundColor;
-  color: aliceblue;
-}
-
-.lightSection {
-  height: 100vh;
-  line-height: 10;
-  border: 2px solid rgb(255, 0, 0);
-  padding: 1.5em;
-  background-color: app.$barColor;
-  color: aliceblue;
-}
-
-.darkSection {
-  height: 100vh;
-  line-height: 10;
-  border: 2px solid rgb(255, 0, 0);
-  padding: 1.5em;
-  color: aliceblue;
-}
-
-

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button } from 'react-bootstrap';
 import './SendComms.scss';
 
 const SendComms = () => {
@@ -52,7 +53,7 @@ const SendComms = () => {
             ))}
           </div>
         </div>
-        <button type="submit">Envoyer</button>
+        <Button type="submit">Envoyer</Button>
       </form>
     </div>
   );

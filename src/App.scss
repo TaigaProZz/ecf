@@ -17,3 +17,38 @@ html, body, #root {
 
 }
 
+.firstSection {
+  height: 90vh;
+  line-height: 10;
+  border: 2px solid rgb(255, 0, 0);
+  padding: 1.5em;
+  background-color: $backgroundColor;
+  color: aliceblue;
+}
+
+
+.centered {
+  height: 100vh; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hCenter {
+  display: flex;
+  justify-content: center
+}
+
+.vCenter {
+  display: flex;
+  align-items: center;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

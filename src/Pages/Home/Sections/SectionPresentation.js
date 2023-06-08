@@ -1,15 +1,16 @@
+import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
 function SectionIntro() {
 
   return (
-    <section className="lightSection">
-      <div className="container">
-        <div className="row">
-          <div className="col-6">
+    <section className="lightHomeSection">
+      <Container>
+        <Row>
+          <Col>
             <img className='img' src={require('../../../Ressources/car_repair.jpg')} alt="reparation de voiture" />
-          </div>
-          <div className="col-6">
+          </Col>
+          <Col>
             <ul>
               <li>Réparation Carrosserie</li>
               <li>Réparation voiture</li>
@@ -17,9 +18,9 @@ function SectionIntro() {
               <li>Entretien et remise en route</li>
             </ul>
             <Button>Voir tous les services</Button>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 }

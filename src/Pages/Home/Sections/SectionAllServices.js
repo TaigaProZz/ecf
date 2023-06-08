@@ -1,16 +1,27 @@
+import { Container, Row, Col } from 'react-bootstrap';
+
 function SectionAllServices() {
   return (
-    <section className="lightSection">
-      <div className="container">
-        <div className="row">
-          <div className="col-6">
-            <h1 className="title">services section</h1>
-          </div>
-          <div className="col-6">
+    <section className="lightHomeSection">
+      <Container>
+        <Row>
+          <Col>
             <img className="img" src={require('../../../Ressources/cars_atelier.png')} alt="Garage V.Parrot Logo" />
-          </div>
-        </div>
-      </div>
+          </Col>
+          <Col>
+            <div className='serviceList'>
+              <ul>
+                <li>Réparation Carrosserie</li>
+                <li>Réparation voiture</li>
+                <li>Contrôle Technique</li>
+                <li>Contrôle Technique</li>
+                <li>Contrôle Technique</li>
+                <li>Entretien et remise en route</li>
+              </ul>
+            </div>
+          </Col>
+        </Row>
+      </Container>
     </section>
   );
 }
