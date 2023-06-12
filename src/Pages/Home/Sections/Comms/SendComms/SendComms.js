@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
 import './SendComms.scss';
 
 const SendComms = () => {
@@ -32,7 +31,7 @@ const SendComms = () => {
   };
 
   return (
-    <div className="box m-3">
+    <div className="box">
       <form onSubmit={handleSubmit}>
         <div className="form-group inputBox">
           <label htmlFor="name">Nom :</label>
@@ -40,7 +39,7 @@ const SendComms = () => {
         </div>
         <div className="form-group inputBox">
           <label htmlFor="message">Message :</label>
-          <textarea id="message" name="message" value={message} onChange={handleMessageChange} placeholder="Votre message" required></textarea>
+          <input id="message" name="message" className='' value={message} onChange={handleMessageChange} placeholder="Votre message" required></input>
         </div>
         <div className="form-group inputRadio">
           <label htmlFor="rating">Note :</label>
@@ -53,7 +52,9 @@ const SendComms = () => {
             ))}
           </div>
         </div>
-        <Button type="submit">Envoyer</Button>
+        <div className="btn" type="submit">
+            <p>Envoyer</p>
+          </div>
       </form>
     </div>
   );

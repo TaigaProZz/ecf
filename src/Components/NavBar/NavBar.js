@@ -1,35 +1,28 @@
-import Nav from 'react-bootstrap/Nav';
 import React from 'react';
 
-import Navbar from 'react-bootstrap/Navbar';
 import './NavBar.scss';
 
+const imageClick = () => {
+  console.log("rr");
+} 
 
 function myNav() {
   return (
-  <Navbar className='myNav' variant="dark">
-    <Navbar.Brand className='logoNavbar' href="/">
-       <img
-       src={require('../../Ressources/logo.png')}
-       width="103"
-       height="47"
-       className="d-inline-block align-top"
-       alt="Garage V.Parrot Logo"
-     />
-    </Navbar.Brand>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="links mx-auto">
-        <Nav.Link href="/">Accueil</Nav.Link>
-        <Nav.Link href="/vente">Ventes</Nav.Link>
-        <Nav.Link href="/contact">Contact</Nav.Link>
-      </Nav>
-      <Nav className="ml-auto">
-        <Nav.Link href="/login">Logo connexion</Nav.Link>
-      </Nav>
-    </Navbar.Collapse>
-  </Navbar>
-);
+    <div className='myNav'>
+      <div className='navLogo'>
+        <a href="/">
+        <img src='img/logo.png' onClick={imageClick} href="/" width="103" height="47" className="d-inline-block align-top" alt="Garage V.Parrot Logo" />
+        </a>
+      </div>  
+
+      <div className="links">
+        <a href="/">Accueil</a>
+        <a href="/vente">Ventes</a>
+        <a href="/contact">Contact</a>
+        <a href="/login">Logo connexion</a>
+      </div>
+    </div>
+  );
 }
 
 export default myNav;

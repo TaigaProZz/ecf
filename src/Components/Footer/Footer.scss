@@ -25,8 +25,15 @@ li.footerListElement {
   list-style: none;
 }
 
+.myFooter {
+  width: 100%;
+  background-color: black;
+  display: inline-flex;
+}
+
 .logoFooter {
-  justify-content: flex-end;
+  bottom: 0;
+  right: 0;
 }
 
 .contactBtn {
@@ -36,9 +43,16 @@ li.footerListElement {
 
 
 
-.horaire {
-  font-family: app.$mainFont;
-  text-align: left;
+.horaires {
+  width: 33%;
+}
+
+.navBtn {
+  width: 33%;
+}
+
+.navLogo {
+  width: 33%;
 }
 
 

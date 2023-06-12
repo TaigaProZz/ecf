@@ -4,17 +4,21 @@
   padding-left: 20px;
 }
 .myNav {
+  width: 100%;
   height: 10vh;
   background-color: app.$barColor;
+  top: 0;
+  left: 0;
+ 
 }
 
 .links {
-  color : app.$mainFontColor;
   font-family: app.$mainFont;
-  font-variant: normal;
-  font-style: normal;
-  font-weight: 400;
   font-size: 24px;
-  line-height: 34px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a {
+    padding-right: 10px;
+  }
 }

@@ -1,11 +1,10 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './Home.scss';
 import './Sections/Sections.scss';
-import FirstSection from './Sections/SectionWelcome';
-import SecondSection from './Sections/SectionPresentation';
-import ThirdSection from './Sections/SectionSale';
-import FourthSection from './Sections/SectionAllServices';
-import FifthSection from './Sections/SectionComms';
+import FirstSection from './Sections/Welcome/Welcome';
+import SecondSection from './Sections/Presentation/Presentation';
+import ThirdSection from './Sections//Sales/Sale';
+import FourthSection from './Sections/AllServices/AllServices';
+import FifthSection from './Sections/Comms/Comms';
 
 function Home() {
   return (

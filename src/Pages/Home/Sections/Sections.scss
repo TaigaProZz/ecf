@@ -1,46 +1,64 @@
 @use "src/App" as app;
 
-.img {
-  width: 600px;
-  height: 600px;
-  object-fit: fill;
-  object-position: center;
+.homeImg {
+  width: 60%;  
+}
+.btn {
+  height: 70px;
+  width: 200px;
+  border-radius: 12px;
+  background-color: #6969dd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  a {
+    text-decoration: none;
+  }
 }
 
-
-.title {
-  font-size: 9em;
-}
-
-.subTitle {
-  font-size: 3em;
-}
-
-.lightHomeSection {
+.sectionContainer {
   height: 100vh;
-  line-height: 10;
-  border: 2px solid rgb(255, 0, 0);
-  padding: 1.5em;
-  background-color: app.$barColor;
-  color: aliceblue;
+  border: 1px solid red;
+  color: app.$mainFontColor;
+  display: flex;
 }
 
-.darkHomeSection {
-  height: 100vh;
-  line-height: 10;
-  border: 2px solid rgb(255, 0, 0);
-  padding: 1.5em;
-  color: aliceblue;
-  
+.leftSection {
+  float: left;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rightSection {
+  float: right;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .serviceList {
-  background-color: app.$elementColor;
+  background-color: #373D51;
+  padding: 0.5em;
   height: 80vh;
   font-size: 1.5em;
+  border-radius: 12px;
   scrollbar-color: #6969dd #e0e0e0;
   scrollbar-width: thin;
   overflow-y: auto;
+}
+
+.lightSection {
+  background-color: app.$elementColor;
+}
+
+.darkSection {
+  background-color: inherit;
 }
 
 .serviceList8::-webkit-scrollbar-track

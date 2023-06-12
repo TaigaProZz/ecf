@@ -1,4 +1,4 @@
-function Admin() {
+function Car() {
   return (
     <div>
 
@@ -6,4 +6,4 @@ function Admin() {
   )
 }
 
-export default Admin;
+export default Car;

@@ -2,7 +2,7 @@ import './Vente.scss';
 import '../../App.scss'
 
 import React, { useState } from 'react';
-import { Row, Col, Button} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Vente = () => {
   const [cars, setCars] = useState([
@@ -40,8 +40,7 @@ const Vente = () => {
 
   return (
     <div className="containerList">
-      <Row>
-        <Col sm={2}>
+    
           <div className="select-container">
             <label htmlFor="sort">Trier par :</label>
             <select id="sort" onChange={handleSortChange}>
@@ -51,9 +50,8 @@ const Vente = () => {
             </select>
             <button onClick={sortCars}>Trier</button>
           </div>
-        </Col>
+      
 
-        <Col sm={10}>
         <ul className="car-list">
           {cars.map((car) => (
             <li key={car.id} className="car-item">
@@ -65,13 +63,13 @@ const Vente = () => {
                   <p>Année : {car.year}</p>
                   <p>Prix : {car.price} €</p>
                 </div>
-                <Button>Contacter</Button>
+                <Link to={'cardetails'}>
+                  <div>Détails</div>
+                </Link>
               </div>
             </li>
           ))}
         </ul>
-        </Col>
-      </Row>
     </div>
   );
 
