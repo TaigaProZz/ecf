@@ -27,6 +27,21 @@ html, body, #root {
   }
 }
 
+button {
+  height: 70px;
+  width: 200px;
+  border-radius: 12px;
+  background-color: $buttonColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  a {
+    text-decoration: none;
+  }
+ 
+}
+
 .center {
   display: flex;
   align-items: center;

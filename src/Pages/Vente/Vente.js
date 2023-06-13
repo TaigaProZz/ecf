@@ -1,8 +1,6 @@
 import './Vente.scss';
 import '../../App.scss'
 import { CARS } from '../../data.js'
-import { Link } from 'react-router-dom';
-
 import React, { useState } from 'react';
 
 const Vente = () => {

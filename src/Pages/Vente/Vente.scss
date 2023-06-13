@@ -35,8 +35,7 @@
 
 .car-item {
   width: calc(30% - 20px); /* Ajustez la largeur selon vos besoins */
-  border: 1px solid #aa7d7d;
-  background-color: app.$buttonColor;
+  background-color: app.$elementColor;
   border-radius: 5px;
   padding: 10px;
   display: flex;

@@ -3,7 +3,7 @@ import Home from './Pages/Home/Home';
 import Vente from './Pages/Vente/Vente';
 import Contact from './Pages/Contact/Contact';
 import NavBar from './Components/NavBar/NavBar';
-import Footer from './Components/Footer/Footer';
+// import Footer from './Components/Footer/Footer';
 import Login from './Pages/Login/Login';
 import Admin from './Pages/Admin/Admin';
 import Car from './Pages/Car/Car';
@@ -21,7 +21,6 @@ function App() {
         <Route path="/admin" element={<Admin />} />       
         <Route path="/car/:id" element={<Car />} />               
       </Routes>
-      <Footer />
     </BrowserRouter>
   );
 }
