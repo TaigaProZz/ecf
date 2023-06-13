@@ -13,13 +13,13 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />  
-      <Routes>
+      <Routes forceRefresh={true}>
         <Route path="/" element={<Home />} />
         <Route path="/vente" element={<Vente />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />          
         <Route path="/admin" element={<Admin />} />       
-        <Route path="/cardetails" element={<Car />} />               
+        <Route path="/car/:id" element={<Car />} />               
       </Routes>
       <Footer />
     </BrowserRouter>

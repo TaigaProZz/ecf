@@ -25,28 +25,7 @@ html, body, #root {
     color: $mainFontColor;
     background-color: $inputColor;
   }
-
 }
-
-
-
-.centered {
-  height: 100vh; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hCenter {
-  display: flex;
-  justify-content: center
-}
-
-.vCenter {
-  display: flex;
-  align-items: center;
-}
-
 
 .center {
   display: flex;

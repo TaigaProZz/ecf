@@ -12,7 +12,7 @@ function SectionsSale() {
           </div>
         </div>
         <div className="rightSection">
-          <img className="homeImg" src='img/cars_buy.jpg' alt="Garage V.Parrot Logo" />
+          <img className="homeImg" src='/img/cars_buy.jpg' alt="Garage V.Parrot Logo" />
           
         </div>
       </div>

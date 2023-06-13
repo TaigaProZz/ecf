@@ -4,7 +4,7 @@
   .horaire {
     font-size: 1em;
   }
-  .logoFooter {
+  .logo-footer {
     width: 250px;
     height: 120px;
   } 
@@ -14,34 +14,32 @@
   .horaire {
     font-size: 0.5em;
   }
-  .logoFooter {
+  .logo-footer {
     width: 100px;
     height: 60px;
   } 
 }
 
 
-li.footerListElement {
+li.footer-list-elt {
   list-style: none;
 }
 
-.myFooter {
+.my-footer {
   width: 100%;
   background-color: black;
   display: inline-flex;
 }
 
-.logoFooter {
+.logo-footer {
   bottom: 0;
   right: 0;
 }
 
-.contactBtn {
+.contact-btn {
   font-family: app.$mainFont;
   background-color: app.$barColor;
 }
-
-
 
 .horaires {
   width: 33%;

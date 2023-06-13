@@ -6,27 +6,27 @@ import { BsEnvelopeFill } from 'react-icons/bs';
 
 function myFooter() {
   return ( 
-    <div className='myFooter'>
+    <div className='my-footer'>
       <div className='horaires center'>
         <ul className='horaire'>
-          <li className='footerListElement'>lun.: 09:00 - 12:00, 14:00 - 18:20</li>
-          <li className='footerListElement'>mar.: 09:00 - 12:00, 14:00 - 18:20</li>
-          <li className='footerListElement'>mer.: 09:00 - 12:00, 14:00 - 18:20 </li>
-          <li className='footerListElement'>jeu.: 09:00 - 12:00, 14:00 - 18:20</li>
-          <li className='footerListElement'>ven.: 09:00 - 12:00, 14:00 - 18:20</li>
-          <li className='footerListElement'>sam.: 09:00 - 12:00, 14:00 - 18:20</li>
-          <li className='footerListElement'>dim. Fermé</li>
+          <li className='footer-list-elt'>lun.: 09:00 - 12:00, 14:00 - 18:20</li>
+          <li className='footer-list-elt'>mar.: 09:00 - 12:00, 14:00 - 18:20</li>
+          <li className='footer-list-elt'>mer.: 09:00 - 12:00, 14:00 - 18:20 </li>
+          <li className='footer-list-elt'>jeu.: 09:00 - 12:00, 14:00 - 18:20</li>
+          <li className='footer-list-elt'>ven.: 09:00 - 12:00, 14:00 - 18:20</li>
+          <li className='footer-list-elt'>sam.: 09:00 - 12:00, 14:00 - 18:20</li>
+          <li className='footer-list-elt'>dim. Fermé</li>
         </ul> 
       </div>
-      <div className='navBtn center'>
+      <div className='nav-btn center'>
         <div className='btn '>   
-          <div className='contactBtn'><BsEnvelopeFill />Nous contacter</div>
+          <div className='contact-btn'><BsEnvelopeFill />Nous contacter</div>
         </div>
       </div>
     
-      <div className='navLogo center'>
-        <img className='logoFooter' 
-        src='img/logo.png'
+      <div className='nav-logo center'>
+        <img className='logo-footer' 
+        src='/img/logo.png'
         alt="Garage V.Parrot Logo"
         />
       </div>

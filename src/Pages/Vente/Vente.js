@@ -1,11 +1,11 @@
 import './Vente.scss';
 import '../../App.scss'
-
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import React, { useState } from 'react';
+
 const Vente = () => {
-  const [cars, setCars] = useState([
+  const [cars] = useState([
     { id: 1, brand: 'Renault', year: '2020', price: 15000, image: 'https://images.caradisiac.com/images/7/4/3/6/197436/S0-serie-d-ete-comment-va-renault-722874.jpg' },
     { id: 2, brand: 'Toyota', year: '2023', price: 18000, image: 'https://www.shutterstock.com/image-illustration/tula-russia-june-24-2021-260nw-2013225725.jpg' },
     { id: 3, brand: 'Ford', year: '2015', price: 25000, image: 'https://www.speedest.fr/medias/vehicules/933/img-5819.jpg' },
@@ -14,62 +14,77 @@ const Vente = () => {
     { id: 6, brand: 'Peugeot', year: '2010', price: 28000, image: 'https://images.caradisiac.com/images/5/5/8/2/195582/S0-peugeot-est-le-constructeur-prefere-des-francais-en-toute-subjectivite-711529.jpg' },
   ]);
 
-  const [sortBy, setSortBy] = useState('');
 
-  const handleSortChange = (event) => {
-    setSortBy(event.target.value);
-  };
+  // const [sortBy, setSortBy] = useState('');
 
-  const sortCars = () => {
-    const sortedCars = [...cars];
-    switch (sortBy) {
-      case 'brand':
-        sortedCars.sort((a, b) => a.brand.localeCompare(b.brand));
-        break;
-      case 'year':
-        sortedCars.sort((a, b) => a.year.localeCompare(b.year));
-        break;
-      case 'price':
-        sortedCars.sort((a, b) => a.price - b.price);
-        break;
-      default:
-        break;
-    }
-    setCars(sortedCars);
-  };
+  // const handleSortChange = (event) => {
+  //   setSortBy(event.target.value);
+  // };
+
+  // const sortCars = () => {
+  //   const sortedCars = [...cars];
+  //   switch (sortBy) {
+  //     case 'brand':
+  //       sortedCars.sort((a, b) => a.brand.localeCompare(b.brand));
+  //       break;
+  //     case 'year':
+  //       sortedCars.sort((a, b) => a.year.localeCompare(b.year));
+  //       break;
+  //     case 'price':
+  //       sortedCars.sort((a, b) => a.price - b.price);
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   setCars(sortedCars);
+  // };
 
   return (
-    <div className="containerList">
-    
-          <div className="select-container">
-            <label htmlFor="sort">Trier par :</label>
-            <select id="sort" onChange={handleSortChange}>
-              <option value="price">Prix</option>
-              <option value="year">Année</option>
-              <option value="brand">Marque</option>
-            </select>
-            <button onClick={sortCars}>Trier</button>
-          </div>
-      
+    <div className="container">
+      <section className="section-sort">
+        <label htmlFor="sort">Trier par :</label>
+        <div className='price'>
+          <p>Prix :</p>
+          <input id='price-one' placeholder="Entre"></input>
+          <input id='price-two' placeholder="Et"></input>
+        </div>
+        <div className='year'>
+          <p>Année :</p>
+          <input id='price-one' placeholder="Entre"></input>
+          <input id='price-two' placeholder="Et"></input>
+        </div>
+        <div className='km'>
+          <p>Km :</p>
+          <input id='price-one' placeholder="Entre"></input>
+          <input id='price-two' placeholder="Et"></input>
+        </div>
+        
+        <button>Trier</button>
+      </section>
 
+      <section className='section-car-list'>
         <ul className="car-list">
           {cars.map((car) => (
             <li key={car.id} className="car-item">
               <div className="car-details">
                 <img src={car.image} alt={car.brand} className="car-image" />
-                <div>
+                <div className='center'>
                   <h3>{car.brand}</h3>
                   <p>Modèle : {car.model}</p>
                   <p>Année : {car.year}</p>
                   <p>Prix : {car.price} €</p>
                 </div>
-                <Link to={'cardetails'}>
-                  <div>Détails</div>
-                </Link>
+                <a href={"/car/"+car.id}>
+                  <button className='btn'>Détails</button>
+                </a>
+            
+                                
               </div>
             </li>
           ))}
         </ul>
+      </section>
+      
     </div>
   );
 

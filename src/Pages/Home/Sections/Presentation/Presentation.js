@@ -3,7 +3,7 @@ function SectionIntro() {
     <div className="lightSection">
       <section className="sectionContainer">
           <div className="leftSection">
-            <img className='homeImg' src='img/car_repair.jpg' alt="reparation de voiture" />
+            <img className='homeImg' src='/img/car_repair.jpg' alt="reparation de voiture" />
           </div>
           <div className="rightSection center">
             <ul>

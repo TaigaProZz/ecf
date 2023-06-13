@@ -1,14 +1,31 @@
-@use "../../App" as app;
+@use "src/App" as app;
 
 .img {
   width: 10%;
   height: 10%;
 }
 
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.section-sort {
+  height: 100%;
+  width: 20%;
+  border-radius: 12px;
+  background-color: app.$elementColor;
+}
+
+.section-car-list {
+  height: 100%;
+  width: 80%;
+  display: flex;
+
+}
+
 .car-list {
-  list-style: none;
-  height: auto;
-  padding: 0;
+  padding: 10px;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -17,7 +34,7 @@
 }
 
 .car-item {
-  width: calc(33.33% - 20px); /* Ajustez la largeur selon vos besoins */
+  width: calc(30% - 20px); /* Ajustez la largeur selon vos besoins */
   border: 1px solid #aa7d7d;
   background-color: app.$buttonColor;
   border-radius: 5px;
@@ -39,11 +56,10 @@
 .car-image {
   width: 80%;
   height: 50%;
-  object-fit: fill;
+  object-fit: cover;
   object-position: bottom;
 }
 
 .car-item h3 {
   margin: 0;
 }
-

@@ -15,7 +15,7 @@ function SectionAllServices() {
           </div>
         </div>
         <div className="rightSection">        
-          <img className="homeImg" src='img/cars_atelier.png' alt="Garage V.Parrot Logo" />
+          <img className="homeImg" src='/img/cars_atelier.png' alt="Garage V.Parrot Logo" />
         </div> 
       </section>
     </div>

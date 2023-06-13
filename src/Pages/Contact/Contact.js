@@ -1,38 +1,30 @@
-
-
-const style = {
-  height: '80vh',
-  border : 'solid 1px white',
-  borderRadius : '10px',
-  backgroundColor: '#3F4458',
-  color : 'white',
-  marginTop : '5vh',
-}
+import './Contact.scss';
 
 function Contact() {
   return (
-    <div>
-      <div style= {style}>
-        <div className='center' style={{width:'50vh'}}>
-          <h1 className='hCenter'>Formulaire de contact</h1>
-
-          <div className="mb-3" controlId="formBasicEmail">
-            <div>Email address</div>
-            <div type="email" placeholder="Entrez votre email" />
-          </div>
-
-          <div className="mb-3" controlId="formBasicTeDxt">
-            <div>Nom Prénom</div>
-            <div type="text" placeholder="Entrez votre nom " />
-          </div>
-
-          <div className='hCenter'>
-            <div variant="primary" type="submit">
-              Envoyer
-            </div>
-          </div>
+    <div className="container center">
+      <div className='form'>
+        <h1 className='center'>Formulaire de contact</h1>
+        <div className='name-row row'>
+          <p>Nom prénom :</p>
+          <input id='name-input' className='center'></input>
         </div>
-      </div>
+        <div className='phone-row row'>
+          <p>Téléphone :</p>
+          <input id='phone-input'></input>
+        </div>
+        <div className='email-row row'>
+          <p>Email :</p>
+          <input id='email-input'></input>
+        </div>
+        <div className='msg-row row'>
+          <p>Message:</p>
+          <input id='msg-input'></input>
+        </div>
+        <div className='center'>
+          <div className='btn' type="submit">Envoyer</div>
+        </div>
+      </div>  
     </div>
   );
 }
