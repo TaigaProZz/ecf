@@ -14,7 +14,6 @@ function SectionComms() {
             <CommsBox title="Je suis un titre" text="Je suis le commentaire" />
             <CommsBox title="Je suis un titre" text="Je suis le commentaire" />
           </div>
-          
           <div className="sendCommsBox">
             <CommentBox />
           </div>

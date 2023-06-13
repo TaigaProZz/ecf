@@ -1,5 +1,12 @@
 @use 'src/App.scss' as app;
 
+.box {
+  width: 60%;
+  height: 70%;
+  background-color: #293045;
+  border-radius: 12px;
+}
+
 .inputBox {
   width: auto;
   height: 100%;
@@ -9,7 +16,6 @@
   padding: 10px;
   font-size: 1.5rem;
   font-weight: bold;
-  background-color: app.$backgroundColor;
   color: white;
 }
 
@@ -25,15 +31,14 @@
   color: white;
 }
 
-.box {
-  width: 60%;
-  background-color: #293045;
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.inputName {
+  margin: 10px;
+  height: 5vh;
+  width: 30vh;
 }
 
-.commsMsgInput {
-  background-color: app.$inputColor;
+.inputMessage {
+  margin: 10px;
+  height: 50px;
+  width: 30vh;
 }

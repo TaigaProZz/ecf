@@ -4,7 +4,7 @@ function SectionPresentation() {
   return (
       <div className="sectionContainer">
         <div className="darkHomeSection">
-          <section className='leftSection'>
+          <section className='leftSection center'>
               <h1 className='title'>Garage V.Parrot</h1>
               <div className="btn">
                 <a href="/contact">Nous contacter<br></br> <BsEnvelopeFill /></a>

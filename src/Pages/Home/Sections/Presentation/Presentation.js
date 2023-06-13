@@ -5,7 +5,7 @@ function SectionIntro() {
           <div className="leftSection">
             <img className='homeImg' src='img/car_repair.jpg' alt="reparation de voiture" />
           </div>
-          <div className="rightSection" >
+          <div className="rightSection center">
             <ul>
             <li>Réparation Carrosserie</li>
             <li>Réparation voiture</li>

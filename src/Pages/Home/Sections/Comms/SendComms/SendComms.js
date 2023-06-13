@@ -32,29 +32,32 @@ const SendComms = () => {
 
   return (
     <div className="box">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className=''>
         <div className="form-group inputBox">
           <label htmlFor="name">Nom :</label>
-          <input type="text" id="name" name="name"  value={name} onChange={handleNameChange} placeholder="Votre nom" required />
+          <input type="text" id="name" name="name" className='inputName' value={name} onChange={handleNameChange} placeholder="Votre nom" required />
         </div>
         <div className="form-group inputBox">
           <label htmlFor="message">Message :</label>
-          <input id="message" name="message" className='' value={message} onChange={handleMessageChange} placeholder="Votre message" required></input>
+          <input id="message" name="message" className='inputMessage' value={message} onChange={handleMessageChange} placeholder="Votre message" required></input>
         </div>
-        <div className="form-group inputRadio">
-          <label htmlFor="rating">Note :</label>
-          <div className="rating">
-            {[1, 2, 3, 4, 5].map((value) => (
-              <label key={value}>
-                <input type="radio" name="rating" value={value} checked={rating === value} onChange={handleRatingChange} />
-                <span className="star"></span>
-              </label>
-            ))}
+        <div className='center'>
+          <div className="form-group inputRadio">
+            <label htmlFor="rating">Note :</label>
+            <div className="rating">
+              {[1, 2, 3, 4, 5].map((value) => (
+                <label key={value}>
+                  <input type="radio" name="rating" value={value} checked={rating === value} onChange={handleRatingChange} />
+                  <span className="star"></span>
+                </label>
+              ))}
+            </div>
           </div>
+          <div className="btn" type="submit">
+              <p>Envoyer</p>
+            </div>
         </div>
-        <div className="btn" type="submit">
-            <p>Envoyer</p>
-          </div>
+        
       </form>
     </div>
   );

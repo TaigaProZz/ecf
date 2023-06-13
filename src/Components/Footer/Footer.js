@@ -7,7 +7,7 @@ import { BsEnvelopeFill } from 'react-icons/bs';
 function myFooter() {
   return ( 
     <div className='myFooter'>
-      <div className='horaires'>
+      <div className='horaires center'>
         <ul className='horaire'>
           <li className='footerListElement'>lun.: 09:00 - 12:00, 14:00 - 18:20</li>
           <li className='footerListElement'>mar.: 09:00 - 12:00, 14:00 - 18:20</li>
@@ -18,13 +18,13 @@ function myFooter() {
           <li className='footerListElement'>dim. Fermé</li>
         </ul> 
       </div>
-      <div className='navBtn'>
+      <div className='navBtn center'>
         <div className='btn '>   
           <div className='contactBtn'><BsEnvelopeFill />Nous contacter</div>
         </div>
       </div>
     
-      <div className='navLogo'>
+      <div className='navLogo center'>
         <img className='logoFooter' 
         src='img/logo.png'
         alt="Garage V.Parrot Logo"
