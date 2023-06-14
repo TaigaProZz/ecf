@@ -23,19 +23,14 @@
   object-fit: cover;
 }
 
-.sub-image {
+.sub-image-container {
   width: 90%;
   height: 30%;
   border: 2px solid aliceblue;
 }
 
-.sub-image-first-line {
-  height: 45%;
-  display: flex;
-}
-.sub-image-second-line {
-  height: 45%;
-  display: flex;
+.imgs {
+  height: 50%;
 }
 
 .cars-image {
