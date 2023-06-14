@@ -21,27 +21,25 @@
   height: 100%;
   width: 80%;
   display: flex;
-
 }
 
 .car-list {
+  width: 100%;
   padding: 10px;
-  margin: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 20px;
 }
 
-.car-item {
-  width: calc(30% - 20px); /* Ajustez la largeur selon vos besoins */
-  background-color: app.$elementColor;
-  border-radius: 5px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+// .car-item {
+//   height: 70vh;
+//   width: 30%;
+//   background-color: app.$elementColor;
+//   border-radius: 5px;
+//   padding: 10px;
+//   display: block;
+//   flex-direction: column;
+// }
 
 .car-details {
   height: 100%;
@@ -56,7 +54,6 @@
   width: 80%;
   height: 50%;
   object-fit: cover;
-  object-position: bottom;
 }
 
 .car-item h3 {

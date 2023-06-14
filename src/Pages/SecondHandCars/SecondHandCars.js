@@ -6,29 +6,32 @@ import React, { useState } from 'react';
 const Vente = () => {
   const [cars] = useState(CARS);
 
-  // const [sortBy, setSortBy] = useState('');
+  const style = {
+    height: '70vh',
+    width: '30%',
+    backgroundColor: '#20273D',
+    borderRadius:' 5px',
+    padding: '10px',
+    display: 'block',
+    flexDirection: 'column'
+  }
 
-  // const handleSortChange = (event) => {
-  //   setSortBy(event.target.value);
-  // };
+  // take input of price, year, km, 
+  const sortCarsByPrice = () => {
+    const priceOne = document.getElementById('price-one').value;
+    const priceTwo = document.getElementById('price-two').value;
+    cars.forEach((car) => {
+      const carElement = document.getElementById(car.id);
+      if (!(car.price >= priceOne && car.price <= priceTwo)) {
+        carElement.style.display = 'none';
 
-  // const sortCars = () => {
-  //   const sortedCars = [...cars];
-  //   switch (sortBy) {
-  //     case 'brand':
-  //       sortedCars.sort((a, b) => a.brand.localeCompare(b.brand));
-  //       break;
-  //     case 'year':
-  //       sortedCars.sort((a, b) => a.year.localeCompare(b.year));
-  //       break;
-  //     case 'price':
-  //       sortedCars.sort((a, b) => a.price - b.price);
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  //   setCars(sortedCars);
-  // };
+      } else {
+        Object.keys(style).forEach((key) => {
+          carElement.style[key] = style[key];
+        });
+      }
+    });
+  }
 
   return (
     <div className="container">
@@ -38,24 +41,26 @@ const Vente = () => {
           <p>Prix :</p>
           <input id='price-one' placeholder="Entre"></input>
           <input id='price-two' placeholder="Et"></input>
+          <button className='sort-btn-price' onClick={sortCarsByPrice}>Trier par prix</button>
         </div>
         <div className='year'>
           <p>Année :</p>
           <input id='price-one' placeholder="Entre"></input>
           <input id='price-two' placeholder="Et"></input>
+          <button className='sort-btn-year'>Trier par année</button>
         </div>
         <div className='km'>
           <p>Km :</p>
           <input id='price-one' placeholder="Entre"></input>
           <input id='price-two' placeholder="Et"></input>
+          <button className='sort-btn-km'>Trier par km</button>
         </div>
-        <button>Trier</button>
       </section>
 
       <section className='section-car-list'>
         <ul className="car-list">
           {cars.map((car) => (
-            <li key={car.id} className="car-item">
+            <li key={car.id} className="car-item" style={style} id={car.id}>
               <div className="car-details">
                 <img src={car.image[0]} alt={car.brand} className="car-image" />
                 <div className='center'>
