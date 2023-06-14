@@ -1,8 +1,7 @@
 @use "src/App" as app;
 
-.sectionCommsContainer {
+.sectionFeedbackContainer {
   height: 100vh;
-  border: 1px solid red;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -25,7 +24,7 @@
   justify-content: center;
 }
 
-.sendCommsBox {
+.sendFeedbackList {
   width: 100%;
   height: 60vh;
   display: flex;

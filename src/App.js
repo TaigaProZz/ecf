@@ -1,6 +1,6 @@
 import React from 'react';
 import Home from './Pages/Home/Home';
-import Vente from './Pages/Vente/Vente';
+import Vente from './Pages/SecondHandCars/SecondHandCars';
 import Contact from './Pages/Contact/Contact';
 import NavBar from './Components/NavBar/NavBar';
 // import Footer from './Components/Footer/Footer';

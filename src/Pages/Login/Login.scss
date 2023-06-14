@@ -1,0 +1,21 @@
+.login-password-row, .login-email-row {
+  height: auto;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.login-password-text, .login-email-text  {
+  width: 30%;
+}
+
+.login-password-input, .login-email-input  {
+  width: 60%;
+  display: inline-flex;
+  justify-content: flex-end;
+}
+
+#login-password-input, #login-email-input  {
+  width: 100%;
+}

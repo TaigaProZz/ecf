@@ -22,7 +22,7 @@ function Contact() {
           <input id='msg-input'></input>
         </div>
         <div className='center'>
-          <div className='btn' type="submit">Envoyer</div>
+          <button className='btn' type="submit">Envoyer</button>
         </div>
       </div>  
     </div>

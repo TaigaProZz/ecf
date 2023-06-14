@@ -20,27 +20,42 @@ html, body, #root {
     color: $mainFontColor;
     text-decoration: none;
   }
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
 
   input {
     color: $mainFontColor;
     background-color: $inputColor;
+    border-color: white;
+    border-radius: 12px;
+    font-size: 20px;
   }
+
+  button {
+    height: 70px;
+    width: 200px;
+    border-radius: 12px;
+    font-size: 18px;
+    background-color: $buttonColor;
+    color: $mainFontColor;
+    border-color: $mainFontColor;
+    font-family: $mainFont;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    a {
+      text-decoration: none;
+    }
+  }
+  
 }
 
-button {
-  height: 70px;
-  width: 200px;
-  border-radius: 12px;
-  background-color: $buttonColor;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  a {
-    text-decoration: none;
-  }
- 
-}
 
 .center {
   display: flex;

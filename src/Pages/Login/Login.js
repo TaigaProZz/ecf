@@ -1,21 +1,26 @@
+import './Login.scss';
 function Login() {
   return (
     <div className="container center">
-    <div className='form'>
-      <h1 className='center'>Se connecter</h1>
-      <div className='email-row row'>
-        <p>Email :</p>
-        <input id='email-input'></input>
-      </div>
-      <div className='password-row row'>
-        <p>Mot de passe :</p>
-        <input id='name-input' className='center'></input>
-      </div>
-      <div className='center'>
-        <div className='btn' type="submit">Se connecter</div>
-      </div>
-    </div>  
-  </div>
+      <div className='form'>
+        <h1 className='center'>Se connecter</h1>
+        <div className='login-email-row'>
+          <p className='login-email-text'>Email :</p>
+          <div className='login-email-input'>
+            <input id='login-email-input'></input>
+          </div>
+        </div>
+        <div className='login-password-row'>
+          <p className='login-password-text'>Mot de passe :</p>
+          <div className='login-password-input'>
+            <input id='login-password-input'></input>
+          </div>
+        </div>
+        <div className='center'>
+          <button className='btn' type="submit">Se connecter</button>
+        </div>
+      </div>  
+    </div>
     )
 }
 

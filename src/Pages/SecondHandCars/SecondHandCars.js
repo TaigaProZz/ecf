@@ -1,4 +1,4 @@
-import './Vente.scss';
+import './SecondHandCars.scss';
 import '../../App.scss'
 import { CARS } from '../../data.js'
 import React, { useState } from 'react';

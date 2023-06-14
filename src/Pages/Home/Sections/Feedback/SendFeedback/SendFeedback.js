@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './SendComms.scss';
+import './SendFeedback.scss';
 
-const SendComms = () => {
+const SendFeedback = () => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [rating, setRating] = useState(0);
@@ -53,8 +53,8 @@ const SendComms = () => {
               ))}
             </div>
           </div>
-          <div className="btn" type="submit">
-              <p>Envoyer</p>
+          <div >
+              <button className='btn'>Envoyer</button>
             </div>
         </div>
         
@@ -63,4 +63,4 @@ const SendComms = () => {
   );
 };
 
-export default SendComms;
+export default SendFeedback;

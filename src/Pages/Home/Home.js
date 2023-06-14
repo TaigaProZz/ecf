@@ -2,9 +2,9 @@ import './Home.scss';
 import './Sections/Sections.scss';
 import FirstSection from './Sections/Welcome/Welcome';
 import SecondSection from './Sections/Presentation/Presentation';
-import ThirdSection from './Sections//Sales/Sale';
+import ThirdSection from './Sections/SecondHand/SecondHand';
 import FourthSection from './Sections/AllServices/AllServices';
-import FifthSection from './Sections/Comms/Comms';
+import FifthSection from './Sections/Feedback/Feedback';
 
 function Home() {
   return (

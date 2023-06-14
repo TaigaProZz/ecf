@@ -221,11 +221,11 @@ ecf
    │  │  └─ NavBar.scss
    │  └─ Section
    │     ├─ Buttons
-   │     └─ Comms
-   │        ├─ CommsBox
-   │        │  ├─ CommsBox.js
-   │        │  └─ CommsBox.scss
-   │        └─ SendComms.js
+   │     └─ Feedback
+   │        ├─ FeedbackList
+   │        │  ├─ FeedbackList.js
+   │        │  └─ FeedbackList.scss
+   │        └─ SendFeedback.js
    ├─ index.js
    ├─ index.scss
    ├─ Pages
@@ -240,7 +240,7 @@ ecf
    │  │  ├─ Home.scss
    │  │  └─ Sections
    │  │     ├─ SectionAllServices.js
-   │  │     ├─ SectionComms.js
+   │  │     ├─ SectionFeedback.js
    │  │     ├─ SectionPresentation.js
    │  │     ├─ SectionSale.js
    │  │     └─ SectionWelcome.js
