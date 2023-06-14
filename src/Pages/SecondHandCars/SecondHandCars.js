@@ -1,11 +1,10 @@
 import './SecondHandCars.scss';
 import '../../App.scss'
-import { CARS } from '../../data.js'
+import { CARS } from '../../data/cars.js'
 import React, { useState } from 'react';
 
 const Vente = () => {
   const [cars] = useState(CARS);
-
 
   // const [sortBy, setSortBy] = useState('');
 
@@ -50,7 +49,6 @@ const Vente = () => {
           <input id='price-one' placeholder="Entre"></input>
           <input id='price-two' placeholder="Et"></input>
         </div>
-        
         <button>Trier</button>
       </section>
 
@@ -68,18 +66,14 @@ const Vente = () => {
                 </div>
                 <a href={"/car/"+car.id}>
                   <button className='btn'>Détails</button>
-                </a>
-            
-                                
+                </a>                   
               </div>
             </li>
           ))}
         </ul>
       </section>
-      
     </div>
   );
-
 };
 
 

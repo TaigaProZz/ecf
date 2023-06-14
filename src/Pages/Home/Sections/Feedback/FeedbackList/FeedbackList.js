@@ -1,4 +1,3 @@
-// print a box to display the user's comments
 import React from 'react';
 import './FeedbackList.scss';
 import { AiFillStar } from 'react-icons/ai'

@@ -1,5 +1,39 @@
 import './Login.scss';
+import { useEffect } from 'react';
+import ACCOUNTS from '../../data/accounts';
+
 function Login() {
+  useEffect(() => {
+    const inputEmail = document.getElementById('login-email-input');
+    const inputPassword = document.getElementById('login-password-input');
+    const btn = document.querySelector('.btn');
+
+    const login = () => {
+      let email = inputEmail.value;
+      let password = inputPassword.value;
+      if (email === '' || password === '') {
+        console.log('Veuillez remplir tous les champs');
+        return;
+      } else {
+        const account = ACCOUNTS.find(acc => acc.email === email);
+        if (account === undefined) {
+          console.log('Email incorrect');
+          return;
+        } else if (account.password !== password) {
+          console.log('Mot de passe incorrect');
+          return;
+        }
+      }
+      alert(`${email} est connecté`)
+    }
+
+    btn.addEventListener('click', login);
+    
+    return () => {
+      btn.removeEventListener('click', login);    
+    }
+  }, []);
+  
   return (
     <div className="container center">
       <div className='form'>
@@ -17,7 +51,7 @@ function Login() {
           </div>
         </div>
         <div className='center'>
-          <button className='btn' type="submit">Se connecter</button>
+          <button className='btn' id="login-btn" type="submit">Se connecter</button>
         </div>
       </div>  
     </div>

@@ -1,12 +1,10 @@
 import './Car.scss';
-import { CARS } from '../../data.js'
+import { CARS } from '../../data/cars.js'
 import { useParams } from 'react-router-dom';
 
 function Car() {
   const params = useParams();
   const element = CARS.find(elt => elt.id === params.id);
-  
-  console.log(element.id);
   
   return (
     <div className="car-page-container">

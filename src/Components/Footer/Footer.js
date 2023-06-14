@@ -1,8 +1,6 @@
 import React from 'react';
 import './Footer.scss';
-
 import { BsEnvelopeFill } from 'react-icons/bs';
-
 
 function myFooter() {
   return ( 
@@ -23,7 +21,6 @@ function myFooter() {
           <div className='contact-btn'><BsEnvelopeFill />Nous contacter</div>
         </div>
       </div>
-    
       <div className='nav-logo center'>
         <img className='logo-footer' 
         src='/img/logo.png'
