@@ -57,7 +57,7 @@ const Vente = () => {
           {cars.map((car) => (
             <li key={car.id} className="car-item">
               <div className="car-details">
-                <img src={car.image} alt={car.brand} className="car-image" />
+                <img src={car.image[0]} alt={car.brand} className="car-image" />
                 <div className='center'>
                   <h3>{car.brand}</h3>
                   <p>Modèle : {car.model}</p>

@@ -5,12 +5,10 @@ import { useParams } from 'react-router-dom';
 function Car() {
   const params = useParams();
   const element = CARS.find(elt => elt.id === params.id);
-  // console.log(element.image);
-  // create an  image for every img available in the element 
+ 
   const images = element.image.map((img, index) => {
-    return <img key={index} className='cars-image' src={img} alt='voiture'></img>
-  })
-  console.log(images);
+      return <img key={index} className='cars-image' src={img} alt='voiture'></img>
+    })
   
   return (
     <div className="car-page-container">
