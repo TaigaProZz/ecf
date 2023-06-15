@@ -1,4 +1,11 @@
+import { useState } from "react";
+import { SERVICES } from "../../../../Data/services";
+
 function SectionAllServices() {
+  const [services, setServices] = useState(SERVICES);
+  const listServices = services.map((elt, index) => {
+    return <li key={index}>{elt.service}</li>
+  });
   
   return (
     <div className="lightSection">
@@ -6,12 +13,7 @@ function SectionAllServices() {
         <div className="leftSection">
           <div className='serviceList'>
             <ul>
-              <li>Réparation Carrosserie</li>
-              <li>Réparation voiture</li>
-              <li>Contrôle Technique</li>
-              <li>Contrôle Technique</li>
-              <li>Contrôle Technique</li>
-              <li>Entretien et remise en route</li>
+              {listServices}
             </ul>
           </div>
         </div>

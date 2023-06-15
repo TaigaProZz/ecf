@@ -6,6 +6,6 @@ const ACCOUNTS = [
   { id: "5", email: 'user5', password: 'user5', role: 'user' },
   { id: "6", email: 'user6', password: 'user6', role: 'user' },
   { id: "7", email: 'admin', password: 'admin', role: 'admin' },
-]
+];
 
 export default ACCOUNTS;

@@ -3,22 +3,29 @@
 .my-nav {
   width: 100%;
   height: 10vh;
-  background-color: app.$barColor; 
-  display: inline-flex;
-  justify-content: center;
+  background-color: app.$barColor;
+  display: flex;
   align-items: center;
+  justify-content: space-between; 
 }
 
 .nav-logo {
-  left: 0;
+  display: flex; 
+  align-items: center; 
   padding-left: 20px;
-  padding-right: 20px;
 }
 
 .links {
+  display: flex; 
+  justify-content: center;
   font-family: app.$mainFont;
   font-size: 24px;
-  a {
-    padding-right: 10px;
-  }
+}
+
+.links a {
+  padding-right: 10px;
+}
+
+.icon {
+  padding-right: 20px;
 }

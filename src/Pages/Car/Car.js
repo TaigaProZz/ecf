@@ -1,6 +1,7 @@
 import './Car.scss';
-import { CARS } from '../../data/cars.js'
+import { CARS } from '../../Data/cars.js'
 import { useParams } from 'react-router-dom';
+import { BsEnvelopeFill } from 'react-icons/bs';
 
 function Car() {
   const params = useParams();
@@ -8,7 +9,7 @@ function Car() {
  
   const images = element.image.map((img, index) => {
       return <img key={index} className='cars-image' src={img} alt='voiture'></img>
-    })
+    });
   
   return (
     <div className="car-page-container">
@@ -24,12 +25,19 @@ function Car() {
       </div>
       <div className='right-side'>
         <h1>{element.brand}</h1>
-        <h2>{element.title}</h2>
+        <h2 className='title'>{element.title}</h2>
         <div className='car-price'>
           <p>{element.price} €</p></div>
         <div className='car-fiche'>
-          <h1>Fiche Technique</h1>
+          <h2>Fiche Technique</h2>
+          <p>Référence : {element.id}</p>
           <p>{element.description}</p>
+        </div>
+        <div className='contact-container'>
+          <h2>Interéssé ? Contactez-nous</h2>
+          <a href={'/carcontact/' + element.id}>
+            <button className='shc-button'><BsEnvelopeFill size={35}/></button>
+          </a>
         </div>
       </div>
     </div>

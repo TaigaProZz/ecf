@@ -1,6 +1,6 @@
 import './SecondHandCars.scss';
 import '../../App.scss'
-import { CARS } from '../../data/cars.js'
+import { CARS } from '../../Data/cars.js'
 import React, { useState } from 'react';
 
 const Vente = () => {
@@ -75,7 +75,9 @@ const Vente = () => {
           <input id='km-one' className='sort-input' placeholder="Entre"></input>
           <input id='km-two' className='sort-input' placeholder="Et"></input>
         </div>
-        <button id='sort-btn-price' className='shc-button' onClick={sortCars}>Trier</button>
+        <div className='center'>
+          <button id='sort-btn-price' className='shc-button' onClick={sortCars}>Trier</button>
+        </div>
       </section>
 
       <section className='section-car-list'>
@@ -92,7 +94,7 @@ const Vente = () => {
                   <p>Prix : {car.price} €</p>
                 </div>
                 <a href={"/car/" + car.id}>
-                  <button className='btn'>Détails</button>
+                  <button className='shc-button'>Détails</button>
                 </a>
               </div>
             </li>

@@ -1,6 +1,6 @@
 import './Login.scss';
 import { useEffect } from 'react';
-import ACCOUNTS from '../../data/accounts';
+import ACCOUNTS from '../../Data/accounts';
 
 function Login() {
   useEffect(() => {

@@ -8,11 +8,11 @@
   padding: 10px;
 
   .FeedbackListName {
-    font-size: 1.5rem;
+    font-size: calc(15px + 0.390625vw);
     font-weight: bold;
   }
   .FeedbackListText {
-    font-size: 1.2rem;
+    font-size: calc(11px + 0.390625vw);
   }
   
   .FeedbackListGrade {

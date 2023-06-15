@@ -1,6 +1,7 @@
 import './Contact.scss';
 
 function Contact() {
+
   return (
     <div className="container center">
       <div className='form'>
