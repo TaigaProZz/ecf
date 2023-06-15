@@ -8,53 +8,74 @@ const Vente = () => {
 
   const style = {
     height: '70vh',
-    width: '30%',
+    width: '31%',
     backgroundColor: '#20273D',
-    borderRadius:' 5px',
+    borderRadius: '12px',
     padding: '10px',
-    display: 'block',
+    display: 'flex',
     flexDirection: 'column'
   }
 
-  // take input of price, year, km, 
-  const sortCarsByPrice = () => {
+  const sortCars = () => {
     const priceOne = document.getElementById('price-one').value;
     const priceTwo = document.getElementById('price-two').value;
+    const yearOne = document.getElementById('year-one').value;
+    const yearTwo = document.getElementById('year-two').value;
+    const kmOne = document.getElementById('km-one').value;
+    const kmTwo = document.getElementById('km-two').value;
+  
     cars.forEach((car) => {
       const carElement = document.getElementById(car.id);
-      if (!(car.price >= priceOne && car.price <= priceTwo)) {
-        carElement.style.display = 'none';
-
-      } else {
+      let displayCar = true;
+  
+      if (priceOne && priceTwo) {
+        if (!(car.price >= priceOne && car.price <= priceTwo)) {
+          displayCar = false;
+        }
+      }
+  
+      if (yearOne && yearTwo) {
+        if (!(car.year >= yearOne && car.year <= yearTwo)) {
+          displayCar = false;
+        }
+      }
+  
+      if (kmOne && kmTwo) {
+        if (!(car.km >= kmOne && car.km <= kmTwo)) {
+          displayCar = false;
+        }
+      }
+  
+      if (displayCar) {
         Object.keys(style).forEach((key) => {
           carElement.style[key] = style[key];
         });
+      } else {
+        carElement.style.display = 'none';
       }
     });
-  }
+  };
 
   return (
     <div className="container">
       <section className="section-sort">
-        <label htmlFor="sort">Trier par :</label>
+        <h2 className='center' htmlFor="sort">Trier par :</h2>
         <div className='price'>
           <p>Prix :</p>
-          <input id='price-one' placeholder="Entre"></input>
-          <input id='price-two' placeholder="Et"></input>
-          <button className='sort-btn-price' onClick={sortCarsByPrice}>Trier par prix</button>
+          <input id='price-one' className='sort-input' placeholder="Entre"></input>
+          <input id='price-two' className='sort-input' placeholder="Et"></input>
         </div>
         <div className='year'>
           <p>Année :</p>
-          <input id='price-one' placeholder="Entre"></input>
-          <input id='price-two' placeholder="Et"></input>
-          <button className='sort-btn-year'>Trier par année</button>
+          <input id='year-one' className='sort-input' placeholder="Entre"></input>
+          <input id='year-two' className='sort-input' placeholder="Et"></input>
         </div>
         <div className='km'>
           <p>Km :</p>
-          <input id='price-one' placeholder="Entre"></input>
-          <input id='price-two' placeholder="Et"></input>
-          <button className='sort-btn-km'>Trier par km</button>
+          <input id='km-one' className='sort-input' placeholder="Entre"></input>
+          <input id='km-two' className='sort-input' placeholder="Et"></input>
         </div>
+        <button id='sort-btn-price' className='shc-button' onClick={sortCars}>Trier</button>
       </section>
 
       <section className='section-car-list'>
@@ -67,11 +88,12 @@ const Vente = () => {
                   <h3>{car.brand}</h3>
                   <p>Modèle : {car.model}</p>
                   <p>Année : {car.year}</p>
+                  <p>{car.km} km</p>
                   <p>Prix : {car.price} €</p>
                 </div>
-                <a href={"/car/"+car.id}>
+                <a href={"/car/" + car.id}>
                   <button className='btn'>Détails</button>
-                </a>                   
+                </a>
               </div>
             </li>
           ))}
@@ -80,6 +102,5 @@ const Vente = () => {
     </div>
   );
 };
-
 
 export default Vente;

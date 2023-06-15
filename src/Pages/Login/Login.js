@@ -6,7 +6,7 @@ function Login() {
   useEffect(() => {
     const inputEmail = document.getElementById('login-email-input');
     const inputPassword = document.getElementById('login-password-input');
-    const btn = document.querySelector('.btn');
+    const btn = document.querySelector('.home-button');
 
     const login = () => {
       let email = inputEmail.value;
@@ -51,7 +51,7 @@ function Login() {
           </div>
         </div>
         <div className='center'>
-          <button className='btn' id="login-btn" type="submit">Se connecter</button>
+          <button className='home-button' id="login-btn" type="submit">Se connecter</button>
         </div>
       </div>  
     </div>

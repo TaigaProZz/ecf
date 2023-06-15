@@ -7,7 +7,7 @@ function SectionsSale() {
             <li>Vente de véhicules d’occasion</li>
             <li>Reprise de vos véhicules</li>
           </ul>
-          <button className="btn">
+          <button className="home-button">
             <a href="/ventes">Consulter la liste des véhicules en vente</a>
           </button>
         </div>

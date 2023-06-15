@@ -12,7 +12,7 @@ function SectionIntro() {
             <li>Contrôle Technique</li>
             <li>Entretien et remise en route</li>
           </ul>
-          <button className="btn">
+          <button className="home-button">
             <a href="/ventes">Voir tous les services</a>
           </button>
         </div>

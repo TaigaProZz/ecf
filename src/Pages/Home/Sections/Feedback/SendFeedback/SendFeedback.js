@@ -28,7 +28,7 @@ function SendFeedback() {
             </div>
           </div>
           <div >
-              <button className='btn'>Envoyer</button>
+              <button className='home-button'>Envoyer</button>
             </div>
         </div>   
       </form>

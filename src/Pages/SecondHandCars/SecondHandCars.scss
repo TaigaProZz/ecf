@@ -11,7 +11,7 @@
 }
 
 .section-sort {
-  height: 100%;
+  height: auto;
   width: 20%;
   border-radius: 12px;
   background-color: app.$elementColor;
@@ -56,6 +56,29 @@
   object-fit: cover;
 }
 
+.sort-input {
+  width: 80%;
+}
+
 .car-item h3 {
   margin: 0;
+}
+
+.shc-button {
+  height: 50px;
+  width: 150px;
+  border-radius: 12px;
+  font-size: 18px;
+  margin-top: 12px;
+  background-color: app.$buttonColor;
+  color: app.$mainFontColor;
+  border-color: app.$mainFontColor;
+  font-family: app.$mainFont;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  a {
+    text-decoration: none;
+  }
 }
