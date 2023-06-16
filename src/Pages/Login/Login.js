@@ -1,8 +1,10 @@
 import './Login.scss';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ACCOUNTS from '../../Data/accounts';
 
 function Login() {
+  const navigate = useNavigate();
   useEffect(() => {
     const inputEmail = document.getElementById('login-email-input');
     const inputPassword = document.getElementById('login-password-input');
@@ -24,7 +26,9 @@ function Login() {
           return;
         }
       }
-      alert(`${email} est connecté`)
+      navigate("/admin")
+      alert(`${email} est connecté`);
+
     }
 
     btn.addEventListener('click', login);
@@ -32,7 +36,7 @@ function Login() {
     return () => {
       btn.removeEventListener('click', login);    
     }
-  }, []);
+  }, [navigate]);
   
   return (
     <div className="container center">

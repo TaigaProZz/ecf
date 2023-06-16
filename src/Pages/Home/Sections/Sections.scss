@@ -6,6 +6,7 @@
 
 .sectionContainer {
   height: 100vh;
+  font-size: calc(15px + 0.390625vw);
   color: app.$mainFontColor;
   display: flex;
 }
@@ -32,7 +33,6 @@
   background-color: #373D51;
   padding: 0.5em;
   height: auto;
-  font-size: calc(15px + 0.390625vw);
   border-radius: 12px;
   scrollbar-color: #6969dd #e0e0e0;
   scrollbar-width: thin;

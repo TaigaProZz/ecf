@@ -5,7 +5,7 @@ import { AiFillStar } from 'react-icons/ai'
 function FeedbackList(props) {
   let grade = [];
   for(let i= 0; i < props.grade; i++) {
-    grade.push(<p className='star'><AiFillStar /></p>)
+    grade.push(<p className='feedback-star'><AiFillStar /></p>)
   }
 
   return (

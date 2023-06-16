@@ -2,7 +2,7 @@ import { useState } from "react";
 import { SERVICES } from "../../../../Data/services";
 
 function SectionAllServices() {
-  const [services, setServices] = useState(SERVICES);
+  const [services] = useState(SERVICES);
   const listServices = services.map((elt, index) => {
     return <li key={index}>{elt.service}</li>
   });
@@ -18,7 +18,7 @@ function SectionAllServices() {
           </div>
         </div>
         <div className="rightSection">        
-          <img className="homeImg" src='/img/cars_atelier.png' alt="Garage V.Parrot Logo" />
+          <img className="homeImg" src='/img/car_atelier.png' alt="Garage V.Parrot Logo" />
         </div> 
       </section>
     </div>

@@ -32,25 +32,25 @@ function Contact() {
     <div className="container center">
       <form ref={form} className='form'>
         <h1 className='center'>Formulaire de contact</h1>
-        <div className='name-row row'>
+        <div className='row'>
           <p>Nom prénom :</p>
-          <input ref={nameInputRef} className='center' type='text'></input>
+          <input ref={nameInputRef} className='center' type='text' placeholder='Entrez votre nom prénom'></input>
         </div>
-        <div className='phone-row row'>
+        <div className='row'>
           <p>Téléphone :</p>
-          <input ref={phoneInputRef} type="tel" required pattern="[0-9]{10}"></input>
+          <input ref={phoneInputRef} type="tel" required pattern="[0-9]{10}" placeholder='Entrez votre numéro de téléphone'></input>
         </div>
-        <div className='email-row row'>
+        <div className='row'>
           <p>Email :</p>
-          <input ref={emailInputRef} type='email'></input>
+          <input ref={emailInputRef} type='email' placeholder='Entrez votre email'></input>
         </div>
-        <div className='subject-row row'>
+        <div className='row'>
           <p>Voiture:</p>
-          <textarea disabled ref={msgInputRef} placeholder={element.title + ' réf: ' + element.id}></textarea>
+          <textarea disabled ref={msgInputRef} id='car-contact-car' placeholder={element.title + ' réf: ' + element.id}></textarea>
         </div>
         <div className='msg-row row'>
           <p>Message:</p>
-          <textarea ref={msgInputRef}></textarea>
+          <textarea ref={msgInputRef} id='car-contact-msg' placeholder='Entrez votre message'></textarea>
         </div>
         <div className='center'>
           <button className='home-button' type='submit' onClick={submit}>Envoyer</button>
