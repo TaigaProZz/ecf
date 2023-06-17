@@ -1,10 +1,32 @@
 import './SecondHandCars.scss';
 import '../../App.scss'
-import { CARS } from '../../Data/cars.js'
-import React, { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect} from 'react';
 
 const Vente = () => {
-  const [cars] = useState(CARS);
+  const [cars, setCars] = useState([]);
+  const [img, setImg] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        axios.defaults.baseURL = 'http://localhost:3307';
+        const response = await axios.get('/api/cars');
+        setCars(response.data);
+
+        const imageList = response.data.map(car => {
+          const img = car.images;
+          const list = JSON.parse(img);
+          return list;
+        });
+
+        setImg(imageList);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const style = {
     height: '70vh',
@@ -82,10 +104,10 @@ const Vente = () => {
 
       <section className='section-car-list'>
         <ul className="car-list">
-          {cars.map((car) => (
+          {cars.map((car, index) => (
             <li key={car.id} className="car-item" style={style} id={car.id}>
               <div className="car-details">
-                <img src={car.image[0]} alt={car.brand} className="car-image" />
+                <img src={img[index]} alt={car.brand} className="car-image" />
                 <div className='center'>
                   <h3>{car.brand}</h3>
                   <p>Modèle : {car.model}</p>

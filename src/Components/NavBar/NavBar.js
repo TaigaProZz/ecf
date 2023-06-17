@@ -1,4 +1,3 @@
-import React from 'react';
 import { BiUser } from 'react-icons/bi';
 import './NavBar.scss';
 

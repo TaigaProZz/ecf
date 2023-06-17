@@ -1,8 +1,28 @@
-import React from 'react';
 import './Footer.scss';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { BsEnvelopeFill } from 'react-icons/bs';
 
-function myFooter() {
+function MyFooter() {
+  const [horaires, setHoraires] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3307/api/horaires');
+        const list = response.data;
+        setHoraires(list);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+
+  console.log(horaires);
+
+
   return ( 
     <div className='my-footer'>
       <div className='horaires center'>
@@ -30,4 +50,4 @@ function myFooter() {
     </div>
   );
 }
-export default myFooter;
+export default MyFooter;

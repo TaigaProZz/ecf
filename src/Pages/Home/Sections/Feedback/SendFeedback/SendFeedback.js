@@ -3,7 +3,6 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { useRef, useState } from 'react';
 
 function SendFeedback() {
-
   const inputNameRef = useRef(null);
   const inputMessageRef = useRef(null);
   const form = useRef(null);
@@ -44,7 +43,7 @@ function SendFeedback() {
   return (
     <div className="box">
       <form ref={form}>
-        <h2>Envoyer nous un commentaire !</h2>
+        <h2>Envoyez nous un commentaire !</h2>
         <div className='send-feedback-row'>
           <label htmlFor="name">Nom :</label>
           <input required ref={inputNameRef} type="text" className='inputName' placeholder="Votre nom"></input>
