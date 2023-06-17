@@ -62,6 +62,19 @@ router.get('/services', (req, res) => {
   });
 });
 
+// horaires feedbacks
+router.get('/feedbacks', (req, res) => {
+  const query = 'SELECT * FROM feedbacks';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.send(results);
+    }
+  });
+});
+
 // horaires horaires
 router.get('/horaires', (req, res) => {
   const query = 'SELECT * FROM horaires';
@@ -74,8 +87,6 @@ router.get('/horaires', (req, res) => {
     }
   });
 });
-
-
 
 app.use('/api', router);
 

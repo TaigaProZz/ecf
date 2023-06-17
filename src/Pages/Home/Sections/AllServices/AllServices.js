@@ -13,7 +13,6 @@ function SectionAllServices() {
       } catch (error) {
         console.log(error);
       }
-    
     }
     fetchData();
   }, []);
