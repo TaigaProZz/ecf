@@ -15,8 +15,13 @@
     font-size: calc(11px + 0.390625vw);
   }
   
-  .FeedbackListGrade {
+  .FeedbackListRating {
     display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3px;
+    color: yellow;
   }
 
 }

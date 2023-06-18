@@ -5,9 +5,10 @@ const cors = require('cors');
 const app = express();
 const router = express.Router();
 
+// ignore restriction of cors
 app.use(cors());
 
-
+// settings to connect to sql database
 const connection = mysql.createConnection({
   host: 'localhost',
   port: 3306,
@@ -16,6 +17,7 @@ const connection = mysql.createConnection({
   database: 'ecf'
 });
 
+// and connect to it
 connection.connect((err) => {
   if (err) throw err;
   console.log('Connecté à la base de données MySQL');
@@ -24,7 +26,9 @@ connection.connect((err) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// car route
+/***  BACKEND ROUTES ***/
+
+// CAR route
 router.get('/cars', (req, res) => {
   const query = 'SELECT * FROM cars';
   connection.query(query, (error, results) => {
@@ -37,6 +41,7 @@ router.get('/cars', (req, res) => {
   });
 });
 
+// specific CAR route
 router.get('/cars/:id', (req, res) => {
   const carId = req.params.id;
   const query = 'SELECT * FROM cars WHERE id = ?';
@@ -50,7 +55,7 @@ router.get('/cars/:id', (req, res) => {
   });
 });
 
-// services route
+// SERVICES route
 router.get('/services', (req, res) => {
   const query = 'SELECT * FROM services';
   connection.query(query, (error, results) => {
@@ -63,7 +68,7 @@ router.get('/services', (req, res) => {
   });
 });
 
-// feedbacks route
+// FEEDBACKS route
 router.get('/feedbacks', (req, res) => {
   const query = 'SELECT * FROM feedbacks';
   connection.query(query, (error, results) => {
@@ -76,7 +81,7 @@ router.get('/feedbacks', (req, res) => {
   });
 });
 
-// horaires route
+// HORAIRES route
 router.get('/horaires', (req, res) => {
   const query = 'SELECT * FROM horaires';
   connection.query(query, (error, results) => {
@@ -89,7 +94,7 @@ router.get('/horaires', (req, res) => {
   });
 });
 
-// login route
+// LOGIN route
 router.get('/login', (req, res) => {
   const query = 'SELECT * FROM users';
   connection.query(query, (error, results) => {
@@ -102,7 +107,7 @@ router.get('/login', (req, res) => {
   });
 });
 
-// contact route
+// GET CONTACT route
 router.get('/contact', (req, res) => {
   const query = 'SELECT * FROM contact';
   connection.query(query, (error, results) => {
@@ -115,7 +120,7 @@ router.get('/contact', (req, res) => {
   });
 });
 
-// contact route
+// POST CONTACT route
 router.post('/contact', (req, res) => {
   try {
     const { subject, name, phone, email, message } = req.body;
@@ -134,10 +139,10 @@ router.post('/contact', (req, res) => {
 });
 
 
+// start backend server
 app.use('/api', router);
 
 const port = 3307; 
 app.listen(port, () => {
   console.log(`Serveur backend démarré sur le port ${port}`);
- 
 });

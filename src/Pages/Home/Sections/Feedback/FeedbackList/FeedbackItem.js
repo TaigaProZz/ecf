@@ -1,16 +1,16 @@
-import './FeedbackList.scss';
+import './FeedbackItem.scss';
 import { AiFillStar } from 'react-icons/ai'
 
 function FeedbackList(props) {
-  let grade = [];
-  for(let i= 0; i < props.grade; i++) {
-    grade.push(<p key={i} className='feedback-star'><AiFillStar /></p>)
+  let rating = [];
+  for(let i= 0; i < props.rating; i++) {
+    rating.push(<p key={i} className='feedback-star'><AiFillStar size={25}/></p>)
   }
 
   return (
     <div className="FeedbackList">
-      <div className="FeedbackListGrade">
-        {grade} 
+      <div className="FeedbackListRating">
+        {rating} 
       </div>
       <div className="FeedbackListName">{props.name}</div>
       <div className="FeedbackListText">{props.text}</div>

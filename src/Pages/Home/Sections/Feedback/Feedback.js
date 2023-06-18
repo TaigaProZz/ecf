@@ -1,4 +1,4 @@
-import FeedbackList from './FeedbackList/FeedbackList';
+import FeedbackList from './FeedbackList/FeedbackItem';
 import CommentBox from './SendFeedback/SendFeedback';
 import './Feedback.scss'
 import { useState, useEffect } from 'react';
@@ -27,7 +27,7 @@ function SectionFeedback() {
           <div className="boxs">
             {feedbacks.map((feedback) => {
               return (
-                <FeedbackList key={feedback.id} name={feedback.name} text={feedback.message} grade={feedback.grade} />
+                <FeedbackList key={feedback.id} name={feedback.name} text={feedback.message} rating={feedback.rating} />
               );
             })}
           </div>
