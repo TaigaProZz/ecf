@@ -1,6 +1,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
+const bcrypt = require('bcrypt')
 
 const app = express();
 const router = express.Router();
@@ -116,13 +117,41 @@ router.get('/schedule', (req, res) => {
 
 // LOGIN route
 router.get('/login', (req, res) => {
-  const query = 'SELECT * FROM users';
-  connection.query(query, (error, results) => {
+  const { email, password } = req.query;
+  const query = 'SELECT * FROM users WHERE email = ?';
+  connection.query(query, [email], (error, results) => {
     if (error) {
       console.log(error);
       res.sendStatus(500);
     } else {
-      res.send(results);
+      if (results.length === 0) {
+        res.status(401).json({ error: 'Email incorrect' });
+      } else {
+        const user = results[0];
+        // compare password
+        try {
+          if(password === user.password) {
+            res.status(200).json({ success: true });
+          } else {
+            res.status(401).json({ success: false, error: 'Mot de passe incorrect' });
+          }
+        } catch (error) {
+          console.log(error);
+        }
+        // bcrypt.compare(password, user.password, (err, passwordMatch) => {
+        //   console.log(password + " " + user.password);
+        //   if (err) {
+        //     console.log(err);
+        //     res.sendStatus(500);
+        //   } else {
+        //     if (passwordMatch) {
+        //       res.status(200).json({ success: true });
+        //     } else {
+        //       res.status(401).json({ success: false, error: 'Mot de passe incorrect' });
+        //     }
+        //   }
+        // });
+      }
     }
   });
 });
