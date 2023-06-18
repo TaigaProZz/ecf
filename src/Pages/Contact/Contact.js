@@ -7,9 +7,10 @@ function Contact() {
   const phoneInputRef = useRef(null);
   const emailInputRef = useRef(null);
   const msgInputRef = useRef(null);
-  const form = useRef();
+  const form = useRef(null);
 
-  const fetchData = async (name, phone, email, message) => {
+  // function to send message to db
+  const sendData = async (name, phone, email, message) => {
     try {
       await axios.post("http://localhost:3307/api/contact", {
         subject: 'Contact',
@@ -23,6 +24,7 @@ function Contact() {
     }
   };
 
+  // check every input and send message to db
   const submit = (e) => {
     e.preventDefault();
     if (
@@ -38,7 +40,7 @@ function Contact() {
       const email = emailInputRef.current.value;
       const message = msgInputRef.current.value;
       // envoyer le message en bdd
-      fetchData(name, phone, email, message);
+      sendData(name, phone, email, message);
       // form.current.reset();
       alert('Votre message a bien été envoyé');
     }  
@@ -46,7 +48,7 @@ function Contact() {
 
   return (
     <div className="container center">
-      <div className='form' ref={form}>
+      <div ref={form} className='form'>
         <h1 className='center'>Formulaire de contact</h1>
         <div className='name-row row'>
           <p>Nom prénom :</p>
@@ -62,7 +64,7 @@ function Contact() {
         </div>
         <div className='msg-row row'>
           <p>Message:</p>
-          <textarea ref={msgInputRef} id='msg-input' placeholder='Entrez votre message'></textarea>
+          <textarea ref={msgInputRef} className='msg-input' placeholder='Entrez votre message'></textarea>
         </div>
         <div className='center'>
           <button className='home-button' type="submit" onClick={submit}>Envoyer</button>

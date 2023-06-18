@@ -7,9 +7,9 @@ import { BsEnvelopeFill } from 'react-icons/bs';
 function Car() {
   const [element, setElement] = useState(null);
   const [images, setImages] = useState([]);
-
   const params = useParams();
 
+  // get infos of car from database
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,12 +22,12 @@ function Car() {
         console.log(error);
       }
     };
-
     fetchData();
   }, [params.id]);
 
+  // check if car is null
   if (!element) {
-    return null; // Ajout d'une gestion si le véhicule n'est pas encore chargé
+    return null;
   }
 
   return (

@@ -1,17 +1,53 @@
 import '../Contact.scss';
 import { useParams } from 'react-router-dom';
-import { useRef } from 'react';
-import { CARS } from '../../../Data/cars.js'
+import { useRef, useState, useEffect } from 'react';
+// import { CARS } from '../../../Data/cars.js'
+import axios from 'axios';
 
 function Contact() {
   const params = useParams();
-  const element = CARS.find(elt => elt.id === params.id);
+  const [element, setElement] = useState(null);
   const nameInputRef = useRef(null);
   const phoneInputRef = useRef(null);
   const emailInputRef = useRef(null);
   const msgInputRef = useRef(null);
   const form = useRef(null);
 
+  // get infos of car from database
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3307/api/cars/${params.id}`);
+        const car = response.data;
+        setElement(car[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [params.id]);
+
+  // check if car is null
+  if (!element) {
+    return null; 
+  }
+
+  // function to send msg to database
+  const sendData = async (subject, name, phone, email, message) => {
+    try {
+      await axios.post("http://localhost:3307/api/contact", {
+        subject: subject,
+        name: name,
+        phone: phone,
+        email: email,
+        message: message
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // check every input, and send message to database
   const submit = (e) => {
     e.preventDefault();
     if (
@@ -22,7 +58,14 @@ function Contact() {
     ) {
       alert('Veuillez remplir tous les champs');
     } else {
+      const subject = element.title + ' réf: ' + element.id;
+      const name = nameInputRef.current.value;
+      const phone = phoneInputRef.current.value;
+      const email = emailInputRef.current.value;
+      const message = msgInputRef.current.value;
       // envoyer le message en bdd
+      sendData(subject, name, phone, email, message);
+
       form.current.reset();
       alert('Votre message a bien été envoyé');
     }
