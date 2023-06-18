@@ -11,6 +11,7 @@ function MyFooter() {
       try {
         const response = await axios.get('http://localhost:3307/api/horaires');
         const list = response.data;
+        console.log(list);
         setHoraires(list);
       } catch (error) {
         console.log(error);
@@ -23,13 +24,10 @@ function MyFooter() {
     <div className='my-footer'>
       <div className='horaires center'>
         <ul className='horaire'>
-          <li className='footer-list-elt'>lun.: 09:00 - 12:00, 14:00 - 18:20</li>
-          <li className='footer-list-elt'>mar.: 09:00 - 12:00, 14:00 - 18:20</li>
-          <li className='footer-list-elt'>mer.: 09:00 - 12:00, 14:00 - 18:20 </li>
-          <li className='footer-list-elt'>jeu.: 09:00 - 12:00, 14:00 - 18:20</li>
-          <li className='footer-list-elt'>ven.: 09:00 - 12:00, 14:00 - 18:20</li>
-          <li className='footer-list-elt'>sam.: 09:00 - 12:00, 14:00 - 18:20</li>
-          <li className='footer-list-elt'>dim. Fermé</li>
+          {horaires.map((horaire) => {
+            console.log(horaire);
+            return <li className='footer-list-elt'>{horaire.day.slice(0,3)}.: {horaire.morning_opening} - {horaire.morning_closing}, {horaire.afternoon_opening} - {horaire.afternoon_closing}</li>
+          })}
         </ul> 
       </div>
       <div className='nav-btn center'>

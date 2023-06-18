@@ -5,17 +5,19 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function SectionFeedback() {
-
   const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3307/api/feedbacks')
-      .then((response) => {
-        setFeedbacks(response.data);
-      })
-      .catch((error) => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:3307/api/feedback');
+        const feedbacks = response.data.filter(feedbacks => feedbacks.isVerified === 1);
+        setFeedbacks(feedbacks);
+      } catch (error) {
         console.log(error);
-      });
+      }
+    }
+    fetchData();
   }, []);
 
   return (

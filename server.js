@@ -68,8 +68,8 @@ router.get('/services', (req, res) => {
   });
 });
 
-// FEEDBACKS route
-router.get('/feedbacks', (req, res) => {
+// GET FEEDBACKS route
+router.get('/feedback', (req, res) => {
   const query = 'SELECT * FROM feedbacks';
   connection.query(query, (error, results) => {
     if (error) {
@@ -80,6 +80,26 @@ router.get('/feedbacks', (req, res) => {
     }
   });
 });
+
+// POST FEEDBACK route
+router.post('/feedback', (req, res) => {
+  try {
+    const { name, message, rating, isVerified } = req.body;
+    const query = 'INSERT INTO feedbacks (name, message, rating, isVerified) VALUES (?, ?, ?, ?)';
+    connection.query(query, [name, message, rating, isVerified], (error, results) => {
+      if (error) {
+        res.sendStatus(500);
+      } else {
+        console.log(results);
+        res.sendStatus(200);
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
 
 // HORAIRES route
 router.get('/horaires', (req, res) => {
@@ -138,24 +158,6 @@ router.post('/contact', (req, res) => {
   }
 });
 
-// POST FEEDBACK route
-router.post('/feedback', (req, res) => {
-  try {
-    const { name, message, rating, isVerified } = req.body;
-    const query = 'INSERT INTO feedbacks (name, message, rating, isVerified) VALUES (?, ?, ?, ?)';
-    connection.query(query, [name, message, rating, isVerified], (error, results) => {
-      if (error) {
-        res.sendStatus(500);
-      } else {
-        console.log(results);
-        res.sendStatus(200);
-      }
-    });
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
-});
 
 
 // start backend server
