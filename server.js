@@ -138,6 +138,25 @@ router.post('/contact', (req, res) => {
   }
 });
 
+// POST FEEDBACK route
+router.post('/feedback', (req, res) => {
+  try {
+    const { name, message, rating, isVerified } = req.body;
+    const query = 'INSERT INTO feedbacks (name, message, rating, isVerified) VALUES (?, ?, ?, ?)';
+    connection.query(query, [name, message, rating, isVerified], (error, results) => {
+      if (error) {
+        res.sendStatus(500);
+      } else {
+        console.log(results);
+        res.sendStatus(200);
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
 
 // start backend server
 app.use('/api', router);

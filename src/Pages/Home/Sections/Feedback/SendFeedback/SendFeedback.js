@@ -1,6 +1,7 @@
 import './SendFeedback.scss';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { useRef, useState } from 'react';
+import axios from 'axios';
 
 function SendFeedback() {
   const inputNameRef = useRef(null);
@@ -8,9 +9,21 @@ function SendFeedback() {
   const form = useRef(null);
   const [rating, setRating] = useState(null);
 
+  const sendData = async (name, message, rating, isVerified) => {
+    try {
+      await axios.post("http://localhost:3307/api/feedback", {
+        name: name,
+        message: message,
+        rating: rating,
+        isVerified: isVerified
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const submit = (e) => {
     e.preventDefault();
-    console.log("rating : " +  rating + "name : " + inputNameRef + "msg : " + inputMessageRef);
     if (
       inputNameRef.current.value === '' ||
       inputMessageRef.current.value === '' ||
@@ -19,6 +32,9 @@ function SendFeedback() {
       alert("Veuillez remplir tous les champs");
     } else {
       // integrer l'envoi du commentaire dans "commentaire à moderer"
+      const name = inputNameRef.current.value;
+      const message = inputMessageRef.current.value
+      sendData(name, message, rating, 0);
       alert("Message envoyé")
       form.current.reset();
     }
@@ -27,7 +43,6 @@ function SendFeedback() {
   function renderStars(selectedRating) {
     const maxRating = 5;
     const stars = [];
-  
     for (let i = 1; i <= maxRating; i++) {
       const starIcon = i <= selectedRating ? (
         <AiFillStar onClick={() => setRating(i)} />
@@ -38,7 +53,6 @@ function SendFeedback() {
     }
     return stars;
   }
-
 
   return (
     <div className="box">
