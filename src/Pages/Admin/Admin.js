@@ -7,8 +7,8 @@ function Admin() {
         <a href="/admin-service">
           <button>Services</button>
         </a>
-        <a href="/admin-horaire">
-          <button>Horaires</button>
+        <a href="/admin-schedule">
+          <button>schedule</button>
         </a>
         <a href="/admin-employe">
           <button>Employés</button>

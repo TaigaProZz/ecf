@@ -4,15 +4,14 @@ import { useState, useEffect } from 'react';
 import { BsEnvelopeFill } from 'react-icons/bs';
 
 function MyFooter() {
-  const [horaires, setHoraires] = useState([]);
+  const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3307/api/horaires');
+        const response = await axios.get('http://localhost:3307/api/schedule');
         const list = response.data;
-        console.log(list);
-        setHoraires(list);
+        setSchedule(list);
       } catch (error) {
         console.log(error);
       }
@@ -22,11 +21,10 @@ function MyFooter() {
 
   return ( 
     <div className='my-footer'>
-      <div className='horaires center'>
-        <ul className='horaire'>
-          {horaires.map((horaire) => {
-            console.log(horaire);
-            return <li className='footer-list-elt'>{horaire.day.slice(0,3)}.: {horaire.morning_opening} - {horaire.morning_closing}, {horaire.afternoon_opening} - {horaire.afternoon_closing}</li>
+      <div className='schedule-container center'>
+        <ul>
+          {schedule.map((elt, index) => {
+            return <li key={index} className='footer-list-elt'>{elt.day.slice(0,3)}.: {elt.morning_opening} - {elt.morning_closing}, {elt.afternoon_opening} - {elt.afternoon_closing}</li>
           })}
         </ul> 
       </div>

@@ -1,7 +1,7 @@
 @use "../../App" as app;
 
 @media screen and (min-width: 701px) {
-  .horaire {
+  .schedule {
     font-size: 1em;
   }
   .logo-footer {
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .horaire {
+  .schedule {
     font-size: 0.5em;
   }
   .logo-footer {
@@ -40,7 +40,7 @@ li.footer-list-elt {
   background-color: app.$barColor;
 }
 
-.horaires {
+.schedule-container {
   width: 33%;
 }
 

@@ -101,9 +101,9 @@ router.post('/feedback', (req, res) => {
 });
 
 
-// HORAIRES route
-router.get('/horaires', (req, res) => {
-  const query = 'SELECT * FROM horaires';
+// schedule route
+router.get('/schedule', (req, res) => {
+  const query = 'SELECT * FROM schedule';
   connection.query(query, (error, results) => {
     if (error) {
       console.log(error);
