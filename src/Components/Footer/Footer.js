@@ -19,10 +19,6 @@ function MyFooter() {
     fetchData();
   }, []);
 
-
-  console.log(horaires);
-
-
   return ( 
     <div className='my-footer'>
       <div className='horaires center'>

@@ -1,12 +1,27 @@
 import './Contact.scss';
 import { useRef } from 'react';
+import axios from 'axios';
 
 function Contact() {
   const nameInputRef = useRef(null);
   const phoneInputRef = useRef(null);
   const emailInputRef = useRef(null);
   const msgInputRef = useRef(null);
-  const form = useRef(null);
+  const form = useRef();
+
+  const fetchData = async (name, phone, email, message) => {
+    try {
+      await axios.post("http://localhost:3307/api/contact", {
+        subject: 'Contact',
+        name: name,
+        phone: phone,
+        email: email,
+        message: message
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const submit = (e) => {
     e.preventDefault();
@@ -18,32 +33,36 @@ function Contact() {
     ) {
       alert('Veuillez remplir tous les champs');
     } else {
+      const name = nameInputRef.current.value;
+      const phone = phoneInputRef.current.value;
+      const email = emailInputRef.current.value;
+      const message = msgInputRef.current.value;
       // envoyer le message en bdd
-      form.current.reset();
+      fetchData(name, phone, email, message);
+      // form.current.reset();
       alert('Votre message a bien été envoyé');
-    }
+    }  
   }
-
 
   return (
     <div className="container center">
-      <div className='form'>
+      <div className='form' ref={form}>
         <h1 className='center'>Formulaire de contact</h1>
         <div className='name-row row'>
           <p>Nom prénom :</p>
-          <input id='name-input' className='center' placeholder='Entrez votre nom prénom'></input>
+          <input ref={nameInputRef} className='center' placeholder='Entrez votre nom prénom'></input>
         </div>
         <div className='phone-row row'>
           <p>Téléphone :</p>
-          <input id='phone-input' placeholder='Entrez votre numéro de téléphone'></input>
+          <input ref={phoneInputRef} placeholder='Entrez votre numéro de téléphone'></input>
         </div>
         <div className='email-row row'>
           <p>Email :</p>
-          <input id='email-input' placeholder='Entrez votre email'></input>
+          <input ref={emailInputRef} placeholder='Entrez votre email'></input>
         </div>
         <div className='msg-row row'>
           <p>Message:</p>
-          <textarea id='msg-input' placeholder='Entrez votre message'></textarea>
+          <textarea ref={msgInputRef} id='msg-input' placeholder='Entrez votre message'></textarea>
         </div>
         <div className='center'>
           <button className='home-button' type="submit" onClick={submit}>Envoyer</button>

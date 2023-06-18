@@ -28,11 +28,8 @@ function Login() {
       }
       navigate("/admin")
       alert(`${email} est connecté`);
-
     }
-
     btn.addEventListener('click', login);
-    
     return () => {
       btn.removeEventListener('click', login);    
     }
@@ -59,7 +56,7 @@ function Login() {
         </div>
       </div>  
     </div>
-    )
+  )
 }
 
 export default Login;

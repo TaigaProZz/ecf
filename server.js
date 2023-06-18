@@ -10,6 +10,7 @@ app.use(cors());
 
 const connection = mysql.createConnection({
   host: 'localhost',
+  port: 3306,
   user: 'root',
   password: 'azer',
   database: 'ecf'
@@ -62,7 +63,7 @@ router.get('/services', (req, res) => {
   });
 });
 
-// horaires feedbacks
+// feedbacks route
 router.get('/feedbacks', (req, res) => {
   const query = 'SELECT * FROM feedbacks';
   connection.query(query, (error, results) => {
@@ -75,7 +76,7 @@ router.get('/feedbacks', (req, res) => {
   });
 });
 
-// horaires horaires
+// horaires route
 router.get('/horaires', (req, res) => {
   const query = 'SELECT * FROM horaires';
   connection.query(query, (error, results) => {
@@ -87,6 +88,51 @@ router.get('/horaires', (req, res) => {
     }
   });
 });
+
+// login route
+router.get('/login', (req, res) => {
+  const query = 'SELECT * FROM users';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.send(results);
+    }
+  });
+});
+
+// contact route
+router.get('/contact', (req, res) => {
+  const query = 'SELECT * FROM contact';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.send(results);
+    }
+  });
+});
+
+// contact route
+router.post('/contact', (req, res) => {
+  try {
+    const { subject, name, phone, email, message } = req.body;
+    const query = 'INSERT INTO contact (subject, name, phone, email, message) VALUES (?, ?, ?, ?, ?)';
+    connection.query(query, [subject, name, phone, email, message], (error, results) => {
+      if (error) {
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
 
 app.use('/api', router);
 
