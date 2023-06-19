@@ -56,8 +56,8 @@ router.get('/cars/:id', (req, res) => {
   });
 });
 
-// SERVICES route
-router.get('/services', (req, res) => {
+// GET SERVICES route
+router.get('/getservices', (req, res) => {
   const query = 'SELECT * FROM services';
   connection.query(query, (error, results) => {
     if (error) {
@@ -69,8 +69,57 @@ router.get('/services', (req, res) => {
   });
 });
 
+// UPDATE SERVICES route
+router.put('/updateservices/:id', (req, res) => {
+   const servicesId = req.params.id;
+   const msg = req.body;
+   const query = 'UPDATE services SET services = ? WHERE id = ? VALUES(?, ?)';
+   connection.query(query, [msg, servicesId], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+// DELETE SERVICES route
+router.delete('/deleteservices/:id', (req, res) => {
+  const serviceId = req.params.id;
+  const query = 'DELETE FROM services WHERE id = ?';
+  connection.query(query, [serviceId], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+// POST SERVICES route
+router.post('/postservices', (req, res) => {
+  try {
+    const service = req.body.services;
+    console.log(req);
+    const query = 'INSERT INTO services (services) VALUES (?)';
+    connection.query(query, [service], (error, results) => {
+      if (error) {
+        console.log(error);
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  } catch (error) {
+      console.error(error);
+      res.sendStatus(500);
+    }
+});
+
 // GET FEEDBACKS route
-router.get('/feedback', (req, res) => {
+router.get('/getfeedback', (req, res) => {
   const query = 'SELECT * FROM feedbacks';
   connection.query(query, (error, results) => {
     if (error) {
@@ -83,7 +132,7 @@ router.get('/feedback', (req, res) => {
 });
 
 // POST FEEDBACK route
-router.post('/feedback', (req, res) => {
+router.post('/postfeedback', (req, res) => {
   try {
     const { name, message, rating, isVerified } = req.body;
     const query = 'INSERT INTO feedbacks (name, message, rating, isVerified) VALUES (?, ?, ?, ?)';
@@ -157,7 +206,7 @@ router.get('/login', (req, res) => {
 });
 
 // GET CONTACT route
-router.get('/contact', (req, res) => {
+router.get('/getcontact', (req, res) => {
   const query = 'SELECT * FROM contact';
   connection.query(query, (error, results) => {
     if (error) {
@@ -170,7 +219,7 @@ router.get('/contact', (req, res) => {
 });
 
 // POST CONTACT route
-router.post('/contact', (req, res) => {
+router.post('/postcontact', (req, res) => {
   try {
     const { subject, name, phone, email, message } = req.body;
     const query = 'INSERT INTO contact (subject, name, phone, email, message) VALUES (?, ?, ?, ?, ?)';

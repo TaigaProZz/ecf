@@ -35,7 +35,7 @@ function Contact() {
   // function to send msg to database
   const sendData = async (subject, name, phone, email, message) => {
     try {
-      await axios.post("http://localhost:3307/api/contact", {
+      await axios.post("http://localhost:3307/api/postcontact", {
         subject: subject,
         name: name,
         phone: phone,

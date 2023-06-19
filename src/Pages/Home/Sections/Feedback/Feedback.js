@@ -7,10 +7,11 @@ import axios from 'axios';
 function SectionFeedback() {
   const [feedbacks, setFeedbacks] = useState([]);
 
+  // function to fetch all feedback from db
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3307/api/feedback');
+        const response = await axios.get('http://localhost:3307/api/getfeedback');
         const feedbacks = response.data.filter(feedbacks => feedbacks.isVerified === 1);
         setFeedbacks(feedbacks);
       } catch (error) {

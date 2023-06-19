@@ -9,9 +9,10 @@ function SendFeedback() {
   const form = useRef(null);
   const [rating, setRating] = useState(null);
 
+  // function to send feedback  to db
   const sendData = async (name, message, rating, isVerified) => {
     try {
-      await axios.post("http://localhost:3307/api/feedback", {
+      await axios.post("http://localhost:3307/api/postfeedback", {
         name: name,
         message: message,
         rating: rating,

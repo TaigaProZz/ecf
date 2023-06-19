@@ -46,6 +46,7 @@
   height: 100vh;
   background-color: app.$backgroundColor;
   color: aliceblue;
+  overflow-y: auto;
   
   button {
     color: aliceblue;
