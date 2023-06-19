@@ -1,21 +1,20 @@
-import { BiUser } from 'react-icons/bi';
 import './NavBar.scss';
+import { BiUser } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
 
 function MyNav() {
   return (
     <div className='my-nav'>
       <div className='nav-logo'>
-        <a href="/">
-          <img src='/img/logo.png' width="103" height="47" alt="Garage V.Parrot Logo" />
-        </a>
+        <Link to="/"><img src='/img/logo.png' alt="Garage V.Parrot Logo" /></Link>
       </div>
       <div className="links">
-        <a href="/">Accueil</a>
-        <a href="/vente">Ventes</a>
-        <a href="/contact">Contact</a>
+        <Link to="/">Accueil</Link>
+        <Link to="/vente">Ventes</Link>
+        <Link to="/contact">Contact</Link>
       </div>
       <div className="icon">
-        <a href="/login"><BiUser size={40}/></a>
+        <Link to="/login"><BiUser size={40}/></Link>
       </div>
     </div>
   );

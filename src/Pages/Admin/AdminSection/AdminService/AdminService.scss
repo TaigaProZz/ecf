@@ -1,0 +1,23 @@
+@use 'src/App.scss' as app;
+
+.admin-container {
+  height: 100%;
+  width: 100%;
+}
+
+header {
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-service-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 200px;
+
+}
