@@ -2,6 +2,7 @@ import './SecondHandCars.scss';
 import '../../App.scss'
 import axios from 'axios';
 import { useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 const Vente = () => {
   const [cars, setCars] = useState([]);
@@ -115,9 +116,9 @@ const Vente = () => {
                   <p>{car.km} km</p>
                   <p>Prix : {car.price} €</p>
                 </div>
-                <a href={"/car/" + car.id}>
+                <Link to={"/car/" + car.id}  >
                   <button className='shc-button'>Détails</button>
-                </a>
+                </Link>          
               </div>
             </li>
           ))}

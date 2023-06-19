@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function SectionIntro() {
   return (
     <div className="lightSection">
@@ -12,9 +14,11 @@ function SectionIntro() {
             <li>Contrôle Technique</li>
             <li>Entretien et remise en route</li>
           </ul>
-          <button className="home-button">
-            <a href="/ventes">Voir tous les services</a>
-          </button>
+          <Link to="/ventes">
+            <button className="home-button">
+              Voir tous les services
+            </button>
+          </Link>
         </div>
       </section>
     </div>

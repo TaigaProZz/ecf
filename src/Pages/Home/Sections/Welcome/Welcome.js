@@ -1,5 +1,5 @@
 import { BsEnvelopeFill } from 'react-icons/bs';
-import './Welcome'
+import { Link } from 'react-router-dom';
 
 function SectionPresentation() {
   return (
@@ -7,9 +7,11 @@ function SectionPresentation() {
       <div className="darkHomeSection">
         <section className='leftSection center'>
           <h1 className='title'>Garage V.Parrot</h1>
-          <button className="home-button">
-            <a href="/contact">Nous contacter<br></br> <BsEnvelopeFill /></a>
-          </button>
+          <Link>
+            <button className="home-button">
+              Nous contacter<br></br> <BsEnvelopeFill />
+            </button>
+          </Link>
         </section>
         <section className='rightSection'>
           <img className="homeImg" src='/img/car_atelier.png' alt="Garage V.Parrot Logo" />

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function SectionsSale() {
   return (
     <section className="darkHomeSection">
@@ -7,9 +9,11 @@ function SectionsSale() {
             <li>Vente de véhicules d’occasion</li>
             <li>Reprise de vos véhicules</li>
           </ul>
-          <button className="home-button">
-            <a href="/ventes">Consulter la liste des véhicules en vente</a>
-          </button>
+          <Link to="/vente"> 
+            <button className="home-button">
+              Consulter la liste des véhicules en vente
+            </button>
+          </Link>
         </div>
         <div className="rightSection">
           <img className="homeImg" src='/img/cars_buy.png' alt="Garage V.Parrot Logo" />

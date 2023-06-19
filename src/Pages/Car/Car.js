@@ -1,8 +1,8 @@
 import './Car.scss';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect} from 'react';
-import axios from 'axios';
 import { BsEnvelopeFill } from 'react-icons/bs';
+import axios from 'axios';
 
 function Car() {
   const [element, setElement] = useState(null);
@@ -57,9 +57,9 @@ function Car() {
         </div>
         <div className='contact-container'>
           <h2>Interéssé ? Contactez-nous</h2>
-          <a href={'/carcontact/' + element.id}>
+          <Link to={'/carcontact/' + element.id}>
             <button className='shc-button'><BsEnvelopeFill size={35} /></button>
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import './Footer.scss';
-import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { BsEnvelopeFill } from 'react-icons/bs';
+import axios from 'axios';
 
 function MyFooter() {
   const [schedule, setSchedule] = useState([]);
@@ -34,10 +34,7 @@ function MyFooter() {
         </div>
       </div>
       <div className='nav-logo center'>
-        <img className='logo-footer' 
-        src='/img/logo.png'
-        alt="Garage V.Parrot Logo"
-        />
+        <img className='logo-footer' src='/img/logo.png' alt="Garage V.Parrot Logo"/>
       </div>
     </div>
   );
