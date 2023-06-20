@@ -2,7 +2,8 @@ import './AdminService.scss'
 import { BsPlusSquare } from 'react-icons/bs'
 import { FaTrash, FaPen} from 'react-icons/fa'
 import { useState, useEffect } from 'react';
-import AdminPopUp from './AdminPopUp/AdminPopUp';
+import PopUpAddService from './AdminPopUp/AdminAddService';
+import PopUpUpdateService from './AdminPopUp/AdminUpdateService';
 import axios from 'axios';
 
 function AdminServices () {
@@ -20,51 +21,59 @@ function AdminServices () {
 
   // ADD SERVICE function
   const addService = async (service) => {
+    if(service === '') {
+      alert('Veuillez remplir le champ');
+      return;
+    }
     await axios.post('http://localhost:3307/api/postservices', { services: service });
   };
 
 
   // DELETE SERVICE function
-  const deleteRow = async (id) => { 
+  const deleteService = async (id) => { 
     const response = await axios.delete('http://localhost:3307/api/deleteservices/' + id);
     const service = response.data;
-    console.log(service);
   }
 
   // UPDATE SERVICE function
-  const updateRow = async (id) => {
-    const response = await axios.put('http://localhost:3307/api/updateservices/' + id);
-    const service = response.data;
-    console.log(service);
+  const updateService = async (service, id) => {
+    if(service === '') {
+      alert('Veuillez remplir le champ');
+      return;
+    }
+    await axios.put('http://localhost:3307/api/updateservices/' + id, {services: service});
   }
-
-  
- 
 
   return ( 
     <div className='admin-service-container'>
-    <header>
-      <AdminPopUp 
-        btn={<button className='add-service-btn'>Ajouter un service <BsPlusSquare size={30} /></button>}
-        onAddService={addService}
-      />
-    </header>
-    <div className='admin-service-container'>
-      {services.map((service, index) => (
-        <div key={index} className='admin-service-row'>
-          <div>
-            <h2>{service.services}</h2>
-          </div>
-          <div>
-            <FaPen size={30} />
-            <FaTrash size={30} onClick={() => deleteRow(service.id)}/>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
+      <header>
+        <PopUpAddService 
+          btn={<button className='add-service-btn'>Ajouter un service <BsPlusSquare size={30} /></button>}
+          type='Ajouter un service'
+          onAddService={addService}>
+        </PopUpAddService>
+      </header>
 
-    )
+      <div className='admin-service-container'>
+        { services.map((service, index) => (
+          <div key={index} className='admin-service-row'>
+            <div>
+              <h2>{service.services}</h2>
+            </div>
+            <div className='icons'>
+            <PopUpUpdateService 
+              btn={<div className='pen-icon'> <FaPen size={30} /></div>}
+              type='Modifier un service'
+              id={service.id}
+              onChangeService={updateService}>
+            </PopUpUpdateService>
+              <FaTrash size={30} onClick={() => deleteService(service.id)}/>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
 } 
 
 export default AdminServices;

@@ -72,13 +72,14 @@ router.get('/getservices', (req, res) => {
 // UPDATE SERVICES route
 router.put('/updateservices/:id', (req, res) => {
    const servicesId = req.params.id;
-   const msg = req.body;
-   const query = 'UPDATE services SET services = ? WHERE id = ? VALUES(?, ?)';
+   const msg = req.body.services;
+   const query = 'UPDATE services SET services = ? WHERE id = ?';
    connection.query(query, [msg, servicesId], (error, results) => {
     if (error) {
       console.log(error);
       res.sendStatus(500);
     } else {
+      console.log(results);
       res.sendStatus(200);
     }
   });

@@ -3,14 +3,14 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './AdminPopUp.scss';
 
-function AdminPopUp(props) {
+function AdminAddService(props) {
   const [service, setService] = useState('');
 
   const handleServiceChange = (event) => {
     setService(event.target.value);
   };
 
-  const handleAddService = () => {
+  const handleInputService = () => {
     props.onAddService(service);
     setService('');
   };
@@ -22,16 +22,16 @@ function AdminPopUp(props) {
           <button className="close" onClick={close}>
             &times;
           </button>
-          <div className="header"> Ajouter un service </div>
+          <div className="header">{props.type}</div>
           <div className="content">
             <input 
               type="text" 
-              placeholder="Ajouter un service"  
+              placeholder={props.type} 
               value={service}
               onChange={handleServiceChange}/>
           </div>
-          <div className="actions">
-            <button className="button" onClick={handleAddService}>Ajouter</button>
+          <div className="actions">  
+            <button className="button" onClick={handleInputService}>Ajouter</button> 
           </div>
         </div>
       )}
@@ -39,4 +39,4 @@ function AdminPopUp(props) {
   )
 }
 
-export default AdminPopUp;
+export default AdminAddService;

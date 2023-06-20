@@ -32,3 +32,12 @@ header {
   border: 1px solid rgb(255, 255, 255);
   background-color: app.$elementColor;
 }
+
+.icons {
+  display: flex;
+  margin: 10px;
+}
+
+.pen-icon {
+  margin-right: 20px;
+}
