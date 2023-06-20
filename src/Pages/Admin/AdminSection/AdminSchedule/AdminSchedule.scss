@@ -1,0 +1,19 @@
+.schedule-container {
+  width: 100%;
+}
+
+.schedule {
+  max-width: 50%;
+}
+
+.day {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px;
+  width: 100%;
+  font-size: 1.5rem;
+  background: #20273D;
+  border: 1px solid #FFFFFF;
+}

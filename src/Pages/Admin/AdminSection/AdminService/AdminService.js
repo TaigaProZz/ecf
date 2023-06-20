@@ -26,6 +26,7 @@ function AdminServices () {
       return;
     }
     await axios.post('http://localhost:3307/api/postservices', { services: service });
+    setServices([...services, {services: service}]);
   };
 
 
