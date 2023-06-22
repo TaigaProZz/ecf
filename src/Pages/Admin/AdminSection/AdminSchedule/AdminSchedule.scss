@@ -1,19 +1,60 @@
 .schedule-container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  height: 100%;
 }
 
 .schedule {
-  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 90%;
+  height: 100%;
 }
 
-.day {
+.day-row {
+  width: 100%;
+  height: 10%;
   box-sizing: border-box;
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  align-items: center;
   padding: 10px;
-  width: 100%;
   font-size: 1.5rem;
   background: #20273D;
   border: 1px solid #FFFFFF;
+  input {
+    width: 25vh;
+    height: 10%;
+  }
+}
+
+.day-name {
+  width: 15%;
+}
+
+.morning-column {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.afternoon-column {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.day-input-column {
+  margin-left: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.save-btn {
+  margin-top: 20px;
+  width: 20%;
+  height: 10%;
 }

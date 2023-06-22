@@ -16,19 +16,19 @@ function Login() {
       return;
     } else {
       try {
-        const response = await axios.get("http://localhost:3307/api/login", {
+        const response = await axios.post("http://localhost:3307/api/login", {
           params: {
             email: email,
             password: password
           }
         });
-        if(response.status === 200) {
-          navigate("/admin")
+        console.log(response);
+        if (response.data === 200) {
           alert(`${email} est connecté`);
+          navigate("/admin");
         } else {
           alert("Veuillez vérifier vos informations saisies et réssayer")
         }
-
       } catch (error) {
         console.log(error);
       }
@@ -52,7 +52,7 @@ function Login() {
           </div>
         </div>
         <div className='center'>
-          <button className='home-button' id="login-btn" type="submit" onClick={login}>Se connecter</button>
+        <button className='home-button' id="login-btn" type="submit" onClick={login}>Connexion</button>
         </div>
       </div>  
     </div>

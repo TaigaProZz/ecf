@@ -1,5 +1,5 @@
 import './Admin.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import AdminService from './AdminSection/AdminService/AdminService';
 import AdminSchedule from './AdminSection/AdminSchedule/AdminSchedule';
 import AdminEmploye from './AdminSection/AdminEmploye/AdminEmploye.js';
@@ -17,6 +17,7 @@ function Admin() {
         <button onClick={() => setContainer(<AdminEmploye />)}>Employés</button>
         <button onClick={() => setContainer(<AdminSecondHand />)}>Vente véhicules</button>
         <button onClick={() => setContainer(<AdminFeedback />)}>Commentaires</button>
+        <span className='permission-box'>Vous êtes : Admin</span>
       </div>
       <div className='admin-section-container'>
         {container}
