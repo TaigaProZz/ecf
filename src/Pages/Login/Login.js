@@ -16,14 +16,16 @@ function Login() {
       return;
     } else {
       try {
-        const response = await axios.post("http://localhost:3307/api/login", {
+        // set with credentials to true
+        axios.defaults.withCredentials = true;
+        const response = await axios.post("http://localhost:3307/api/login", 
+        {
           params: {
             email: email,
             password: password
           }
         });
-        console.log(response);
-        if (response.data === 200) {
+        if (response.status === 200) {
           alert(`${email} est connecté`);
           navigate("/admin");
         } else {

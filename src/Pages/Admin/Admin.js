@@ -5,9 +5,18 @@ import AdminSchedule from './AdminSection/AdminSchedule/AdminSchedule';
 import AdminEmploye from './AdminSection/AdminEmploye/AdminEmploye.js';
 import AdminSecondHand from './AdminSection/AdminSecondHand/AdminSecondHand';
 import AdminFeedback from './AdminSection/AdminFeedback/AdminFeedback';
+import axios from 'axios';
 
 function Admin() {
   const [container, setContainer] = useState(<AdminService />)
+
+  useEffect(() => {
+    const fetchCookie = async () => {
+      await axios.get("http://localhost:3307/api/get-cookie", 
+      { withCredentials: true });
+    }
+    fetchCookie()
+  }, [])
 
   return (
     <div className="admin-container">
