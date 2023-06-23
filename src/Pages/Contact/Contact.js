@@ -47,7 +47,7 @@ function Contact() {
   }
 
   return (
-    <div className="container center">
+    <div className="contact-container">
       <div ref={form} className='form'>
         <h1 className='center'>Formulaire de contact</h1>
         <div className='name-row row'>

@@ -55,7 +55,7 @@ function Car() {
           <p>Référence : {element.id}</p>
           <p>{element.description}</p>
         </div>
-        <div className='contact-container'>
+        <div className='car-contact-container'>
           <h2>Interéssé ? Contactez-nous</h2>
           <Link to={'/carcontact/' + element.id}>
             <button className='shc-button'><BsEnvelopeFill size={35} /></button>

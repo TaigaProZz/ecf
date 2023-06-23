@@ -1,4 +1,3 @@
-import './Home.scss';
 import './Sections/Sections.scss';
 import FirstSection from './Sections/Welcome/Welcome';
 import SecondSection from './Sections/Presentation/Presentation';

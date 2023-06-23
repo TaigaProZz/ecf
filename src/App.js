@@ -22,7 +22,7 @@ function App() {
         <Route path="/admin" element={<Admin />} />       
         <Route path="/car/:id" element={<Car />} />               
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }

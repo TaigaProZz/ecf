@@ -1,8 +1,12 @@
 @use "src/App" as app;
 
-.container {
+.contact-container {
   width: 100%;
   height: auto;
+  margin-top: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .form {

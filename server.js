@@ -1,8 +1,8 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken'); 
+// const bcrypt = require('bcrypt')
+// const jwt = require('jsonwebtoken'); 
 const app = express();
 const router = express.Router();
 const cookieParser = require('cookie-parser');
@@ -15,8 +15,6 @@ const connection = mysql.createConnection({
   password: 'azer',
   database: 'ecf'
 });
-
-
 
 // and connect to it
 connection.connect((err) => {
@@ -200,8 +198,7 @@ router.post('/login', (req, res) => {
         // compare password
         try {
           if(password === user.password) {
-            res.header('Access-Control-Allow-Credentials', true)
-            res.cookie('cookie_name', 'valeurtest', { maxAge: 3600000, httpOnly: true });
+            res.cookie('session', user.id, { maxAge: 3600000, httpOnly: true });
             res.sendStatus(200);
           } else {
             res.status(401).json({ success: false, error: 'Mot de passe incorrect' });
@@ -227,19 +224,13 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.get('/get-cookie', (req, res) => {
-  // Récupérer la valeur du cookie nommé "cookie_name"
-  const cookieValue = req.cookies.cookie_name;
-  // Envoyer la valeur du cookie dans la réponse
-  res.send(`Valeur du cookie : ${cookieValue}`);
-});
 
 // log out 
 // app.get("/logout", authorization, (req, res) => {
 //   return res
-//     .clearCookie("access_token")
+//     .clearCookie("session")
 //     .status(200)
-//     .json({ message: "Successfully logged out 😏 🍀" });
+//     .json({ message: "Successfully logged out" });
 // });
 
 // GET CONTACT route

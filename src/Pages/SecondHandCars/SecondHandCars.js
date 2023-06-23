@@ -80,7 +80,7 @@ const Vente = () => {
   };
 
   return (
-    <div className="container">
+    <div className="secondhand-container">
       <section className="section-sort">
         <h2 className='center' htmlFor="sort">Trier par :</h2>
         <div className='price'>

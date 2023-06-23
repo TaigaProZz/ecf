@@ -47,15 +47,7 @@ function AdminServices () {
 
   return ( 
     <div className='admin-service-container'>
-      <header>
-        <PopUpAddService 
-          btn={<button className='add-service-btn'>Ajouter un service <BsPlusSquare size={30} /></button>}
-          type='Ajouter un service'
-          onAddService={addService}>
-        </PopUpAddService>
-      </header>
-
-      <div className='admin-service-container'>
+      <div className='admin-service-list-container'>
         { services.map((service, index) => (
           <div key={index} className='admin-service-row'>
             <div>
@@ -72,6 +64,13 @@ function AdminServices () {
             </div>
           </div>
         ))}
+      </div>
+      <div className='admin-service-btn'>
+        <PopUpAddService 
+          btn={<button className='add-service-btn'>Ajouter un service <BsPlusSquare size={30} /></button>}
+          type='Ajouter un service'
+          onAddService={addService}>
+        </PopUpAddService>
       </div>
     </div>
   )

@@ -38,7 +38,7 @@ function Login() {
   }
 
   return (
-    <div className="container center">
+    <div className="login-container">
       <div className='form'>
         <h1 className='center'>Se connecter</h1>
         <div className='login-email-row'>
