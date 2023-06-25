@@ -1,18 +1,18 @@
 @use 'src/App.scss' as app;
 
-$widthBigElement: 35.5%;
+$widthBigElement: 30.5%;
 $widthLittleElement: 10%;
 
 
-.employe-container {
+.employee-container {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
-.employe {
+.employee {
   display: flex;
   flex-direction: column;
   width: 60%;
@@ -27,8 +27,8 @@ $widthLittleElement: 10%;
   }
 }
 
-.employe-categorie-row {
-  height: 5%;
+.employee-categorie-row {
+  height: auto;
   margin-top: 2px;
   display: flex;
   justify-content: space-around;
@@ -36,7 +36,7 @@ $widthLittleElement: 10%;
   background-color: app.$buttonColor;
 }
 
-.employe-categorie-element {
+.employee-categorie-element {
   width: $widthBigElement;
   height: 100%;
   display: flex;
@@ -45,7 +45,7 @@ $widthLittleElement: 10%;
   border-radius: 12px 12px 0px 0px;
 }
 
-.employe-categorie-element-password, .employe-categorie-element-permission, .employe-categorie-element-id {
+.employee-categorie-element-password, .employee-categorie-element-permission, .employee-categorie-element-id {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +53,7 @@ $widthLittleElement: 10%;
   height: 100%;
 }
 
-.employe-list-row {
+.employee-list-row {
   display: flex;
   height: 80px;
   width: calc(100% - 4px);
@@ -62,7 +62,7 @@ $widthLittleElement: 10%;
   margin-bottom: 2px;
 }
 
-.employe-list-element-name, .employe-list-element-email {
+.employee-list-element-name, .employee-list-element-email {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -70,9 +70,19 @@ $widthLittleElement: 10%;
   width: $widthBigElement;
 }
 
-.employe-list-element-permission, .employe-list-element-password, .employe-list-element-id { 
+.employee-list-element-permission, .employee-list-element-password, .employee-list-element-id { 
   display: flex;
   align-items: center;
   justify-content: center;  
   width: $widthLittleElement;
+}
+
+.add-employee-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 200px;
+  height: 80px;
 }

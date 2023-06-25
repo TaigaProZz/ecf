@@ -2,7 +2,7 @@ import './Admin.scss';
 import { useEffect, useState } from 'react';
 import AdminService from './AdminSection/AdminService/AdminService';
 import AdminSchedule from './AdminSection/AdminSchedule/AdminSchedule';
-import AdminEmploye from './AdminSection/AdminEmploye/AdminEmploye.js';
+import AdminEmployee from './AdminSection/AdminEmployee/AdminEmployee.js';
 import AdminSecondHand from './AdminSection/AdminSecondHand/AdminSecondHand';
 import AdminFeedback from './AdminSection/AdminFeedback/AdminFeedback';
 import axios from 'axios';
@@ -19,7 +19,7 @@ function Admin() {
       <div className="admin-bar">
         <button className='admin-bar-button' onClick={() => setContainer(<AdminService />)}>Services</button>
         <button className='admin-bar-button' onClick={() => setContainer(<AdminSchedule />)}>Horaires</button>
-        <button className='admin-bar-button' onClick={() => setContainer(<AdminEmploye />)}>Employés</button>
+        <button className='admin-bar-button' onClick={() => setContainer(<AdminEmployee />)}>Employés</button>
         <button className='admin-bar-button' onClick={() => setContainer(<AdminSecondHand />)}>Vente véhicules</button>
         <button className='admin-bar-button' onClick={() => setContainer(<AdminFeedback />)}>Commentaires</button>
         <span className='permission-box'>Vous êtes : Admin</span>

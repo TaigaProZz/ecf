@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import './AdminPopUp.scss';
+import './AddServicePopUp.scss';
 
 function AdminAddService(props) {
   const [service, setService] = useState('');
@@ -24,9 +24,9 @@ function AdminAddService(props) {
           </button>
           <div className="header">{props.type}</div>
           <div className="content">
+            <span>Nom du service</span>
             <input 
               type="text" 
-              placeholder={props.type} 
               value={service}
               onChange={handleServiceChange}/>
           </div>

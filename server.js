@@ -169,8 +169,8 @@ router.get('/schedule', (req, res) => {
   });
 });
 
-// employe route 
-router.get('/employe', (req, res) => {
+// employee route 
+router.get('/employee', (req, res) => {
   const query = "SELECT * FROM users";
   connection.query(query, (error, results) => {
     if (error) {
