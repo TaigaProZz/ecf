@@ -23,7 +23,6 @@ function AdminSecondHand () {
           <span className='secondhand-categorie-element'>ID</span>
           <span className='secondhand-categorie-element'>Titre</span>
           <span className='secondhand-categorie-element'>Prix</span>
-         
         </div> 
         { cars.map((elt, index) => {
           return (

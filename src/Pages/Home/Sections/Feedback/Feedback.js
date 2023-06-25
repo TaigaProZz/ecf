@@ -1,4 +1,4 @@
-import FeedbackList from './FeedbackList/FeedbackItem';
+import FeedbackList from './FeedbackItem/FeedbackItem';
 import CommentBox from './SendFeedback/SendFeedback';
 import './Feedback.scss'
 import { useState, useEffect } from 'react';
