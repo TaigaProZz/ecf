@@ -169,6 +169,39 @@ router.get('/schedule', (req, res) => {
   });
 });
 
+router.post('/postschedule', async (req, res) => {
+  try {
+    const updates = req.body;
+    const query = 'UPDATE schedule SET morning_opening = ?, morning_closing = ?, afternoon_opening = ?, afternoon_closing = ? WHERE id = ?';
+
+    for (const update of updates) {
+      const values = [
+        update.morningOpening,
+        update.morningClosing,
+        update.afternoonOpening,
+        update.afternoonClosing,
+        update.id,
+      ];
+
+      await new Promise((resolve, reject) => {
+        connection.query(query, values, (error, results) => {
+          if (error) {
+            console.error(error);
+            reject(error);
+          } else {
+            resolve();
+          }
+        });
+      });
+    }
+
+    res.sendStatus(200);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
 // employee route 
 router.get('/employee', (req, res) => {
   const query = "SELECT * FROM users";
