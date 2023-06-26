@@ -3,15 +3,15 @@
 $widthBigElement: 33.33%;
 $widthLittleElement: 33.33%;
 
-.secondhand-container {
+.admin-secondhand-container {
   width: 100%;
-  height: 100%;
+  height: 75vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
 }
 
-.secondhand {
+.admin-secondhand {
   display: flex;
   flex-direction: column;
   width: 60%;
@@ -26,7 +26,7 @@ $widthLittleElement: 33.33%;
   }
 }
 
-.secondhand-categorie-row {
+.admin-secondhand-categorie-row {
   height: 5%;
   margin-top: 2px;
   display: flex;
@@ -35,7 +35,7 @@ $widthLittleElement: 33.33%;
   background-color: app.$buttonColor;
 }
 
-.secondhand-categorie-element {
+.admin-secondhand-categorie-element {
   width: $widthBigElement;
   height: 100%;
   display: flex;
@@ -44,7 +44,7 @@ $widthLittleElement: 33.33%;
   border-radius: 12px 12px 0px 0px;
 }
 
-.secondhand-list-row {
+.admin-secondhand-list-row {
   display: flex;
   height: 80px;
   width: calc(100% - 4px);
@@ -53,7 +53,7 @@ $widthLittleElement: 33.33%;
   margin-bottom: 2px;
 }
 
-.secondhand-list-element {
+.admin-secondhand-list-element {
   display: flex;
   align-items: center;
   justify-content: center;

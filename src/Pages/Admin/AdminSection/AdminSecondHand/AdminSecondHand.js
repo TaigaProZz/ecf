@@ -17,19 +17,19 @@ function AdminSecondHand () {
   }
 
   return (
-    <div className='secondhand-container'>
-      <div className='secondhand'>
-        <div className='secondhand-categorie-row'>
-          <span className='secondhand-categorie-element'>ID</span>
-          <span className='secondhand-categorie-element'>Titre</span>
-          <span className='secondhand-categorie-element'>Prix</span>
+    <div className='admin-secondhand-container'>
+      <div className='admin-secondhand'>
+        <div className='admin-secondhand-categorie-row'>
+          <span className='admin-secondhand-categorie-element'>ID</span>
+          <span className='admin-secondhand-categorie-element'>Titre</span>
+          <span className='admin-secondhand-categorie-element'>Prix</span>
         </div> 
         { cars.map((elt, index) => {
           return (
-            <div key={index} className='secondhand-list-row'>
-              <span className='secondhand-list-element'>{elt.id}</span>
-              <span className='secondhand-list-element'>{elt.title}</span>
-              <span className='secondhand-list-element'>{elt.price} €</span>
+            <div key={index} className='admin-secondhand-list-row'>
+              <span className='admin-secondhand-list-element'>{elt.id}</span>
+              <span className='admin-secondhand-list-element'>{elt.title}</span>
+              <span className='admin-secondhand-list-element'>{elt.price} €</span>
             </div> 
           )
           })}
