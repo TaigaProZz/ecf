@@ -22,16 +22,34 @@ function AdminEmployees () {
 
   // ADD SERVICE function
   const addEmployee = async (employee) => {
-    console.log(employee);
-    if(employee.name === '' || employee.email === '' || employee.permission === '') {
+    // check if input are not null
+    if (employee.name.trim() === '' || employee.email.trim() === '' || employee.permission.trim() === '') {
       alert('Veuillez remplir tous les champs');
       return;
     }
-    // await axios.post('http://localhost:3307/api/postservices', { name: employee.name, email: employee, password: employee, permission: employee });
-    // setEmployee([...employees, {services: employee}]);
+    // check type of variable
+    if (typeof employee.name !== 'string' || typeof employee.email !== 'string' ) {
+      alert('Vérifiez les informations');
+    }
+    try {
+      const response = await axios.post('http://localhost:3307/api/postemployee', {
+          name: employee.name,
+          email: employee.email,
+          password: employee.password,
+          permission: employee.permission,
+      });
+  
+      if (response.status === 200) {
+        setEmployee([...employees, employee]);
+      } else {
+        alert("Erreur lors de l'envoi des données");
+      }
+    } catch (error) {
+      console.log(error);
+      alert("Erreur lors de l'envoi des données :", error);
+    }
   };
   
-
   const resetPassword = () => {
     console.log("password reset");
   }

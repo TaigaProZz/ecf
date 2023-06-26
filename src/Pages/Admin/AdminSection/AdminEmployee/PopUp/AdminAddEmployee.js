@@ -34,10 +34,10 @@ function AdminAddEmployee(props) {
       permission
     };
     props.onAddEmployee(newEmployee);
-    setName('');
-    setEmail('');
-    setPassword('');
-    setPermission('');
+    // setName('');
+    // setEmail('');
+    // setPassword('');
+    // setPermission('');
   };
   return (
     <Popup trigger={props.btn} modal nested>
@@ -74,7 +74,7 @@ function AdminAddEmployee(props) {
             </div>
             <span>Permission</span>
             <input
-              type="text"
+              type="number"
               value={permission}
               onChange={handlePermissionChange}
             />

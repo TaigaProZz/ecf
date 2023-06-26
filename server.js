@@ -157,6 +157,8 @@ router.post('/postfeedback', (req, res) => {
 
 
 // schedule route
+
+// GET schedule
 router.get('/schedule', (req, res) => {
   const query = 'SELECT * FROM schedule';
   connection.query(query, (error, results) => {
@@ -169,6 +171,7 @@ router.get('/schedule', (req, res) => {
   });
 });
 
+// POST schedule
 router.post('/postschedule', async (req, res) => {
   try {
     const updates = req.body;
@@ -214,6 +217,34 @@ router.get('/employee', (req, res) => {
     }
   })
 });
+
+// POST FEEDBACK route
+router.post('/postemployee', (req, res) => {
+  try {
+    const { name, email, password, permission } = req.body;
+
+    // check type of variable
+    if (typeof name !== 'string' || typeof email !== 'string') {
+      return res.status(400).json({ error: 'Les types des variables sont invalides.' });
+    }
+    // check if values are not empty
+    if (name.trim() === '' || email.trim() === '' || permission.trim() === '') {
+      return res.status(400).json({ error: 'Les valeurs des variables sont invalides.' });
+    }
+    const query = 'INSERT INTO users (name, email, password, permission) VALUES (?, ?, ?, ?)';
+    connection.query(query, [name, email, password, permission], (error, results) => {
+      if (error) {
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
 
 // LOGIN route
 router.post('/login', (req, res) => {
