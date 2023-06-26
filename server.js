@@ -60,6 +60,25 @@ router.get('/cars/:id', (req, res) => {
   });
 });
 
+// POST SERVICES route
+router.post('/postcar', (req, res) => {
+  try {
+    const { title, brand, model, description, price, km, year, images } = req.body;
+    console.log(req.body);
+    const query = 'INSERT INTO cars (title, brand, model, description, price, km, year, images) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    connection.query(query,  [title, brand, model, description, price, km, year, images], (error, results) => {
+      if (error) {
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  } catch (error) {
+      console.error(error);
+      res.sendStatus(500);
+    }
+});
+
 // GET SERVICES route
 router.get('/getservices', (req, res) => {
   const query = 'SELECT * FROM services';
@@ -145,7 +164,6 @@ router.post('/postfeedback', (req, res) => {
       if (error) {
         res.sendStatus(500);
       } else {
-        console.log(results);
         res.sendStatus(200);
       }
     });
