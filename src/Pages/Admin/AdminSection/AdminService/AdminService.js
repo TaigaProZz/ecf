@@ -1,6 +1,6 @@
 import './AdminService.scss'
 import { BsPlusSquare } from 'react-icons/bs'
-import { FaTrash, FaPen} from 'react-icons/fa'
+import { FaTrash, FaPen } from 'react-icons/fa'
 import { useState, useEffect } from 'react';
 import PopUpAddService from './AdminPopUp/AdminAddService';
 import PopUpUpdateService from './AdminPopUp/AdminUpdateService';
@@ -33,7 +33,13 @@ function AdminServices () {
   // DELETE SERVICE function
   const deleteService = async (id) => { 
     const response = await axios.delete('http://localhost:3307/api/deleteservices/' + id);
-    const service = response.data;
+    if(response.status === 200) {
+      alert('Service supprimé');
+      const newServices = services.filter(service => service.id !== id);
+      setServices(newServices);
+    } else {
+      alert('Erreur lors de la suppression');
+    }
   }
 
   // UPDATE SERVICE function

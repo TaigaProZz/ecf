@@ -1,22 +1,22 @@
 @use 'src/App.scss' as app;
 
-.modal {
+.add-car-modal {
   font-size: 22px;
   background-color: app.$elementColor;
 }
 
-.modal > .header {
+.add-car-modal > .header {
   width: 100%;
   border-bottom: 1px solid gray;
   font-size: 18px;
   text-align: center;
   padding: 5px;
 }
-.modal > .content {
+.add-car-modal > .content {
   width: 100%;
   padding: 10px 5px;
 }
-.modal > .actions {
+.add-car-modal > .actions {
   width: 100%;
   padding: 10px 5px;
   margin: auto;
@@ -25,7 +25,7 @@
   justify-content: center;
 
 }
-.modal > .close {
+.add-car-modal > .close {
   cursor: pointer;
   position: absolute;
   display: block;
@@ -45,6 +45,8 @@
   input {
     width: 80%;
   }
+  overflow-y: auto;
+  height: 80vh;
 }
 
 .add-employe-popup-btn {
@@ -56,4 +58,14 @@
   
   width: 150px;
   height: 50px;
+}
+.image-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-image {
+  width: 50%;
+  height: 100%;
+  object-fit: contain;
 }

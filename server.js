@@ -6,6 +6,7 @@ const cors = require('cors');
 const app = express();
 const router = express.Router();
 const cookieParser = require('cookie-parser');
+const multer = require('multer');
 
 // settings to connect to sql database
 const connection = mysql.createConnection({
@@ -33,7 +34,7 @@ app.use(cookieParser());
 
 /***  BACKEND ROUTES ***/
 
-// CAR route
+/** CAR ROUTES **/
 router.get('/cars', (req, res) => {
   const query = 'SELECT * FROM cars';
   connection.query(query, (error, results) => {
@@ -46,7 +47,7 @@ router.get('/cars', (req, res) => {
   });
 });
 
-// specific CAR route
+// specific CAR
 router.get('/cars/:id', (req, res) => {
   const carId = req.params.id;
   const query = 'SELECT * FROM cars WHERE id = ?';
@@ -60,26 +61,80 @@ router.get('/cars/:id', (req, res) => {
   });
 });
 
-// POST SERVICES route
-router.post('/postcar', (req, res) => {
-  try {
-    const { title, brand, model, description, price, km, year, images } = req.body;
-    console.log(req.body);
-    const query = 'INSERT INTO cars (title, brand, model, description, price, km, year, images) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-    connection.query(query,  [title, brand, model, description, price, km, year, images], (error, results) => {
-      if (error) {
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
-    });
-  } catch (error) {
-      console.error(error);
-      res.sendStatus(500);
-    }
+// post car
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'backend/img');
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '-' + file.originalname); // Utilisez un nom de fichier unique pour éviter les collisions
+  }
 });
 
-// GET SERVICES route
+const upload = multer({ storage: storage });
+
+router.post('/postcar', upload.array('image', 6), async (req, res) => {
+  try {
+    console.log(req);
+    const { title, brand, model, description, price, km, year } = req.body;
+    const imagePaths = req.files.map(file => file.path);
+
+    const carQuery = 'INSERT INTO cars (title, brand, model, description, price, km, year) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    const carValues = [title, brand, model, description, price, km, year];
+    connection.query(carQuery, carValues, (error, carResult) => {
+      if (error) {
+        console.error(error);
+        res.sendStatus(500);
+        return;
+      }
+
+      const carId = carResult.insertId;
+      const imageQuery = 'INSERT INTO cars_image (car_id, path) VALUES (?, ?)';
+      const imageValues = [carId, imagePaths];
+      connection.query(imageQuery, imageValues, (error) => {
+        if (error) {
+          console.error(error);
+          res.sendStatus(500);
+          return;
+        }
+        console.log('Voiture ajoutée avec succès !');
+        res.sendStatus(200);
+      });
+    });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
+// router.post('/postcar', upload.array('images'), async (req, res) => {
+//   const carData = req.body;
+//   const { files } = req;
+
+//   try {
+//     const createdCar = await Car.create(carData);
+
+//     const images = files.map(file => ({
+//       carId: createdCar.id,
+//       filename: file.filename,
+//       path: file.path,
+//     }));
+
+//     const createdImages = await Image.bulkCreate(images);
+
+//     res.status(200).json({
+//       car: createdCar,
+//       images: createdImages,
+//     });
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({ error: 'Une erreur s\'est produite lors de l\'ajout de la voiture avec les images.' });
+//   }
+// });
+
+
+/** SERVICES ROUTES **/
+// get service 
 router.get('/getservices', (req, res) => {
   const query = 'SELECT * FROM services';
   connection.query(query, (error, results) => {
@@ -92,7 +147,7 @@ router.get('/getservices', (req, res) => {
   });
 });
 
-// UPDATE SERVICES route
+// update service 
 router.put('/updateservices/:id', (req, res) => {
    const servicesId = req.params.id;
    const msg = req.body.services;
@@ -108,7 +163,7 @@ router.put('/updateservices/:id', (req, res) => {
   });
 });
 
-// DELETE SERVICES route
+// delete service 
 router.delete('/deleteservices/:id', (req, res) => {
   const serviceId = req.params.id;
   const query = 'DELETE FROM services WHERE id = ?';
@@ -122,7 +177,7 @@ router.delete('/deleteservices/:id', (req, res) => {
   });
 });
 
-// POST SERVICES route
+// post SERVICES 
 router.post('/postservices', (req, res) => {
   try {
     const service = req.body.services;
@@ -142,7 +197,9 @@ router.post('/postservices', (req, res) => {
     }
 });
 
-// GET FEEDBACKS route
+
+/** FEEDBACKS ROUTES **/
+// get feedbacks 
 router.get('/getfeedback', (req, res) => {
   const query = 'SELECT * FROM feedbacks';
   connection.query(query, (error, results) => {
@@ -155,7 +212,7 @@ router.get('/getfeedback', (req, res) => {
   });
 });
 
-// POST FEEDBACK route
+// post feedbacks 
 router.post('/postfeedback', (req, res) => {
   try {
     const { name, message, rating, isVerified } = req.body;
@@ -173,10 +230,40 @@ router.post('/postfeedback', (req, res) => {
   }
 });
 
+/** CONTACT ROUTES **/
+// get contact
+router.get('/getcontact', (req, res) => {
+  const query = 'SELECT * FROM contact';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.send(results);
+    }
+  });
+});
 
-// schedule route
+// post contact
+router.post('/postcontact', (req, res) => {
+  try {
+    const { subject, name, phone, email, message } = req.body;
+    const query = 'INSERT INTO contact (subject, name, phone, email, message) VALUES (?, ?, ?, ?, ?)';
+    connection.query(query, [subject, name, phone, email, message], (error, results) => {
+      if (error) {
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
 
-// GET schedule
+/** SCHEDULE ROUTES **/
+// get schedule
 router.get('/schedule', (req, res) => {
   const query = 'SELECT * FROM schedule';
   connection.query(query, (error, results) => {
@@ -189,7 +276,7 @@ router.get('/schedule', (req, res) => {
   });
 });
 
-// POST schedule
+// post schedule
 router.post('/postschedule', async (req, res) => {
   try {
     const updates = req.body;
@@ -223,7 +310,9 @@ router.post('/postschedule', async (req, res) => {
   }
 });
 
-// employee route 
+
+/** EMPLOYE ROUTES **/
+// get employee 
 router.get('/employee', (req, res) => {
   const query = "SELECT * FROM users";
   connection.query(query, (error, results) => {
@@ -236,7 +325,7 @@ router.get('/employee', (req, res) => {
   })
 });
 
-// POST FEEDBACK route
+// post employee
 router.post('/postemployee', (req, res) => {
   try {
     const { name, email, password, permission } = req.body;
@@ -264,7 +353,8 @@ router.post('/postemployee', (req, res) => {
 });
 
 
-// LOGIN route
+/** LOG ROUTES **/
+// login
 router.post('/login', (req, res) => {
   const { email, password } = req.body.params;
   const query = 'SELECT * FROM users WHERE email = ?';
@@ -306,7 +396,6 @@ router.post('/login', (req, res) => {
   });
 });
 
-
 // log out 
 // app.get("/logout", authorization, (req, res) => {
 //   return res
@@ -315,42 +404,47 @@ router.post('/login', (req, res) => {
 //     .json({ message: "Successfully logged out" });
 // });
 
-// GET CONTACT route
-router.get('/getcontact', (req, res) => {
-  const query = 'SELECT * FROM contact';
-  connection.query(query, (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.send(results);
-    }
-  });
-});
+//** IMAGES ROUTES   **/
+// post image
+// router.post('/postimage', (req, res) => {
+//   const storage = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//       cb(null, 'backend/img');
+//     },
+//     filename: function (req, file, cb) {
+//       cb(null, file.originalname);
+//     }
+//   });
 
-// POST CONTACT route
-router.post('/postcontact', (req, res) => {
-  try {
-    const { subject, name, phone, email, message } = req.body;
-    const query = 'INSERT INTO contact (subject, name, phone, email, message) VALUES (?, ?, ?, ?, ?)';
-    connection.query(query, [subject, name, phone, email, message], (error, results) => {
-      if (error) {
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
-    });
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
-});
+//   const upload = multer({ storage: storage }).single('file');
 
+//   upload(req, res, function (err) {
+//     if (err instanceof multer.MulterError) {
+//       console.log(err);
+//       return res.status(500).json(err);
+//     } else if (err) {
+//       console.log(err);
+//       return res.status(500).json(err);
+//     }
 
+//     // Image uploaded successfully, save its URL in the database
+//     const imageUrl = `http://localhost:${port}/backend/img/${req.file.filename}`;
+
+//     // Save the imageUrl in the database using your INSERT query
+//     const query = 'INSERT INTO images (url) VALUES (?)';
+//     connection.query(query, [imageUrl], (error, results) => {
+//       if (error) {
+//         console.log(error);
+//         return res.sendStatus(500);
+//       } else {
+//         return res.status(200).json({ imageUrl });
+//       }
+//     });
+//   });
+// });
 
 // start backend server
 app.use('/api', router);
-
 const port = 3307; 
 app.listen(port, () => {
   console.log(`Serveur backend démarré sur le port ${port}`);

@@ -1,27 +1,27 @@
 @use 'src/App.scss' as app;
 
-.modal {
+.add-service-modal {
   font-size: 12px;
   background-color: app.$elementColor;
 }
-.modal > .header {
+.add-service-modal > .header {
   width: 100%;
   border-bottom: 1px solid gray;
   font-size: 18px;
   text-align: center;
   padding: 5px;
 }
-.modal > .content {
+.add-service-modal > .content {
   width: 100%;
   padding: 10px 5px;
 }
-.modal > .actions {
+.add-service-modal > .actions {
   width: 100%;
   padding: 10px 5px;
   margin: auto;
   text-align: center;
 }
-.modal > .close {
+.add-service-modal > .close {
   cursor: pointer;
   position: absolute;
   display: block;

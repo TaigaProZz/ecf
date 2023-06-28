@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './AddCarPopUp.scss';
+import { Bs0Square } from 'react-icons/bs';
 
 function AdminAddCar(props) {
   const [title, setTitle] = useState('');
@@ -12,6 +13,7 @@ function AdminAddCar(props) {
   const [km, setKm] = useState('');
   const [year, setYear] = useState('');
   const [images, setImages] = useState([]);
+  const [previewImages, setPreviewImages] = useState([]);
 
 
   const handleTitleChange = (event) => {
@@ -42,8 +44,28 @@ function AdminAddCar(props) {
     setYear(event.target.value);
   };
 
-  const handleImagesChange = (event) => {
-    setImages(event.target.value);
+  const handleImagesChange = (event, index) => {
+    const files = event.target.files;
+    const image = files[0]; // Nous n'autorisons qu'un seul fichier par input
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const imageDataUrl = reader.result;
+
+      setPreviewImages((prevImages) => {
+        const updatedImages = [...prevImages];
+        updatedImages[index] = imageDataUrl;
+        return updatedImages;
+      });
+
+      setImages((prevImages) => {
+        const updatedImages = [...prevImages];
+        updatedImages[index] = image;
+        return updatedImages;
+      });
+    };
+
+    reader.readAsDataURL(image);
   };
 
   const handleAddCar = () => {
@@ -63,7 +85,7 @@ function AdminAddCar(props) {
   return (
     <Popup trigger={props.btn} modal nested>
       {close => (
-        <div className="modal">
+        <div className="add-car-modal">
           <button className="close" onClick={close}>
             &times;
           </button>
@@ -112,11 +134,22 @@ function AdminAddCar(props) {
               onChange={handleYearChange}
             />
             <span>Images</span>
-            <input
-              type="text"
-              value={images}
-              onChange={handleImagesChange}
-            />
+            {[...Array(6)].map((_, index) => (
+              <div key={index} className="image-input">
+                <span key={index}>Image {index + 1}</span>
+                <label htmlFor={`image${index + 1}`}>
+                  {previewImages[index] ? (
+                    <img className='preview-image' src={previewImages[index]} alt={`Preview ${index + 1}`} />
+                  ) : (
+                    <input
+                    type="file"
+                    id={`image${index + 1}`}
+                    onChange={(event) => handleImagesChange(event, index)}
+                  />
+                  )}
+                </label>
+              </div>
+              ))}
           </div>
           <div className="actions">
             <button className="add-car-popup-btn" onClick={handleAddCar}>

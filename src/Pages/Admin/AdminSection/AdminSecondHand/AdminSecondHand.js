@@ -2,9 +2,12 @@ import { useEffect, useState } from 'react';
 import './AdminSecondHand.scss';
 import PopUpAddCar from './PopUp/AdminAddCar';
 import axios from 'axios';
+import { BsPlusSquare } from 'react-icons/bs';
 
 function AdminSecondHand () {
   const [cars, setCars] = useState(null);
+
+  // collect all cars already in database
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get('http://localhost:3307/api/cars');
@@ -19,26 +22,40 @@ function AdminSecondHand () {
 
   const addCar = async (car) => {
     // check if input are not null
-    if (car.title.trim() === '' || car.brand.trim() === '' || car.model.trim() === '' || car.description.trim() === '' || car.price.trim() === '' || car.km.trim() === '' || car.year.trim() === '' || car.images.trim() === '') {
+    if (
+      car.title.trim() === ''
+      || car.brand.trim() === '' 
+      || car.model.trim() === '' 
+      || car.description.trim() === '' || car.price.trim() === '' 
+      || car.km.trim() === '' 
+      || car.year.trim() === '' 
+      || car.images.length === 0
+      ) {
       alert('Veuillez remplir tous les champs');
       return;
     }
-    // check type of variable
-    // if (typeof car.title !== 'string' || typeof car.brand !== 'string' || typeof car.model !== 'string' || typeof car.description !== 'string' || typeof car.price !== 'number' || typeof car.km !== 'number' || typeof car.year !== 'number' || typeof car.images !== 'string') {
-    //   alert('Vérifiez les informations');
-    // }
+   
+    const formData = new FormData();
+    formData.append('title', car.title);
+    formData.append('brand', car.brand);
+    formData.append('model', car.model);
+    formData.append('description', car.description);
+    formData.append('price', car.price);
+    formData.append('km', car.km);
+    formData.append('year', car.year);
+    car.images.forEach((image, index) => {
+      console.log(image);
+      formData.append('image', image);
+    });
+    
+    console.log('Contenu de FormData :');
+    for (const entry of formData.entries()) {
+      console.log(entry);
+    }
+
     try {
-      const response = await axios.post('http://localhost:3307/api/postcar', {
-          title: car.title,
-          brand: car.brand,
-          model: car.model,
-          description: car.description,
-          price: car.price,
-          km: car.km,
-          year: car.year,
-          images: car.images,
-      });
-  
+      const response = await axios.post('http://localhost:3307/api/postcar', formData);
+      console.log(response);
       if (response.status === 200) {
         setCars([...cars, car]);
       } else {
@@ -69,8 +86,8 @@ function AdminSecondHand () {
           })}
       </div>
       <PopUpAddCar
-      btn={<button className='admin-secondhand-add-btn'>Ajouter une voiture</button>}
-      onAddCar={addCar}
+        btn={<button className='admin-secondhand-add-btn'>Ajouter une voiture <BsPlusSquare size={30} /></button>}
+        onAddCar={addCar}
       >
       </PopUpAddCar>
     </div>

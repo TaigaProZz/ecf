@@ -42,7 +42,7 @@ function AdminAddEmployee(props) {
   return (
     <Popup trigger={props.btn} modal nested>
       {close => (
-        <div className="modal">
+        <div className="add-employee-modal">
           <button className="close" onClick={close}>
             &times;
           </button>

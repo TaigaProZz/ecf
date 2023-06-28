@@ -1,22 +1,22 @@
 @use 'src/App.scss' as app;
 
-.modal {
+.add-employee-modal {
   font-size: 22px;
   background-color: app.$elementColor;
 }
 
-.modal > .header {
+.add-employee-modal > .header {
   width: 100%;
   border-bottom: 1px solid gray;
   font-size: 18px;
   text-align: center;
   padding: 5px;
 }
-.modal > .content {
+.add-employee-modal > .content {
   width: 100%;
   padding: 10px 5px;
 }
-.modal > .actions {
+.add-employee-modal > .actions {
   width: 100%;
   padding: 10px 5px;
   margin: auto;
@@ -25,7 +25,7 @@
   justify-content: center;
 
 }
-.modal > .close {
+.add-employee-modal > .close {
   cursor: pointer;
   position: absolute;
   display: block;
