@@ -5,7 +5,6 @@ import AdminSchedule from './AdminSection/AdminSchedule/AdminSchedule';
 import AdminEmployee from './AdminSection/AdminEmployee/AdminEmployee.js';
 import AdminSecondHand from './AdminSection/AdminSecondHand/AdminSecondHand';
 import AdminFeedback from './AdminSection/AdminFeedback/AdminFeedback';
-import axios from 'axios';
 
 function Admin() {
   const [container, setContainer] = useState(<AdminService />)

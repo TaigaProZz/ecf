@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './AddCarPopUp.scss';
-import { Bs0Square } from 'react-icons/bs';
 
 function AdminAddCar(props) {
   const [title, setTitle] = useState('');

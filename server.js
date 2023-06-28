@@ -35,6 +35,7 @@ app.use(cookieParser());
 /***  BACKEND ROUTES ***/
 
 /** CAR ROUTES **/
+// get cars 
 router.get('/cars', (req, res) => {
   const query = 'SELECT * FROM cars';
   connection.query(query, (error, results) => {
@@ -46,6 +47,20 @@ router.get('/cars', (req, res) => {
     }
   });
 });
+
+// get car images
+router.get('/carsimage', (req, res) => {
+  const query = 'SELECT * FROM cars_image';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.send(results);
+    }
+  });
+});
+
 
 // specific CAR
 router.get('/cars/:id', (req, res) => {
@@ -64,21 +79,21 @@ router.get('/cars/:id', (req, res) => {
 // post car
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'backend/img');
+    cb(null, 'public/img/cars');
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + '-' + file.originalname); // Utilisez un nom de fichier unique pour éviter les collisions
   }
 });
-
 const upload = multer({ storage: storage });
 
 router.post('/postcar', upload.array('image', 6), async (req, res) => {
   try {
-    console.log(req);
     const { title, brand, model, description, price, km, year } = req.body;
-    const imagePaths = req.files.map(file => file.path);
+    const imagePaths = req.files.map(file => file.path.replace('public', ''));
+    const jsonImagePaths = JSON.stringify(imagePaths);
 
+    // insert car in database
     const carQuery = 'INSERT INTO cars (title, brand, model, description, price, km, year) VALUES (?, ?, ?, ?, ?, ?, ?)';
     const carValues = [title, brand, model, description, price, km, year];
     connection.query(carQuery, carValues, (error, carResult) => {
@@ -88,16 +103,16 @@ router.post('/postcar', upload.array('image', 6), async (req, res) => {
         return;
       }
 
+      // insert images in database
       const carId = carResult.insertId;
       const imageQuery = 'INSERT INTO cars_image (car_id, path) VALUES (?, ?)';
-      const imageValues = [carId, imagePaths];
+      const imageValues = [carId, jsonImagePaths];
       connection.query(imageQuery, imageValues, (error) => {
         if (error) {
           console.error(error);
           res.sendStatus(500);
           return;
         }
-        console.log('Voiture ajoutée avec succès !');
         res.sendStatus(200);
       });
     });
@@ -106,32 +121,6 @@ router.post('/postcar', upload.array('image', 6), async (req, res) => {
     res.sendStatus(500);
   }
 });
-
-// router.post('/postcar', upload.array('images'), async (req, res) => {
-//   const carData = req.body;
-//   const { files } = req;
-
-//   try {
-//     const createdCar = await Car.create(carData);
-
-//     const images = files.map(file => ({
-//       carId: createdCar.id,
-//       filename: file.filename,
-//       path: file.path,
-//     }));
-
-//     const createdImages = await Image.bulkCreate(images);
-
-//     res.status(200).json({
-//       car: createdCar,
-//       images: createdImages,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({ error: 'Une erreur s\'est produite lors de l\'ajout de la voiture avec les images.' });
-//   }
-// });
-
 
 /** SERVICES ROUTES **/
 // get service 
