@@ -13,10 +13,16 @@ function Car() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3307/api/cars/${params.id}`);
-        const car = response.data;
+        const carResponse = await axios.get(`http://localhost:3307/api/cars/${params.id}`);
+        console.log(carResponse.data);
+        const car = carResponse.data;
         setElement(car[0]);
-        const imageList = JSON.parse(car[0].images);
+
+        const imageResponse = await axios.get(`http://localhost:3307/api/carsimage/${params.id}`);
+        const images = imageResponse.data;
+
+        const imageList = JSON.parse(images[0].path);
+        console.log(imageList);
         setImages(imageList);
       } catch (error) {
         console.log(error);
@@ -30,15 +36,17 @@ function Car() {
     return null;
   }
 
+  const pathExtension = '../';
+
   return (
     <div className="car-page-container">
       <div className='left-side center'>
         <section className='images-section center'>
-          <img className='main-image' src={images[0]} alt='voiture' />
+          <img className='main-image' src={pathExtension + images[0]} alt='voiture' />
           <div className='sub-image-container'>
             <div className='sub-image'> 
               {images.map((img, index) => (
-                <img key={index} className='cars-image' src={img} alt='voiture' />
+                <img key={index} className='cars-image' src={pathExtension + img} alt='voiture' />
               ))}
             </div>
           </div>

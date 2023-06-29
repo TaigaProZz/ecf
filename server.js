@@ -61,6 +61,19 @@ router.get('/carsimage', (req, res) => {
   });
 });
 
+// specific IMAGES
+router.get('/carsimage/:id', (req, res) => {
+  const carId = req.params.id;
+  const query = 'SELECT * FROM cars_image WHERE car_id = ?';
+  connection.query(query, [carId], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.send(results);
+    }
+  });
+});
 
 // specific CAR
 router.get('/cars/:id', (req, res) => {
@@ -82,7 +95,7 @@ const storage = multer.diskStorage({
     cb(null, 'public/img/cars');
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname); // Utilisez un nom de fichier unique pour éviter les collisions
+    cb(null, Date.now() + '-' + file.originalname);
   }
 });
 const upload = multer({ storage: storage });
@@ -218,6 +231,21 @@ router.post('/postfeedback', (req, res) => {
     res.sendStatus(500);
   }
 });
+
+// update feedback validation 
+router.put('/validatefeedback/:id', (req, res) => {
+  const feedbackId = req.params.id;
+  const query = 'UPDATE feedbacks SET isVerified = 1 WHERE id = ?';
+  connection.query(query, [feedbackId], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
 
 /** CONTACT ROUTES **/
 // get contact

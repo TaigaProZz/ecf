@@ -19,8 +19,7 @@ const Vente = () => {
         const imageList = imageResponse.data.reduce((acc, image) => {
           const carId = image.car_id;
           const img = image.path;
-          const list = JSON.parse(img);
-          
+          const list = JSON.parse(img);    
           if (acc[carId]) {
             acc[carId].push(...list);
           } else {
