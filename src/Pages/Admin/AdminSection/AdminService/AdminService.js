@@ -10,12 +10,12 @@ function AdminServices () {
   const [services, setServices] = useState([]);
 
   // fetch all services function
+  const fetchData = async () => {
+    const response = await axios.get('http://localhost:3307/api/getservices');
+    const service = response.data;
+    setServices(service);
+  }
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('http://localhost:3307/api/getservices');
-      const service = response.data;
-      setServices(service);
-    }
     fetchData();
   }, [])
 
@@ -25,20 +25,22 @@ function AdminServices () {
       alert('Veuillez remplir le champ');
       return;
     }
-    await axios.post('http://localhost:3307/api/postservices', { services: service });
-    setServices([...services, {services: service}]);
+    try {
+      await axios.post('http://localhost:3307/api/postservices', { services: service });
+      fetchData();
+    } catch (error) {
+      alert("Erreur lors de l'ajout", error)
+    }
   };
 
 
   // DELETE SERVICE function
   const deleteService = async (id) => { 
-    const response = await axios.delete('http://localhost:3307/api/deleteservices/' + id);
-    if(response.status === 200) {
-      alert('Service supprimé');
-      const newServices = services.filter(service => service.id !== id);
-      setServices(newServices);
-    } else {
-      alert('Erreur lors de la suppression');
+    try {
+      await axios.delete('http://localhost:3307/api/deleteservices/' + id);
+      fetchData();
+    } catch (error) {
+      alert('Erreur lors de la suppression', error);
     }
   }
 
@@ -48,7 +50,12 @@ function AdminServices () {
       alert('Veuillez remplir le champ');
       return;
     }
-    await axios.put('http://localhost:3307/api/updateservices/' + id, {services: service});
+    try {
+      await axios.put('http://localhost:3307/api/updateservices/' + id, {services: service});
+      fetchData();
+    } catch (error) {
+      alert('Erreur lors de la modification', error);
+    }
   }
 
   return ( 

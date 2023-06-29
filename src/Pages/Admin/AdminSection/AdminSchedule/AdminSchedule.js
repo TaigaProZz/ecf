@@ -6,13 +6,13 @@ function AdminSchedule () {
   const [schedule, setSchedule] = useState(null);
   const [modifiedSchedule, setModifiedSchedule] = useState([]);
 
-
+  // fetch schedule
+  const fetchData = async () => {
+    const response = await axios.get("http://localhost:3307/api/schedule");
+    const result = response.data
+    setSchedule(result);
+  }
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get("http://localhost:3307/api/schedule");
-      const result = response.data
-      setSchedule(result);
-    }
     fetchData();
   }, []);
 
@@ -20,8 +20,11 @@ function AdminSchedule () {
     return;
   }
 
+  // handle all inputs
   const handleMorningOpeningBlur = (e, index) => {
+    // copy the original array 
     const updatedSchedule = [...modifiedSchedule];
+    // update schedule by ID selected from input
     updatedSchedule[index] = {
       ...updatedSchedule[index],
       id: schedule[index].id,
@@ -61,36 +64,37 @@ function AdminSchedule () {
   };
 
   const handleSave = async () => {
+    const updates = modifiedSchedule.map((data, index) => {
+      const scheduleItem = schedule[index];
+      const updateItem = {
+        id: data.id,
+      };
+      // check if inputs are empty. if empty, dont update it and keep original, or take new value to update it
+      if (data.morningOpening !== "") {
+        updateItem.morningOpening = data.morningOpening || scheduleItem.morning_opening;
+      }
+      if (data.morningClosing !== "") {
+        updateItem.morningClosing = data.morningClosing || scheduleItem.morning_closing;
+      }
+      if (data.afternoonOpening !== "") {
+        updateItem.afternoonOpening = data.afternoonOpening || scheduleItem.afternoon_opening;
+      }
+      if (data.afternoonClosing !== "") {
+        updateItem.afternoonClosing = data.afternoonClosing || scheduleItem.afternoon_closing;
+      }
+      return updateItem;
+    });
+    // and send it to db
     try {
-      const updates = modifiedSchedule.map((data, index) => {
-        const scheduleItem = schedule[index];
-        const updateItem = {
-          id: data.id,
-        };
-        if (data.morningOpening !== "") {
-          updateItem.morningOpening = data.morningOpening || scheduleItem.morning_opening;
-        }
-        if (data.morningClosing !== "") {
-          updateItem.morningClosing = data.morningClosing || scheduleItem.morning_closing;
-        }
-        if (data.afternoonOpening !== "") {
-          updateItem.afternoonOpening = data.afternoonOpening || scheduleItem.afternoon_opening;
-        }
-        if (data.afternoonClosing !== "") {
-          updateItem.afternoonClosing = data.afternoonClosing || scheduleItem.afternoon_closing;
-        }
-        return updateItem;
-      });
-      console.log(updates);
       await axios.post("http://localhost:3307/api/postschedule", updates);
       setModifiedSchedule([]);
+      fetchData();
       alert("Données enregistrées avec succès !");
     } catch (error) {
       alert("Erreur lors de l'enregistrement des données :", error);
-    }
+    }  
   };
   
-
   return (
     <div className="schedule-container">
       <div className="schedule">

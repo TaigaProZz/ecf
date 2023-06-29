@@ -1,7 +1,7 @@
 @use 'src/App.scss' as app;
 
 .add-service-modal {
-  font-size: 12px;
+  font-size: 22px;
   background-color: app.$elementColor;
 }
 .add-service-modal > .header {
@@ -12,6 +12,7 @@
   padding: 5px;
 }
 .add-service-modal > .content {
+  height: auto;
   width: 100%;
   padding: 10px 5px;
 }

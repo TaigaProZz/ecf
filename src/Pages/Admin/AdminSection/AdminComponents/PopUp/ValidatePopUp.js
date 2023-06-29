@@ -28,7 +28,7 @@ function ValidatePopUp({btn, onConfirmation, txt}) {
           </button>
           <div className='header'>
             { txt === "supprimer"
-              ?  <p>Êtes-vous sûr de vouloir {txt} le commentaire? Cette action est irréversible</p>
+              ?  <p>Êtes-vous sûr de vouloir {txt}? Cette action est irréversible</p>
               :  <p>Êtes-vous sûr de vouloir {txt} le commentaire?</p>
             }
           </div>

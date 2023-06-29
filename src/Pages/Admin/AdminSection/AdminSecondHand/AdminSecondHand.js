@@ -8,14 +8,15 @@ function AdminSecondHand () {
   const [cars, setCars] = useState(null);
 
   // collect all cars already in database
+  const fetchData = async () => {
+    const response = await axios.get('http://localhost:3307/api/cars');
+    const result = response.data;
+    setCars(result);
+  };
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('http://localhost:3307/api/cars');
-      const result = response.data;
-      setCars(result);
-    }
     fetchData();
   }, []);
+  
   if(cars === null) {
     return;
   }
@@ -47,11 +48,6 @@ function AdminSecondHand () {
       console.log(image);
       formData.append('image', image);
     });
-    
-    console.log('Contenu de FormData :');
-    for (const entry of formData.entries()) {
-      console.log(entry);
-    }
 
     try {
       const response = await axios.post('http://localhost:3307/api/postcar', formData);
@@ -88,7 +84,7 @@ function AdminSecondHand () {
       <PopUpAddCar
         btn={<button className='admin-secondhand-add-btn'>Ajouter une voiture <BsPlusSquare size={30} /></button>}
         onAddCar={addCar}
-      >
+        >
       </PopUpAddCar>
     </div>
   )

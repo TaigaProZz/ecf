@@ -8,14 +8,16 @@ import './AdminEmployee.scss';
 function AdminEmployees () {
   const [employees, setEmployee] = useState(null);
 
+  // get all employees
+  const fetchData = async () => {
+    const response = await axios.get('http://localhost:3307/api/employee');
+    const result = response.data;
+    setEmployee(result);
+  }
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get('http://localhost:3307/api/employee');
-      const result = response.data;
-      setEmployee(result);
-    }
     fetchData();
   }, []);
+
   if(employees === null) {
     return;
   }
@@ -32,20 +34,16 @@ function AdminEmployees () {
       alert('Vérifiez les informations');
     }
     try {
+      // send it to db
       const response = await axios.post('http://localhost:3307/api/postemployee', {
           name: employee.name,
           email: employee.email,
           password: employee.password,
           permission: employee.permission,
       });
-  
-      if (response.status === 200) {
-        setEmployee([...employees, employee]);
-      } else {
-        alert("Erreur lors de l'envoi des données");
-      }
+      // refresh data list
+      fetchData();
     } catch (error) {
-      console.log(error);
       alert("Erreur lors de l'envoi des données :", error);
     }
   };

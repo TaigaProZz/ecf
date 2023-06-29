@@ -9,6 +9,7 @@ function AdminAddEmployee(props) {
   const [password, setPassword] = useState('');
   const [permission, setPermission] = useState('');
 
+  // handle inputs
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
@@ -17,13 +18,14 @@ function AdminAddEmployee(props) {
     setEmail(event.target.value);
   };
 
+  const handlePermissionChange = (event) => {
+    setPermission(event.target.value);
+  };
+
+  // generate password
   const generatePassword = () => {
     const generatedPassword = Math.random().toString(36).substring(2, 10);
     setPassword(generatedPassword);
-  };
-
-  const handlePermissionChange = (event) => {
-    setPermission(event.target.value);
   };
 
   const handleAddEmployee = () => {
@@ -32,13 +34,10 @@ function AdminAddEmployee(props) {
       email,
       password,
       permission
-    };
+    }; 
     props.onAddEmployee(newEmployee);
-    // setName('');
-    // setEmail('');
-    // setPassword('');
-    // setPermission('');
   };
+  
   return (
     <Popup trigger={props.btn} modal nested>
       {close => (

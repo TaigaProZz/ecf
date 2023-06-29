@@ -1,9 +1,10 @@
 import './AdminFeedback.scss';
-import { useEffect, useState } from 'react';
-import { AiFillStar } from 'react-icons/ai'
-import axios from 'axios';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
-
+import { useEffect, useState } from 'react';
+import { AiFillStar } from 'react-icons/ai';
+import PopUpAddFeedback from './PopUp/AdminPopUpAddFeedback'
+import axios from 'axios';
+import { BsPlusSquare } from 'react-icons/bs';
 
 function AdminFeedback () {
   const [feedback, setFeedback] = useState([]);
@@ -11,27 +12,30 @@ function AdminFeedback () {
 
   // get all feedbacks 
   const fetchData = async () => {
-    const response = await axios.get('http://localhost:3307/api/getfeedback');
-    // const feedback = response.data.filter(feedback => feedback.isVerified === 0);
-    const feedback = response.data;
-    setFeedback(feedback);
+    try {
+      const response = await axios.get('http://localhost:3307/api/getfeedback');
+      const feedback = response.data;
+      setFeedback(feedback);
+    } catch (error) {
+      console.log(error);
+    } 
   }
   useEffect(() => {
     fetchData();
   }, []);
 
-
-  const handleButtonClick = () => {
-    setShowConfirmation(true);
-  };
-
+  // set feedback validate
   const handleConfirmation = async (choice, feedbackId) => {
     if (choice === 'valider') {
-      console.log(feedbackId);
-      await axios.put(`http://localhost:3307/api/validatefeedback/${feedbackId}`);
-      fetchData();
+      try {
+        const response = await axios.put(`http://localhost:3307/api/validatefeedback/${feedbackId}`); 
+        fetchData();
+      } catch (error) {
+        alert("Erreur lors de l'envoi des données", error);
+      }
+      // close popup
+      setShowConfirmation(false);
     }
-    setShowConfirmation(false);
   };
 
   // sort list, set non verified feedback first
@@ -39,6 +43,24 @@ function AdminFeedback () {
     const sortedList = [...feedback];
     sortByVerified(sortedList);
     setFeedback(sortedList);
+  }
+
+  // add feedback to db
+  const addFeedback = async (newFeedback) => {
+    // check if feedback's inputs are empty
+    if(newFeedback.name === '' || newFeedback.rating === '' || newFeedback.message === '') {
+      alert('Veuillez remplir tous les champs');
+      return;
+    }
+    // request to add to db
+    try {
+      await axios.post('http://localhost:3307/api/postfeedback', newFeedback);
+      alert('Feedback ajouté')
+      // refresh list
+      fetchData();
+    } catch (error) {
+      alert("Erreur lors de l'ajout", error)
+    }
   }
 
   return(
@@ -68,20 +90,28 @@ function AdminFeedback () {
                         onConfirmation={(choice) => {handleConfirmation(choice, feedback.id)}} 
                         txt={"valider"}
                         handleButtonClick={showConfirmation}
-                        /> </span> 
+                      />
+                    </span> 
                   : <span className='admin-feedback-list-element'>
                       <ValidatePopUp 
                         btn={<button className="admin-feedback-list-button">Supprimer</button>} 
                         onConfirmation={(choice) => {handleConfirmation(choice, feedback.id)}} 
                         txt={"supprimer"}
                         handleButtonClick={showConfirmation}
-                        /> </span> 
+                      /> 
+                    </span> 
                 }
               </div> 
             )
           })}  
-        </div>          
+        </div> 
       </div>
+      <PopUpAddFeedback
+        btn={<button className='admin-feedback-add-btn'>Ajouter un commentaire <BsPlusSquare size={30} /></button>}
+        type='Ajouter un feedback'
+        onAddFeedback={addFeedback}
+        >
+      </PopUpAddFeedback>         
     </div>  
   ) 
 }
