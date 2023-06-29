@@ -1,32 +1,35 @@
 @use 'src/App.scss' as app;
 
-.add-feedback-modal {
+.admin-popup-modal {
   font-size: 22px;
   background-color: app.$elementColor;
 }
 
-.add-feedback-modal > .header {
+.admin-popup-modal > .header {
   width: 100%;
   border-bottom: 1px solid gray;
   font-size: 18px;
   text-align: center;
   padding: 5px;
 }
-.add-feedback-modal > .content {
+
+.admin-popup-modal > .content {
   height: auto;
+  max-height: 80vh;
   width: 100%;
   padding: 10px 5px;
 }
-.add-feedback-modal > .actions {
+
+.admin-popup-modal > .actions {
   width: 100%;
   padding: 10px 5px;
   margin: auto;
   text-align: center;
   display: flex;
   justify-content: center;
-
 }
-.add-feedback-modal > .close {
+
+.admin-popup-modal > .close {
   cursor: pointer;
   position: absolute;
   display: block;
@@ -50,16 +53,16 @@
   height: 80vh;
 }
 
-.add-employe-popup-btn {
+.add-popup-btn {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   background-color: app.$buttonColor;
   color: aliceblue;
-  
   width: 150px;
   height: 50px;
 }
+
 .image-input {
   display: flex;
   flex-direction: column;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import './AddCarPopUp.scss';
+import '../../AdminComponents/PopUp/AdminPopUp.scss';
 
 function AdminAddCar(props) {
   const [title, setTitle] = useState('');
@@ -84,7 +84,7 @@ function AdminAddCar(props) {
   return (
     <Popup trigger={props.btn} modal nested>
       {close => (
-        <div className="add-car-modal">
+        <div className="admin-popup-modal">
           <button className="close" onClick={close}>
             &times;
           </button>

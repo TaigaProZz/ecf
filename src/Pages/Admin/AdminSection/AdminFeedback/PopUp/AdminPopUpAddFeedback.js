@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import './AdminPopUpAddFeedback.scss';
+import '../../AdminComponents/PopUp/AdminPopUp.scss';
 
 function PopUpAddFeedback(props) {
   const [name, setName] = useState('');
@@ -35,7 +35,7 @@ function PopUpAddFeedback(props) {
   return (
     <Popup trigger={props.btn} modal nested>
       {close => (
-        <div className="add-feedback-modal">
+        <div className="admin-popup-modal">
           <button className="close" onClick={close}>
             &times;
           </button>
