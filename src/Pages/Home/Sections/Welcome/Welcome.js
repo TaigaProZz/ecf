@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function SectionPresentation() {
   return (
-    <div className="sectionContainer">
+    <div className="welcome-sectionContainer">
       <div className="darkHomeSection">
         <section className='leftSection center'>
           <h1 className='title'>Garage V.Parrot</h1>

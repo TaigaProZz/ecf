@@ -8,10 +8,7 @@ import AdminFeedback from './AdminSection/AdminFeedback/AdminFeedback';
 
 function Admin() {
   const [container, setContainer] = useState(<AdminService />)
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => (document.body.style.overflow = "scroll");
-});
+
 
   return (
     <div className="admin-container">

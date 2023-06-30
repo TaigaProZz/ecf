@@ -96,34 +96,34 @@ function AdminSchedule () {
   };
   
   return (
-    <div className="schedule-container">
-      <div className="schedule">
+    <div className="admin-schedule-container">
+      <div className="admin-schedule">
         {schedule.map((elt, index) => {
           return (         
-            <div key={index} className='day-row'>
-              <h3 className='day-name'>{elt.day}</h3>
-              <div className='morning-column'>
-                <div className='day-input-column'>
+            <div key={index} className='admin-day-row'>
+              <h3 className='admin-day-name'>{elt.day}</h3>
+              <div className='admin-morning-column'>
+                <div className='admin-day-input-column'>
                   <span>Matin de</span>
                   <input placeholder={elt.morning_opening} 
                     onBlur={(e) => handleMorningOpeningBlur(e, index)}
                     />
                 </div>
-                <div className='day-input-column'>
+                <div className='admin-day-input-column'>
                   <span>à</span>
                   <input placeholder={elt.morning_closing}
                     onBlur={(e) => handleMorningClosingBlur(e, index)}
                   />
                 </div>
               </div>
-              <div className='afternoon-column'>
-                <div className='day-input-column'>
+              <div className='admin-afternoon-column'>
+                <div className='admin-day-input-column'>
                   <span>Après-midi de</span>
                   <input placeholder={elt.afternoon_opening}
                     onBlur={(e) => handleAfternoonOpeningBlur(e, index)}
                   />
                 </div>
-                <div className='day-input-column'>
+                <div className='admin-day-input-column'>
                   <span>à</span>
                   <input placeholder={elt.afternoon_closing} 
                     onBlur={(e) => handleAfternoonClosingBlur(e, index)}
@@ -133,7 +133,7 @@ function AdminSchedule () {
             </div> 
           )
         })}
-        <button className='save-btn' onClick={handleSave}>Enregister</button>
+        <button className='admin-schedule-save-btn' onClick={handleSave}>Enregister</button>
       </div>
     </div>
   );

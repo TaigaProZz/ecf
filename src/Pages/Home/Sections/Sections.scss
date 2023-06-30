@@ -4,12 +4,15 @@
   width: 60%;  
 }
 
-.sectionContainer {
+.sectionContainer, .welcome-sectionContainer {
   height: 100vh;
-  margin-top: 10vh;
-  font-size: calc(15px + 0.390625vw);
+  width: 100vw;
   color: app.$mainFontColor;
   display: flex;
+}
+
+.welcome-sectionContainer {
+  margin-top: 10vh;
 }
 
 .leftSection {
@@ -37,7 +40,6 @@
   border-radius: 12px;
   scrollbar-color: #6969dd #e0e0e0;
   scrollbar-width: thin;
-  overflow-y: auto;
 }
 
 .lightSection {

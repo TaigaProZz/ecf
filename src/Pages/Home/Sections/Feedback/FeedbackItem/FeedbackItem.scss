@@ -1,18 +1,13 @@
 .FeedbackList {
-  min-height: 100%;
   height: auto;
-  width: 30vh;
+  width: 20vw;
   background-color: #293045;
   color: white;
   border-radius: 12px;
-  margin: 15px;
-  padding: 6px;
 
   .FeedbackListName {
-    font-size: calc(15px + 0.390625vw);
   }
   .FeedbackListText {
-    font-size: calc(11px + 0.390625vw);
   }
   
   .FeedbackListRating {
@@ -20,8 +15,6 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    margin-right: 3px;
     color: yellow;
   }
-
 }

@@ -7,25 +7,69 @@ $buttonColor: #373D51;
 $buttonHoverColor: #4D5371;
 $inputColor: #3F4458;
 
+// font sizes
+$h1DesktopFontSize: 48px;
+$h1MobileFontSize: 36px;
+$h2DesktopFontSize: 24px;
+$h2MobileFontSize: 12px;
+$anchorDesktopFontSize: 20px;
+$anchorMobileFontSize: 14px;
+$buttonDesktopFontSize: 28px;
+$buttonMobileFontSize: 12px;
+
+@media screen and (max-width: 500px) {
+  h1 {
+    font-size: $h1MobileFontSize;
+  }
+
+  h2 {
+    font-size: $h2MobileFontSize;
+  }
+
+  a {
+    font-size: $anchorMobileFontSize;
+  }
+
+  button {
+    font-size: $buttonMobileFontSize;
+  }
+
+}
+
+// large screen
+@media screen and (min-width: 701px) {
+  h1 {
+    font-size: $h1DesktopFontSize;
+  }
+  
+  h2 {
+    font-size: $h2DesktopFontSize;
+  }
+
+  a {
+    font-size: $anchorDesktopFontSize;
+  }
+
+  button {
+    font-size: $buttonDesktopFontSize;
+  }
+
+}
+
+
 html, body, #root {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   margin: 0;
   padding: 0;
   font-family: $mainFont;  
   color: $mainFontColor;
   background-color: $backgroundColor;
   position: absolute;
+  overflow-x: hidden;
   a {
     color: $mainFontColor;
     text-decoration: none;
-  }
-  h1 {
-    font-size: 48px;
-  }
-
-  h2 {
-    font-size: 24px;
   }
 
   input {

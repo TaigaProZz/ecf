@@ -1,14 +1,12 @@
 @use 'src/App.scss' as app;
 
 .admin-popup-modal {
-  font-size: 22px;
   background-color: app.$elementColor;
 }
 
 .admin-popup-modal > .header {
   width: 100%;
   border-bottom: 1px solid gray;
-  font-size: 18px;
   text-align: center;
   padding: 5px;
 }
@@ -37,7 +35,6 @@
   line-height: 20px;
   right: -10px;
   top: -10px;
-  font-size: 24px;
   background: #ffffff;
   border-radius: 18px;
   border: 1px solid #cfcece;
@@ -49,7 +46,6 @@
   input {
     width: 80%;
   }
-  overflow-y: auto;
   height: 80vh;
 }
 

@@ -2,32 +2,75 @@
 
 .sectionFeedbackContainer {
   height: 100vh;
+  width: 100vw;
   display: grid;
   align-items: center;
   justify-content: center;
 }
 
 .header {
-  width: 100%;
+  width: 100vw;
   height: 7vh;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .boxs {
-  width: 100%;
+  width: 100vw;
   height: 33vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 0;
 }
 
 .sendFeedbackList {
-  width: 100%;
+  width: 100vw;
   height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.carousel-root {
+  position: relative;
+  width: 95vw;
+  height: 100%; 
+}
+
+.carousel.carousel-slider {
+  position: relative;
+  height: 100%;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-item.selected {
+  transform: scale(1.2); /* Agrandir l'élément sélectionné si nécessaire */
+}
+
+.carousel .control-arrow {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.carousel .control-arrow:hover {
+  background-color: transparent;
+}
+
+.carousel .control-arrow::before {
+}
+
+.carousel .control-prev.control-arrow::before {
+  content: '\2039'; 
+  left: 10px;
+}
+
+.carousel .control-next.control-arrow::before {
+  content: '\203A';
 }

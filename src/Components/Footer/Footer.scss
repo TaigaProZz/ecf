@@ -1,18 +1,54 @@
 @use "../../App" as app;
 
-@media screen and (min-width: 701px) {
-  .schedule {
-    font-size: 1em;
-  }
-  .logo-footer {
-    width: 250px;
-    height: 120px;
-  } 
+
+li.footer-list-elt {
+  list-style: none;
 }
 
-@media screen and (max-width: 700px) {
-  .schedule {
-    font-size: 0.5em;
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.my-footer {
+  height: 15vh;
+  width: 100vw;
+  background-color: app.$barColor;
+  display: flex;
+}
+
+.footer-schedule-container, .footer-logo, .footer-btn {
+  width: 33.33%;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-logo, .footer-btn {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo > img {
+  width: 100px;
+  height: 47px;
+}
+
+.contact-btn {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  padding: 10px;
+  font-family: app.$mainFont;
+  background-color: app.$buttonColor;
+}
+
+// phone
+@media screen and (max-width: 500px) {
+  .footer-schedule-container {
+    display: flex;
+    align-items: center;
+    font-size: 9px;
   }
   .logo-footer {
     width: 100px;
@@ -20,35 +56,18 @@
   } 
 }
 
-li.footer-list-elt {
-  list-style: none;
-}
+// large screen
+@media screen and (min-width: 701px) {
 
-.my-footer {
-  width: 100%;
-  margin-top: 16px;
-  background-color: app.$barColor;
-  display: inline-flex;
-}
+  .my-footer{
+    padding: 20px 0 30px 0;
+  }
 
-.logo-footer {
-  bottom: 0;
-  right: 0;
-}
-
-.contact-btn {
-  font-family: app.$mainFont;
-  background-color: app.$barColor;
-}
-
-.schedule-container {
-  width: 33%;
-}
-
-.navBtn {
-  width: 33%;
-}
-
-.navLogo {
-  width: 33%;
+  .footer-schedule-container {
+    font-size: 1em;
+  }
+  .logo-footer {
+    width: 250px;
+    height: 120px;
+  }
 }

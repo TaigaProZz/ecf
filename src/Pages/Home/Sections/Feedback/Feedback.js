@@ -3,6 +3,9 @@ import CommentBox from './SendFeedback/SendFeedback';
 import './Feedback.scss'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 
 function SectionFeedback() {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -28,11 +31,23 @@ function SectionFeedback() {
             <h1 className="subTitle">Car l'avis de nos clients comptent...</h1>
           </div>
           <div className="boxs">
-            {feedbacks.map((feedback) => {
-              return (
-                <FeedbackList key={feedback.id} name={feedback.name} text={feedback.message} rating={feedback.rating} />
-              );
-            })}
+          <Carousel
+          showThumbs={false}
+          infiniteLoop={true}
+          centerMode={true}
+          centerSlidePercentage={33.33}
+          showStatus={false}
+          swipeable={true}
+          // autoPlay={true}
+          interval={3000}
+          >
+          {feedbacks.map((feedback) => (
+            <div key={feedback.id}>
+              <FeedbackList name={feedback.name} text={feedback.message} rating={feedback.rating} />
+            </div>
+          ))}
+        </Carousel>
+
           </div>
           <div className="sendFeedbackList">
             <CommentBox />

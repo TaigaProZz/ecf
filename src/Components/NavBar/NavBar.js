@@ -8,13 +8,14 @@ function MyNav() {
       <div className='nav-logo'>
         <Link to="/"><img src='/img/logo.png' alt="Garage V.Parrot Logo" /></Link>
       </div>
-      <div className="links">
+      <div className="nav-links">
         <Link to="/">Accueil</Link>
         <Link to="/vente">Ventes</Link>
         <Link to="/contact">Contact</Link>
       </div>
-      <div className="icon">
+      <div className="nav-icon">
         <Link to="/login"><BiUser size={40}/></Link>
+        
       </div>
     </div>
   );

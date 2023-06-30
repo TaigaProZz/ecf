@@ -1,36 +1,68 @@
 @use "../../App" as app;
 
+// phone
+@media screen and (max-width: 500px) {
+  .nav-logo {
+    padding-left: 10px;
+    img {
+      width: 70px;
+      height: 32px;
+    }
+  }
+  .nav-links {
+    a {
+      padding: 5px;
+    }
+  }
+  .nav-icon {
+    padding-right: 10px;
+  }
+}
+
+// large screen
+@media screen and (min-width: 701px) {
+  .nav-logo {
+    padding-left: 20px;
+    img {
+      width: 103px;
+      height: 47px;
+    }
+  }
+  .nav-links {
+    a {
+      padding: 10px;
+    }
+  }
+  .nav-icon {
+    padding-right: 20px;
+  }
+}
+
 .my-nav {
-  width: 100%;
+  width: 100vw;
   height: 10vh;
   background-color: app.$barColor;
   position: fixed;
   display: flex;
   align-items: center;
-  justify-content: space-between; 
+  z-index: 1;
 }
 
 .nav-logo {
+  width: 33.33%;
   display: flex; 
   align-items: center; 
-  padding-left: 20px;
-  img {
-    width: 103px;
-    height: 47px;
-  }
 }
 
-.links {
+.nav-links {
+  width: 33.33%;
   display: flex; 
   justify-content: center;
   font-family: app.$mainFont;
-  font-size: 24px;
 }
 
-.links a {
-  padding-right: 10px;
-}
-
-.icon {
-  padding-right: 20px;
+.nav-icon {
+  width: 33.33%;
+  display: flex; 
+  justify-content: flex-end;
 }
