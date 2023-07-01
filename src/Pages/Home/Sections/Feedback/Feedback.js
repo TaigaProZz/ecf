@@ -32,14 +32,14 @@ function SectionFeedback() {
           </div>
           <div className="boxs">
           <Carousel
-          showThumbs={false}
-          infiniteLoop={true}
-          centerMode={true}
-          centerSlidePercentage={33.33}
-          showStatus={false}
-          swipeable={true}
-          // autoPlay={true}
-          interval={3000}
+            showThumbs={false}
+            infiniteLoop={true}
+            centerMode={true}
+            centerSlidePercentage={33.33}
+            showStatus={false}
+            swipeable={true}
+            autoPlay={true}
+            interval={2000}
           >
           {feedbacks.map((feedback) => (
             <div key={feedback.id}>
