@@ -8,8 +8,18 @@ import Login from './Pages/Login/Login';
 import Admin from './Pages/Admin/Admin';
 import Car from './Pages/Car/Car';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import axios from 'axios';
+
 
 function App() {
+
+  // axios.defaults.withCredentials = true;
+  // axios.get("http://localhost:3307/api/getpermission").then((response) => {
+  //   console.log(response);
+  // }).catch((error) => {
+  //   console.log(error);
+  // })
+
   return (
     <BrowserRouter>
       <NavBar />  

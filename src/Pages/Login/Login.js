@@ -2,12 +2,16 @@ import './Login.scss';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 function Login() {
   const navigate = useNavigate();
   const inputEmail = useRef(null);
   const inputPassword = useRef(null);
+  // set with credentials to true
+  axios.defaults.withCredentials = true;
   
+
   const login = async () => {
     const email = inputEmail.current.value;
     const password = inputPassword.current.value;
@@ -15,28 +19,55 @@ function Login() {
       console.log('Veuillez remplir tous les champs');
       return;
     } else {
-      try {
-        // set with credentials to true
-        axios.defaults.withCredentials = true;
-        const response = await axios.post("http://localhost:3307/api/login", 
-        {
-          params: {
-            email: email,
-            password: password
+        try {
+          const response = await axios.post("http://localhost:3307/api/login", 
+          {
+            params: {
+              email: email,
+              password: password
+            }
+          });
+          if (response.status === 200) {
+            getPermission();
+            alert(`${email} est connecté`);
+          } else {
+            alert("Veuillez vérifier vos informations saisies et réssayer")
           }
-        });
-        if (response.status === 200) {
-          alert(`${email} est connecté`);
-          navigate("/admin");
-        } else {
-          alert("Veuillez vérifier vos informations saisies et réssayer")
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
       }
-    }
   }
 
+  const getPermission = async () => {
+    try {
+      // get cookie token
+      const cookieResponse = await axios.get("http://localhost:3307/api/getcookie");
+      const token = cookieResponse.data.session;
+
+      // check if token is valid
+      if (!token) {
+        return alert('Veuillez réssayer');
+      }
+
+      // get permission
+      const response = await axios.get("http://localhost:3307/api/getpermission", { 
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      })
+      const permission = response.data.permission;
+      if (permission === 1) {
+        console.log("admin");
+      } else {
+        console.log("user");
+      }
+      navigate("/admin");
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
   return (
     <div className="login-container">
       <div className='form'>

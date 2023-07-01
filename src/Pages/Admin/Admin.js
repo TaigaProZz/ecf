@@ -5,8 +5,12 @@ import AdminSchedule from './AdminSection/AdminSchedule/AdminSchedule';
 import AdminEmployee from './AdminSection/AdminEmployee/AdminEmployee.js';
 import AdminSecondHand from './AdminSection/AdminSecondHand/AdminSecondHand';
 import AdminFeedback from './AdminSection/AdminFeedback/AdminFeedback';
+import Cookies from 'js-cookie';
+import axios from 'axios';
 
 function Admin() {
+  axios.defaults.withCredentials = true;
+
   const [container, setContainer] = useState(<AdminService />)
 
 

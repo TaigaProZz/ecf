@@ -114,7 +114,6 @@ const Vente = () => {
       <section className='section-car-list'>
         <ul className="car-list">
           {cars.map((car, index) => (      
-            console.log(img[car.id]?.[0]),      
             <li key={car.id} className="car-item" style={style} id={car.id}>
               <div className="car-details">
               <img src={img[car.id]?.[0]} alt={car.brand} className="car-image" />

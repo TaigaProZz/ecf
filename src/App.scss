@@ -14,10 +14,10 @@ $h2DesktopFontSize: 24px;
 $h2MobileFontSize: 12px;
 $anchorDesktopFontSize: 20px;
 $anchorMobileFontSize: 14px;
-$buttonDesktopFontSize: 28px;
+$buttonDesktopFontSize: 18px;
 $buttonMobileFontSize: 12px;
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
   h1 {
     font-size: $h1MobileFontSize;
   }
@@ -38,6 +38,7 @@ $buttonMobileFontSize: 12px;
 
 // large screen
 @media screen and (min-width: 701px) {
+
   h1 {
     font-size: $h1DesktopFontSize;
   }
@@ -92,7 +93,6 @@ html, body, #root {
     height: 70px;
     width: 200px;
     border-radius: 12px;
-    font-size: 18px;
     background-color: $buttonColor;
     color: $mainFontColor;
     border-color: $mainFontColor;

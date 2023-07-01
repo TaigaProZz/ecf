@@ -7,6 +7,7 @@ const app = express();
 const router = express.Router();
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
+const jwt = require('jsonwebtoken');
 
 // settings to connect to sql database
 const connection = mysql.createConnection({
@@ -26,8 +27,12 @@ connection.connect((err) => {
 // ignore restriction of cors
 app.use(cors({
   origin: 'http://localhost:3000',
-  credentials: true
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -387,7 +392,9 @@ router.post('/login', (req, res) => {
         // compare password
         try {
           if(password === user.password) {
-            res.cookie('session', user.id, { maxAge: 3600000, httpOnly: true });
+            // create cookie if login is successfull
+            const token = jwt.sign({ email: user.email}, 'key');
+            res.cookie('session', token, { maxAge: 3600000, httpOnly: true, sameSite: false, secure: true });
             res.sendStatus(200);
           } else {
             res.status(401).json({ success: false, error: 'Mot de passe incorrect' });
@@ -413,6 +420,45 @@ router.post('/login', (req, res) => {
   });
 });
 
+router.get('/getpermission', (req, res) => {
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(' ')[1];
+  if (!token) {
+    return res.status(401).json({ message: 'JWT manquant' });
+  }
+
+  try {
+    const secretKey = 'key';
+    const decoded = jwt.verify(token, secretKey);
+    const email = decoded.email;
+
+    const query = "SELECT permission FROM users WHERE email = ?";
+    connection.query(query, [email], (error, results) => {
+      if (results.length === 0) {
+        return res.status(404).json({ message: 'Utilisateur introuvable' });
+      }
+      // collect permission
+      res.json({ permission: results[0].permission });
+    })
+
+  } catch (error) {
+    console.error('Erreur lors de la vérification du JWT', error);
+    return res.status(401).json({ message: 'JWT invalide' });
+  }
+})
+
+// get cookie 
+router.get('/getcookie', (req, res) => {
+  const cookie = req.cookies.session;
+  if (cookie === undefined) {
+    res.status(401).json({ error: 'Cookie invalide' });
+  } else {
+    res.status(200).json({ session: cookie });
+
+  }
+});
+
+
 // log out 
 // app.get("/logout", authorization, (req, res) => {
 //   return res
@@ -421,44 +467,6 @@ router.post('/login', (req, res) => {
 //     .json({ message: "Successfully logged out" });
 // });
 
-//** IMAGES ROUTES   **/
-// post image
-// router.post('/postimage', (req, res) => {
-//   const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       cb(null, 'backend/img');
-//     },
-//     filename: function (req, file, cb) {
-//       cb(null, file.originalname);
-//     }
-//   });
-
-//   const upload = multer({ storage: storage }).single('file');
-
-//   upload(req, res, function (err) {
-//     if (err instanceof multer.MulterError) {
-//       console.log(err);
-//       return res.status(500).json(err);
-//     } else if (err) {
-//       console.log(err);
-//       return res.status(500).json(err);
-//     }
-
-//     // Image uploaded successfully, save its URL in the database
-//     const imageUrl = `http://localhost:${port}/backend/img/${req.file.filename}`;
-
-//     // Save the imageUrl in the database using your INSERT query
-//     const query = 'INSERT INTO images (url) VALUES (?)';
-//     connection.query(query, [imageUrl], (error, results) => {
-//       if (error) {
-//         console.log(error);
-//         return res.sendStatus(500);
-//       } else {
-//         return res.status(200).json({ imageUrl });
-//       }
-//     });
-//   });
-// });
 
 // start backend server
 app.use('/api', router);
