@@ -1,15 +1,5 @@
 @use "../../App" as app;
 
-
-li.footer-list-elt {
-  list-style: none;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-}
-
 .my-footer {
   height: 15vh;
   width: 100vw;
@@ -17,57 +7,122 @@ ul {
   display: flex;
 }
 
-.footer-schedule-container, .footer-logo, .footer-btn {
-  width: 33.33%;
-  display: flex;
-  justify-content: center;
+li.footer-list-elt {
+  list-style: none;
+ 
+}
+ul {
+  margin: 0;
+  padding: 0;
 }
 
-.footer-logo, .footer-btn {
-  display: flex;
-  align-items: center;
-}
 
-.footer-logo > img {
-  width: 100px;
-  height: 47px;
-}
 
-.contact-btn {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  border-radius: 12px;
-  padding: 10px;
-  font-family: app.$mainFont;
-  background-color: app.$buttonColor;
-}
-
-// phone
-@media screen and (max-width: 700px) {
+// mobile
+@media screen and (max-width: 450px) {
   .footer-schedule-container {
     display: flex;
     align-items: center;
     font-size: 9px;
   }
+
+  .footer-schedule-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+  }  
+
+  .right-side-footer{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .footer-logo, .footer-btn {
+    display: flex;
+    justify-content: center;
+  }
+
   .logo-footer {
     width: 100px;
     height: 60px;
-  } 
+  }  
+
+  .contact-btn {
+    height: 15px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: app.$buttonColor;
+  }
+
+  .contact-btn-text {
+    margin-left: 5px;
+  }
+
+  .footer-logo > img {
+    width: 100px;
+    height: 47px;
+  }
+
 }
 
-// large screen
-@media screen and (min-width: 701px) {
-
+@media screen and (min-width: 451px) {
   .my-footer{
-    padding: 20px 0 30px 0;
+    padding: 20px 0 20px 0;
   }
 
   .footer-schedule-container {
-    font-size: 1em;
+    width: 33.33%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+  }  
+
+  .right-side-footer {
+    width: 77.77%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
   }
+
+  .footer-btn, .footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
   .logo-footer {
     width: 250px;
     height: 120px;
+  }
+
+  .contact-btn {
+    height: 43px;
+    width: 156px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 10px;
+    font-size: app.$buttonDesktopFontSize;
+    background-color: app.$buttonColor;
+  }
+
+  .contact-btn-text {
+    margin-left: 15px;
+  }
+
+  .footer-logo > img {
+    width: 200px;
+    height: 87px;
   }
 }

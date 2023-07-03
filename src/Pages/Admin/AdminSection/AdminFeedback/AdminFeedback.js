@@ -28,7 +28,7 @@ function AdminFeedback () {
   const handleConfirmation = async (choice, feedbackId) => {
     if (choice === 'valider') {
       try {
-        const response = await axios.put(`http://localhost:3307/api/validatefeedback/${feedbackId}`); 
+        await axios.put(`http://localhost:3307/api/validatefeedback/${feedbackId}`); 
         fetchData();
       } catch (error) {
         alert("Erreur lors de l'envoi des données", error);

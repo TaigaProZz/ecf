@@ -11,13 +11,18 @@ $inputColor: #3F4458;
 $h1DesktopFontSize: 48px;
 $h1MobileFontSize: 36px;
 $h2DesktopFontSize: 24px;
-$h2MobileFontSize: 12px;
+$h2MobileFontSize: 18px;
 $anchorDesktopFontSize: 20px;
 $anchorMobileFontSize: 14px;
 $buttonDesktopFontSize: 18px;
 $buttonMobileFontSize: 12px;
+$placeholderDesktopFontSize: 18px;
+$placeholderMobileFontSize: 12px;
 
 @media screen and (max-width: 700px) {
+  html, body, #root{
+    font-size: 12px;
+  }
   h1 {
     font-size: $h1MobileFontSize;
   }
@@ -32,6 +37,10 @@ $buttonMobileFontSize: 12px;
 
   button {
     font-size: $buttonMobileFontSize;
+  }
+
+  input::placeholder, textarea::placeholder {
+    font-size: $placeholderMobileFontSize;
   }
 
 }
@@ -53,6 +62,10 @@ $buttonMobileFontSize: 12px;
 
   button {
     font-size: $buttonDesktopFontSize;
+  }
+
+  input::placeholder, textarea::placeholder {
+    font-size: $placeholderDesktopFontSize;
   }
 
 }

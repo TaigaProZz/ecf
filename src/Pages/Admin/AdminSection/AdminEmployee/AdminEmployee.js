@@ -33,9 +33,10 @@ function AdminEmployees () {
     if (typeof employee.name !== 'string' || typeof employee.email !== 'string' ) {
       alert('Vérifiez les informations');
     }
+    
     try {
       // send it to db
-      const response = await axios.post('http://localhost:3307/api/postemployee', {
+      await axios.post('http://localhost:3307/api/postemployee', {
           name: employee.name,
           email: employee.email,
           password: employee.password,

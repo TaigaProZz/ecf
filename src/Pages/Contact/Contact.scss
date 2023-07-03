@@ -1,8 +1,20 @@
 @use "src/App" as app;
 
+
+@media screen and (max-width: 450px) {
+  .contact-container {
+    height: 75vh;
+  }
+}
+
+@media screen and (min-width: 451px) {
+  .contact-container {
+    height: calc(75vh - 40px);
+  }
+}
+
 .contact-container {
   width: 100%;
-  height: calc(75vh - 50px);
   margin-top: 10vh;
   display: flex;
   align-items: center;

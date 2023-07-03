@@ -378,7 +378,7 @@ router.post('/postemployee', (req, res) => {
 /** LOG ROUTES **/
 // login
 router.post('/login', (req, res) => {
-  const { email, password } = req.body.params;
+  const { email, password } = req.body;
   const query = 'SELECT * FROM users WHERE email = ?';
   connection.query(query, [email], (error, results) => {
     if (error) {
@@ -454,7 +454,6 @@ router.get('/getcookie', (req, res) => {
     res.status(401).json({ error: 'Cookie invalide' });
   } else {
     res.status(200).json({ session: cookie });
-
   }
 });
 

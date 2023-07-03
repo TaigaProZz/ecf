@@ -33,14 +33,19 @@ function MyFooter() {
           })}
         </ul> 
       </div>
-      <div className='footer-btn'>
-        <div className='btn '>   
-          <div className='contact-btn'><BsEnvelopeFill />Nous contacter</div>
+      <div className='right-side-footer'>
+        <div className='footer-btn'>
+          <div className='btn '>   
+            <div className='contact-btn'>
+              <BsEnvelopeFill />
+              <span className='contact-btn-text'>Contact</span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className='footer-logo'>
-        <img className='logo-footer' src='/img/logo.png' alt="Garage V.Parrot Logo"/>
-      </div>
+        <div className='footer-logo'>
+          <img className='logo-footer' src='/img/logo.png' alt="Garage V.Parrot Logo"/>
+        </div>
+      </div>  
     </div>
   );
 }

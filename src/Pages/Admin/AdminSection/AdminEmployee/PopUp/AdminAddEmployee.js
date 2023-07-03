@@ -47,20 +47,28 @@ function AdminAddEmployee(props) {
           </button>
           <div className="header">Ajouter un employé</div>
           <div className="content">
-            <span>Nom prénom</span>
+            <label>Nom prénom</label>
             <input
               type="text"
               value={name}
               onChange={handleNameChange}
             />
-            <span>Email</span>
+            <label>Email</label>
             <input
               type="email"
               value={email}
               onChange={handleEmailChange}
             />
+            <label>Permission</label>
+            <input
+              type="number"
+              min={0}
+              max={1}
+              value={permission}
+              onChange={handlePermissionChange}
+            />
             <div className="password-container">
-            <span>Mot de passe</span>
+              <label>Mot de passe</label>
               <input
                 type="text"
                 value={password}
@@ -69,14 +77,7 @@ function AdminAddEmployee(props) {
               <button className="generate-password" onClick={generatePassword}>
                 Générer
               </button>
-            
             </div>
-            <span>Permission</span>
-            <input
-              type="number"
-              value={permission}
-              onChange={handlePermissionChange}
-            />
           </div>
           <div className="actions">
             <button className="add-popup-btn" onClick={handleAddEmployee}>

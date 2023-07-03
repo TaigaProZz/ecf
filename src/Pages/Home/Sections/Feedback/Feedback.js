@@ -37,7 +37,7 @@ function SectionFeedback() {
             centerMode={true}
             centerSlidePercentage={33.33}
             showStatus={false}
-            swipeable={true}
+            swipeable={false}
             autoPlay={true}
             interval={2000}
           >

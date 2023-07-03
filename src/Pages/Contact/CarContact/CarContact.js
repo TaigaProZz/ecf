@@ -72,9 +72,9 @@ function Contact() {
   }
 
   return (
-    <div className="container center">
+    <div className="contact-container">
       <form ref={form} className='form'>
-        <h1 className='center'>Formulaire de contact</h1>
+        <h2 className='center'>Formulaire de contact</h2>
         <div className='row'>
           <p>Nom prénom :</p>
           <input ref={nameInputRef} className='center' type='text' placeholder='Entrez votre nom prénom'></input>
