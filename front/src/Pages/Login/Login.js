@@ -37,7 +37,7 @@ function Login({ setUser }) {
       return;
     } else {
         try {
-          const response = await axios.post("http://localhost:3307/api/login",  {
+          const response = await axios.post("http://localhost:3307/user/login",  {
             email: email,
             password: password  
           });
