@@ -35,7 +35,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(cookieParser('secret'));
 
 /***  BACKEND ROUTES ***/
 
@@ -394,8 +394,8 @@ router.post('/login', (req, res) => {
           if(password === user.password) {
             // create cookie if login is successfull
             const token = jwt.sign({ email: user.email}, 'key');
-            res.cookie('session', token, { maxAge: 3600000, httpOnly: true, sameSite: false, secure: true });
-            res.sendStatus(200);
+            res.cookie('session', token, { maxAge: 3600000, httpOnly: true, sameSite: true, secure: true, signed: true });
+            res.status(200).json({name: user.name, permission: user.permission});
           } else {
             res.status(401).json({ success: false, error: 'Mot de passe incorrect' });
           }
@@ -447,6 +447,33 @@ router.get('/getpermission', (req, res) => {
   }
 })
 
+router.get('/user', (req, res) => {
+  console.log(req)
+  const token = req.signedCookies.session;
+  if (!token) {
+    return res.status(401).json({ message: 'JWT manquant' });
+  }
+
+  try {
+    const secretKey = 'key';
+    const decoded = jwt.verify(token, secretKey);
+    const email = decoded.email;
+
+    const query = "SELECT permission, name FROM users WHERE email = ?";
+    connection.query(query, [email], (error, results) => {
+      if (results.length === 0) {
+        return res.status(404).json({ message: 'Utilisateur introuvable' });
+      }
+      // collect permission
+      res.json(results[0]);
+    })
+
+  } catch (error) {
+    console.error('Erreur lors de la vérification du JWT', error);
+    return res.status(401).json({ message: 'JWT invalide' });
+  }
+})
+
 // get cookie 
 router.get('/getcookie', (req, res) => {
   const cookie = req.cookies.session;
@@ -459,12 +486,12 @@ router.get('/getcookie', (req, res) => {
 
 
 // log out 
-// app.get("/logout", authorization, (req, res) => {
-//   return res
-//     .clearCookie("session")
-//     .status(200)
-//     .json({ message: "Successfully logged out" });
-// });
+router.get("/logout", (req, res) => {
+  return res
+    .clearCookie("session")
+    .status(200)
+    .json({ message: "Successfully logged out" });
+});
 
 
 // start backend server

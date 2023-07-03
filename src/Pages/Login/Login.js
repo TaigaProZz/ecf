@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function Login() {
+function Login({ setUser }) {
   const navigate = useNavigate();
   const inputEmail = useRef(null);
   const inputPassword = useRef(null);
@@ -43,6 +43,8 @@ function Login() {
           });
           if (response.status === 200) {
             alert(`${email} est connecté`);
+            console.log(response.data)
+            setUser(response.data)
             navigate("/admin");
           } else {
             alert("Veuillez vérifier vos informations saisies et réssayer")

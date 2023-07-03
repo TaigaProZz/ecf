@@ -5,61 +5,48 @@ import AdminSchedule from './AdminSection/AdminSchedule/AdminSchedule';
 import AdminEmployee from './AdminSection/AdminEmployee/AdminEmployee.js';
 import AdminSecondHand from './AdminSection/AdminSecondHand/AdminSecondHand';
 import AdminFeedback from './AdminSection/AdminFeedback/AdminFeedback';
-import axios from 'axios';
 
-function Admin() {
+
+
+const ADMIN_SECTIONS = {
+  'Services' : {
+    component: <AdminService />,
+    isAdmin: true
+  },
+  'Horaires' : {
+    component: <AdminSchedule />,
+    isAdmin: true
+  },
+  'Employés' : {
+    component: <AdminEmployee />,
+    isAdmin: true
+  },
+  'Vente véhicules' : {
+    component: <AdminSecondHand />,
+    isAdmin: false
+  },
+  'Commentaires' : {
+    component: <AdminFeedback />,
+    isAdmin: false
+  }
+}
+
+function Admin({ user }) {
   const [container, setContainer] = useState(<AdminSecondHand />)
   const [isAdmin, setAdmin] = useState(false);
-  axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    getPermission();
-  }, []);
-
-  const getPermission = async () => {
-    try {
-      // get cookie token
-      const cookieResponse = await axios.get("http://localhost:3307/api/getcookie");
-      const token = cookieResponse.data.session;
-
-      // check if token is valid
-      if (!token) {
-        return alert('Veuillez réssayer');
-      }
-      // get permission
-      const response = await axios.get("http://localhost:3307/api/getpermission", { 
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      })
-      const permission = response.data.permission;
-      if (permission === 1) {
-        setAdmin(true);
-      } else {
-        setAdmin(false);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
+    if (!user.permission) return;
+    setAdmin(user.permission === 1);
+  }, [user.permission])
 
   return (
     <div className="admin-container">
       <div className="admin-bar">
-        {isAdmin 
-          ?  
-          <>
-            <button className='admin-bar-button' onClick={() => setContainer(<AdminService />)}>Services</button>
-            <button className='admin-bar-button' onClick={() => setContainer(<AdminSchedule />)}>Horaires</button>
-            <button className='admin-bar-button' onClick={() => setContainer(<AdminEmployee />)}>Employés</button>
-            <button className='admin-bar-button' onClick={() => setContainer(<AdminSecondHand />)}>Vente véhicules</button>
-            <button className='admin-bar-button' onClick={() => setContainer(<AdminFeedback />)}>Commentaires</button> 
-          </>
-          :  
-          <> 
-            <button className='admin-bar-button' onClick={() => setContainer(<AdminSecondHand />)}>Vente véhicules</button>
-            <button className='admin-bar-button' onClick={() => setContainer(<AdminFeedback />)}>Commentaires</button>
-          </>
+        {
+          Object.keys(ADMIN_SECTIONS).map((section, index) => 
+            (isAdmin || !ADMIN_SECTIONS[section].isAdmin) && <button key={index} className='admin-bar-button' onClick={() => setContainer(ADMIN_SECTIONS[section].component)}>{section}</button>
+          )
         }
         <span className='permission-box'>Vous êtes : {isAdmin ? "Admin" : "Employé"}  </span>
       </div>
