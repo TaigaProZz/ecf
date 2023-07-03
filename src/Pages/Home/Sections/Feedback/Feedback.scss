@@ -49,7 +49,7 @@
 .slider-wrapper {
   height: 100%;
   display: flex;
-  
+
 }
 
 .slide {
@@ -69,9 +69,6 @@
 
 .carousel .control-arrow:hover {
   background-color: transparent;
-}
-
-.carousel .control-arrow::before {
 }
 
 .carousel .control-prev.control-arrow::before {
