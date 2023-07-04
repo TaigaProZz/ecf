@@ -11,7 +11,7 @@ function AdminServices () {
 
   // fetch all services function
   const fetchData = async () => {
-    const response = await axios.get('http://localhost:3307/api/getservices');
+    const response = await axios.get('http://localhost:3307/service');
     const service = response.data;
     setServices(service);
   }
@@ -26,7 +26,7 @@ function AdminServices () {
       return;
     }
     try {
-      await axios.post('http://localhost:3307/api/postservices', { services: service });
+      await axios.post('http://localhost:3307/service', { services: service });
       fetchData();
     } catch (error) {
       alert("Erreur lors de l'ajout", error)
@@ -37,7 +37,7 @@ function AdminServices () {
   // DELETE SERVICE function
   const deleteService = async (id) => { 
     try {
-      await axios.delete('http://localhost:3307/api/deleteservices/' + id);
+      await axios.delete('http://localhost:3307/service/' + id);
       fetchData();
     } catch (error) {
       alert('Erreur lors de la suppression', error);
@@ -51,7 +51,7 @@ function AdminServices () {
       return;
     }
     try {
-      await axios.put('http://localhost:3307/api/updateservices/' + id, {services: service});
+      await axios.put('http://localhost:3307/service/' + id, {services: service});
       fetchData();
     } catch (error) {
       alert('Erreur lors de la modification', error);

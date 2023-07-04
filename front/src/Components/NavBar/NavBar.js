@@ -1,16 +1,18 @@
 import axios from 'axios';
 import './NavBar.scss';
 import { BiUser } from 'react-icons/bi';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function MyNav({ user, setUser }) {
+  const navigate = useNavigate();
 
   const logout = async () => {
     try {
-      const response = await axios.get("http://localhost:3307/api/logout");
+      const response = await axios.get("http://localhost:3307/auth");
       if (response.status === 200) {
-        alert("Vous êtes déconnecté");
         setUser({});
+        alert("Vous êtes déconnecté");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);

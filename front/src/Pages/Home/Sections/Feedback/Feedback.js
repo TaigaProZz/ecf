@@ -14,7 +14,7 @@ function SectionFeedback() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3307/api/getfeedback');
+        const response = await axios.get('http://localhost:3307/feedback');
         const feedbacks = response.data.filter(feedbacks => feedbacks.isVerified === 1);
         setFeedbacks(feedbacks);
       } catch (error) {

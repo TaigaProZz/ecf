@@ -9,41 +9,21 @@ function Login({ setUser }) {
   const inputPassword = useRef(null);
   // set with credentials to true
   axios.defaults.withCredentials = true;
-
-  // check if session is active
-  // const checkSession = async () => {
-  //   try {
-  //     const response = await axios.get("http://localhost:3307/api/checksession");
-  //     const isLoggedIn = response.data.isLoggedIn;
-  
-  //     if (isLoggedIn) {
-  //       navigate("/admin");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   checkSession();
-  // }, []);
-
  
   const login = async () => {
     const email = inputEmail.current.value;
     const password = inputPassword.current.value;
     if (email === '' || password === '') {
-      console.log('Veuillez remplir tous les champs');
+      alert('Veuillez remplir tous les champs');
       return;
     } else {
         try {
-          const response = await axios.post("http://localhost:3307/user/login",  {
+          const response = await axios.post("http://localhost:3307/auth",  {
             email: email,
             password: password  
           });
           if (response.status === 200) {
             alert(`${email} est connecté`);
-            console.log(response.data)
             setUser(response.data)
             navigate("/admin");
           } else {

@@ -7,10 +7,7 @@ const app = express();
 const router = express.Router();
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
-const jwt = require('jsonwebtoken');
 const connection = require('./database');
-
-
 
 // ignore restriction of cors
 app.use(cors({
@@ -25,9 +22,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser('secret'));
 
+/***  ROUTES ***/
 app.use("/user", require("./routes/user.route"));
+app.use("/auth", require("./routes/auth.route"));
+app.use("/service", require("./routes/service.route"));
+app.use("/feedback", require("./routes/feedback.route"));
+app.use("/employee", require("./routes/employee.route"));
 
-/***  BACKEND ROUTES ***/
+
 
 /** CAR ROUTES **/
 // get cars 
@@ -130,116 +132,7 @@ router.post('/postcar', upload.array('image', 6), async (req, res) => {
   }
 });
 
-/** SERVICES ROUTES **/
-// get service 
-router.get('/getservices', (req, res) => {
-  const query = 'SELECT * FROM services';
-  connection.query(query, (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.send(results);
-    }
-  });
-});
 
-// update service 
-router.put('/updateservices/:id', (req, res) => {
-   const servicesId = req.params.id;
-   const msg = req.body.services;
-   const query = 'UPDATE services SET services = ? WHERE id = ?';
-   connection.query(query, [msg, servicesId], (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      console.log(results);
-      res.sendStatus(200);
-    }
-  });
-});
-
-// delete service 
-router.delete('/deleteservices/:id', (req, res) => {
-  const serviceId = req.params.id;
-  const query = 'DELETE FROM services WHERE id = ?';
-  connection.query(query, [serviceId], (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.sendStatus(200);
-    }
-  });
-});
-
-// post SERVICES 
-router.post('/postservices', (req, res) => {
-  try {
-    const service = req.body.services;
-    console.log(req);
-    const query = 'INSERT INTO services (services) VALUES (?)';
-    connection.query(query, [service], (error, results) => {
-      if (error) {
-        console.log(error);
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
-    });
-  } catch (error) {
-      console.error(error);
-      res.sendStatus(500);
-    }
-});
-
-
-/** FEEDBACKS ROUTES **/
-// get feedbacks 
-router.get('/getfeedback', (req, res) => {
-  const query = 'SELECT * FROM feedbacks';
-  connection.query(query, (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.send(results);
-    }
-  });
-});
-
-// post feedbacks 
-router.post('/postfeedback', (req, res) => {
-  try {
-    const { name, message, rating, isVerified } = req.body;
-    const query = 'INSERT INTO feedbacks (name, message, rating, isVerified) VALUES (?, ?, ?, ?)';
-    connection.query(query, [name, message, rating, isVerified], (error, results) => {
-      if (error) {
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
-    });
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
-});
-
-// update feedback validation 
-router.put('/validatefeedback/:id', (req, res) => {
-  const feedbackId = req.params.id;
-  const query = 'UPDATE feedbacks SET isVerified = 1 WHERE id = ?';
-  connection.query(query, [feedbackId], (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.sendStatus(200);
-    }
-  });
-});
 
 
 /** CONTACT ROUTES **/
@@ -323,46 +216,6 @@ router.post('/postschedule', async (req, res) => {
 });
 
 
-/** EMPLOYE ROUTES **/
-// get employee 
-router.get('/employee', (req, res) => {
-  const query = "SELECT * FROM users";
-  connection.query(query, (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.send(results);
-    }
-  })
-});
-
-// post employee
-router.post('/postemployee', (req, res) => {
-  try {
-    const { name, email, password, permission } = req.body;
-
-    // check type of variable
-    if (typeof name !== 'string' || typeof email !== 'string') {
-      return res.status(400).json({ error: 'Les types des variables sont invalides.' });
-    }
-    // check if values are not empty
-    if (name.trim() === '' || email.trim() === '' || permission.trim() === '') {
-      return res.status(400).json({ error: 'Les valeurs des variables sont invalides.' });
-    }
-    const query = 'INSERT INTO users (name, email, password, permission) VALUES (?, ?, ?, ?)';
-    connection.query(query, [name, email, password, permission], (error, results) => {
-      if (error) {
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
-    });
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
-});
 
 
 

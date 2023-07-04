@@ -12,13 +12,16 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function App() {
-
   const [user, setUser] = useState({});
   
   const getUser = async () => {
-    const response = await axios.get("http://localhost:3307/api/user", { withCredentials: true });
-    if (response.data) {
-      setUser(response.data);
+    try {
+      const response = await axios.get("http://localhost:3307/user", { withCredentials: true });
+      if (response.data) {
+        setUser(response.data);
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 

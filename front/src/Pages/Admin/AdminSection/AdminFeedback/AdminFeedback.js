@@ -2,9 +2,9 @@ import './AdminFeedback.scss';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
 import { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
+import { BsPlusSquare } from 'react-icons/bs';
 import PopUpAddFeedback from './PopUp/AdminPopUpAddFeedback'
 import axios from 'axios';
-import { BsPlusSquare } from 'react-icons/bs';
 
 function AdminFeedback () {
   const [feedback, setFeedback] = useState([]);
@@ -13,7 +13,7 @@ function AdminFeedback () {
   // get all feedbacks 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:3307/api/getfeedback');
+      const response = await axios.get('http://localhost:3307/feedback');
       const feedback = response.data;
       setFeedback(feedback);
     } catch (error) {
@@ -28,7 +28,7 @@ function AdminFeedback () {
   const handleConfirmation = async (choice, feedbackId) => {
     if (choice === 'valider') {
       try {
-        await axios.put(`http://localhost:3307/api/validatefeedback/${feedbackId}`); 
+        await axios.put(`http://localhost:3307/feedback/${feedbackId}`); 
         fetchData();
       } catch (error) {
         alert("Erreur lors de l'envoi des données", error);
@@ -54,7 +54,7 @@ function AdminFeedback () {
     }
     // request to add to db
     try {
-      await axios.post('http://localhost:3307/api/postfeedback', newFeedback);
+      await axios.post('http://localhost:3307/feedback', newFeedback);
       alert('Feedback ajouté')
       // refresh list
       fetchData();

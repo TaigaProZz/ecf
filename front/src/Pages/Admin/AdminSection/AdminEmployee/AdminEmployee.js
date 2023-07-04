@@ -10,7 +10,7 @@ function AdminEmployees () {
 
   // get all employees
   const fetchData = async () => {
-    const response = await axios.get('http://localhost:3307/api/employee');
+    const response = await axios.get('http://localhost:3307/employee');
     const result = response.data;
     setEmployee(result);
   }
@@ -36,7 +36,7 @@ function AdminEmployees () {
     
     try {
       // send it to db
-      await axios.post('http://localhost:3307/api/postemployee', {
+      await axios.post('http://localhost:3307/employee', {
           name: employee.name,
           email: employee.email,
           password: employee.password,
