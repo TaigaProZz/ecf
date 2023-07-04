@@ -25,12 +25,11 @@ function SectionFeedback() {
   }, []);
 
   return (
-      <section className="darkHomeSection">
-        <div className='sectionFeedbackContainer'>
-          <div className="header">
-            <h1 className="subTitle">Car l'avis de nos clients comptent...</h1>
-          </div>
-          <div className="boxs">
+    <section className="sectionFeedbackContainer">
+        <div className="header">
+          <h2 className="subTitle">Car l'avis de nos clients comptent...</h2>
+        </div>
+        <div className="boxs">
           <Carousel
             showThumbs={false}
             infiniteLoop={true}
@@ -38,22 +37,19 @@ function SectionFeedback() {
             centerSlidePercentage={33.33}
             showStatus={false}
             swipeable={false}
-            autoPlay={true}
             interval={2000}
           >
-          {feedbacks.map((feedback) => (
-            <div key={feedback.id}>
-              <FeedbackList name={feedback.name} text={feedback.message} rating={feedback.rating} />
-            </div>
-          ))}
-        </Carousel>
-
-          </div>
-          <div className="sendFeedbackList">
-            <CommentBox />
-          </div>
+            {feedbacks.map((feedback) => (
+              <div key={feedback.id}>
+                <FeedbackList name={feedback.name} text={feedback.message} rating={feedback.rating} />
+              </div>
+            ))}
+          </Carousel>
         </div>
-      </section>
+        <div className="sendFeedbackList">
+          <CommentBox />
+        </div>
+    </section>
   );
 }
 

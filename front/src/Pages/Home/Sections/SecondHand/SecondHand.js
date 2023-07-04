@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 function SectionsSale() {
   return (
-    <section className="darkHomeSection">
-      <div className="sectionContainer">
-        <div className="left-section center">
+    <section className="section-container-v2">
+    
+        <div className="left-section-v2">
           <ul>
             <li>Vente de véhicules d’occasion</li>
             <li>Reprise de vos véhicules</li>
@@ -15,10 +15,10 @@ function SectionsSale() {
             </button>
           </Link>
         </div>
-        <div className="right-section">
+        <div className="right-section-v2">
           <img className="homeImg" src='/img/cars_buy.png' alt="Garage V.Parrot Logo" />
         </div>
-      </div>
+   
     </section>
   );
 }

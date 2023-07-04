@@ -1,71 +1,56 @@
 @use "src/App" as app;
 
 @media screen and (max-width: 700px) {
-  .right-section {
-    height: 30%;
+  .section-container-v1 {
+    flex-direction: column;
+   
   }
-  .left-section {
-    height: 70%;
-  }
-
-
-  .welcome-section-container {
+  .section-container-v2 {
     flex-direction: column-reverse;
   }
-  
+
+  .left-section-v1, .right-section-v1, .left-section-v2, .right-section-v2 {
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .right-section-v1 {
+    flex-direction: column;
+  }
+
+  .left-section-v2 {
+    flex-direction: column;
+  }
 }
 
 @media screen and (min-width: 701px) {
-  .welcome-section-container {
-    flex-direction: row;
+  .section-container-v1, .section-container-v2 {
+    flex-direction: row; 
   }
-  .left-section, .right-section {
+   
+  .left-section-v1, .left-section-v2, .right-section-v1, .right-section-v2 {
     width: 50%;
-    height: 100%;
+    display: flex;
     justify-content: center;
+    align-items: center;
   }
+
+  .right-section-v1, .left-section-v2 {
+    flex-direction: column;
+  }
+
 }
 
-
-.title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.homeImg {
-  width: 60%;  
-}
-
-.sectionContainer, .welcome-section-container {
+.section-container-v1, .section-container-v2 {
   height: 100vh;
   width: 100vw;
+  display: flex;
   color: app.$mainFontColor;
-  display: flex;
 }
 
-.welcome-section-container {
-  margin-top: 10vh;
-  height: 90vh;
-  display: flex;
-}
-
-.left-section {
-  float: left;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.right-section {
-  float: right;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.serviceList {
+.service-list {
   background-color: #373D51;
   padding: 0.5em;
   height: auto;
@@ -74,14 +59,16 @@
   scrollbar-width: thin;
 }
 
-.lightSection {
+.homeImg {
+  width: 100%;  
+}
+
+.light-section {
   background-color: app.$elementColor;
 }
 
-.darkSection {
-  background-color: inherit;
-}
 
+// scrollbar 
 .serviceList8::-webkit-scrollbar-track
 {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);

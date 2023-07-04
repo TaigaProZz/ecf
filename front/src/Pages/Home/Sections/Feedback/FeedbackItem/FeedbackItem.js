@@ -8,12 +8,12 @@ function FeedbackList(props) {
   }
 
   return (
-    <div className="FeedbackList">
-      <div className="FeedbackListRating">
+    <div className="feedback-list">
+      <div className="feedback-list-rating">
         {rating} 
       </div>
-      <div className="FeedbackListName">{props.name}</div>
-      <div className="FeedbackListText">{props.text}</div>
+      <div className="feedback-list-name">{props.name}</div>
+      <div className="feedback-list-text">{props.text}</div>
     </div>
   );
 }

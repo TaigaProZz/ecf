@@ -2,17 +2,16 @@ import { Link } from "react-router-dom";
 
 function SectionIntro() {
   return (
-    <div className="lightSection">
-      <section className="sectionContainer">
-          <div className="left-section">
+      <section className="section-container-v1 light-section">
+          <div className="left-section-v1">
             <img className='homeImg' src='/img/car_repair.png' alt="reparation de voiture" />
           </div>
-          <div className="right-section center">
+          <div className="right-section-v1">
             <ul>
-            <li>Réparation Carrosserie</li>
-            <li>Réparation voiture</li>
-            <li>Contrôle Technique</li>
-            <li>Entretien et remise en route</li>
+              <li>Réparation Carrosserie</li>
+              <li>Réparation voiture</li>
+              <li>Contrôle Technique</li>
+              <li>Entretien et remise en route</li>
           </ul>
           <Link to="/ventes">
             <button className="home-button">
@@ -21,8 +20,6 @@ function SectionIntro() {
           </Link>
         </div>
       </section>
-    </div>
-
   );
 }
 

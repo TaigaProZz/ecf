@@ -18,22 +18,21 @@ function SectionAllServices() {
   }, []);
 
   return (
-    <div className="lightSection">
-      <section className='sectionContainer'>
-        <div className="left-section">
-          <div className='serviceList'>
+    <section className='section-container-v1 light-section'>
+      <div className="left-section-v1">
+        <img className="homeImg" src='/img/car_atelier.png' alt="Garage V.Parrot Logo" />
+
+      </div>
+      <div className="right-section-v1">  
+        <div className='service-list'>
             <ul>
               { services.map((elt, index) => { 
                 return <li key={index}>{elt.services}</li>
               })}
             </ul>
-          </div>
-        </div>
-        <div className="right-section">        
-          <img className="homeImg" src='/img/car_atelier.png' alt="Garage V.Parrot Logo" />
-        </div> 
-      </section>
-    </div>
+          </div>      
+      </div> 
+    </section>
   );
 }
 
