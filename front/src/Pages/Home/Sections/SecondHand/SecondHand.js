@@ -4,7 +4,7 @@ function SectionsSale() {
   return (
     <section className="darkHomeSection">
       <div className="sectionContainer">
-        <div className="leftSection center">
+        <div className="left-section center">
           <ul>
             <li>Vente de véhicules d’occasion</li>
             <li>Reprise de vos véhicules</li>
@@ -15,7 +15,7 @@ function SectionsSale() {
             </button>
           </Link>
         </div>
-        <div className="rightSection">
+        <div className="right-section">
           <img className="homeImg" src='/img/cars_buy.png' alt="Garage V.Parrot Logo" />
         </div>
       </div>

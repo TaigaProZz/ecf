@@ -20,7 +20,7 @@ function SectionAllServices() {
   return (
     <div className="lightSection">
       <section className='sectionContainer'>
-        <div className="leftSection">
+        <div className="left-section">
           <div className='serviceList'>
             <ul>
               { services.map((elt, index) => { 
@@ -29,7 +29,7 @@ function SectionAllServices() {
             </ul>
           </div>
         </div>
-        <div className="rightSection">        
+        <div className="right-section">        
           <img className="homeImg" src='/img/car_atelier.png' alt="Garage V.Parrot Logo" />
         </div> 
       </section>

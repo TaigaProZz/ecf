@@ -4,10 +4,10 @@ function SectionIntro() {
   return (
     <div className="lightSection">
       <section className="sectionContainer">
-          <div className="leftSection">
+          <div className="left-section">
             <img className='homeImg' src='/img/car_repair.png' alt="reparation de voiture" />
           </div>
-          <div className="rightSection center">
+          <div className="right-section center">
             <ul>
             <li>Réparation Carrosserie</li>
             <li>Réparation voiture</li>

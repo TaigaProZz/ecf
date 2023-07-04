@@ -1,5 +1,32 @@
 @use "src/App" as app;
 
+@media screen and (max-width: 700px) {
+  .right-section {
+    height: 30%;
+  }
+  .left-section {
+    height: 70%;
+  }
+
+
+  .welcome-section-container {
+    flex-direction: column-reverse;
+  }
+  
+}
+
+@media screen and (min-width: 701px) {
+  .welcome-section-container {
+    flex-direction: row;
+  }
+  .left-section, .right-section {
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+  }
+}
+
+
 .title {
   display: flex;
   justify-content: center;
@@ -10,29 +37,28 @@
   width: 60%;  
 }
 
-.sectionContainer, .welcome-sectionContainer {
+.sectionContainer, .welcome-section-container {
   height: 100vh;
   width: 100vw;
   color: app.$mainFontColor;
   display: flex;
 }
 
-.welcome-sectionContainer {
+.welcome-section-container {
   margin-top: 10vh;
-}
-
-.leftSection {
-  float: left;
-  width: 50%;
-  height: 100%;
+  height: 90vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.rightSection {
+.left-section {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.right-section {
   float: right;
-  width: 50%;
   height: 100%;
   display: flex;
   align-items: center;
