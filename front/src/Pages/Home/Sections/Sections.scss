@@ -1,5 +1,11 @@
 @use "src/App" as app;
 
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .homeImg {
   width: 60%;  
 }

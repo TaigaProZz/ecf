@@ -9,7 +9,6 @@ app.use(cors({
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-
 }));
 
 app.use(express.json());
@@ -23,7 +22,7 @@ app.use("/service", require("./routes/service.route"));
 app.use("/feedback", require("./routes/feedback.route"));
 app.use("/employee", require("./routes/employee.route"));
 app.use("/car", require("./routes/car.route"));
-app.use("/carimage", require("./routes/carImage.route"));
+app.use("/carimage", require("./routes/car-image.route"));
 app.use("/contact", require("./routes/contact.route"));
 app.use("/schedule", require("./routes/schedule.route"));
 
