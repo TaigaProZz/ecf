@@ -9,7 +9,7 @@ function AdminSecondHand () {
 
   // collect all cars already in database
   const fetchData = async () => {
-    const response = await axios.get('http://localhost:3307/api/cars');
+    const response = await axios.get('http://localhost:3307/car');
     const result = response.data;
     setCars(result);
   };
@@ -50,7 +50,7 @@ function AdminSecondHand () {
     });
 
     try {
-      const response = await axios.post('http://localhost:3307/api/postcar', formData);
+      const response = await axios.post('http://localhost:3307/car', formData);
       console.log(response);
       if (response.status === 200) {
         setCars([...cars, car]);

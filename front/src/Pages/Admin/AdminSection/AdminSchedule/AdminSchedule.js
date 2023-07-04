@@ -8,7 +8,7 @@ function AdminSchedule () {
 
   // fetch schedule
   const fetchData = async () => {
-    const response = await axios.get("http://localhost:3307/api/schedule");
+    const response = await axios.get("http://localhost:3307/schedule");
     const result = response.data
     setSchedule(result);
   }
@@ -86,7 +86,7 @@ function AdminSchedule () {
     });
     // and send it to db
     try {
-      await axios.post("http://localhost:3307/api/postschedule", updates);
+      await axios.post("http://localhost:3307/schedule", updates);
       setModifiedSchedule([]);
       fetchData();
       alert("Données enregistrées avec succès !");

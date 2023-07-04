@@ -11,11 +11,10 @@ const Vente = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const carResponse = await axios.get('http://localhost:3307/api/cars');
+        const carResponse = await axios.get('http://localhost:3307/car');
         setCars(carResponse.data);
 
-        const imageResponse = await axios.get('http://localhost:3307/api/carsimage');
-
+        const imageResponse = await axios.get('http://localhost:3307/carimage');
         const imageList = imageResponse.data.reduce((acc, image) => {
           const carId = image.car_id;
           const img = image.path;
@@ -25,7 +24,6 @@ const Vente = () => {
           } else {
             acc[carId] = list;
           }
-          
           return acc;
         }, {});
 

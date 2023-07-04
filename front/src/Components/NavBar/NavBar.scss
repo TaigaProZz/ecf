@@ -14,9 +14,7 @@
       padding: 5px;
     }
   }
-  .nav-icon {
-    padding-right: 10px;
-  }
+ 
 }
 
 // large screen
@@ -33,9 +31,7 @@
       padding: 10px;
     }
   }
-  .nav-icon {
-    padding-right: 20px;
-  }
+ 
 }
 
 .my-nav {
@@ -61,8 +57,10 @@
   font-family: app.$mainFont;
 }
 
-.nav-icon {
+.nav-user {
   width: 33.33%;
   display: flex; 
+  flex-direction: column;
   justify-content: flex-end;
+  align-items: center;
 }

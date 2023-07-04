@@ -13,12 +13,12 @@ function Car() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const carResponse = await axios.get(`http://localhost:3307/api/cars/${params.id}`);
+        const carResponse = await axios.get(`http://localhost:3307/car/${params.id}`);
         console.log(carResponse.data);
         const car = carResponse.data;
         setElement(car[0]);
 
-        const imageResponse = await axios.get(`http://localhost:3307/api/carsimage/${params.id}`);
+        const imageResponse = await axios.get(`http://localhost:3307/carimage/${params.id}`);
         const images = imageResponse.data;
 
         const imageList = JSON.parse(images[0].path);
