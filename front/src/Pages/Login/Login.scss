@@ -1,9 +1,41 @@
+@use "src/App" as app;
+
+@media screen and (max-width: 700px) {
+  .login-container {
+    height: 75vh;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  .login-container {
+    height: calc(75vh - 40px);
+  }
+  
+}
+
 .login-container {
-  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10vh;
+}
+
+.login-form {
+  background-color: app.$elementColor;
+  width: 100vh;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border-radius: 12px;
+  margin: 10px;
+  input {
+    resize: none;
+    height: auto;
+    width: 60%;
+    margin: 10px;
+    padding: 8px;    
+  }
 }
 
 .login-password-row, .login-email-row {
@@ -11,11 +43,13 @@
   width: 100%;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+
   padding: 10px;
 }
 
 .login-password-text, .login-email-text  {
-  width: 30%;
+  width: 33%;
 }
 
 .login-password-input, .login-email-input  {

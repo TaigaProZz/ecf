@@ -37,16 +37,16 @@ function Login({ setUser }) {
 
   return (
     <div className="login-container">
-      <div className='form'>
-        <h1 className='center'>Se connecter</h1>
+      <div className='login-form'>
+        <h1 className='form-title'>Se connecter</h1>
         <div className='login-email-row'>
-          <p className='login-email-text'>Email :</p>
+          <label className='login-email-text'>Email :</label>
           <div className='login-email-input'>
             <input ref={inputEmail} id='login-email-input'></input>
           </div>
         </div>
         <div className='login-password-row'>
-          <p className='login-password-text'>Mot de passe :</p>
+          <label className='login-password-text'>Mot de passe :</label>
           <div className='login-password-input'>
             <input ref={inputPassword} id='login-password-input'></input>
           </div>

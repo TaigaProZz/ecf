@@ -48,7 +48,7 @@ function Contact() {
 
   return (
     <div className="contact-container">
-      <div ref={form} className='form'>
+      <div ref={form} className='contact-form'>
         <h1 className='form-title'>Formulaire de contact</h1>
         <div className='name-row row'>
           <label>Nom prénom :</label>

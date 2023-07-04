@@ -18,6 +18,9 @@ $buttonDesktopFontSize: 18px;
 $buttonMobileFontSize: 12px;
 $placeholderDesktopFontSize: 18px;
 $placeholderMobileFontSize: 12px;
+$labelDesktopFontSize: 24px;
+$labelMobileFontSize: 16px;
+
 
 @media screen and (max-width: 700px) {
   html, body, #root{
@@ -76,7 +79,9 @@ $placeholderMobileFontSize: 12px;
     font-size: 16px;
   }
 
-
+  label {
+    font-size: $labelMobileFontSize;
+  }
 }
 
 // large screen
@@ -101,7 +106,6 @@ $placeholderMobileFontSize: 12px;
   input::placeholder, textarea::placeholder {
     font-size: $placeholderDesktopFontSize;
   }
-
   
   .home-button {
     height: 70px;
@@ -136,6 +140,9 @@ $placeholderMobileFontSize: 12px;
     font-size: 20px;
   }
 
+  label {
+    font-size: $labelDesktopFontSize;
+  }
 }
 
 
