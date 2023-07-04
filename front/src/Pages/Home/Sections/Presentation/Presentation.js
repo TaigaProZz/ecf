@@ -1,6 +1,24 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 function SectionIntro() {
+  const [services, setServices] = useState([]);
+
+  const fetchServices = async () => {
+    try {
+      const response = await axios.get('http://localhost:3307/service');
+      setServices(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
+
+
   return (
       <section className="section-container-v1 light-section">
           <div className="left-section-v1">
@@ -8,11 +26,11 @@ function SectionIntro() {
           </div>
           <div className="right-section-v1">
             <ul>
-              <li>Réparation Carrosserie</li>
-              <li>Réparation voiture</li>
-              <li>Contrôle Technique</li>
-              <li>Entretien et remise en route</li>
-          </ul>
+              { services.slice(0, 4).map((service) => {
+                  return <li key={service.id}>{service.services}</li>
+              })}
+              <li>...</li>
+            </ul>
           <Link to="/ventes">
             <button className="home-button">
               Voir tous les services
