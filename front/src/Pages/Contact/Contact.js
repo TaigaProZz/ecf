@@ -49,24 +49,24 @@ function Contact() {
   return (
     <div className="contact-container">
       <div ref={form} className='form'>
-        <h1 className='center'>Formulaire de contact</h1>
+        <h1 className='form-title'>Formulaire de contact</h1>
         <div className='name-row row'>
-          <p>Nom prénom :</p>
+          <label>Nom prénom :</label>
           <input ref={nameInputRef} className='center' placeholder='Entrez votre nom prénom'></input>
         </div>
         <div className='phone-row row'>
-          <p>Téléphone :</p>
+          <label>Téléphone :</label>
           <input ref={phoneInputRef} placeholder='Entrez votre numéro de téléphone'></input>
         </div>
         <div className='email-row row'>
-          <p>Email :</p>
+          <label>Email :</label>
           <input ref={emailInputRef} placeholder='Entrez votre email'></input>
         </div>
         <div className='msg-row row'>
-          <p>Message:</p>
+          <label>Message:</label>
           <textarea ref={msgInputRef} className='msg-input' placeholder='Entrez votre message'></textarea>
         </div>
-        <div className='center'>
+        <div className='contact-sendbtn-container'>
           <button className='home-button' type="submit" onClick={submit}>Envoyer</button>
         </div>
       </div>  

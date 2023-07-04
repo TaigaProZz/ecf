@@ -9,7 +9,7 @@ $inputColor: #3F4458;
 
 // font sizes
 $h1DesktopFontSize: 48px;
-$h1MobileFontSize: 36px;
+$h1MobileFontSize: 32px;
 $h2DesktopFontSize: 24px;
 $h2MobileFontSize: 18px;
 $anchorDesktopFontSize: 20px;
@@ -43,6 +43,40 @@ $placeholderMobileFontSize: 12px;
     font-size: $placeholderMobileFontSize;
   }
 
+  .home-button {
+    height: 50px;
+    width: 130px;
+    border-radius: 12px;
+    background-color: $buttonColor;
+    color: $mainFontColor;
+    border-color: $mainFontColor;
+    font-family: $mainFont;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    a {
+      text-decoration: none;
+    }
+  } 
+
+  input {
+    color: $mainFontColor;
+    background-color: $inputColor;
+    border-color: white;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+
+  textarea {
+    color: $mainFontColor;
+    background-color: $inputColor;
+    border-color: white;
+    border-radius: 12px;
+    font-size: 16px;
+  }
+
+
 }
 
 // large screen
@@ -68,6 +102,40 @@ $placeholderMobileFontSize: 12px;
     font-size: $placeholderDesktopFontSize;
   }
 
+  
+  .home-button {
+    height: 70px;
+    width: 200px;
+    border-radius: 12px;
+    background-color: $buttonColor;
+    color: $mainFontColor;
+    border-color: $mainFontColor;
+    font-family: $mainFont;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    a {
+      text-decoration: none;
+    }
+  } 
+
+  input {
+    color: $mainFontColor;
+    background-color: $inputColor;
+    border-color: white;
+    border-radius: 12px;
+    font-size: 20px;
+  }
+
+  textarea {
+    color: $mainFontColor;
+    background-color: $inputColor;
+    border-color: white;
+    border-radius: 12px;
+    font-size: 20px;
+  }
+
 }
 
 
@@ -86,38 +154,6 @@ html, body, #root {
     text-decoration: none;
   }
 
-  input {
-    color: $mainFontColor;
-    background-color: $inputColor;
-    border-color: white;
-    border-radius: 12px;
-    font-size: 20px;
-  }
-  textarea {
-    color: $mainFontColor;
-    background-color: $inputColor;
-    border-color: white;
-    border-radius: 12px;
-    font-size: 20px;
-  }
-
-
-  .home-button {
-    height: 70px;
-    width: 200px;
-    border-radius: 12px;
-    background-color: $buttonColor;
-    color: $mainFontColor;
-    border-color: $mainFontColor;
-    font-family: $mainFont;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    a {
-      text-decoration: none;
-    }
-  } 
 }
 
 .center {

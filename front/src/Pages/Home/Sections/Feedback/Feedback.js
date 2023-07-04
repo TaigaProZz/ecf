@@ -1,11 +1,10 @@
 import FeedbackList from './FeedbackItem/FeedbackItem';
 import CommentBox from './SendFeedback/SendFeedback';
-import './Feedback.scss'
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
+import './Feedback.scss'
 
 function SectionFeedback() {
   const [feedbacks, setFeedbacks] = useState([]);
