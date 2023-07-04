@@ -89,21 +89,21 @@ const Vente = () => {
     <div className="secondhand-container">
       <section className="section-sort">
         <h2 className='center' htmlFor="sort">Trier par :</h2>
-        <div className='price'>
-          <p>Prix :</p>
-          <input id='price-one' className='sort-input' placeholder="Entre"></input>
-          <input id='price-two' className='sort-input' placeholder="Et"></input>
-        </div>
-        <div className='year'>
-          <p>Année :</p>
-          <input id='year-one' className='sort-input' placeholder="Entre"></input>
-          <input id='year-two' className='sort-input' placeholder="Et"></input>
-        </div>
-        <div className='km'>
-          <p>Km :</p>
-          <input id='km-one' className='sort-input' placeholder="Entre"></input>
-          <input id='km-two' className='sort-input' placeholder="Et"></input>
-        </div>
+          <div className='price'>
+            <label>Prix :</label>
+            <input id='price-one' className='sort-input' placeholder="Entre"></input>
+            <input id='price-two' className='sort-input' placeholder="Et"></input>
+          </div>
+          <div className='year'>
+            <label>Année :</label>
+            <input id='year-one' className='sort-input' placeholder="Entre"></input>
+            <input id='year-two' className='sort-input' placeholder="Et"></input>
+          </div>
+          <div className='km'>
+            <label>Km :</label>
+            <input id='km-one' className='sort-input' placeholder="Entre"></input>
+            <input id='km-two' className='sort-input' placeholder="Et"></input>
+          </div>
         <div className='center'>
           <button id='sort-btn-price' className='shc-button' onClick={sortCars}>Trier</button>
         </div>

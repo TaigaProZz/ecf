@@ -35,16 +35,6 @@
   gap: 20px;
 }
 
-// .car-item {
-//   height: 70vh;
-//   width: 30%;
-//   background-color: app.$elementColor;
-//   border-radius: 5px;
-//   padding: 10px;
-//   display: block;
-//   flex-direction: column;
-// }
-
 .car-details {
   height: 100%;
   width: auto;
@@ -58,6 +48,17 @@
   width: 80%;
   height: 50%;
   object-fit: cover;
+}
+
+.price, .year, .km {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  label {
+    font-size: 20px;
+  }
 }
 
 .sort-input {
