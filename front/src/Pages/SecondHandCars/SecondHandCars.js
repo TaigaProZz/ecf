@@ -119,7 +119,7 @@ const Vente = () => {
                   
                   </div>
                   <div className='secondhand-car-button'>
-                    <p className='shc-button'>Prix : {car.price} €</p>
+                    <p className='shc-button'>{car.price} €</p>
                     <Link to={"/car/" + car.id}  >
                       <button className='shc-button'>Détails</button>
                     </Link> 

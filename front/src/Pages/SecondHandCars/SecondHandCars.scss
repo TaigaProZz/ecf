@@ -1,7 +1,7 @@
 @use "src/App" as app;
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .secondhand-container {
     flex-direction: column;
     height: auto;
@@ -13,14 +13,14 @@
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .car-item {
     height: 35vh;
     width: 40vh;
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
   }
 
   .section-car-list {
@@ -40,7 +40,7 @@
 
 }
 
-@media screen and (min-width: 701px) {
+@media screen and (min-width: 769px) {
   .secondhand-container {
     max-height: calc(75vh - 20px);
     flex-direction: row;
@@ -62,9 +62,9 @@
 
   .car-item {
     height: 45vh;
-    width: 30%;
+    width: calc(30% - 20px);
     padding: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
   }
   
 
@@ -134,14 +134,14 @@
 .secondhand-car-description {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: self-start;
   justify-content: center;
   width: 50%;
   height: 100%;
   font-size: 15px;
   p {
     padding: 0;
-    margin: 4px;
+    margin: 0px 0px 5px 0px;
   }
   
 }
@@ -167,7 +167,7 @@
 
 .shc-button {
   height: 50px;
-  width: 150px;
+  width: 120px;
   border-radius: 12px;
   margin-top: 12px;
   background-color: app.$buttonColor;
