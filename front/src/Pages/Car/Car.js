@@ -14,16 +14,14 @@ function Car() {
     const fetchData = async () => {
       try {
         const carResponse = await axios.get(`http://localhost:3307/car/${params.id}`);
-        console.log(carResponse.data);
         const car = carResponse.data;
         setElement(car[0]);
 
         const imageResponse = await axios.get(`http://localhost:3307/carimage/${params.id}`);
         const images = imageResponse.data;
-
         const imageList = JSON.parse(images[0].path);
-        console.log(imageList);
         setImages(imageList);
+
       } catch (error) {
         console.log(error);
       }
@@ -40,8 +38,8 @@ function Car() {
 
   return (
     <div className="car-page-container">
-      <div className='left-side center'>
-        <section className='images-section center'>
+      <div className='left-side'>
+        <section className='images-section'>
           <img className='main-image' src={pathExtension + images[0]} alt='voiture' />
           <div className='sub-image-container'>
             <div className='sub-image'> 

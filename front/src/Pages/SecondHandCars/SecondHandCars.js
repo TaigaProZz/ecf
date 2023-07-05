@@ -102,30 +102,28 @@ const Vente = () => {
           <button id='sort-btn-price' className='shc-button' onClick={sortCars}>Trier</button>
         </div>
       </section>
-
+     
       <section className='section-car-list'>
         <ul className="car-list">
           {cars.map((car, index) => (      
-            <li key={car.id} className="car-item" style={style} id={car.id}>
-              <div className="car-details">
-              <img src={img[car.id]?.[0]} alt={car.brand} className="car-image" />
-                <div className='secondhand-car-details'>
-                  <div className='secondhand-car-description'>
-                    <h3>{car.brand}</h3>
-                    <p>Modèle : {car.model}</p>
-                    <p>Année : {car.year}</p>
-                    <p>{car.km} km</p>
-                   
-                  
-                  </div>
-                  <div className='secondhand-car-button'>
-                    <p className='shc-button'>{car.price} €</p>
-                    <Link to={"/car/" + car.id}  >
-                      <button className='shc-button'>Détails</button>
-                    </Link> 
-                  </div>
-                </div>     
-              </div>
+            <li key={car.id} className="car-item" style={style} id={car.id} >
+              <Link to={"/car/" + car.id}>
+                <div className="car-details">
+                <img src={img[car.id]?.[0]} alt={car.brand} className="car-image" />
+                  <div className='secondhand-car-details'>
+                    <div className='secondhand-car-description'>
+                      <h3>{car.brand}</h3>
+                      <p>Modèle : {car.model}</p>
+                      <p>Année : {car.year}</p>
+                      <p>{car.km} km</p>
+                    </div>
+                    <div className='secondhand-car-button'>
+                      <p className='car-price-shape'>{car.price} €</p>
+                    
+                    </div>
+                  </div>     
+                </div>
+              </Link> 
             </li>
           ))}
         </ul>

@@ -22,7 +22,7 @@ $labelDesktopFontSize: 24px;
 $labelMobileFontSize: 16px;
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   html, body, #root{
     font-size: 12px;
   }
@@ -85,7 +85,7 @@ $labelMobileFontSize: 16px;
 }
 
 // large screen
-@media screen and (min-width: 701px) {
+@media screen and (min-width: 769px) {
 
   h1 {
     font-size: $h1DesktopFontSize;

@@ -1,7 +1,7 @@
 @use "../../App" as app;
 
 // phone
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .nav-logo {
     padding-left: 10px;
     img {
@@ -18,7 +18,7 @@
 }
 
 // large screen
-@media screen and (min-width: 701px) {
+@media screen and (min-width: 769px) {
   .nav-logo {
     padding-left: 20px;
     img {

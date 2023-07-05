@@ -73,26 +73,26 @@ function Contact() {
 
   return (
     <div className="contact-container">
-      <form ref={form} className='form'>
+      <form ref={form} className='contact-form'>
         <h2 className='center'>Formulaire de contact</h2>
         <div className='row'>
-          <p>Nom prénom :</p>
+          <label>Nom prénom :</label>
           <input ref={nameInputRef} className='center' type='text' placeholder='Entrez votre nom prénom'></input>
         </div>
         <div className='row'>
-          <p>Téléphone :</p>
+          <label>Téléphone :</label>
           <input ref={phoneInputRef} type="tel" required pattern="[0-9]{10}" placeholder='Entrez votre numéro de téléphone'></input>
         </div>
         <div className='row'>
-          <p>Email :</p>
+          <label>Email :</label>
           <input ref={emailInputRef} type='email' placeholder='Entrez votre email'></input>
         </div>
         <div className='row'>
-          <p>Voiture:</p>
+          <label>Voiture:</label>
           <textarea disabled ref={msgInputRef} id='car-contact-car' placeholder={element.title + ' réf: ' + element.id}></textarea>
         </div>
         <div className='msg-row row'>
-          <p>Message:</p>
+          <label>Message:</label>
           <textarea ref={msgInputRef} id='car-contact-msg' placeholder='Entrez votre message'></textarea>
         </div>
         <div className='center'>

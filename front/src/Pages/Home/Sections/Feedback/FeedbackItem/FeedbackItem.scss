@@ -1,6 +1,6 @@
 @use 'src/App.scss' as app;
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .feedback-list-text {
     font-size: 8px;
   }

@@ -1,6 +1,6 @@
 @use "src/App" as app;
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .section-container-v1 {
     flex-direction: column;
    
@@ -25,7 +25,7 @@
   }
 }
 
-@media screen and (min-width: 701px) {
+@media screen and (min-width: 769px) {
   .section-container-v1, .section-container-v2 {
     flex-direction: row; 
   }

@@ -1,12 +1,12 @@
 @use "src/App" as app;
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 768px) {
   .contact-container {
     height: 75vh;
   }
 }
 
-@media screen and (min-width: 701px) {
+@media screen and (min-width: 769px) {
   .contact-container {
     height: calc(75vh - 20px);
   }
