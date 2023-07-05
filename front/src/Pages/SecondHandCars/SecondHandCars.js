@@ -36,13 +36,7 @@ const Vente = () => {
   }, []);
 
   const style = {
-    height: '70vh',
-    width: '31%',
-    backgroundColor: '#20273D',
-    borderRadius: '12px',
-    padding: '10px',
-    display: 'flex',
-    flexDirection: 'column'
+   
   }
 
   const sortCars = () => {
@@ -115,16 +109,22 @@ const Vente = () => {
             <li key={car.id} className="car-item" style={style} id={car.id}>
               <div className="car-details">
               <img src={img[car.id]?.[0]} alt={car.brand} className="car-image" />
-                <div className='center'>
-                  <h3>{car.brand}</h3>
-                  <p>Modèle : {car.model}</p>
-                  <p>Année : {car.year}</p>
-                  <p>{car.km} km</p>
-                  <p>Prix : {car.price} €</p>
-                </div>
-                <Link to={"/car/" + car.id}  >
-                  <button className='shc-button'>Détails</button>
-                </Link>          
+                <div className='secondhand-car-details'>
+                  <div className='secondhand-car-description'>
+                    <h3>{car.brand}</h3>
+                    <p>Modèle : {car.model}</p>
+                    <p>Année : {car.year}</p>
+                    <p>{car.km} km</p>
+                   
+                  
+                  </div>
+                  <div className='secondhand-car-button'>
+                    <p className='shc-button'>Prix : {car.price} €</p>
+                    <Link to={"/car/" + car.id}  >
+                      <button className='shc-button'>Détails</button>
+                    </Link> 
+                  </div>
+                </div>     
               </div>
             </li>
           ))}

@@ -1,9 +1,70 @@
 @use "src/App" as app;
 
-.img {
-  width: 10%;
-  height: 10%;
+
+@media screen and (max-width: 700px) {
+  .secondhand-container {
+    flex-direction: column;
+  }
+
+  .car-list {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .car-item {
+    height: 35vh;
+    width: 40%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .section-sort {
+    height: auto;
+    width: 100%;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: app.$elementColor;
+  }
+
 }
+
+@media screen and (min-width: 701px) {
+  .secondhand-container {
+    flex-direction: row;
+  }
+
+  .car-list {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .car-item {
+    height: 45vh;
+    width: 30%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+
+  .section-sort {
+    height: auto;
+    width: 20%;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: app.$elementColor;
+  }
+
+}
+
 
 .secondhand-container {
   display: flex;
@@ -13,7 +74,6 @@
 
 .section-sort {
   height: auto;
-  width: 20%;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -25,14 +85,14 @@
   height: 100%;
   width: 80%;
   display: flex;
+  justify-content: center;
 }
 
-.car-list {
-  width: 100%;
-  padding: 10px;
+.car-item {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-direction: column;
+  background-color: #20273D;
+  border-radius: 12px;
 }
 
 .car-details {
@@ -47,7 +107,32 @@
 .car-image {
   width: 80%;
   height: 50%;
-  object-fit: cover;
+  object-fit: contain;
+}
+
+.secondhand-car-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+
+}
+
+.secondhand-car-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  font-size: 15px;
+  p {
+    padding: 0;
+    margin: 4px;
+  }
+  
 }
 
 .price, .year, .km {
