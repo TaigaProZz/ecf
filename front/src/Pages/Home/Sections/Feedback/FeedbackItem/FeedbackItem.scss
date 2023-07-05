@@ -1,3 +1,5 @@
+@use 'src/App.scss' as app;
+
 @media screen and (max-width: 700px) {
   .feedback-list-text {
     font-size: 8px;
@@ -7,7 +9,7 @@
 .feedback-list {
   height: 250px;
   width: 20vw;
-  background-color: #293045;
+  background-color: app.$barColor;
   color: white;
   border-radius: 12px;
 }

@@ -4,10 +4,12 @@
 @media screen and (max-width: 700px) {
   .secondhand-container {
     flex-direction: column;
+    height: auto;
+
   }
 
   .car-list {
-    width: 100%;
+    width: 100vw;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -16,9 +18,14 @@
 
   .car-item {
     height: 35vh;
-    width: 40%;
+    width: 40vh;
     padding: 10px;
     margin-bottom: 10px;
+  }
+
+  .section-car-list {
+    height: auto;
+    width: 100vw;
   }
 
   .section-sort {
@@ -35,12 +42,19 @@
 
 @media screen and (min-width: 701px) {
   .secondhand-container {
+    max-height: calc(75vh - 20px);
     flex-direction: row;
+  }
+ 
+  .section-car-list {
+    height: auto;
+    width: 80%;
+    padding: 20px;
+    overflow-y: auto;
   }
 
   .car-list {
     width: 80%;
-    padding: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -52,6 +66,7 @@
     padding: 10px;
     margin-bottom: 10px;
   }
+  
 
   .section-sort {
     height: auto;
@@ -65,10 +80,8 @@
 
 }
 
-
 .secondhand-container {
   display: flex;
-  height: auto;
   margin-top: 10vh;
 }
 
@@ -82,8 +95,6 @@
 }
 
 .section-car-list {
-  height: 100%;
-  width: 80%;
   display: flex;
   justify-content: center;
 }
@@ -91,7 +102,7 @@
 .car-item {
   display: flex;
   flex-direction: column;
-  background-color: #20273D;
+  background-color: app.$elementColor;
   border-radius: 12px;
 }
 

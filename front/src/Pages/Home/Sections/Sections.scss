@@ -51,7 +51,7 @@
 }
 
 .service-list {
-  background-color: #373D51;
+  background-color: app.$buttonColor;
   padding: 0.5em;
   height: auto;
   border-radius: 12px;
@@ -68,11 +68,11 @@
 }
 
 
-// scrollbar 
-.serviceList8::-webkit-scrollbar-track
+// scrollbar  of services
+.serviceList::-webkit-scrollbar-track
 {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #F5F5F5;
+	background-color: aliceblue;
 	border-radius: 10px;
 }
 
