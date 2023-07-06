@@ -81,6 +81,7 @@
 .secondhand-container {
   display: flex;
   margin-top: 10vh;
+  min-height: calc(75vh - 20px);
   a {
     width: 100%;
     height: 100%;

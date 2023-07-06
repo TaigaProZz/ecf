@@ -105,7 +105,7 @@ const Vente = () => {
      
       <section className='section-car-list'>
         <ul className="car-list">
-          {cars.map((car, index) => (      
+          {/* {cars.map((car, index) => (      
             <li key={car.id} className="car-item" style={style} id={car.id} >
               <Link to={"/car/" + car.id}>
                 <div className="car-details">
@@ -125,7 +125,7 @@ const Vente = () => {
                 </div>
               </Link> 
             </li>
-          ))}
+          ))} */}
         </ul>
       </section>
     </div>
