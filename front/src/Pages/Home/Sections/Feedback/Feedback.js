@@ -1,10 +1,16 @@
+import { useState, useEffect } from 'react';
 import FeedbackList from './FeedbackItem/FeedbackItem';
 import CommentBox from './SendFeedback/SendFeedback';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './Feedback.scss'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, EffectCoverflow} from 'swiper/modules';
+import 'swiper/scss';
+import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
+import 'swiper/css/effect-coverflow';
+
+
 
 function SectionFeedback() {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -29,21 +35,45 @@ function SectionFeedback() {
           <h2 className="subTitle">Car l'avis de nos clients comptent...</h2>
         </div>
         <div className="boxs">
-          <Carousel
-            showThumbs={false}
-            infiniteLoop={true}
-            centerMode={true}
-            centerSlidePercentage={33.33}
-            showStatus={false}
-            swipeable={false}
-            interval={2000}
-          >
+          <Swiper
+            modules={[Navigation, Pagination, EffectCoverflow]}
+            navigation = {true}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={'auto'}
+            effect={'coverflow'}
+            coverflowEffect={{
+              rotate: 10,
+              stretch: 100,
+              depth: 50,
+              modifier: 1,
+              slideShadows: true,
+              
+            }}
+
+            // breakpoint
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+              },
+            }}
+            >
             {feedbacks.map((feedback) => (
-              <div key={feedback.id}>
+              <SwiperSlide key={feedback.id}>
                 <FeedbackList name={feedback.name} text={feedback.message} rating={feedback.rating} />
-              </div>
+              </SwiperSlide>
             ))}
-          </Carousel>
+            
+          </Swiper> 
         </div>
         <div className="sendFeedbackList">
           <CommentBox />

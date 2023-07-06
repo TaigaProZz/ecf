@@ -49,9 +49,9 @@ function AdminEmployees () {
     }
   };
   
-  const resetPassword = () => {
-    console.log("password reset");
-  }
+  // const resetPassword = () => {
+  //   console.log("password reset");
+  // }
 
   return (
     <div className='admin-employee-container'>

@@ -1,18 +1,28 @@
 @use 'src/App.scss' as app;
 
+
+// mobile
 @media screen and (max-width: 768px) {
-  .feedback-list-text {
-    font-size: 8px;
+  .feedback-list {
+    height: 150px;
+    width: 100%;
+    background-color: app.$barColor;
+    color: white;
+    border-radius: 12px;
+  }
+}
+@media screen and (min-width: 769px) {
+
+  .feedback-list {
+    height: 250px;
+    width: 100%;
+    background-color: app.$barColor;
+    color: white;
+    border-radius: 12px;
   }
 }
 
-.feedback-list {
-  height: 250px;
-  width: 20vw;
-  background-color: app.$barColor;
-  color: white;
-  border-radius: 12px;
-}
+
 
 .feedback-list-rating {
   display: inline-flex;
