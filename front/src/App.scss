@@ -21,7 +21,7 @@ $placeholderMobileFontSize: 12px;
 $labelDesktopFontSize: 24px;
 $labelMobileFontSize: 16px;
 
-
+// small screen
 @media screen and (max-width: 768px) {
   html, body, #root{
     font-size: 12px;
@@ -145,7 +145,7 @@ $labelMobileFontSize: 16px;
   }
 }
 
-
+// all screens
 html, body, #root {
   height: 100vh;
   width: 100vw;
@@ -160,6 +160,13 @@ html, body, #root {
     color: $mainFontColor;
     text-decoration: none;
   }
+  button {
+    color: $mainFontColor;
+  }
+  button:hover {
+    background: $buttonHoverColor;
+  }
+
 
 }
 

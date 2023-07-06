@@ -51,14 +51,14 @@ function Car() {
         </section>
       </div>
       <div className='right-side'>
-        <h1>{element.brand}</h1>
+        <h1>{element.brand} {element.model}</h1>
         <h2 className='title'>{element.title}</h2>
         <div className='car-price'>
           <p>{element.price} €</p>
         </div>
         <div className='car-fiche'>
           <h2>Fiche Technique</h2>
-          <p>Référence : {element.id}</p>
+          <p className='ref'>Référence : {element.id}</p>
           <p>{element.description}</p>
         </div>
         <div className='car-contact-container'>

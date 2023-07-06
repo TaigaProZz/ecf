@@ -80,7 +80,7 @@ function AdminServices () {
       </div>
       <div className='admin-service-btn'>
         <PopUpAddService 
-          btn={<button className='add-service-btn'>Ajouter un service <BsPlusSquare size={30} /></button>}
+          btn={<button className='admin-add-btn'>Ajouter un service <BsPlusSquare size={30} /></button>}
           type='Ajouter un service'
           onAddService={addService}>
         </PopUpAddService>

@@ -18,7 +18,7 @@ function AdminUpdateService(props) {
   return (
     <Popup trigger={props.btn} modal nested>
       {close => (
-        <div className="modal">
+        <div className="add-service-modal">
           <button className="close" onClick={close}>
             &times;
           </button>

@@ -77,14 +77,12 @@ function AdminEmployees () {
           )
           })}
       </div>
-      <div className='admin-employee-btn'>
         <AdminAddEmployee
-          btn={<button  className='add-employee-btn'>Ajouter un employé <BsPlusSquare size={30} /></button>}
+          btn={<button  className='admin-add-btn'>Ajouter un employé <BsPlusSquare size={30} /></button>}
           type='Ajouter un employé'
           onAddEmployee={addEmployee}
           >
         </AdminAddEmployee>
-      </div>
     </div>
   )
 }

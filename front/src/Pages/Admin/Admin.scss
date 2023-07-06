@@ -1,5 +1,64 @@
 @use "../../App" as app;
 
+@media screen and (max-width: 768px) {
+  .admin-bar-button {
+    height: 80%;
+    width: calc(20vw - 10px); 
+    display: flex;
+    padding: 10px;
+    margin-left: 6px;
+    font-family: app.$mainFont;
+    align-items: center;
+    justify-content: center;
+    background: app.$buttonColor;
+    border-width: 3px 3px 0px 3px;
+    border-style: solid;
+    border-color: #FFFFFF;
+    border-radius: 12px 12px 0px 0px;
+  }
+
+  .admin-add-btn {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 5px;
+    border: none;
+  }
+
+}
+
+@media screen and (min-width: 769px) {
+  .admin-bar-button {
+    height: 80%;
+    width: calc(20vw - 10px); 
+    display: flex;
+    font-family: app.$mainFont;
+    align-items: center;
+    justify-content: center;
+    background: app.$buttonColor;
+    border-width: 3px 1px 0px 1px;
+    border-style: solid;
+    border-color: #FFFFFF;
+    border-radius: 12px 12px 0px 0px;
+  }
+  .admin-bar-button:hover {
+    background: app.$buttonHoverColor;
+  }
+  
+  .admin-add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    width: 200px;
+    height: 80px;
+    border: none;
+  }
+
+}
+
 .admin-container {
   width: 100%;
   height: 90vh;
@@ -9,9 +68,10 @@
 }
 
 .admin-bar {
-  width: 100%;
+  width: 100vw;
   height: 10vh;
   position: fixed;
+  overflow-x: auto;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -35,29 +95,24 @@
 
 .admin-bar-button {
   height: 80%;
-  width: 20vh;
+  width: calc(20vw); 
   display: flex;
-  padding: 10px;
-  margin-left: 6px;
-  font-size: 24px;
   font-family: app.$mainFont;
-  color: aliceblue;
   align-items: center;
   justify-content: center;
   background: app.$buttonColor;
-  border-width: 3px 3px 0px 3px;
   border-style: solid;
   border-color: #FFFFFF;
   border-radius: 12px 12px 0px 0px;
 }
 
 .permission-box {
-  height: 100%;
-  width: 10%;
+  height: 100px;
+  width: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  margin-left: 5%;
+  margin-left: 15%;
   background-color: rgb(72, 16, 202);
 }

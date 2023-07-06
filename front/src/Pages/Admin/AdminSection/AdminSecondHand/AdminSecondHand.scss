@@ -16,6 +16,7 @@ $widthLittleElement: 33.33%;
   flex-direction: column;
   width: 60%;
   height: auto;
+  overflow-y: auto;
   max-height: 70%;
   background-color: app.$elementColor;
   button {

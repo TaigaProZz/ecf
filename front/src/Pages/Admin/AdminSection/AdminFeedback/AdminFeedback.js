@@ -107,7 +107,7 @@ function AdminFeedback () {
         </div> 
       </div>
       <PopUpAddFeedback
-        btn={<button className='admin-feedback-add-btn'>Ajouter un commentaire <BsPlusSquare size={30} /></button>}
+        btn={<button className='admin-add-btn'>Ajouter un commentaire <BsPlusSquare size={30} /></button>}
         type='Ajouter un feedback'
         onAddFeedback={addFeedback}
         >

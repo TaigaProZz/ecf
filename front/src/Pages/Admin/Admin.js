@@ -48,9 +48,10 @@ function Admin({ user }) {
             (isAdmin || !ADMIN_SECTIONS[section].isAdmin) && <button key={index} className='admin-bar-button' onClick={() => setContainer(ADMIN_SECTIONS[section].component)}>{section}</button>
           )
         }
-        <span className='permission-box'>Vous êtes : {isAdmin ? "Admin" : "Employé"}  </span>
       </div>
+      
       <div className='admin-section-container'>
+        {/* <span className='permission-box'>Vous êtes : {isAdmin ? "Admin" : "Employé"}  </span> */}
         {container}
       </div>
     </div>

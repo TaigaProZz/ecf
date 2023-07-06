@@ -74,8 +74,10 @@
 .carousel .control-prev.control-arrow::before {
   content: '\2039'; 
   left: 10px;
+  border: none;
 }
 
 .carousel .control-next.control-arrow::before {
   content: '\203A';
+  border: none;
 }
