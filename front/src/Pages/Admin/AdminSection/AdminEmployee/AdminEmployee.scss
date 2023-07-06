@@ -1,8 +1,28 @@
 @use 'src/App.scss' as app;
 
-$widthBigElement: 30.5%;
-$widthLittleElement: 10%;
+@media screen and (max-width: 768px) {
+  .admin-employee {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    max-height: 90%;
+    overflow-y: auto;
+    background-color: app.$elementColor;
+  }
+}
 
+@media screen and (min-width: 769px) {
+  .admin-employee {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: auto;
+    max-height: 70%;
+    overflow-y: auto;
+    background-color: app.$elementColor;
+  }
+}
 
 .admin-employee-container {
   width: 100%;
@@ -10,21 +30,6 @@ $widthLittleElement: 10%;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.admin-employee {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  height: auto;
-  max-height: 70%;
-  overflow-y: auto;
-  background-color: app.$elementColor;
-  button {
-    height: 100%;
-    width: $widthLittleElement;
-    border: none;
-  }
 }
 
 .admin-employee-categorie-row {
@@ -37,7 +42,7 @@ $widthLittleElement: 10%;
 }
 
 .admin-employee-categorie-element {
-  width: $widthBigElement;
+  width: 33%;
   height: 100%;
   display: flex;
   align-items: center;
@@ -45,13 +50,6 @@ $widthLittleElement: 10%;
   border-radius: 12px 12px 0px 0px;
 }
 
-.admin-employee-categorie-element-password, .admin-employee-categorie-element-permission, .admin-employee-categorie-element-id {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: $widthLittleElement;
-  height: 100%;
-}
 
 .admin-employee-list-row {
   display: flex;
@@ -62,19 +60,11 @@ $widthLittleElement: 10%;
   margin-bottom: 2px;
 }
 
-.admin-employee-list-element-name, .admin-employee-list-element-email {
+.admin-employee-list-element {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 10vh;
-  width: $widthBigElement;
-}
-
-.admin-employee-list-element-permission, .admin-employee-list-element-password, .admin-employee-list-element-id { 
-  display: flex;
-  align-items: center;
-  justify-content: center;  
-  width: $widthLittleElement;
+  width: 33.33%;
 }
 
 .add-employee-btn {

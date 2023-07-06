@@ -3,6 +3,40 @@
 $widthBigElement: 33.33%;
 $widthLittleElement: 33.33%;
 
+@media screen and (max-width: 768px) {
+  .admin-secondhand {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-y: auto;
+    max-height: 90%;
+    background-color: app.$elementColor;
+    button {
+      height: 100%;
+      width: $widthLittleElement;
+      border: none;
+    }
+  }
+
+}
+
+@media screen and (min-width: 769px) {
+  .admin-secondhand {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: auto;
+    overflow-y: auto;
+    max-height: 70%;
+    background-color: app.$elementColor;
+    button {
+      height: 100%;
+      width: $widthLittleElement;
+      border: none;
+    }
+  }
+}
+
 .admin-secondhand-container {
   width: 100%;
   height: 75vh;
@@ -11,20 +45,7 @@ $widthLittleElement: 33.33%;
   align-items: center;
 }
 
-.admin-secondhand {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  height: auto;
-  overflow-y: auto;
-  max-height: 70%;
-  background-color: app.$elementColor;
-  button {
-    height: 100%;
-    width: $widthLittleElement;
-    border: none;
-  }
-}
+
 
 .admin-secondhand-categorie-row {
   height: 5%;

@@ -2,19 +2,31 @@
 
 @media screen and (max-width: 768px) {
   .admin-bar-button {
-    height: 80%;
-    width: calc(20vw - 10px); 
+    height: 60%;
+    width: 20vw; 
     display: flex;
-    padding: 10px;
-    margin-left: 6px;
     font-family: app.$mainFont;
     align-items: center;
     justify-content: center;
     background: app.$buttonColor;
-    border-width: 3px 3px 0px 3px;
-    border-style: solid;
-    border-color: #FFFFFF;
+    border: none;
     border-radius: 12px 12px 0px 0px;
+    font-size: 10px;
+  }
+
+   .admin-section-container {
+    width: 100%;
+    height: 100%;
+    margin-top: 10vh;
+    background-color: app.$backgroundColor;
+    color: aliceblue;
+    
+      button {
+      color: aliceblue;
+      border-radius: 12px;
+      background-color: app.$buttonColor;
+      border-color: app.$buttonColor;
+    }
   }
 
   .admin-add-btn {
@@ -32,7 +44,7 @@
 @media screen and (min-width: 769px) {
   .admin-bar-button {
     height: 80%;
-    width: calc(20vw - 10px); 
+    width: 20vw; 
     display: flex;
     font-family: app.$mainFont;
     align-items: center;
@@ -43,10 +55,22 @@
     border-color: #FFFFFF;
     border-radius: 12px 12px 0px 0px;
   }
-  .admin-bar-button:hover {
-    background: app.$buttonHoverColor;
+
+  .admin-section-container {
+    width: 100%;
+    height: calc(100% - 15vh);
+    margin-top: 15vh;
+    background-color: app.$backgroundColor;
+    color: aliceblue;
+    
+      button {
+      color: aliceblue;
+      border-radius: 12px;
+      background-color: app.$buttonColor;
+      border-color: app.$buttonColor;
+    }
   }
-  
+
   .admin-add-btn {
     display: flex;
     align-items: center;
@@ -77,33 +101,10 @@
   align-items: flex-start;
 }
 
-.admin-section-container {
-  width: 100%;
-  height: calc(100% - 15vh);
-  margin-top: 15vh;
-  background-color: app.$backgroundColor;
-  color: aliceblue;
-  
-  button {
-    color: aliceblue;
-    border-radius: 12px;
-    background-color: app.$buttonColor;
-    border-color: app.$buttonColor;
-  }
-}
 
 
-.admin-bar-button {
-  height: 80%;
-  width: calc(20vw); 
-  display: flex;
-  font-family: app.$mainFont;
-  align-items: center;
-  justify-content: center;
-  background: app.$buttonColor;
-  border-style: solid;
-  border-color: #FFFFFF;
-  border-radius: 12px 12px 0px 0px;
+.admin-bar-button:hover {
+  background: app.$buttonHoverColor;
 }
 
 .permission-box {

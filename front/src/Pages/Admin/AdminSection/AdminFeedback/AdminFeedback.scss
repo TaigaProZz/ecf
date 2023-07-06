@@ -3,21 +3,53 @@
 $widthBigElement: 20%;
 $widthLittleElement: 20%;
 
+@media screen and (max-width: 768px) {
+  .admin-feedback {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 70%;
+    overflow-y: auto;
+    background-color: app.$elementColor;
+  }
+
+  .admin-feedback-list-button {
+    height: 40px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 10px;
+  }
+
+}
+
+@media screen and (min-width: 769px) {
+  .admin-feedback {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    max-height: 70%;
+    overflow-y: auto;
+    background-color: app.$elementColor;
+  }
+
+  .admin-feedback-list-button {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+  }
+}
+
 .admin-feedback-container {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-
-.admin-feedback {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  max-height: 70%;
-  overflow-y: auto;
-  background-color: app.$elementColor;
 }
 
 .admin-feedback-categorie-row {
@@ -43,9 +75,10 @@ $widthLittleElement: 20%;
   display: flex;
   min-height: 80px;
   height: auto;
-  width: calc(100% - 4px);
+  width: 100%;
   align-items: center;
   justify-content: space-around;
+  box-sizing: border-box;
   border: 2px solid white ;
   margin-bottom: 2px;
 }
@@ -59,6 +92,3 @@ $widthLittleElement: 20%;
   width: $widthBigElement;
 }
 
-.admin-feedback-list-button {
-  height: 40px;
-}

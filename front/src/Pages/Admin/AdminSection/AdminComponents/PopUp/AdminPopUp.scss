@@ -1,5 +1,9 @@
 @use 'src/App.scss' as app;
 
+.popup-content {
+  width: 80%;
+}
+
 .admin-popup-modal {
   background-color: app.$elementColor;
 }
@@ -27,6 +31,13 @@
   justify-content: center;
 }
 
+.admin-popup-modal > .actions > button {
+  background-color: app.$buttonColor;
+  border: none;
+  border-radius: 12px;
+  padding: 5px;
+}
+
 .admin-popup-modal > .close {
   cursor: pointer;
   position: absolute;
@@ -35,7 +46,7 @@
   line-height: 20px;
   right: -10px;
   top: -10px;
-  background: #ffffff;
+  background-color: app.$buttonColor;
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
@@ -69,3 +80,10 @@
   height: 100%;
   object-fit: contain;
 }
+
+.popup-content {
+  padding: 2px;
+  background-color: black;
+  border: none;
+}
+

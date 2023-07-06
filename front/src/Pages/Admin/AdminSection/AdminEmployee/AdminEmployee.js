@@ -57,22 +57,16 @@ function AdminEmployees () {
     <div className='admin-employee-container'>
       <div className='admin-employee'>
         <div className='admin-employee-categorie-row'>
-          <span className='admin-employee-categorie-element-id'>ID</span>
           <span className='admin-employee-categorie-element'>Nom prénom</span>
           <span className='admin-employee-categorie-element'>Email</span>
-          <span className='admin-employee-categorie-element-password'>Mot de passe</span>
-          <span className='admin-employee-categorie-element-permission'>Permissions</span>
-          <span className='admin-employee-categorie-element-permission'>Gérer</span>
+          <span className='admin-employee-categorie-element'>Gérer</span>
         </div> 
         { employees.map((elt, index) => {
           return (
             <div key={index} className='admin-employee-list-row'>
-              <span className='admin-employee-list-element-id'>{elt.id}</span>
-              <span className='admin-employee-list-element-name'>{elt.name}</span>
-              <span className='admin-employee-list-element-email'>{elt.email}</span>
-              <button className='admin-employee-list-element-password' onClick={resetPassword}>Réinitialiser le mot de passe</button>
-              <span className='admin-employee-list-element-permission'>{elt.permission}</span>
-              <span className='admin-employee-list-element-permission'><FaPen size={30} /></span>
+              <span className='admin-employee-list-element'>{elt.name}</span>
+              <span className='admin-employee-list-element'>{elt.email}</span>
+              <span className='admin-employee-list-element'><FaPen size={30} /></span>
             </div> 
           )
           })}

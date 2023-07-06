@@ -102,29 +102,29 @@ function AdminSchedule () {
           return (         
             <div key={index} className='admin-day-row'>
               <h3 className='admin-day-name'>{elt.day}</h3>
-              <div className='admin-morning-column'>
-                <div className='admin-day-input-column'>
-                  <span>Matin de</span>
+              <div className='admin-morning-container'>
+                <div className='admin-day-input'>
+                  <label>Matin de</label>
                   <input placeholder={elt.morning_opening} 
                     onBlur={(e) => handleMorningOpeningBlur(e, index)}
                     />
                 </div>
-                <div className='admin-day-input-column'>
-                  <span>à</span>
+                <div className='admin-day-input'>
+                  <label>à</label>
                   <input placeholder={elt.morning_closing}
                     onBlur={(e) => handleMorningClosingBlur(e, index)}
                   />
                 </div>
               </div>
-              <div className='admin-afternoon-column'>
-                <div className='admin-day-input-column'>
-                  <span>Après-midi de</span>
+              <div className='admin-afternoon-container'>
+                <div className='admin-day-input'>
+                  <label>Après-midi de</label>
                   <input placeholder={elt.afternoon_opening}
                     onBlur={(e) => handleAfternoonOpeningBlur(e, index)}
                   />
                 </div>
-                <div className='admin-day-input-column'>
-                  <span>à</span>
+                <div className='admin-day-input'>
+                  <label>à</label>
                   <input placeholder={elt.afternoon_closing} 
                     onBlur={(e) => handleAfternoonClosingBlur(e, index)}
                   />

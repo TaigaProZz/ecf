@@ -14,6 +14,13 @@
       padding: 5px;
     }
   }
+
+  .nav-user {
+    a, p {
+      margin: 0;
+      width: 50%;
+    }
+  }
  
 }
 
@@ -58,9 +65,10 @@
 }
 
 .nav-user {
-  width: 33.33%;
+  width: calc(33.33% - 10px);
   display: flex; 
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 10px
 }

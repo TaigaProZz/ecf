@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import './AddServicePopUp.scss';
 
 function AdminUpdateService(props) {
   const [service, setService] = useState('');
@@ -18,7 +17,7 @@ function AdminUpdateService(props) {
   return (
     <Popup trigger={props.btn} modal nested>
       {close => (
-        <div className="add-service-modal">
+        <div className="admin-popup-modal">
           <button className="close" onClick={close}>
             &times;
           </button>
