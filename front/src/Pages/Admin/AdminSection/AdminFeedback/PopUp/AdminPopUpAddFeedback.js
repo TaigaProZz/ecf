@@ -48,13 +48,17 @@ function PopUpAddFeedback(props) {
               onChange={handleNameChange}
             />
             <span>Note ( entre 1 et 5 )</span>
-            <input 
-              type="number"
-              min={1} 
-              max={5}
+            <select
               value={rating}
               onChange={handleRatingChange}
-            />
+            >
+              <option value="1">1 étoile</option>
+              <option value="2">2 étoiles</option>
+              <option value="3">3 étoiles</option>
+              <option value="4">4 étoiles</option>
+              <option value="5">5 étoiles</option>
+            </select>
+           
              <span>Message</span>
             <input 
               type="text" 
