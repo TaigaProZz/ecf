@@ -50,7 +50,7 @@ function AdminManageEmployee(props) {
             <label>Nom prénom</label>
             <input
               type="text"
-              defaultValue={props.employee.name}
+              placeholder={props.employee.name}
               value = {name}
               onChange={handleName}
             />
@@ -58,7 +58,7 @@ function AdminManageEmployee(props) {
             <label>Email</label>
             <input
               type="text"
-              defaultValue={props.employee.email}
+              placeholder={props.employee.email}
               value = {email}
               onChange={handleEmail}
             />
@@ -71,7 +71,7 @@ function AdminManageEmployee(props) {
             <label>Permission</label>
             <span>Permission actuelle : {props.employee.permission ? "Admin" : "Employe"}</span>
             <select onChange={handlePermission} value={permission}>
-              <option value= {props.employee.permission}>-- Laissez vide pour ne pas modifier</option>
+              <option value= ''>-- Laissez vide pour ne pas modifier</option>
               <option value= "0">Utilisateur</option>
               <option value= "1">Admin</option>
             </select>

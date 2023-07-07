@@ -34,9 +34,8 @@ function AdminEmployees () {
     if (typeof employee.name !== 'string' || typeof employee.email !== 'string' ) {
       alert('Vérifiez les informations');
     }
-    
+    // send it to db
     try {
-      // send it to db
       await axios.post('http://localhost:3307/employee', {
           name: employee.name,
           email: employee.email,
@@ -49,7 +48,6 @@ function AdminEmployees () {
       alert("Erreur lors de l'envoi des données :", error);
     }
   };
-
 
   // MANAGE SERVICE function
   const handleManageEmployee = async (newEmployee, originalEmployee) => {
@@ -72,7 +70,13 @@ function AdminEmployees () {
       finalEmployee.email = newEmployee.email;
     }
 
-    if (newEmployee.permission === originalEmployee.permission || newEmployee.permission === null) {
+    console.log(newEmployee.permission);
+
+    if (newEmployee.permission === originalEmployee.permission 
+      || newEmployee.permission === undefined 
+      || newEmployee.permission === ''
+      || newEmployee.permission === null
+      ) {
       finalEmployee.permission = originalEmployee.permission;
     } else {
       finalEmployee.permission = newEmployee.permission;
@@ -89,7 +93,6 @@ function AdminEmployees () {
     //   setShowConfirmation(false);
   };
     
-
   return (
     <div className='admin-employee-container'>
       <div className='admin-employee'>
@@ -105,14 +108,13 @@ function AdminEmployees () {
               <span className='admin-employee-list-element'>{elt.email}</span>
               <AdminManageEmployee
                   employee={elt}
-                  btn={<FaPen className='admin-employee-list-element' size={30} />}
+                  btn={<div className='admin-employee-list-element'><FaPen  size={30} /></div>}
                   onManageEmployee={handleManageEmployee}
               >
-              
               </AdminManageEmployee> 
             </div> 
           )
-          })}
+        })}
       </div>
         <AdminAddEmployee
           btn={<button  className='admin-add-btn'>Ajouter un employé <BsPlusSquare size={30} /></button>}
