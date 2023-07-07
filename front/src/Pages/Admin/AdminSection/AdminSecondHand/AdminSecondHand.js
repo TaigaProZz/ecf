@@ -3,6 +3,7 @@ import './AdminSecondHand.scss';
 import PopUpAddCar from './PopUp/AdminAddCar';
 import axios from 'axios';
 import { BsPlusSquare } from 'react-icons/bs';
+import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
 
 function AdminSecondHand () {
   const [cars, setCars] = useState(null);
@@ -63,6 +64,19 @@ function AdminSecondHand () {
     }
   };
 
+  const deleteCar = async (choice, carId) => {
+    if(choice === 'valider') {
+      try {
+        await axios.delete(`http://localhost:3307/car/${carId}`);
+        fetchData();
+        alert('Voiture supprimée');
+      } catch (error) {
+        alert("Erreur lors de l'envoi des données", error);
+      }
+    }
+  };
+
+
   return (
     <div className='admin-secondhand-container'>
       <div className='admin-secondhand'>
@@ -70,6 +84,7 @@ function AdminSecondHand () {
           <span className='admin-secondhand-categorie-element'>ID</span>
           <span className='admin-secondhand-categorie-element'>Titre</span>
           <span className='admin-secondhand-categorie-element'>Prix</span>
+          <span className='admin-secondhand-categorie-element'>Gérer</span>
         </div> 
         { cars.map((elt, index) => {
           return (
@@ -77,6 +92,16 @@ function AdminSecondHand () {
               <span className='admin-secondhand-list-element'>{elt.id}</span>
               <span className='admin-secondhand-list-element'>{elt.title}</span>
               <span className='admin-secondhand-list-element'>{elt.price} €</span>
+              <div className='admin-secondhand-manage-container'>
+                {/* <button className='admin-secondhand-manage-button'>Modifier</button> */}
+                <ValidatePopUp
+                  btn={<button className='admin-secondhand-manage-button' onClick={deleteCar}>Supprimer</button>}
+                  onConfirmation={(choice) => deleteCar(choice, elt.id)}
+                  txt='supprimer cette voiture'
+                  >
+                </ValidatePopUp>
+
+              </div>
             </div> 
           )
           })}

@@ -76,7 +76,18 @@ router.post('/', upload.array('image', 6), async (req, res) => {
   }
 });
 
-
-
+// delete car
+router.delete('/:id', (req, res) => {
+  const carId = req.params.id;
+  const query = 'DELETE FROM cars WHERE id = ?';
+  connection.query(query, [carId], (error) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
 
 module.exports = router;

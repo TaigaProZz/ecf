@@ -1,8 +1,8 @@
-import './Car.scss';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect} from 'react';
 import { BsEnvelopeFill } from 'react-icons/bs';
 import axios from 'axios';
+import './Car.scss';
 
 function Car() {
   const [element, setElement] = useState(null);

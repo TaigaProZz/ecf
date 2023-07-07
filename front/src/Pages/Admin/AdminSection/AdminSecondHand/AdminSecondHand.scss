@@ -1,7 +1,7 @@
 @use 'src/App.scss' as app;
 
-$widthBigElement: 33.33%;
-$widthLittleElement: 33.33%;
+$widthBigElement: 25%;
+$widthLittleElement: 25%;
 
 @media screen and (max-width: 768px) {
   .admin-secondhand {
@@ -11,11 +11,20 @@ $widthLittleElement: 33.33%;
     overflow-y: auto;
     max-height: 90%;
     background-color: app.$elementColor;
-    button {
-      height: 100%;
-      width: $widthLittleElement;
-      border: none;
-    }
+  }
+
+  .admin-secondhand-manage-container {
+    flex-direction: column;
+  }
+
+  .admin-secondhand-manage-button {
+    height: 40px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    font-size: 10px;
   }
 
 }
@@ -29,11 +38,18 @@ $widthLittleElement: 33.33%;
     overflow-y: auto;
     max-height: 70%;
     background-color: app.$elementColor;
-    button {
-      height: 100%;
-      width: $widthLittleElement;
-      border: none;
-    }
+  }
+
+  .admin-secondhand-manage-container {
+    flex-direction: row;
+  }
+
+  .admin-secondhand-manage-button {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
   }
 }
 
@@ -90,4 +106,11 @@ $widthLittleElement: 33.33%;
   margin-top: 10px;
   width: 200px;
   height: 80px;
+}
+
+.admin-secondhand-manage-container {
+  display: flex;
+  align-items: center;
+  width: 25%;
+  justify-content: space-around;
 }

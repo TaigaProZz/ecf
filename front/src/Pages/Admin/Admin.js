@@ -6,8 +6,6 @@ import AdminEmployee from './AdminSection/AdminEmployee/AdminEmployee.js';
 import AdminSecondHand from './AdminSection/AdminSecondHand/AdminSecondHand';
 import AdminFeedback from './AdminSection/AdminFeedback/AdminFeedback';
 
-
-
 const ADMIN_SECTIONS = {
   'Services' : {
     component: <AdminService />,
@@ -32,7 +30,7 @@ const ADMIN_SECTIONS = {
 }
 
 function Admin({ user }) {
-  const [container, setContainer] = useState(<AdminSecondHand />)
+  const [container, setContainer] = useState(<AdminFeedback />);
   const [isAdmin, setAdmin] = useState(false);
 
   useEffect(() => {
@@ -40,10 +38,12 @@ function Admin({ user }) {
     setAdmin(user.permission === 1);
   }, [user.permission])
 
+
   return (
     <div className="admin-container">
       <div className="admin-bar">
         {
+          // hide some admin sections if user is not admin
           Object.keys(ADMIN_SECTIONS).map((section, index) => 
             (isAdmin || !ADMIN_SECTIONS[section].isAdmin) && <button key={index} className='admin-bar-button' onClick={() => setContainer(ADMIN_SECTIONS[section].component)}>{section}</button>
           )
