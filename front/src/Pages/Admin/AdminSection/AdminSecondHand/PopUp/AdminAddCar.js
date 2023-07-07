@@ -14,9 +14,6 @@ function AdminAddCar(props) {
   const [images, setImages] = useState([]);
   const [previewImages, setPreviewImages] = useState([]);
 
-  console.log(props);
-
-
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };

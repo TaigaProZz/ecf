@@ -14,6 +14,7 @@ const Vente = () => {
     try {
       const carResponse = await axios.get('http://localhost:3307/car');
       setCars(carResponse.data);
+      setSortedCars(carResponse.data);
 
       const imageResponse = await axios.get('http://localhost:3307/carimage');
       const imageList = imageResponse.data.reduce((acc, image) => {
@@ -39,7 +40,7 @@ const Vente = () => {
   }, []);
   
   const sortCars = () => {
-    // get all inputs
+    // // get all inputs
     const priceOne = document.getElementById('price-one').value;
     const priceTwo = document.getElementById('price-two').value;
     const yearOne = document.getElementById('year-one').value;
