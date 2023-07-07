@@ -143,6 +143,15 @@ $labelMobileFontSize: 16px;
   label {
     font-size: $labelDesktopFontSize;
   }
+  .ul-service {
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+    list-style-type: none;
+  }
+  li.li-service:not(:last-child) { 
+    margin-bottom: 20px;  
+ }
 }
 
 // all screens

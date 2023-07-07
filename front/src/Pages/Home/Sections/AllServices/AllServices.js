@@ -25,9 +25,9 @@ function SectionAllServices() {
       </div>
       <div className="right-section-v1">  
         <div className='service-list'>
-            <ul>
+            <ul className="ul-service">
               { services.map((elt, index) => { 
-                return <li key={index}>{elt.services}</li>
+                return <li className="li-service" key={index}>{elt.services}</li>
               })}
             </ul>
           </div>      
