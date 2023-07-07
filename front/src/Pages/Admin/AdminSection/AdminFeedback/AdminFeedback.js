@@ -24,12 +24,13 @@ function AdminFeedback () {
     fetchData();
   }, []);
 
-  // set feedback validate
-  const handleConfirmation = async (choice, feedbackId) => {
+  // set feedback to validate
+  const handleValidate = async (choice, feedbackId) => {
     if (choice === 'valider') {
       try {
-        await axios.put(`http://localhost:3307/feedback/${feedbackId}`); 
+        await axios.put(`http://localhost:3307/feedback/${feedbackId}`, {isVerified: 1}); 
         fetchData();
+        alert('Feedback validé')
       } catch (error) {
         alert("Erreur lors de l'envoi des données", error);
       }
@@ -37,6 +38,33 @@ function AdminFeedback () {
       setShowConfirmation(false);
     }
   };
+  // set feedback to hiden
+  const handleHide = async (choice, feedbackId) => {
+    if (choice === 'valider') {
+      try {
+        await axios.put(`http://localhost:3307/feedback/${feedbackId}`, {isVerified: 0});
+        fetchData();
+        alert('Feedback caché')
+      } catch (error) {
+        alert("Erreur lors de l'envoi des données", error);
+      }
+      // close popup
+      setShowConfirmation(false);
+    }
+  };
+
+  // delete feedback from db
+  const handleDelete = async (choice, feedbackId) => {
+    if (choice === 'valider') {
+      try {
+        await axios.delete(`http://localhost:3307/feedback/${feedbackId}`);
+        fetchData();
+        alert('Feedback supprimé')
+      } catch (error) {
+        alert('Erreur lors de la suppression', error);
+      }
+    }
+  }
 
   // sort list, set non verified feedback first
   const sortedFeedback = () => {
@@ -84,22 +112,38 @@ function AdminFeedback () {
                   { feedback.isVerified === 0 ? 'Non' : 'Oui' }
                 </span>
                 { feedback.isVerified === 0 
-                  ? <span className='admin-feedback-list-element'>
+                  ? <div className='admin-feedback-validate-container'>
                       <ValidatePopUp 
                         btn={<button className="admin-feedback-list-button">Valider</button>} 
-                        onConfirmation={(choice) => {handleConfirmation(choice, feedback.id)}} 
+                        onConfirmation={(choice) => {handleValidate(choice, feedback.id)}} 
                         txt={"valider"}
                         handleButtonClick={showConfirmation}
                       />
-                    </span> 
-                  : <span className='admin-feedback-list-element'>
-                      <ValidatePopUp 
+                      <ValidatePopUp  
                         btn={<button className="admin-feedback-list-button">Supprimer</button>} 
-                        onConfirmation={(choice) => {handleConfirmation(choice, feedback.id)}} 
+                        onConfirmation={(choice) => {handleDelete(choice, feedback.id)}} 
                         txt={"supprimer"}
                         handleButtonClick={showConfirmation}
                       /> 
-                    </span> 
+                    </div> 
+                  :
+                  <div className='admin-feedback-validate-container'>
+                      <ValidatePopUp  
+                        btn={<button className="admin-feedback-list-button">Cacher</button>} 
+                        onConfirmation={(choice) => {handleHide(choice, feedback.id)}} 
+                        txt={"cacher"}
+                        handleButtonClick={showConfirmation}
+                      /> 
+                      <ValidatePopUp  
+                        btn={<button className="admin-feedback-list-button">Supprimer</button>} 
+                        onConfirmation={(choice) => {handleDelete(choice, feedback.id)}} 
+                        txt={"supprimer"}
+                        handleButtonClick={showConfirmation}
+                      /> 
+                   
+                  </div>
+
+                  
                 }
               </div> 
             )

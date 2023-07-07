@@ -92,3 +92,20 @@ $widthLittleElement: 20%;
   width: $widthBigElement;
 }
 
+.admin-feedback-validate-container {
+  width: $widthLittleElement;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+.admin-feedback-validate-select{
+  width: 50%;
+}
+
+select {
+  background-color: app.$buttonColor;
+  color: aliceblue;
+}

@@ -36,7 +36,22 @@ router.post('/', (req, res) => {
 // update feedback validation 
 router.put('/:id', (req, res) => {
   const feedbackId = req.params.id;
-  const query = 'UPDATE feedbacks SET isVerified = 1 WHERE id = ?';
+  const isVerified = req.body.isVerified;
+  const query = 'UPDATE feedbacks SET isVerified = ? WHERE id = ?';
+  connection.query(query, [isVerified, feedbackId], (error, results) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
+
+// delete feedback
+router.delete('/:id', (req, res) => {
+  const feedbackId = req.params.id;
+  const query = 'DELETE FROM feedbacks WHERE id = ?';
   connection.query(query, [feedbackId], (error, results) => {
     if (error) {
       console.log(error);
@@ -46,5 +61,6 @@ router.put('/:id', (req, res) => {
     }
   });
 });
+
 
 module.exports = router;
