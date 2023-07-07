@@ -3,30 +3,102 @@
 // phone
 @media screen and (max-width: 768px) {
   .nav-logo {
-    padding-left: 10px;
-    img {
-      width: 70px;
-      height: 32px;
-    }
+    display: none;
   }
   .nav-links {
-    a {
-      padding: 5px;
-    }
+    display: none;
+  }
+  .nav-user {
+    display: none;
   }
 
-  .nav-user {
-    a, p {
-      margin: 0;
-      width: 50%;
-    }
+  .burger  {
+    display: flex;
+    background-color: bisque;
   }
- 
+
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 36px;
+  }
+  
+  /* Color/shape of burger icon bars */
+  .bm-burger-bars {
+    background: #ffffff;
+  }
+  
+  /* Color/shape of burger icon bars on hover*/
+  .bm-burger-bars-hover {
+    background: #a90000;
+  }
+  
+  /* Position and sizing of clickable cross button */
+  .bm-cross-button {
+    height: 24px;
+    width: 24px;
+  }
+  
+  /* Color/shape of close button cross */
+  .bm-cross {
+    background: #bdc3c7;
+  }
+  
+  /*
+  Sidebar wrapper styles
+  Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+  */
+  .bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+  }
+  
+  /* General sidebar styles */
+  .bm-menu {
+    background: #373a47;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+    width: 100%;
+
+  }
+  
+  /* Morph shape necessary with bubble or elastic */
+  .bm-morph-shape {
+    fill: #373a47;
+  }
+  
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Individual item */
+  .bm-item {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  .bm-item::hover, .bm-item::focus {
+    color: #fff;
+  }
+  
+  /* Styling of overlay */
+  .bm-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
 }
 
 // large screen
 @media screen and (min-width: 769px) {
   .nav-logo {
+    width: 33.33%;
+    display: flex; 
+    align-items: center; 
     padding-left: 20px;
     img {
       width: 103px;
@@ -34,41 +106,34 @@
     }
   }
   .nav-links {
+    width: 33.33%;
+    display: flex; 
+    justify-content: center;
+    font-family: app.$mainFont;
     a {
       padding: 10px;
     }
   }
- 
-}
+  .nav-user {
+    width: calc(33.33% - 10px);
+    display: flex; 
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 10px
+  }
 
-.my-nav {
-  width: 100vw;
-  height: 10vh;
-  background-color: app.$barColor;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  z-index: 1;
-}
-
-.nav-logo {
-  width: 33.33%;
-  display: flex; 
-  align-items: center; 
-}
-
-.nav-links {
-  width: 33.33%;
-  display: flex; 
-  justify-content: center;
-  font-family: app.$mainFont;
-}
-
-.nav-user {
-  width: calc(33.33% - 10px);
-  display: flex; 
-  flex-direction: column-reverse;
-  justify-content: center;
-  align-items: flex-end;
-  margin: 10px
+  .my-nav {
+    width: 100vw;
+    height: 10vh;
+    background-color: app.$barColor;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+  }
+  
+  .burger, Menu, .bm-menu, .bm-burger-button {
+    display: none;
+  }
 }

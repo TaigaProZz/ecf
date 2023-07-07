@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 // get employee 
 router.get('/', (req, res) => {
-  const query = "SELECT * FROM users";
+  const query = "SELECT id, name, email, permission FROM users";
   connection.query(query, (error, results) => {
     if (error) {
       console.log(error);
@@ -56,5 +56,26 @@ router.post('/', (req, res) => {
     res.sendStatus(500);
   }
 });
+
+// put employee
+router.put('/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, email, permission } = req.body;
+    const query = 'UPDATE users SET name = ?, email = ?, permission = ? WHERE id = ?';
+    connection.query(query, [name, email, permission, id], (error, results) => {
+      if (error) {
+        res.sendStatus(500);
+      } else {
+        res.sendStatus(200);
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+});
+
+
 
 module.exports = router;

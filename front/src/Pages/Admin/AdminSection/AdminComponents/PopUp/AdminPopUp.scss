@@ -1,5 +1,17 @@
 @use 'src/App.scss' as app;
 
+@media screen and (max-width: 768px) {
+  select {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  select {
+    width: 30%;
+  }
+}
+
 .popup-content {
   width: 80%;
 }
@@ -65,6 +77,7 @@
   align-items: center;
   justify-content: space-evenly;
   background-color: app.$buttonColor;
+  border: none;
   color: aliceblue;
   width: 150px;
   height: 50px;

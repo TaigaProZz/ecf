@@ -5,6 +5,8 @@ import 'reactjs-popup/dist/index.css';
 function AdminAddService(props) {
   const [service, setService] = useState('');
 
+  console.log(props);
+
   const handleServiceChange = (event) => {
     setService(event.target.value);
   };

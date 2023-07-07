@@ -1,6 +1,5 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
-import './ValidatePopUp.scss';
 import { useState } from 'react';
 
 function ValidatePopUp({btn, onConfirmation, txt}) {
@@ -22,14 +21,14 @@ function ValidatePopUp({btn, onConfirmation, txt}) {
   return (
     <Popup trigger={btn} modal open={open} onOpen={handleOpen} onClose={handleClose}>
       {close => (
-        <div className="validate-modal">
+        <div className="admin-popup-modal">
           <button className="close" onClick={close}>
             &times;
           </button>
           <div className='header'>
             { txt === "supprimer"
               ?  <p>Êtes-vous sûr de vouloir {txt}? Cette action est irréversible</p>
-              :  <p>Êtes-vous sûr de vouloir {txt} le commentaire?</p>
+              :  <p>Êtes-vous sûr de vouloir {txt} ?</p>
             }
           </div>
           <div className='actions'>

@@ -14,6 +14,8 @@ function AdminAddCar(props) {
   const [images, setImages] = useState([]);
   const [previewImages, setPreviewImages] = useState([]);
 
+  console.log(props);
+
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -45,7 +47,8 @@ function AdminAddCar(props) {
 
   const handleImagesChange = (event, index) => {
     const files = event.target.files;
-    const image = files[0]; // Nous n'autorisons qu'un seul fichier par input
+    // only one image per input
+    const image = files[0]; 
 
     const reader = new FileReader();
     reader.onload = () => {

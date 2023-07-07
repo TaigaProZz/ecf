@@ -4,6 +4,7 @@ import { BsPlusSquare } from 'react-icons/bs';
 import AdminAddEmployee from './PopUp/AdminAddEmployee';
 import axios from 'axios';
 import './AdminEmployee.scss';
+import AdminManageEmployee from './PopUp/AdminManageEmployee';
 
 function AdminEmployees () {
   const [employees, setEmployee] = useState(null);
@@ -48,10 +49,46 @@ function AdminEmployees () {
       alert("Erreur lors de l'envoi des données :", error);
     }
   };
-  
-  // const resetPassword = () => {
-  //   console.log("password reset");
-  // }
+
+
+  // MANAGE SERVICE function
+  const handleManageEmployee = async (newEmployee, originalEmployee) => {
+    const finalEmployee = {
+      name : '',
+      email : '',
+      permission : '',
+    };
+
+    // check if input changed from original
+    if (newEmployee.name === originalEmployee.name || newEmployee.name === '') {
+      finalEmployee.name = originalEmployee.name;
+    } else {
+      finalEmployee.name = newEmployee.name;
+    }
+
+    if (newEmployee.email === originalEmployee.email || newEmployee.email === '') {
+      finalEmployee.email = originalEmployee.email;
+    } else {
+      finalEmployee.email = newEmployee.email;
+    }
+
+    if (newEmployee.permission === originalEmployee.permission || newEmployee.permission === null) {
+      finalEmployee.permission = originalEmployee.permission;
+    } else {
+      finalEmployee.permission = newEmployee.permission;
+    }
+ 
+    try {
+      await axios.put(`http://localhost:3307/employee/${originalEmployee.id}`, finalEmployee); 
+      fetchData();
+    } catch (error) {
+      alert("Erreur lors de l'envoi des données", error);
+    }
+
+    // close popup
+    //   setShowConfirmation(false);
+  };
+    
 
   return (
     <div className='admin-employee-container'>
@@ -66,7 +103,13 @@ function AdminEmployees () {
             <div key={index} className='admin-employee-list-row'>
               <span className='admin-employee-list-element'>{elt.name}</span>
               <span className='admin-employee-list-element'>{elt.email}</span>
-              <span className='admin-employee-list-element'><FaPen size={30} /></span>
+              <AdminManageEmployee
+                  employee={elt}
+                  btn={<FaPen className='admin-employee-list-element' size={30} />}
+                  onManageEmployee={handleManageEmployee}
+              >
+              
+              </AdminManageEmployee> 
             </div> 
           )
           })}
