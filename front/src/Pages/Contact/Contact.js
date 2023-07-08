@@ -52,22 +52,22 @@ function Contact() {
         <h1 className='form-title'>Formulaire de contact</h1>
         <div className='name-row row'>
           <label>Nom prénom :</label>
-          <input ref={nameInputRef} className='center' placeholder='Entrez votre nom prénom'></input>
+          <input ref={nameInputRef} type='text' className='center' placeholder='Entrez votre nom prénom'></input>
         </div>
         <div className='phone-row row'>
           <label>Téléphone :</label>
-          <input ref={phoneInputRef} placeholder='Entrez votre numéro de téléphone'></input>
+          <input ref={phoneInputRef} type='tel' placeholder='Entrez votre numéro de téléphone'></input>
         </div>
         <div className='email-row row'>
           <label>Email :</label>
-          <input ref={emailInputRef} placeholder='Entrez votre email'></input>
+          <input ref={emailInputRef} type='email' placeholder='Entrez votre email'></input>
         </div>
         <div className='msg-row row'>
           <label>Message:</label>
-          <textarea ref={msgInputRef} className='msg-input' placeholder='Entrez votre message'></textarea>
+          <textarea ref={msgInputRef} type='text' className='msg-input' placeholder='Entrez votre message'></textarea>
         </div>
         <div className='contact-sendbtn-container'>
-          <button className='home-button' type="submit" onClick={submit}>Envoyer</button>
+          <button className='home-button' onClick={submit}>Envoyer</button>
         </div>
       </div>  
     </div>

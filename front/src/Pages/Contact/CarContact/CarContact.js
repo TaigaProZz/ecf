@@ -77,11 +77,11 @@ function Contact() {
         <h2 className='center'>Formulaire de contact</h2>
         <div className='row'>
           <label>Nom prénom :</label>
-          <input ref={nameInputRef} className='center' type='text' placeholder='Entrez votre nom prénom'></input>
+          <input ref={nameInputRef} type='text' placeholder='Entrez votre nom prénom'></input>
         </div>
         <div className='row'>
           <label>Téléphone :</label>
-          <input ref={phoneInputRef} type="tel" required pattern="[0-9]{10}" placeholder='Entrez votre numéro de téléphone'></input>
+          <input ref={phoneInputRef} type='tel' placeholder='Entrez votre numéro de téléphone'></input>
         </div>
         <div className='row'>
           <label>Email :</label>

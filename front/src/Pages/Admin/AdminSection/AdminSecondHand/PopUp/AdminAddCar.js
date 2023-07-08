@@ -116,19 +116,19 @@ function AdminAddCar(props) {
             />
             <span>Prix</span>
             <input
-              type="text"
+              type="number"
               value={price}
               onChange={handlePriceChange}
             />
             <span>Kilométrage</span>
             <input
-              type="text"
+              type="number"
               value={km}
               onChange={handleKmChange}
             />
             <span>Année</span>
             <input
-              type="text"
+              type="number"
               value={year}
               onChange={handleYearChange}
             />

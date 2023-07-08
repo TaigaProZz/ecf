@@ -1,13 +1,19 @@
 import './SecondHandCars.scss';
 import '../../App.scss'
 import axios from 'axios';
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useRef} from 'react';
 import { Link } from 'react-router-dom';
 
 const Vente = () => {
   const [cars, setCars] = useState([]);
   const [sortedCars, setSortedCars] = useState([]); 
   const [img, setImg] = useState([]);
+  const priceOneInput = useRef();
+  const priceTwoInput = useRef();
+  const yearOneInput = useRef();
+  const yearTwoInput = useRef();
+  const kmOneInput = useRef(); 
+  const kmTwoInput = useRef(); 
 
   // fetch cars and images from database
   const fetchData = async () => {
@@ -38,15 +44,16 @@ const Vente = () => {
   useEffect(() => {  
     fetchData();
   }, []);
-  
+
+
   const sortCars = () => {
     // // get all inputs
-    const priceOne = document.getElementById('price-one').value;
-    const priceTwo = document.getElementById('price-two').value;
-    const yearOne = document.getElementById('year-one').value;
-    const yearTwo = document.getElementById('year-two').value;
-    const kmOne = document.getElementById('km-one').value;
-    const kmTwo = document.getElementById('km-two').value;
+    const priceOne = priceOneInput.current.value;
+    const priceTwo = priceTwoInput.current.value;
+    const yearOne = yearOneInput.current.value;
+    const yearTwo = yearTwoInput.current.value;
+    const kmOne = kmOneInput.current.value;
+    const kmTwo = kmTwoInput.current.value;
 
     // and sort cars
     const sortedCars = [...cars];
@@ -60,6 +67,7 @@ const Vente = () => {
       if (kmOne && kmTwo) {
         return car.km >= kmOne && car.km <= kmTwo;
       }
+      return car;
     });
     setSortedCars(filteredCars);
   };
@@ -67,6 +75,12 @@ const Vente = () => {
   const resetSort = () => {
     const sortedCars = [...cars];
     setSortedCars(sortedCars);
+    priceOneInput.current.value = "";
+    priceTwoInput.current.value = "";
+    yearOneInput.current.value = "";
+    yearTwoInput.current.value = "";
+    kmOneInput.current.value = "";
+    kmTwoInput.current.value = "";
   };
 
 
@@ -75,23 +89,23 @@ const Vente = () => {
       <section className="section-sort">
         <h2 className='center' htmlFor="sort">Trier par :</h2>
           <div className='price'>
-            <label>Prix :</label>
-            <input id='price-one' className='sort-input' placeholder="Entre" onChange={sortCars}></input>
-            <input id='price-two' className='sort-input' placeholder="Et" onChange={sortCars}></input>
-          </div>
-          <div className='year'>
-            <label>Année :</label>
-            <input id='year-one' className='sort-input' placeholder="Entre" onChange={sortCars}></input>
-            <input id='year-two' className='sort-input' placeholder="Et" onChange={sortCars}></input>
-          </div>
-          <div className='km'>
-            <label>Km :</label>
-            <input id='km-one' className='sort-input' placeholder="Entre" onChange={sortCars}></input>
-            <input id='km-two' className='sort-input' placeholder="Et" onChange={sortCars}></input>
-          </div>
-        <div className='center'>
-          <button id='sort-btn-price' className='shc-button' onClick={resetSort}>Réinitialiser le tri</button>
-        </div>
+              <label>Prix :</label>
+              <input ref={priceOneInput} type='number' min={0}  className='sort-input' placeholder="Entre" onChange={sortCars}></input>
+              <input ref={priceTwoInput} type='number' min={0} className='sort-input' placeholder="Et" onChange={sortCars}></input>
+            </div>
+            <div className='year'>
+              <label>Année :</label>
+              <input ref={yearOneInput} type='number' min={0} className='sort-input' placeholder="Entre" onChange={sortCars}></input>
+              <input ref={yearTwoInput} type='number' min={0} className='sort-input' placeholder="Et" onChange={sortCars}></input>
+            </div>
+            <div className='km'>
+              <label>Km :</label>
+              <input ref={kmOneInput} type='number' min={0} className='sort-input' placeholder="Entre" onChange={sortCars}></input>
+              <input ref={kmTwoInput} type='number' min={0} className='sort-input' placeholder="Et" onChange={sortCars}></input>
+            </div>
+          <div className='center'>
+            <button id='sort-btn-price' className='shc-button' onClick={resetSort}>Réinitialiser le tri</button>
+          </div>   
       </section>
      
       <section className='section-car-list'>

@@ -42,13 +42,13 @@ function Login({ setUser }) {
         <div className='login-email-row'>
           <label className='login-email-text'>Email :</label>
           <div className='login-email-input'>
-            <input ref={inputEmail} id='login-email-input'></input>
+            <input ref={inputEmail} type='email' id='login-email-input'></input>
           </div>
         </div>
         <div className='login-password-row'>
           <label className='login-password-text'>Mot de passe :</label>
           <div className='login-password-input'>
-            <input ref={inputPassword} id='login-password-input'></input>
+            <input ref={inputPassword} type='password' id='login-password-input'></input>
           </div>
         </div>
         <div className='center'>

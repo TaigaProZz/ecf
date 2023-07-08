@@ -61,12 +61,12 @@ function SendFeedback() {
         <h2>Envoyez nous un commentaire !</h2>
         <div className='send-feedback-row'>
           <label htmlFor="name">Nom :</label>
-          <input required ref={inputNameRef} type="text" className='inputName' placeholder="Votre nom"></input>
+          <input ref={inputNameRef} type='text' className='inputName' placeholder="Votre nom"></input>
         </div>
         
         <div className='send-feedback-row'>
           <label htmlFor="message">Message :</label>
-          <input required ref={inputMessageRef} className='inputMessage' placeholder="Votre message"></input>
+          <input ref={inputMessageRef} type='text' className='inputMessage' placeholder="Votre message"></input>
         </div>
 
         <div className='send-feedback-row'>
