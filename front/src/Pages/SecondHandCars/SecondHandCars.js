@@ -64,6 +64,12 @@ const Vente = () => {
     setSortedCars(filteredCars);
   };
 
+  const resetSort = () => {
+    const sortedCars = [...cars];
+    setSortedCars(sortedCars);
+  };
+
+
   return (
     <div className="secondhand-container">
       <section className="section-sort">
@@ -84,7 +90,7 @@ const Vente = () => {
             <input id='km-two' className='sort-input' placeholder="Et" onChange={sortCars}></input>
           </div>
         <div className='center'>
-          <button id='sort-btn-price' className='shc-button' onClick={sortCars}>Trier</button>
+          <button id='sort-btn-price' className='shc-button' onClick={resetSort}>Réinitialiser le tri</button>
         </div>
       </section>
      
