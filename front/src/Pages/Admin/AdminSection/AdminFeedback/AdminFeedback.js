@@ -140,10 +140,7 @@ function AdminFeedback () {
                         txt={"supprimer"}
                         handleButtonClick={showConfirmation}
                       /> 
-                   
-                  </div>
-
-                  
+                  </div>   
                 }
               </div> 
             )

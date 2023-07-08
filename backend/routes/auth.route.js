@@ -17,8 +17,7 @@ router.post('/', (req, res) => {
         res.status(401).json({ error: 'Email incorrect' });
       } else {
         const user = results[0];
-        // compare password
-        try {
+        try {  // compare password
           bcrypt.compare(password, user.password, (err, passwordMatch) => {
             if (err) {
               console.log(err);
