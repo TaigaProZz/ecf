@@ -23,6 +23,10 @@
   .left-section-v2 {
     flex-direction: column;
   }
+
+  .home-sch-btn {
+    margin-top: 30px;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -41,7 +45,16 @@
     flex-direction: column;
   }
 
+  .left-section-v2 > ul {
+    font-size: 20px;
+  }
+
+  .home-sch-btn {
+    margin-top: 50px;
+  }
+
 }
+
 
 .section-container-v1, .section-container-v2 {
   height: 100vh;
@@ -51,7 +64,7 @@
 }
 
 .service-list {
-  max-height: 75%;
+  max-height: 60%;
   background-color: app.$buttonColor;
   padding: 0.5em;
   height: auto;

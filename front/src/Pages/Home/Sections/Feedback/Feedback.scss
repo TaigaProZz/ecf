@@ -1,11 +1,12 @@
 @use "src/App" as app;
 
-.sectionFeedbackContainer {
+.section-feedback-container {
   height: 100vh;
   width: 100vw;
   display: grid;
   align-items: center;
   justify-content: center;
+  background-color: #242b3f;
 }
 
 .header {

@@ -30,7 +30,7 @@ function SectionFeedback() {
   }, []);
 
   return (
-    <section className="sectionFeedbackContainer">
+    <section className="section-feedback-container">
         <div className="header">
           <h2 className="subTitle">Car l'avis de nos clients comptent...</h2>
         </div>

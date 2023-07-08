@@ -20,10 +20,11 @@ function SectionAllServices() {
   return (
     <section className='section-container-v1 light-section'>
       <div className="left-section-v1">
-        <img className="homeImg" src='/img/car_atelier.png' alt="Garage V.Parrot Logo" />
+        <img className="homeImg" src='/img/car_repair.png' alt="Garage V.Parrot Logo" />
 
       </div>
       <div className="right-section-v1">  
+      <h1 className="h2-service">Nos services</h1>
         <div className='service-list'>
             <ul className="ul-service">
               { services.map((elt, index) => { 
