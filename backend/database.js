@@ -1,12 +1,13 @@
 const mysql = require('mysql');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // settings to connect to sql database
 const connection = mysql.createConnection({
-  host: 'localhost',
-  port: 3306,
-  user: 'root',
-  password: 'azer',
-  database: 'ecf'
+  host: process.env.POSTGRES_HOST,
+  user: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DATABASE
 });
 
 // and connect to it
