@@ -27,7 +27,7 @@ app.use("/contact", require("./routes/contact.route"));
 app.use("/schedule", require("./routes/schedule.route"));
 
 // start backend server
-const port = 3307; 
+const port = 443; 
 app.listen(port, () => {
   console.log(`Serveur backend démarré sur le port ${port}`);
 });
