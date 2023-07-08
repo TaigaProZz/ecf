@@ -9,7 +9,7 @@ function SectionPresentation() {
           <div className='welcome-title'>
             <h1 className='title'>Garage V.Parrot</h1>
           </div>
-          <Link>
+          <Link to= "/contact">
             <button className="home-button">
               Nous contacter<br></br> <BsEnvelopeFill />
             </button>

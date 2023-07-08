@@ -2,7 +2,7 @@ import './Footer.scss';
 import { useState, useEffect } from 'react';
 import { BsEnvelopeFill } from 'react-icons/bs';
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function MyFooter() {
   const { pathname } = useLocation();
@@ -37,11 +37,13 @@ function MyFooter() {
       </div>
       <div className='right-side-footer'>
         <div className='footer-btn'>
-          <div className='btn '>   
-            <div className='contact-btn'>
-              <BsEnvelopeFill />
-              <span className='contact-btn-text'>Contact</span>
-            </div>
+          <div className='btn'>
+            <Link to='/contact'>   
+              <button className='footer-contact-btn'>
+                <BsEnvelopeFill />
+                <span className='contact-btn-text'>Contact</span>
+              </button>
+            </Link>
           </div>
         </div>
         <div className='footer-logo'>
