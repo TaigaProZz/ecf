@@ -13,7 +13,7 @@ function AdminFeedback () {
   // get all feedbacks 
   const fetchData = async () => {
     try {
-      const response = await axios.get('ecf-node-serverr.vercel.app:3307/feedback');
+      const response = await axios.get('ecf-node-serv.vercel.app:3307/feedback');
       const feedback = response.data;
       setFeedback(feedback);
     } catch (error) {
@@ -28,7 +28,7 @@ function AdminFeedback () {
   const handleValidate = async (choice, feedbackId) => {
     if (choice === 'valider') {
       try {
-        await axios.put(`ecf-node-serverr.vercel.app:3307/feedback/${feedbackId}`, {isVerified: 1}); 
+        await axios.put(`ecf-node-serv.vercel.app:3307/feedback/${feedbackId}`, {isVerified: 1}); 
         fetchData();
         alert('Feedback validé')
       } catch (error) {
@@ -42,7 +42,7 @@ function AdminFeedback () {
   const handleHide = async (choice, feedbackId) => {
     if (choice === 'valider') {
       try {
-        await axios.put(`ecf-node-serverr.vercel.app:3307/feedback/${feedbackId}`, {isVerified: 0});
+        await axios.put(`ecf-node-serv.vercel.app:3307/feedback/${feedbackId}`, {isVerified: 0});
         fetchData();
         alert('Feedback caché')
       } catch (error) {
@@ -57,7 +57,7 @@ function AdminFeedback () {
   const handleDelete = async (choice, feedbackId) => {
     if (choice === 'valider') {
       try {
-        await axios.delete(`ecf-node-serverr.vercel.app:3307/feedback/${feedbackId}`);
+        await axios.delete(`ecf-node-serv.vercel.app:3307/feedback/${feedbackId}`);
         fetchData();
         alert('Feedback supprimé')
       } catch (error) {
@@ -82,7 +82,7 @@ function AdminFeedback () {
     }
     // request to add to db
     try {
-      await axios.post(`ecf-node-serverr.vercel.app:3307/feedback`, newFeedback);
+      await axios.post(`ecf-node-serv.vercel.app:3307/feedback`, newFeedback);
       alert('Feedback ajouté')
       // refresh list
       fetchData();
