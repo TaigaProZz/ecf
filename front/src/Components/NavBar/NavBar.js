@@ -4,7 +4,6 @@ import { BiUser } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 import { useState } from 'react';
-require('dotenv').config();
 
 function MyNav({ user, setUser }) {
   const navigate = useNavigate();

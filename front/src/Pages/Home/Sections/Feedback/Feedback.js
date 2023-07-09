@@ -9,7 +9,6 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import 'swiper/css/effect-coverflow';
-require('dotenv').config();
 
 function SectionFeedback() {
   const [feedbacks, setFeedbacks] = useState([]);

@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import { BsEnvelopeFill } from 'react-icons/bs';
 import axios from 'axios';
 import { Link, useLocation } from 'react-router-dom';
-require('dotenv').config();
 
 function MyFooter() {
   const { pathname } = useLocation();

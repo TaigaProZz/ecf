@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 // import { CARS } from '../../../Data/cars.js'
 import axios from 'axios';
-require('dotenv').config();
 
 function Contact() {
   const params = useParams();

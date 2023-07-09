@@ -2,7 +2,6 @@ import './SendFeedback.scss';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { useRef, useState } from 'react';
 import axios from 'axios';
-require('dotenv').config();
 
 function SendFeedback() {
   const inputNameRef = useRef(null);

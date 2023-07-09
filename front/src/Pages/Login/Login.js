@@ -2,7 +2,6 @@ import './Login.scss';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-require('dotenv').config();
 
 function Login({ setUser }) {
   const navigate = useNavigate();
