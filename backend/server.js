@@ -28,7 +28,7 @@ app.use("/contact", require("./routes/contact.route"));
 app.use("/schedule", require("./routes/schedule.route"));
 
 // start backend server
-const port = process.env.PORT; 
+const port = process.env.API_PORT; 
 app.listen(port, () => {
-  console.log(`Serveur backend démarré sur le port ${port}`);
+  console.log(`Serveur backend démarré`);
 });
