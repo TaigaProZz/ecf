@@ -12,12 +12,19 @@ function SendFeedback() {
   // function to send feedback  to db
   const sendData = async (name, message, rating, isVerified) => {
     try {
-      await axios.post(`https://ecf-node-serv.vercel.app/feedback`, {
+      const response = await axios.post(`https://ecf-node-serv.vercel.app/feedback`, {
         name: name,
         message: message,
         rating: rating,
         isVerified: isVerified
       })
+      if(response.status === 200) {
+        alert("Commentaire envoyé !")
+        form.current.reset();
+      } else {
+        alert("Une erreur est survenue")
+      }
+      
     } catch (error) {
       console.log(error);
     }
@@ -36,8 +43,6 @@ function SendFeedback() {
       const name = inputNameRef.current.value;
       const message = inputMessageRef.current.value
       sendData(name, message, rating, 0);
-      alert("Message envoyé")
-      form.current.reset();
     }
   }
 
