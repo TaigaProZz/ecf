@@ -2,11 +2,11 @@
    "version": 2,
    "name": "ecf",
    "builds": [
-     { "src": "server.js", "use": "@now/node" }
+     { "src": "server.js", "use": "@vercel/node" }
    ],
    "routes": [
      {
-       "src": "/api/(.*)",
+       "src": "/(.*)",
        "methods": ["GET", "POST", "PUT", "DELETE"],
        "headers": {
          "Access-Control-Allow-Origin": "https://ecf-phi.vercel.app",
