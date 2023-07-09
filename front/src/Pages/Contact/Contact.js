@@ -12,7 +12,7 @@ function Contact() {
   // function to send message to db
   const sendData = async (name, phone, email, message) => {
     try {
-      await axios.post(`https://ecf-node-serv.vercel.app:3307/contact`, {
+      await axios.post(`https://ecf-node-serv.vercel.app/contact`, {
         subject: 'Contact',
         name: name,
         phone: phone,

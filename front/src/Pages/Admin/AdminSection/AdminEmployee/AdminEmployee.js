@@ -11,7 +11,7 @@ function AdminEmployees () {
 
   // get all employees
   const fetchData = async () => {
-    const response = await axios.get(`https://ecf-node-serv.vercel.app:3307/employee`);
+    const response = await axios.get(`https://ecf-node-serv.vercel.app/employee`);
     const result = response.data;
     setEmployee(result);
   }
@@ -36,7 +36,7 @@ function AdminEmployees () {
     }
     // send it to db
     try {
-      await axios.post(`https://ecf-node-serv.vercel.app:3307/employee`, {
+      await axios.post(`https://ecf-node-serv.vercel.app/employee`, {
           name: employee.name,
           email: employee.email,
           password: employee.password,
@@ -83,7 +83,7 @@ function AdminEmployees () {
     }
  
     try {
-      await axios.put(`https://ecf-node-serv.vercel.app:3307/employee/${originalEmployee.id}`, finalEmployee); 
+      await axios.put(`https://ecf-node-serv.vercel.app/employee/${originalEmployee.id}`, finalEmployee); 
       fetchData();
     } catch (error) {
       alert("Erreur lors de l'envoi des données", error);
