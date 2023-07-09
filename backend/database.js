@@ -2,12 +2,13 @@ const mysql = require('mysql2');
 
 // settings to connect to sql database
 const connection = mysql.createConnection(
-  {
-    host: process.env.REACT_APP_DATABASE_HOST,
-    user: process.env.REACT_APP_DATABASE_USERNAME,
-    password: process.env.REACT_APP_DATABASE_PASSWORD,
-    database: process.env.REACT_APP_DATABASE_NAME,
-  },
+  // {
+  //   host: process.env.REACT_APP_DATABASE_HOST,
+  //   user: process.env.REACT_APP_DATABASE_USERNAME,
+  //   password: process.env.REACT_APP_DATABASE_PASSWORD,
+  //   database: process.env.REACT_APP_DATABASE_NAME,
+  // },
+  process.env.REACT_APP_DATABASE_URL
 );
 
 // and connect to it
