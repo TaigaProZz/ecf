@@ -18,11 +18,11 @@ const Vente = () => {
   // fetch cars and images from database
   const fetchData = async () => {
     try {
-      const carResponse = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/car`);
+      const carResponse = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_3307}/car`);
       setCars(carResponse.data);
       setSortedCars(carResponse.data);
 
-      const imageResponse = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/carimage`);
+      const imageResponse = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_3307}/carimage`);
       const imageList = imageResponse.data.reduce((acc, image) => {
         const carId = image.car_id;
         const img = image.path;

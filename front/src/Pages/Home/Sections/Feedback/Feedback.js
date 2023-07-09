@@ -17,7 +17,7 @@ function SectionFeedback() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/feedback`);
+        const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_3307}/feedback`);
         const feedbacks = response.data.filter(feedbacks => feedbacks.isVerified === 1);
         setFeedbacks(feedbacks);
       } catch (error) {

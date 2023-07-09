@@ -12,7 +12,7 @@ function SendFeedback() {
   // function to send feedback  to db
   const sendData = async (name, message, rating, isVerified) => {
     try {
-      await axios.post(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/feedback`, {
+      await axios.post(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_3307}/feedback`, {
         name: name,
         message: message,
         rating: rating,
