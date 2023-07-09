@@ -19,7 +19,7 @@ function SectionFeedback() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:3307/feedback');
+        const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/feedback`);
         const feedbacks = response.data.filter(feedbacks => feedbacks.isVerified === 1);
         setFeedbacks(feedbacks);
       } catch (error) {

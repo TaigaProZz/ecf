@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+require('dotenv').config();
+
 
 function SectionAllServices() {
   const [services, setServices] = useState([]);
@@ -7,7 +9,7 @@ function SectionAllServices() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("ecf-node-serverr.vercel.app/service");
+        const response = await axios.get(`ecf-node-serverr.vercel.app${process.env.API_PORT}/service`);
         const list = response.data;
         setServices(list);
       } catch (error) {

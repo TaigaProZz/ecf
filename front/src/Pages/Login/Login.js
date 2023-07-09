@@ -18,7 +18,7 @@ function Login({ setUser }) {
       return;
     } else {
         try {
-          const response = await axios.post("http://localhost:3307/auth",  {
+          const response = await axios.post(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/auth`,  {
             email: email,
             password: password  
           });
