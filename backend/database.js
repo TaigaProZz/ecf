@@ -1,9 +1,8 @@
 const mysql = require('mysql2');
-require('dotenv').config();
 
 // settings to connect to sql database
 const connection = mysql.createConnection(
-  process.env.DATABASE_URL
+  process.env.REACT_APP_DATABASE_URL
 );
 
 // and connect to it
