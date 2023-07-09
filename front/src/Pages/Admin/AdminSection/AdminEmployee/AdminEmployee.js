@@ -5,6 +5,7 @@ import AdminAddEmployee from './PopUp/AdminAddEmployee';
 import axios from 'axios';
 import './AdminEmployee.scss';
 import AdminManageEmployee from './PopUp/AdminManageEmployee';
+require('dotenv').config();
 
 function AdminEmployees () {
   const [employees, setEmployee] = useState(null);

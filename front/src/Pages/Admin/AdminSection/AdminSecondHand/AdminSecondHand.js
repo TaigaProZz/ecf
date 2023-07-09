@@ -4,6 +4,7 @@ import PopUpAddCar from './PopUp/AdminAddCar';
 import axios from 'axios';
 import { BsPlusSquare } from 'react-icons/bs';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
+require('dotenv').config();
 
 function AdminSecondHand () {
   const [cars, setCars] = useState(null);

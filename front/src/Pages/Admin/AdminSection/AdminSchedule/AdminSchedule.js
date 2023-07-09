@@ -1,6 +1,7 @@
 import './AdminSchedule.scss';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+require('dotenv').config();
 
 function AdminSchedule () {
   const [schedule, setSchedule] = useState(null);

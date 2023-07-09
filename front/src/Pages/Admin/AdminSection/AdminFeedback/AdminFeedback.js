@@ -5,6 +5,7 @@ import { AiFillStar } from 'react-icons/ai';
 import { BsPlusSquare } from 'react-icons/bs';
 import PopUpAddFeedback from './PopUp/AdminPopUpAddFeedback'
 import axios from 'axios';
+require('dotenv').config();
 
 function AdminFeedback () {
   const [feedback, setFeedback] = useState([]);

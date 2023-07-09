@@ -3,6 +3,7 @@ import '../../App.scss'
 import axios from 'axios';
 import { useState, useEffect, useRef} from 'react';
 import { Link } from 'react-router-dom';
+require('dotenv').config();
 
 const Vente = () => {
   const [cars, setCars] = useState([]);

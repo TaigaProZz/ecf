@@ -1,6 +1,7 @@
 import './Contact.scss';
 import { useRef } from 'react';
 import axios from 'axios';
+require('dotenv').config();
 
 function Contact() {
   const nameInputRef = useRef(null);
