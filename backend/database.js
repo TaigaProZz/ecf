@@ -11,6 +11,8 @@ const connection = mysql.createConnection(
   process.env.REACT_APP_DATABASE_URL
 );
 
+console.log("Connection");
+
 // and connect to it
 connection.connect((err) => {
   if (err) throw err;
