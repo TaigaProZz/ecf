@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
 
 // ignore restriction of cors
 app.use(cors({
@@ -27,7 +28,7 @@ app.use("/contact", require("./routes/contact.route"));
 app.use("/schedule", require("./routes/schedule.route"));
 
 // start backend server
-const port = 3000; 
+const port = process.env.PORT; 
 app.listen(port, () => {
   console.log(`Serveur backend démarré sur le port ${port}`);
 });
