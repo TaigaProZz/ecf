@@ -12,7 +12,7 @@ function MyFooter() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/schedule`);
+        const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/schedule`);
         const list = response.data;
         setSchedule(list);
       } catch (error) {

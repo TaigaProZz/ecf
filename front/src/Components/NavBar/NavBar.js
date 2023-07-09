@@ -12,7 +12,7 @@ function MyNav({ user, setUser }) {
 
   const logout = async () => {
     try {
-      const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/auth`);
+      const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/auth`);
       if (response.status === 200) {
         setUser({});
         alert("Vous êtes déconnecté");

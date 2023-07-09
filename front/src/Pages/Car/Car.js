@@ -13,11 +13,11 @@ function Car() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const carResponse = await axios.get(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/car/${params.id}`);
+        const carResponse = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/car/${params.id}`);
         const car = carResponse.data;
         setElement(car[0]);
 
-        const imageResponse = await axios.get(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/carimage/${params.id}`);
+        const imageResponse = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/carimage/${params.id}`);
         const images = imageResponse.data;
         const imageList = JSON.parse(images[0].path);
         setImages(imageList);

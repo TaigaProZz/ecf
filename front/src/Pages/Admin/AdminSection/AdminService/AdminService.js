@@ -12,7 +12,7 @@ function AdminServices () {
 
   // fetch all services function
   const fetchData = async () => {
-    const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/service`);
+    const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/service`);
     const service = response.data;
     setServices(service);
   }
@@ -27,7 +27,7 @@ function AdminServices () {
       return;
     }
     try {
-      await axios.post(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/service`, { services: service });
+      await axios.post(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/service`, { services: service });
       fetchData();
     } catch (error) {
       alert("Erreur lors de l'ajout", error)
@@ -38,7 +38,7 @@ function AdminServices () {
   // DELETE SERVICE function
   const deleteService = async (id) => { 
     try {
-      await axios.delete(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/service/` + id);
+      await axios.delete(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/service/` + id);
       fetchData();
     } catch (error) {
       alert('Erreur lors de la suppression', error);
@@ -52,7 +52,7 @@ function AdminServices () {
       return;
     }
     try {
-      await axios.put(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/service/` + id, {services: service});
+      await axios.put(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/service/` + id, {services: service});
       fetchData();
     } catch (error) {
       alert('Erreur lors de la modification', error);

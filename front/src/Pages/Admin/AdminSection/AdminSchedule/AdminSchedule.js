@@ -9,7 +9,7 @@ function AdminSchedule () {
 
   // fetch schedule
   const fetchData = async () => {
-    const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/schedule`);
+    const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/schedule`);
     const result = response.data
     setSchedule(result);
   }
@@ -87,7 +87,7 @@ function AdminSchedule () {
     });
     // and send it to db
     try {
-      await axios.post(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/schedule`, updates);
+      await axios.post(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/schedule`, updates);
       setModifiedSchedule([]);
       fetchData();
       alert("Données enregistrées avec succès !");

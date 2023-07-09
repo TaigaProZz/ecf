@@ -18,7 +18,7 @@ function Contact() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/car/${params.id}`);
+        const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/car/${params.id}`);
         const car = response.data;
         setElement(car[0]);
       } catch (error) {
@@ -36,7 +36,7 @@ function Contact() {
   // function to send msg to database
   const sendData = async (subject, name, phone, email, message) => {
     try {
-      await axios.post(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/contact`, {
+      await axios.post(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/contact`, {
         subject: subject,
         name: name,
         phone: phone,

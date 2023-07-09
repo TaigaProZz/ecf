@@ -12,7 +12,7 @@ function AdminEmployees () {
 
   // get all employees
   const fetchData = async () => {
-    const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/employee`);
+    const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/employee`);
     const result = response.data;
     setEmployee(result);
   }
@@ -37,7 +37,7 @@ function AdminEmployees () {
     }
     // send it to db
     try {
-      await axios.post(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/employee`, {
+      await axios.post(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/employee`, {
           name: employee.name,
           email: employee.email,
           password: employee.password,
@@ -84,7 +84,7 @@ function AdminEmployees () {
     }
  
     try {
-      await axios.put(`ecf-node-serverr.vercel.app:${process.env.API_PORT}/employee/${originalEmployee.id}`, finalEmployee); 
+      await axios.put(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_API_PORT}/employee/${originalEmployee.id}`, finalEmployee); 
       fetchData();
     } catch (error) {
       alert("Erreur lors de l'envoi des données", error);
