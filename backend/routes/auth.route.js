@@ -40,7 +40,6 @@ router.post('/', (req, res) => {
   });
 });
 
-
 // log out 
 router.get("/", (req, res) => {
   return res
