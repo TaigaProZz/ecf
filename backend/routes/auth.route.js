@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
             } else {
               if (passwordMatch) {
                 const token = jwt.sign({ email: user.email}, 'key');
-                res.cookie('session', token, { maxAge: 3600000, httpOnly: true, sameSite: true, secure: true, signed: true });
+                res.cookie('session', token, { maxAge: 3600000, httpOnly: true, secure: true, signed: true });
                 res.status(200).json({name: user.name, permission: user.permission});
               } else {
                 res.status(401).json({ success: false, error: 'Mot de passe incorrect' });
