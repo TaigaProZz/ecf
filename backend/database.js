@@ -11,10 +11,7 @@ const connection = mysql.createConnection(
       rejectUnauthorized: true
     }
   }
-  // process.env.REACT_APP_DATABASE_URL
 );
-
-console.log("Connection");
 
 // and connect to it
 connection.connect((err) => {

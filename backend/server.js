@@ -5,10 +5,10 @@ const cookieParser = require('cookie-parser');
 
 // ignore restriction of cors
 app.use(cors({
-  origin: 'https://ecf-phi.vercel.app/*',
+  origin: 'https://ecf-phi.vercel.app',
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 }));
 
 app.use(express.json());
