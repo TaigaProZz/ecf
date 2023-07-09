@@ -8,7 +8,7 @@ function SectionAllServices() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`ecf-node-serverr.vercel.app${process.env.3307}/service`);
+        const response = await axios.get(`ecf-node-serverr.vercel.app:3307/service`);
         const list = response.data;
         setServices(list);
       } catch (error) {

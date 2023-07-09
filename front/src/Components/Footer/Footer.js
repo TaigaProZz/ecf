@@ -11,7 +11,7 @@ function MyFooter() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`ecf-node-serverr.vercel.app:${process.env.REACT_APP_3307}/schedule`);
+        const response = await axios.get(`ecf-node-serverr.vercel.app:3307/schedule`);
         const list = response.data;
         setSchedule(list);
       } catch (error) {
