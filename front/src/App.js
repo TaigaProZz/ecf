@@ -16,7 +16,7 @@ function App() {
   
   const getUser = async () => {
     try {
-      const response = await axios.get("ecf-node-server.vercel.app/user", { withCredentials: true });
+      const response = await axios.get("ecf-node-serverr.vercel.app/user", { withCredentials: true });
       if (response.data) {
         setUser(response.data);
       }
