@@ -19,6 +19,8 @@ function App() {
       const response = await axios.get("https://ecf-node-serv.vercel.app/user", { withCredentials: true });
       if (response.data) {
         setUser(response.data);
+      } else {
+        setUser(null);
       }
     } catch (error) {
       console.log(error);

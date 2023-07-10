@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
 // post car
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/img/cars');
+    cb(null, 'img/cars');
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + '-' + file.originalname);
@@ -44,8 +44,8 @@ const upload = multer({ storage: storage });
 router.post('/', upload.array('image', 6), async (req, res) => {
   try {
     const { title, brand, model, description, price, km, year } = req.body;
-    const imagePaths = req.files.map(file => file.path.replace('public', ''));
-    const jsonImagePaths = JSON.stringify(imagePaths);
+    // const imagePaths = req.files.map(file => file.path.replace('public', ''));
+    const jsonImagePaths = JSON.stringify(req.files);
 
     // insert car in database
     const carQuery = 'INSERT INTO cars (title, brand, model, description, price, km, year) VALUES (?, ?, ?, ?, ?, ?, ?)';

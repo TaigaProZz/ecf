@@ -38,8 +38,13 @@ function Admin({ user }) {
     setAdmin(user.permission === 1);
   }, [user.permission])
 
-  if(!user) {
+  console.log(user);
+  if(user === 'null') {
+    console.log("user is null");
     return <div>Vous devez être connecté pour accéder à cette page.</div>
+  } else {
+    console.log("user is nueeeeell");
+
   }
 
   return (
