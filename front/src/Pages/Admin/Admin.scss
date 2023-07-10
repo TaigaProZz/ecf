@@ -52,7 +52,7 @@
     background: app.$buttonColor;
     border-width: 3px 1px 0px 1px;
     border-style: solid;
-    border-color: #FFFFFF;
+    border-color: aliceblue;
     border-radius: 12px 12px 0px 0px;
   }
 
@@ -101,19 +101,6 @@
   align-items: flex-start;
 }
 
-
-
 .admin-bar-button:hover {
   background: app.$buttonHoverColor;
-}
-
-.permission-box {
-  height: 100px;
-  width: 130px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  margin-left: 15%;
-  background-color: rgb(72, 16, 202);
 }

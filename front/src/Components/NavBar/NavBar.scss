@@ -30,11 +30,6 @@
     background: #ffffff;
   }
   
-  /* Color/shape of burger icon bars on hover*/
-  .bm-burger-bars-hover {
-    background: #a90000;
-  }
-  
   /* Position and sizing of clickable cross button */
   .bm-cross-button {
     height: 24px;
@@ -43,7 +38,7 @@
   
   /* Color/shape of close button cross */
   .bm-cross {
-    background: #bdc3c7;
+    background: aliceblue;
   }
   
   /*
@@ -61,18 +56,16 @@
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
     width: 100%;
-
   }
   
   /* Morph shape necessary with bubble or elastic */
   .bm-morph-shape {
-    fill: #373a47;
+    fill: app.$elementColor;
   }
   
   /* Wrapper for item list */
   .bm-item-list {
-    color: #b8b7ad;
-    padding: 0.8em;
+    color: app.$barColor;
     display: flex;
     flex-direction: column;
   }
@@ -84,13 +77,10 @@
   }
 
   .bm-item::hover, .bm-item::focus {
-    color: #fff;
+    color: aliceblue;
   }
   
-  /* Styling of overlay */
-  .bm-overlay {
-    background: rgba(0, 0, 0, 0.3);
-  }
+
 }
 
 // large screen
