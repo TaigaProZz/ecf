@@ -16,13 +16,11 @@
   .feedback-list {
     height: 250px;
     width: 100%;
-    background-color: app.$elementColor;
+    background-color: app.$buttonColor;
     color: white;
     border-radius: 12px;
   }
 }
-
-
 
 .feedback-list-rating {
   display: inline-flex;
