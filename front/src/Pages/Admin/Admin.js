@@ -34,10 +34,13 @@ function Admin({ user }) {
   const [isAdmin, setAdmin] = useState(false);
 
   useEffect(() => {
-    if (!user.permission) return <div>Vous n'avez pas la permission d'accéder à cette page</div>;
+    if (!user.permission) return;
     setAdmin(user.permission === 1);
   }, [user.permission])
 
+  if(!user) {
+    return <div>Vous devez être connecté pour accéder à cette page.</div>
+  }
 
   return (
     <div className="admin-container">
