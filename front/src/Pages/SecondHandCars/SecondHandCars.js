@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useState, useEffect, useRef} from 'react';
 import { Link } from 'react-router-dom';
 
+
 const Vente = () => {
   const [cars, setCars] = useState([]);
   const [sortedCars, setSortedCars] = useState([]); 
@@ -14,19 +15,22 @@ const Vente = () => {
   const yearTwoInput = useRef();
   const kmOneInput = useRef(); 
   const kmTwoInput = useRef(); 
+  const endpoint = process.env.REACT_APP_CAR_SCW_ENDPOINT;
 
   // fetch cars and images from database
   const fetchData = async () => {
     try {
+      // collect info of cars from db
       const carResponse = await axios.get(`https://ecf-node-serv.vercel.app/car`);
       setCars(carResponse.data);
       setSortedCars(carResponse.data);
 
+      // collect images of cars from s3
       const imageResponse = await axios.get(`https://ecf-node-serv.vercel.app/carimage`);
       const imageList = imageResponse.data.reduce((acc, image) => {
         const carId = image.car_id;
         const img = image.path;
-        const list = JSON.parse(img);    
+        const list = JSON.parse(img).map((path) => `${endpoint}${path}`);
         if (acc[carId]) {
           acc[carId].push(...list);
         } else {
@@ -44,7 +48,6 @@ const Vente = () => {
   useEffect(() => {  
     fetchData();
   }, []);
-
 
   const sortCars = () => {
     // // get all inputs

@@ -6,7 +6,7 @@ const AWS = require("aws-sdk");
 const { v4: uuidv4 } = require('uuid');
 
 const s3 = new AWS.S3({
-  endpoint: process.env.SCW_ENDPOINT,
+  endpoint: process.env.REACT_APP_SCW_ENDPOINT,
   accessKeyId: process.env.SCW_ACCESS_KEY,
   secretAccessKey: process.env.SCW_SECRET_KEY,
   s3BucketEndpoint: true,

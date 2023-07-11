@@ -35,7 +35,7 @@ function Car() {
     return null;
   }
 
-  const pathExtension =  process.env.REACT_APP_SCW_ENDPOINT + '/cars/';
+  const pathExtension = process.env.REACT_APP_CAR_SCW_ENDPOINT;
 
   return (
     <div className="car-page-container">
