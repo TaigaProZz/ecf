@@ -2,7 +2,15 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../database');
 const multer = require('multer');
-const fs = require('fs');
+const AWS = require("aws-sdk");
+const { v4: uuidv4 } = require('uuid');
+
+const s3 = new AWS.S3({
+  endpoint: process.env.SCW_ENDPOINT,
+  accessKeyId: process.env.SCW_ACCESS_KEY,
+  secretAccessKey: process.env.SCW_SECRET_KEY,
+  s3BucketEndpoint: true,
+});
 
 // get cars 
 router.get('/', (req, res) => {
@@ -31,27 +39,32 @@ router.get('/:id', (req, res) => {
   });
 });
 
-// post car
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     const directory = '/backend/img/cars';
-//     if (!fs.existsSync(directory)) {
-//       fs.mkdirSync(directory, { recursive: true });
-//     }
-//     cb(null, directory);
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, Date.now() + '-' + file.originalname);
-//   }
-// });
-// const upload = multer({ storage: storage });
+const uploadFile = async (pFile, pFilename, pFolder) => { 
+  const fileContent = Buffer.from(pFile.buffer, ' ');
+  await s3.putObject({
+      ACL: 'public-read',
+      Body: fileContent,
+      Bucket: `ecf/${pFolder}`,
+      Key: pFilename,
+      ContentType: "image/jpeg"
+  }).promise();
+}
 
-router.post('/', async (req, res) => {
+const upload = multer();
+
+// post car
+router.post('/', upload.array("carImage"), async (req, res) => {
   try {
     const { title, brand, model, description, price, km, year } = req.body;
-    // const imagePaths = req.files.map(file => file.path.replace('public', ''));
-    const imageBuffer = fs.readFileSync(req.files);
-    const jsonImagePaths = JSON.stringify(imageBuffer);
+    const images = req.files;
+    
+    const imageResult = images.map(async (image) => {
+      const uuid = uuidv4();
+      const file = await uploadFile(image, uuid, "cars");
+      return { uuid, file }
+    });
+    // wait for all promise to be resolved
+    const uploadedImages = await Promise.all(imageResult);
 
     // insert car in database
     const carQuery = 'INSERT INTO cars (title, brand, model, description, price, km, year) VALUES (?, ?, ?, ?, ?, ?, ?)';
@@ -66,8 +79,12 @@ router.post('/', async (req, res) => {
       // insert images in database
       const carId = carResult.insertId;
       const imageQuery = 'INSERT INTO cars_image (car_id, path) VALUES (?, ?)';
-      const imageValues = [carId, jsonImagePaths];
-      connection.query(imageQuery, imageValues, (error) => {
+      const imageUuidValues = uploadedImages.map((image) => [image.uuid]);
+      // parse to json 
+      const imageJsonValues = JSON.stringify(imageUuidValues);
+      const values = [carId, imageJsonValues]
+
+      connection.query(imageQuery, values, (error) => {
         if (error) {
           console.error(error);
           res.sendStatus(500);

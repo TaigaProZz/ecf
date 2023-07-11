@@ -46,13 +46,11 @@ function AdminSecondHand () {
     formData.append('km', car.km);
     formData.append('year', car.year);
     car.images.forEach((image, index) => {
-      console.log(image);
-      formData.append('image', image);
+      formData.append('carImage', image);
     });
 
     try {
       const response = await axios.post(`https://ecf-node-serv.vercel.app/car`, formData);
-      console.log(response);
       if (response.status === 200) {
         setCars([...cars, car]);
       } else {
