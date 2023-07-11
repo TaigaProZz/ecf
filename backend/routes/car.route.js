@@ -33,7 +33,7 @@ router.get('/:id', (req, res) => {
 // post car
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'img/cars');
+    cb(null, '/backend/img/cars');
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + '-' + file.originalname);
