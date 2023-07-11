@@ -20,6 +20,7 @@ function Car() {
         const imageResponse = await axios.get(`https://ecf-node-serv.vercel.app/carimage/${params.id}`);
         const images = imageResponse.data;
         const imageList = JSON.parse(images[0].path);
+        console.log(imageList);
         setImages(imageList);
 
       } catch (error) {
@@ -34,7 +35,7 @@ function Car() {
     return null;
   }
 
-  const pathExtension = '../';
+  const pathExtension =  process.env.REACT_APP_SCW_ENDPOINT + '/cars/';
 
   return (
     <div className="car-page-container">
