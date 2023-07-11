@@ -32,25 +32,26 @@ router.get('/:id', (req, res) => {
 });
 
 // post car
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const directory = 'img/cars';
-    if (!fs.existsSync(directory)) {
-      fs.mkdirSync(directory, { recursive: true });
-    }
-    cb(null, directory);
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
-});
-const upload = multer({ storage: storage });
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     const directory = '/backend/img/cars';
+//     if (!fs.existsSync(directory)) {
+//       fs.mkdirSync(directory, { recursive: true });
+//     }
+//     cb(null, directory);
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + '-' + file.originalname);
+//   }
+// });
+// const upload = multer({ storage: storage });
 
-router.post('/', upload.array('image', 6), async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { title, brand, model, description, price, km, year } = req.body;
     // const imagePaths = req.files.map(file => file.path.replace('public', ''));
-    const jsonImagePaths = JSON.stringify(req.files);
+    const imageBuffer = fs.readFileSync(req.files);
+    const jsonImagePaths = JSON.stringify(imageBuffer);
 
     // insert car in database
     const carQuery = 'INSERT INTO cars (title, brand, model, description, price, km, year) VALUES (?, ?, ?, ?, ?, ?, ?)';
