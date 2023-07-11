@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../database');
 const multer = require('multer');
+const fs = require('fs');
 
 // get cars 
 router.get('/', (req, res) => {
@@ -33,7 +34,11 @@ router.get('/:id', (req, res) => {
 // post car
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/backend/img/cars');
+    const directory = 'img/cars';
+    if (!fs.existsSync(directory)) {
+      fs.mkdirSync(directory, { recursive: true });
+    }
+    cb(null, directory);
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + '-' + file.originalname);
