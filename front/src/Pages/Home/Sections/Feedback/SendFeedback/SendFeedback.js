@@ -26,7 +26,7 @@ function SendFeedback() {
           success: 
           { 
             render({ data }) {
-            form.current.reset();
+            setRating(null);
             return "Merci pour votre commentaire ! Il sera publié après modération"
             }
           },
@@ -50,6 +50,7 @@ function SendFeedback() {
       // integrer l'envoi du commentaire dans "commentaire à moderer"
       const name = inputNameRef.current.value;
       const message = inputMessageRef.current.value
+      form.current.reset();
       sendData(name, message, rating, 0);
     }
   }
