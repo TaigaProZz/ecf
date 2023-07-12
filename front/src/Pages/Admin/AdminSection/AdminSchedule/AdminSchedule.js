@@ -1,4 +1,6 @@
 import './AdminSchedule.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -86,12 +88,26 @@ function AdminSchedule () {
     });
     // and send it to db
     try {
-      await axios.post(`${process.env.REACT_APP_DOMAIN}/schedule`, updates);
-      setModifiedSchedule([]);
-      fetchData();
-      alert("Données enregistrées avec succès !");
+      await toast.promise(
+        axios.post(`${process.env.REACT_APP_DOMAIN}/schedule`, updates),
+        {
+          pending: 'Enregistrement en cours...',
+          success: {
+            render({ data }) {
+              setModifiedSchedule([]);
+              fetchData();
+              return `Données enregistrées avec succès !`;
+            }
+          },
+          error: {
+            render({ data }) {
+              return `Erreur lors de l'enregistrement des données : ${data.error}`;
+            }
+          }
+        }
+      );     
     } catch (error) {
-      alert("Erreur lors de l'enregistrement des données :", error);
+      toast.error("Erreur lors de l'enregistrement des données :", error);
     }  
   };
   
@@ -135,6 +151,10 @@ function AdminSchedule () {
         })}
         <button className='admin-add-btn' onClick={handleSave}>Enregistrer</button>
       </div>
+      <ToastContainer 
+          position= "bottom-right" 
+          theme='dark'
+        />
     </div>
   );
 } 

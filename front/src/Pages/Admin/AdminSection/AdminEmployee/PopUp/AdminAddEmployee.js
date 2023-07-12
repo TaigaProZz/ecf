@@ -60,13 +60,10 @@ function AdminAddEmployee(props) {
               onChange={handleEmailChange}
             />
             <label>Permission</label>
-            <input
-              type="number"
-              min={0}
-              max={1}
-              value={permission}
-              onChange={handlePermissionChange}
-            />
+            <select onChange={handlePermissionChange} value={permission}>
+              <option value= "0">Utilisateur</option>
+              <option value= "1">Admin</option>
+            </select>
             <div className="password-container">
               <label>Mot de passe</label>
               <input

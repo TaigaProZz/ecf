@@ -1,10 +1,12 @@
+import './AdminEmployee.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { FaPen } from 'react-icons/fa';
 import { BsPlusSquare } from 'react-icons/bs';
 import AdminAddEmployee from './PopUp/AdminAddEmployee';
-import axios from 'axios';
-import './AdminEmployee.scss';
 import AdminManageEmployee from './PopUp/AdminManageEmployee';
+import axios from 'axios';
 
 function AdminEmployees () {
   const [employees, setEmployee] = useState(null);
@@ -36,14 +38,27 @@ function AdminEmployees () {
     }
     // send it to db
     try {
-      await axios.post(`${process.env.REACT_APP_DOMAIN}/employee`, {
+      await toast.promise (
+        axios.post(`${process.env.REACT_APP_DOMAIN}/employee`, {
           name: employee.name,
           email: employee.email,
           password: employee.password,
           permission: employee.permission,
-      });
-      // refresh data list
-      fetchData();
+      }), {
+        pending: 'Envoi des données...',
+        success: {
+          render({ data }) {
+            fetchData();
+            return 'Employé ajouté avec succès !';
+          }
+        },
+        error: {
+          render({ data }) {
+            return `Erreur lors de l'envoi des données : ${data}`;
+          }
+        }
+      }
+    )
     } catch (error) {
       alert("Erreur lors de l'envoi des données :", error);
     }
@@ -70,8 +85,6 @@ function AdminEmployees () {
       finalEmployee.email = newEmployee.email;
     }
 
-    console.log(newEmployee.permission);
-
     if (newEmployee.permission === originalEmployee.permission 
       || newEmployee.permission === undefined 
       || newEmployee.permission === ''
@@ -83,14 +96,25 @@ function AdminEmployees () {
     }
  
     try {
-      await axios.put(`${process.env.REACT_APP_DOMAIN}/employee/${originalEmployee.id}`, finalEmployee); 
-      fetchData();
+      await toast.promise (
+        axios.put(`${process.env.REACT_APP_DOMAIN}/employee/${originalEmployee.id}`, finalEmployee), {
+          pending: 'Envoi des données...',
+          success: {
+            render({ data }) {
+              fetchData();
+              return 'Employé modifié avec succès !';
+            }
+          },
+          error: {
+            render({ data }) {
+              return `Erreur lors de l'envoi des données : ${data}`;
+            }
+          }
+        }
+      )
     } catch (error) {
       alert("Erreur lors de l'envoi des données", error);
     }
-
-    // close popup
-    //   setShowConfirmation(false);
   };
     
   return (
@@ -122,6 +146,10 @@ function AdminEmployees () {
           onAddEmployee={addEmployee}
           >
         </AdminAddEmployee>
+        <ToastContainer 
+          position= "bottom-right" 
+          theme='dark'
+        />
     </div>
   )
 }

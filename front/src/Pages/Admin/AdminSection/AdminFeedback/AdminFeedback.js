@@ -1,4 +1,6 @@
 import './AdminFeedback.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
 import { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
@@ -17,7 +19,7 @@ function AdminFeedback () {
       const feedback = response.data;
       setFeedback(feedback);
     } catch (error) {
-      console.log(error);
+      toast.error("Erreur lors de la récupération des données", error)
     } 
   }
   useEffect(() => {
@@ -28,11 +30,25 @@ function AdminFeedback () {
   const handleValidate = async (choice, feedbackId) => {
     if (choice === 'valider') {
       try {
-        await axios.put(`${process.env.REACT_APP_DOMAIN}/feedback/${feedbackId}`, {isVerified: 1}); 
-        fetchData();
-        alert('Feedback validé')
+        await toast.promise (
+          axios.put(`${process.env.REACT_APP_DOMAIN}/feedback/${feedbackId}`, {isVerified: 1}),
+          {
+            pending: 'Envoi des données...',
+            success: {
+              render({ data }) {
+                fetchData();
+                return 'Feedback validé avec succès !';
+              }
+            },
+            error: {
+              render({ data }) {
+                return `Erreur lors de l'envoi des données : ${data}`;
+              }
+            }
+          }
+        )
       } catch (error) {
-        alert("Erreur lors de l'envoi des données", error);
+        toast.error("Erreur lors de l'envoi des données", error);
       }
       // close popup
       setShowConfirmation(false);
@@ -42,11 +58,25 @@ function AdminFeedback () {
   const handleHide = async (choice, feedbackId) => {
     if (choice === 'valider') {
       try {
-        await axios.put(`${process.env.REACT_APP_DOMAIN}/feedback/${feedbackId}`, {isVerified: 0});
-        fetchData();
-        alert('Feedback caché')
+        await toast.promise (
+          axios.put(`${process.env.REACT_APP_DOMAIN}/feedback/${feedbackId}`, {isVerified: 0}),
+          {
+            pending: 'Envoi des données...',
+            success: {
+              render({ data }) {
+                fetchData();
+                return 'Feedback caché avec succès !';
+              }
+            },
+            error: {
+              render({ data }) {
+                return `Erreur lors de l'envoi des données : ${data}`;
+              }
+            }
+          }
+        )
       } catch (error) {
-        alert("Erreur lors de l'envoi des données", error);
+        toast.error("Erreur lors de l'envoi des données", error);
       }
       // close popup
       setShowConfirmation(false);
@@ -57,9 +87,23 @@ function AdminFeedback () {
   const handleDelete = async (choice, feedbackId) => {
     if (choice === 'valider') {
       try {
-        await axios.delete(`${process.env.REACT_APP_DOMAIN}/feedback/${feedbackId}`);
-        fetchData();
-        alert('Feedback supprimé')
+        await toast.promise (
+          axios.delete(`${process.env.REACT_APP_DOMAIN}/feedback/${feedbackId}`),
+          {
+            pending: 'Envoi des données...',
+            success: {
+              render({ data }) {
+                fetchData();
+                return 'Feedback supprimé avec succès !';
+              }
+            },
+            error: {
+              render({ data }) {
+                return `Erreur lors de l'envoi des données : ${data}`;
+              }
+            }
+          }
+        )
       } catch (error) {
         alert('Erreur lors de la suppression', error);
       }
@@ -76,16 +120,30 @@ function AdminFeedback () {
   // add feedback to db
   const addFeedback = async (newFeedback) => {
     // check if feedback's inputs are empty
+    console.log(newFeedback);
     if(newFeedback.name === '' || newFeedback.rating === '' || newFeedback.message === '') {
-      alert('Veuillez remplir tous les champs');
+      toast.warn('Veuillez remplir tous les champs');
       return;
     }
     // request to add to db
     try {
-      await axios.post(`${process.env.REACT_APP_DOMAIN}/feedback`, newFeedback);
-      alert('Feedback ajouté')
-      // refresh list
-      fetchData();
+      await toast.promise (
+        axios.post(`${process.env.REACT_APP_DOMAIN}/feedback`, newFeedback),
+        {
+          pending: 'Envoi des données...',
+          success: {
+            render({ data }) {
+              fetchData();
+              return 'Feedback ajouté avec succès !';
+            }
+          },
+          error: {
+            render({ data }) {
+              return `Erreur lors de l'envoi des données : ${data}`;
+            }
+          }
+        }
+      )
     } catch (error) {
       alert("Erreur lors de l'ajout", error)
     }
@@ -152,7 +210,11 @@ function AdminFeedback () {
         type='Ajouter un feedback'
         onAddFeedback={addFeedback}
         >
-      </PopUpAddFeedback>         
+      </PopUpAddFeedback>  
+      <ToastContainer 
+          position= "bottom-right" 
+          theme='dark'
+      />       
     </div>  
   ) 
 }

@@ -3,12 +3,34 @@
 @media screen and (max-width: 768px) {
   select {
     width: 50%;
+    background-color: app.$buttonColor;
+    color: aliceblue;
+  }
+  input {
+    width: 60%;
+  }
+
+  .generate-password {
+    margin-top: 15px;
+    width: 100px;
+    height: 39px;
   }
 }
 
 @media screen and (min-width: 769px) {
   select {
     width: 30%;
+    background-color: app.$buttonColor;
+    color: aliceblue;
+  }
+  input {
+    width: 30%;
+  }
+
+  .generate-password {
+    margin-top: 15px;
+    width: 100px;
+    height: 39px;
   }
 }
 
@@ -67,9 +89,6 @@
 .content {
   display: flex;
   flex-direction: column;
-  input {
-    width: 80%;
-  }
   height: 80vh;
 }
 
@@ -99,4 +118,15 @@
   padding: 2px;
   background-color: app.$elementColor;
   border: none;
+}
+
+.generate-password {
+  background-color: app.$buttonColor;
+  border: none;
+  border-radius: 12px;
+}
+
+.password-container {
+  display: flex;
+  flex-direction: column;
 }

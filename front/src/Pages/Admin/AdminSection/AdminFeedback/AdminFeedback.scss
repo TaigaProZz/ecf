@@ -47,7 +47,10 @@ $widthLittleElement: 20%;
   }
 
   .admin-feedback-validate-container {
-    flex-direction: row;
+    flex-direction: column;
+    button {
+      margin: 2px;
+    }
   }
 }
 
