@@ -12,7 +12,7 @@ function Contact() {
   // function to send message to db
   const sendData = async (name, phone, email, message) => {
     try {
-      await axios.post(`${process.env.REACT_APP_DOMAIN}/contact`, {
+      await axios.post(`${process.env.REACT_APP_API}/contact`, {
         subject: 'Contact',
         name: name,
         phone: phone,

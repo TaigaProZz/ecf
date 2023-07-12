@@ -8,7 +8,7 @@ function SectionAllServices() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/service`);
+        const response = await axios.get(`${process.env.REACT_APP_API}/service`);
         const list = response.data;
         setServices(list);
       } catch (error) {

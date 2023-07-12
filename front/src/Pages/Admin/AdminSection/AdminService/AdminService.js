@@ -15,7 +15,7 @@ function AdminServices () {
 
   // fetch all services function
   const fetchData = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/service`);
+    const response = await axios.get(`${process.env.REACT_APP_API}/service`);
     const service = response.data;
     setServices(service);
   }
@@ -32,7 +32,7 @@ function AdminServices () {
     }
     try {
       await toast.promise (
-        axios.post(`${process.env.REACT_APP_DOMAIN}/service`, { services: service }),
+        axios.post(`${process.env.REACT_APP_API}/service`, { services: service }),
         {
           pending: 'Envoi des données...',
           success: {
@@ -59,7 +59,7 @@ function AdminServices () {
     if(choice === 'valider') {
       try {
         await toast.promise (
-          axios.delete(`${process.env.REACT_APP_DOMAIN}/service/` + id),
+          axios.delete(`${process.env.REACT_APP_API}/service/` + id),
           {
             pending: 'Suppression du service...',
             success: {
@@ -90,7 +90,7 @@ function AdminServices () {
     }
     try {
       await toast.promise (
-        axios.put(`${process.env.REACT_APP_DOMAIN}/service/` + id, {services: service}),
+        axios.put(`${process.env.REACT_APP_API}/service/` + id, {services: service}),
         { 
           pending: 'Modification du service...',
           success: {

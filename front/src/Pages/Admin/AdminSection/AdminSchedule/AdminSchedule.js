@@ -10,7 +10,7 @@ function AdminSchedule () {
 
   // fetch schedule
   const fetchData = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/schedule`);
+    const response = await axios.get(`${process.env.REACT_APP_API}/schedule`);
     const result = response.data
     setSchedule(result);
   }
@@ -89,7 +89,7 @@ function AdminSchedule () {
     // and send it to db
     try {
       await toast.promise(
-        axios.post(`${process.env.REACT_APP_DOMAIN}/schedule`, updates),
+        axios.post(`${process.env.REACT_APP_API}/schedule`, updates),
         {
           pending: 'Enregistrement en cours...',
           success: {

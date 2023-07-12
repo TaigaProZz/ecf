@@ -21,12 +21,12 @@ const Vente = () => {
   const fetchData = async () => {
     try {
       // collect info of cars from db
-      const carResponse = await axios.get(`${process.env.REACT_APP_DOMAIN}/car`);
+      const carResponse = await axios.get(`${process.env.REACT_APP_API}/car`);
       setCars(carResponse.data);
       setSortedCars(carResponse.data);
 
       // collect images of cars from s3
-      const imageResponse = await axios.get(`${process.env.REACT_APP_DOMAIN}/carimage`);
+      const imageResponse = await axios.get(`${process.env.REACT_APP_API}/carimage`);
       const imageList = imageResponse.data.reduce((acc, image) => {
         const carId = image.car_id;
         const img = image.path;

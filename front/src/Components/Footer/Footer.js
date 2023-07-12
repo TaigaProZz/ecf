@@ -11,7 +11,7 @@ function MyFooter() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/schedule`);
+        const response = await axios.get(`${process.env.REACT_APP_API}/schedule`);
         const list = response.data;
         setSchedule(list);
       } catch (error) {

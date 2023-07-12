@@ -16,7 +16,7 @@ function App() {
   
   const getUser = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/user`, { withCredentials: true });
+      const response = await axios.get(`${process.env.REACT_APP_API}/user`, { withCredentials: true });
       if (response.data) {
         setUser(response.data);
       } else {

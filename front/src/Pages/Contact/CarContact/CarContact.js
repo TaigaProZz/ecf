@@ -17,7 +17,7 @@ function Contact() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/car/${params.id}`);
+        const response = await axios.get(`${process.env.REACT_APP_API}/car/${params.id}`);
         const car = response.data;
         setElement(car[0]);
       } catch (error) {
@@ -35,7 +35,7 @@ function Contact() {
   // function to send msg to database
   const sendData = async (subject, name, phone, email, message) => {
     try {
-      await axios.post(`${process.env.REACT_APP_DOMAIN}/contact`, {
+      await axios.post(`${process.env.REACT_APP_API}/contact`, {
         subject: subject,
         name: name,
         phone: phone,

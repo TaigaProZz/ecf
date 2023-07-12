@@ -13,7 +13,7 @@ function AdminEmployees () {
 
   // get all employees
   const fetchData = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/employee`);
+    const response = await axios.get(`${process.env.REACT_APP_API}/employee`);
     const result = response.data;
     setEmployee(result);
   }
@@ -39,7 +39,7 @@ function AdminEmployees () {
     // send it to db
     try {
       await toast.promise (
-        axios.post(`${process.env.REACT_APP_DOMAIN}/employee`, {
+        axios.post(`${process.env.REACT_APP_API}/employee`, {
           name: employee.name,
           email: employee.email,
           password: employee.password,
@@ -97,7 +97,7 @@ function AdminEmployees () {
  
     try {
       await toast.promise (
-        axios.put(`${process.env.REACT_APP_DOMAIN}/employee/${originalEmployee.id}`, finalEmployee), {
+        axios.put(`${process.env.REACT_APP_API}/employee/${originalEmployee.id}`, finalEmployee), {
           pending: 'Envoi des données...',
           success: {
             render({ data }) {

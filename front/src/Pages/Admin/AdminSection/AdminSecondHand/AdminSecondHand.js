@@ -13,7 +13,7 @@ function AdminSecondHand () {
   // collect all cars already in database
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/car`);
+      const response = await axios.get(`${process.env.REACT_APP_API}/car`);
       const result = response.data;
       setCars(result);
     } catch (error) {
@@ -58,7 +58,7 @@ function AdminSecondHand () {
 
     try {
       await toast.promise (
-        axios.post(`${process.env.REACT_APP_DOMAIN}/car`, formData),
+        axios.post(`${process.env.REACT_APP_API}/car`, formData),
         {
           pending: 'Envoi des données...',
           success: {
@@ -85,7 +85,7 @@ function AdminSecondHand () {
     if(choice === 'valider') {
       try {
         await toast.promise (
-          axios.delete(`${process.env.REACT_APP_DOMAIN}/car/${carId}`),
+          axios.delete(`${process.env.REACT_APP_API}/car/${carId}`),
           {
             pending: 'Suppression de la voiture...',
             success: {

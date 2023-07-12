@@ -15,7 +15,7 @@ function AdminFeedback () {
   // get all feedbacks 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/feedback`);
+      const response = await axios.get(`${process.env.REACT_APP_API}/feedback`);
       const feedback = response.data;
       setFeedback(feedback);
     } catch (error) {
@@ -31,7 +31,7 @@ function AdminFeedback () {
     if (choice === 'valider') {
       try {
         await toast.promise (
-          axios.put(`${process.env.REACT_APP_DOMAIN}/feedback/${feedbackId}`, {isVerified: 1}),
+          axios.put(`${process.env.REACT_APP_API}/feedback/${feedbackId}`, {isVerified: 1}),
           {
             pending: 'Envoi des données...',
             success: {
@@ -59,7 +59,7 @@ function AdminFeedback () {
     if (choice === 'valider') {
       try {
         await toast.promise (
-          axios.put(`${process.env.REACT_APP_DOMAIN}/feedback/${feedbackId}`, {isVerified: 0}),
+          axios.put(`${process.env.REACT_APP_API}/feedback/${feedbackId}`, {isVerified: 0}),
           {
             pending: 'Envoi des données...',
             success: {
@@ -88,7 +88,7 @@ function AdminFeedback () {
     if (choice === 'valider') {
       try {
         await toast.promise (
-          axios.delete(`${process.env.REACT_APP_DOMAIN}/feedback/${feedbackId}`),
+          axios.delete(`${process.env.REACT_APP_API}/feedback/${feedbackId}`),
           {
             pending: 'Envoi des données...',
             success: {
@@ -128,7 +128,7 @@ function AdminFeedback () {
     // request to add to db
     try {
       await toast.promise (
-        axios.post(`${process.env.REACT_APP_DOMAIN}/feedback`, newFeedback),
+        axios.post(`${process.env.REACT_APP_API}/feedback`, newFeedback),
         {
           pending: 'Envoi des données...',
           success: {

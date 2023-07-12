@@ -12,7 +12,7 @@ function SendFeedback() {
   // function to send feedback  to db
   const sendData = async (name, message, rating, isVerified) => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_DOMAIN}/feedback`, {
+      const response = await axios.post(`${process.env.REACT_APP_API}/feedback`, {
         name: name,
         message: message,
         rating: rating,

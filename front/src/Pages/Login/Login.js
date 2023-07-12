@@ -18,7 +18,7 @@ function Login({ setUser }) {
       return;
     } else {
         try {
-          const response = await axios.post(`${process.env.REACT_APP_DOMAIN}/auth`,  {
+          const response = await axios.post(`${process.env.REACT_APP_API}/auth`,  {
             email: email,
             password: password  
           });
