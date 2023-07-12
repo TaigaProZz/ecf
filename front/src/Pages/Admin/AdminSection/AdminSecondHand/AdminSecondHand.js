@@ -1,18 +1,25 @@
-import { useEffect, useState } from 'react';
 import './AdminSecondHand.scss';
-import PopUpAddCar from './PopUp/AdminAddCar';
-import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
 import { BsPlusSquare } from 'react-icons/bs';
+import PopUpAddCar from './PopUp/AdminAddCar';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
+import axios from 'axios';
 
 function AdminSecondHand () {
   const [cars, setCars] = useState(null);
 
   // collect all cars already in database
   const fetchData = async () => {
-    const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/car`);
-    const result = response.data;
-    setCars(result);
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/car`);
+      const result = response.data;
+      setCars(result);
+    } catch (error) {
+      toast.error("Erreur lors de la récuparation des données", error);
+    }
+  
   };
   useEffect(() => {
     fetchData();
@@ -33,7 +40,7 @@ function AdminSecondHand () {
       || car.year.trim() === '' 
       || car.images.length === 0
       ) {
-      alert('Veuillez remplir tous les champs');
+      toast.warn('Veuillez remplir tous les champs');
       return;
     }
    
@@ -50,30 +57,55 @@ function AdminSecondHand () {
     });
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_DOMAIN}/car`, formData);
-      if (response.status === 200) {
-        setCars([...cars, car]);
-      } else {
-        alert("Erreur lors de l'envoi des données");
-      }
+      await toast.promise (
+        axios.post(`${process.env.REACT_APP_DOMAIN}/car`, formData),
+        {
+          pending: 'Envoi des données...',
+          success: {
+            render({ data }) {
+              setCars([...cars, car]);
+              return `Voiture ajoutée avec succès !`;
+            }
+          },
+          error: {
+            render({ data }) {
+              return `Erreur lors de l'envoi des données : ${data}`;
+            }
+          }
+        }
+
+      )
     } catch (error) {
       console.log(error);
-      alert("Erreur lors de l'envoi des données :", error);
+      toast.error("Erreur lors de l'envoi des données :", error);
     }
   };
 
   const deleteCar = async (choice, carId) => {
     if(choice === 'valider') {
       try {
-        await axios.delete(`${process.env.REACT_APP_DOMAIN}/car/${carId}`);
-        fetchData();
-        alert('Voiture supprimée');
+        await toast.promise (
+          axios.delete(`${process.env.REACT_APP_DOMAIN}/car/${carId}`),
+          {
+            pending: 'Suppression de la voiture...',
+            success: {
+              render({ data }) {
+                fetchData();
+                return `Voiture supprimée avec succès !`;
+              }
+            },
+            error: {
+              render({ data }) {
+                return `Erreur lors de la suppression de la voiture : ${data}`;
+              }
+            }
+          }
+        )
       } catch (error) {
-        alert("Erreur lors de l'envoi des données", error);
+        toast.error("Erreur lors de l'envoi des données", error);
       }
     }
   };
-
 
   return (
     <div className='admin-secondhand-container'>
@@ -109,6 +141,10 @@ function AdminSecondHand () {
         onAddCar={addCar}
         >
       </PopUpAddCar>
+      <ToastContainer 
+        position='bottom-right'
+        theme='dark'
+      />
     </div>
   )
 }

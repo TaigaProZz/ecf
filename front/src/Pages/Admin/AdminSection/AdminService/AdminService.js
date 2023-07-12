@@ -31,10 +31,23 @@ function AdminServices () {
       return;
     }
     try {
-      await axios.post(`${process.env.REACT_APP_DOMAIN}/service`, { services: service });
-      fetchData();
-      toast.success('Service ajouté');
-      setShowConfirmation(false);
+      await toast.promise (
+        axios.post(`${process.env.REACT_APP_DOMAIN}/service`, { services: service }),
+        {
+          pending: 'Envoi des données...',
+          success: {
+            render({ data }) {
+              fetchData();
+              return 'Service ajouté';
+            }
+          },
+          error: {
+            render({ data }) {
+              return `Erreur lors de l'envoi des données : ${data}`;
+            }
+          }
+        }
+      )
     } catch (error) {
       toast.error("Erreur lors de l'ajout", error)
     }
@@ -45,9 +58,23 @@ function AdminServices () {
   const deleteService = async (choice, id) => { 
     if(choice === 'valider') {
       try {
-        await axios.delete(`${process.env.REACT_APP_DOMAIN}/service/` + id);
-        fetchData();
-        toast.success('Service supprimé');
+        await toast.promise (
+          axios.delete(`${process.env.REACT_APP_DOMAIN}/service/` + id),
+          {
+            pending: 'Suppression du service...',
+            success: {
+              render({ data }) {
+                fetchData();
+                return 'Service supprimé';
+              }
+            },
+            error: {
+              render({ data }) {
+                return `Erreur lors de la suppression : ${data}`;
+              }
+            }
+          }
+        )
       } catch (error) {
         toast.error('Erreur lors de la suppression', error);
       }
@@ -62,9 +89,23 @@ function AdminServices () {
       return;
     }
     try {
-      await axios.put(`${process.env.REACT_APP_DOMAIN}/service/` + id, {services: service});
-      fetchData();
-      toast.success('Service modifié');
+      await toast.promise (
+        axios.put(`${process.env.REACT_APP_DOMAIN}/service/` + id, {services: service}),
+        { 
+          pending: 'Modification du service...',
+          success: {
+            render({ data }) {
+              fetchData();
+              return 'Service modifié';
+            }
+          },
+          error: {
+            render({ data }) {
+              return `Erreur lors de la modification : ${data}`;
+            }
+          }
+        }
+      )
     } catch (error) {
       toast.error('Erreur lors de la modification', error);
     }
