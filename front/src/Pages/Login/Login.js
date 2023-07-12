@@ -1,4 +1,6 @@
 import './Login.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -14,7 +16,7 @@ function Login({ setUser }) {
     const email = inputEmail.current.value;
     const password = inputPassword.current.value;
     if (email === '' || password === '') {
-      alert('Veuillez remplir tous les champs');
+      toast.warn('Veuillez remplir tous les champs');
       return;
     } else {
         try {
@@ -23,11 +25,11 @@ function Login({ setUser }) {
             password: password  
           });
           if (response.status === 200) {
-            alert(`${email} est connecté`);
+            toast.info(`${email}, vous êtes connecté`);
             setUser(response.data)
             navigate("/admin");
           } else {
-            alert("Veuillez vérifier vos informations saisies et réssayer")
+            toast.warn("Veuillez vérifier vos informations saisies et réssayer")
           }
         } catch (error) {
           console.log(error);

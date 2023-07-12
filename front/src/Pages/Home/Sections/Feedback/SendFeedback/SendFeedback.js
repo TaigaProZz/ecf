@@ -1,4 +1,6 @@
 import './SendFeedback.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { useRef, useState } from 'react';
 import axios from 'axios';
@@ -19,10 +21,10 @@ function SendFeedback() {
         isVerified: isVerified
       })
       if(response.status === 200) {
-        alert("Commentaire envoyé !")
+        toast.success("Commentaire envoyé ! Il sera traité dans les meilleurs délais")
         form.current.reset();
       } else {
-        alert("Une erreur est survenue")
+        toast.error("Une erreur est survenue")
       }
       
     } catch (error) {
@@ -37,7 +39,7 @@ function SendFeedback() {
       inputMessageRef.current.value === '' ||
       rating == null
     ) {
-      alert("Veuillez remplir tous les champs");
+      toast.warn("Veuillez remplir tous les champs");
     } else {
       // integrer l'envoi du commentaire dans "commentaire à moderer"
       const name = inputNameRef.current.value;

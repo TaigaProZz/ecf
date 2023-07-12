@@ -1,4 +1,6 @@
 import '../Contact.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 // import { CARS } from '../../../Data/cars.js'
@@ -56,7 +58,7 @@ function Contact() {
       emailInputRef.current.value === '' ||
       msgInputRef.current.value === ''
     ) {
-      alert('Veuillez remplir tous les champs');
+      toast.warn('Veuillez remplir tous les champs');
     } else {
       const subject = element.title + ' réf: ' + element.id;
       const name = nameInputRef.current.value;
@@ -65,9 +67,8 @@ function Contact() {
       const message = msgInputRef.current.value;
       // envoyer le message en bdd
       sendData(subject, name, phone, email, message);
-
       form.current.reset();
-      alert('Votre message a bien été envoyé');
+      toast.success('Votre message a bien été envoyé');
     }
   }
 
@@ -99,6 +100,10 @@ function Contact() {
           <button className='home-button' type='submit' onClick={submit}>Envoyer</button>
         </div>
       </form>  
+      <ToastContainer 
+        position='bottom-right'
+        theme='dark'
+      />
     </div>
   );
 }

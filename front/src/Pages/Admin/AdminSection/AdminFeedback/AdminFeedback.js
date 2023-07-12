@@ -105,7 +105,7 @@ function AdminFeedback () {
           }
         )
       } catch (error) {
-        alert('Erreur lors de la suppression', error);
+        toast.error('Erreur lors de la suppression', error);
       }
     }
   }
@@ -145,7 +145,7 @@ function AdminFeedback () {
         }
       )
     } catch (error) {
-      alert("Erreur lors de l'ajout", error)
+      toast.error("Erreur lors de l'ajout", error)
     }
   }
 

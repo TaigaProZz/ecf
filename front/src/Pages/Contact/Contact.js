@@ -1,4 +1,6 @@
 import './Contact.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import { useRef } from 'react';
 import axios from 'axios';
 
@@ -33,7 +35,7 @@ function Contact() {
       emailInputRef.current.value === '' ||
       msgInputRef.current.value === ''
     ) {
-      alert('Veuillez remplir tous les champs');
+      toast.warn('Veuillez remplir tous les champs');
     } else {
       const name = nameInputRef.current.value;
       const phone = phoneInputRef.current.value;
@@ -41,14 +43,14 @@ function Contact() {
       const message = msgInputRef.current.value;
       // envoyer le message en bdd
       sendData(name, phone, email, message);
-      // form.current.reset();
-      alert('Votre message a bien été envoyé');
+      form.current.reset();
+      toast.success('Votre message a bien été envoyé');
     }  
   }
 
   return (
     <div className="contact-container">
-      <div ref={form} className='contact-form'>
+      <form ref={form} className='contact-form'>
         <h1 className='form-title'>Formulaire de contact</h1>
         <div className='name-row row'>
           <label>Nom prénom :</label>
@@ -69,7 +71,11 @@ function Contact() {
         <div className='contact-sendbtn-container'>
           <button className='home-button' onClick={submit}>Envoyer</button>
         </div>
-      </div>  
+      </form> 
+      <ToastContainer 
+        position='bottom-right'
+        theme='dark'
+      /> 
     </div>
   );
 }

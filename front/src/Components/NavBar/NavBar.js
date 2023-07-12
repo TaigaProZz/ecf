@@ -1,9 +1,11 @@
-import axios from 'axios';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import './NavBar.scss';
 import { BiUser } from 'react-icons/bi';
 import { Link, useNavigate } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 import { useState } from 'react';
+import axios from 'axios';
 
 function MyNav({ user, setUser }) {
   const navigate = useNavigate();
@@ -13,8 +15,8 @@ function MyNav({ user, setUser }) {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API}/auth`);
       if (response.status === 200) {
-        setUser({});
-        alert("Vous êtes déconnecté");
+        setUser([]);
+        toast.info("Vous êtes déconnecté");
         navigate("/");
       }
     } catch (error) {
@@ -66,6 +68,10 @@ function MyNav({ user, setUser }) {
           </div>
         </div>
       </main>
+      <ToastContainer 
+        position='bottom-right'
+        theme='dark'
+      />
     </div>
   );
 }

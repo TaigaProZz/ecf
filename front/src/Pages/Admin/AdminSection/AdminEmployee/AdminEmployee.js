@@ -29,12 +29,12 @@ function AdminEmployees () {
   const addEmployee = async (employee) => {
     // check if input are not null
     if (employee.name.trim() === '' || employee.email.trim() === '' || employee.permission.trim() === '') {
-      alert('Veuillez remplir tous les champs');
+      toast.warn('Veuillez remplir tous les champs');
       return;
     }
     // check type of variable
     if (typeof employee.name !== 'string' || typeof employee.email !== 'string' ) {
-      alert('Vérifiez les informations');
+      toast.warn('Vérifiez les informations');
     }
     // send it to db
     try {
@@ -60,7 +60,7 @@ function AdminEmployees () {
       }
     )
     } catch (error) {
-      alert("Erreur lors de l'envoi des données :", error);
+      toast.error("Erreur lors de l'envoi des données :", error);
     }
   };
 
@@ -113,7 +113,7 @@ function AdminEmployees () {
         }
       )
     } catch (error) {
-      alert("Erreur lors de l'envoi des données", error);
+      toast.error("Erreur lors de l'envoi des données", error);
     }
   };
     
