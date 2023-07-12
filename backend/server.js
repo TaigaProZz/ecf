@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 
 // ignore restriction of cors
 app.use(cors({
-  origin: 'https://ecf-phi.vercel.app',
+  origin: process.env.REACT_APP_DOMAIN,
   credentials: true,
   allowedHeaders: ['Content-Type', 'Authorization'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
