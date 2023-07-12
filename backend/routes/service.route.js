@@ -25,7 +25,6 @@ router.put('/:id', (req, res) => {
       console.log(error);
       res.sendStatus(500);
     } else {
-      console.log(results);
       res.sendStatus(200);
     }
   });
@@ -49,7 +48,6 @@ router.delete('/:id', (req, res) => {
 router.post('/', (req, res) => {
   try {
     const service = req.body.services;
-    console.log(req);
     const query = 'INSERT INTO services (services) VALUES (?)';
     connection.query(query, [service], (error, results) => {
       if (error) {

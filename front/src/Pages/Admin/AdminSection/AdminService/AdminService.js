@@ -1,13 +1,17 @@
 import './AdminService.scss'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import { BsPlusSquare } from 'react-icons/bs'
 import { FaTrash, FaPen } from 'react-icons/fa'
 import { useState, useEffect } from 'react';
 import PopUpAddService from './AdminPopUp/AdminAddService';
 import PopUpUpdateService from './AdminPopUp/AdminUpdateService';
 import axios from 'axios';
+import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
 
 function AdminServices () {
   const [services, setServices] = useState([]);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   // fetch all services function
   const fetchData = async () => {
@@ -19,42 +23,50 @@ function AdminServices () {
     fetchData();
   }, [])
 
+
   // ADD SERVICE function
   const addService = async (service) => {
     if(service === '') {
-      alert('Veuillez remplir le champ');
+      toast.warn("Veuillez remplir le champ");
       return;
     }
     try {
       await axios.post(`${process.env.REACT_APP_DOMAIN}/service`, { services: service });
       fetchData();
+      toast.success('Service ajouté');
+      setShowConfirmation(false);
     } catch (error) {
-      alert("Erreur lors de l'ajout", error)
+      toast.error("Erreur lors de l'ajout", error)
     }
   };
 
 
   // DELETE SERVICE function
-  const deleteService = async (id) => { 
-    try {
-      await axios.delete(`${process.env.REACT_APP_DOMAIN}/service/` + id);
-      fetchData();
-    } catch (error) {
-      alert('Erreur lors de la suppression', error);
+  const deleteService = async (choice, id) => { 
+    if(choice === 'valider') {
+      try {
+        await axios.delete(`${process.env.REACT_APP_DOMAIN}/service/` + id);
+        fetchData();
+        toast.success('Service supprimé');
+      } catch (error) {
+        toast.error('Erreur lors de la suppression', error);
+      }
+      setShowConfirmation(false);
     }
   }
 
   // UPDATE SERVICE function
   const updateService = async (service, id) => {
     if(service === '') {
-      alert('Veuillez remplir le champ');
+      toast.warn('Veuillez remplir le champ');
       return;
     }
     try {
       await axios.put(`${process.env.REACT_APP_DOMAIN}/service/` + id, {services: service});
       fetchData();
+      toast.success('Service modifié');
     } catch (error) {
-      alert('Erreur lors de la modification', error);
+      toast.error('Erreur lors de la modification', error);
     }
   }
 
@@ -73,7 +85,12 @@ function AdminServices () {
               id={service.id}
               onChangeService={updateService}>
             </PopUpUpdateService>
-              <FaTrash size={30} onClick={() => deleteService(service.id)}/>
+            <ValidatePopUp
+              btn={<div> <FaTrash size={30} /> </div>} 
+              onConfirmation={(choice) => {deleteService(choice, service.id)}} 
+              txt={"valider"}
+              handleButtonClick={showConfirmation}
+            />
             </div>
           </div>
         ))}
@@ -84,6 +101,11 @@ function AdminServices () {
           type='Ajouter un service'
           onAddService={addService}>
         </PopUpAddService>
+        <ToastContainer 
+          position= "bottom-right" 
+          theme='dark'
+        />
+
       </div>
     </div>
   )
