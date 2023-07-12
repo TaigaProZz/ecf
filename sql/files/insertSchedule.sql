@@ -1,3 +1,4 @@
+-- Active: 1689174202679@@aws.connect.psdb.cloud@3306@ecf-node-server
 INSERT INTO schedule (day, morning_opening, morning_closing, afternoon_opening, afternoon_closing, isOpened) VALUES ('Lundi', '08:00', '12:00', '14:00', '18:00', '1');
 INSERT INTO schedule (day, morning_opening, morning_closing, afternoon_opening, afternoon_closing, isOpened) VALUES ('Mardi', '08:00', '12:00', '14:00', '18:00', '1');
 INSERT INTO schedule (day, morning_opening, morning_closing, afternoon_opening, afternoon_closing, isOpened) VALUES ('Mercredi', '08:00', '12:00', '14:00', '18:00', '1');
