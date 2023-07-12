@@ -10,7 +10,7 @@ function AdminSecondHand () {
 
   // collect all cars already in database
   const fetchData = async () => {
-    const response = await axios.get(`https://ecf-node-serv.vercel.app/car`);
+    const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/car`);
     const result = response.data;
     setCars(result);
   };
@@ -50,7 +50,7 @@ function AdminSecondHand () {
     });
 
     try {
-      const response = await axios.post(`https://ecf-node-serv.vercel.app/car`, formData);
+      const response = await axios.post(`${process.env.REACT_APP_DOMAIN}/car`, formData);
       if (response.status === 200) {
         setCars([...cars, car]);
       } else {
@@ -65,7 +65,7 @@ function AdminSecondHand () {
   const deleteCar = async (choice, carId) => {
     if(choice === 'valider') {
       try {
-        await axios.delete(`https://ecf-node-serv.vercel.app/car/${carId}`);
+        await axios.delete(`${process.env.REACT_APP_DOMAIN}/car/${carId}`);
         fetchData();
         alert('Voiture supprimée');
       } catch (error) {

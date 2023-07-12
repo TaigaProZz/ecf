@@ -18,7 +18,7 @@ function Login({ setUser }) {
       return;
     } else {
         try {
-          const response = await axios.post(`https://ecf-node-serv.vercel.app/auth`,  {
+          const response = await axios.post(`${process.env.REACT_APP_DOMAIN}/auth`,  {
             email: email,
             password: password  
           });

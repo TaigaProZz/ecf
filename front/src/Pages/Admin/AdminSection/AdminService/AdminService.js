@@ -11,7 +11,7 @@ function AdminServices () {
 
   // fetch all services function
   const fetchData = async () => {
-    const response = await axios.get(`https://ecf-node-serv.vercel.app/service`);
+    const response = await axios.get(`${process.env.REACT_APP_DOMAIN}/service`);
     const service = response.data;
     setServices(service);
   }
@@ -26,7 +26,7 @@ function AdminServices () {
       return;
     }
     try {
-      await axios.post(`https://ecf-node-serv.vercel.app/service`, { services: service });
+      await axios.post(`${process.env.REACT_APP_DOMAIN}/service`, { services: service });
       fetchData();
     } catch (error) {
       alert("Erreur lors de l'ajout", error)
@@ -37,7 +37,7 @@ function AdminServices () {
   // DELETE SERVICE function
   const deleteService = async (id) => { 
     try {
-      await axios.delete(`https://ecf-node-serv.vercel.app/service/` + id);
+      await axios.delete(`${process.env.REACT_APP_DOMAIN}/service/` + id);
       fetchData();
     } catch (error) {
       alert('Erreur lors de la suppression', error);
@@ -51,7 +51,7 @@ function AdminServices () {
       return;
     }
     try {
-      await axios.put(`https://ecf-node-serv.vercel.app/service/` + id, {services: service});
+      await axios.put(`${process.env.REACT_APP_DOMAIN}/service/` + id, {services: service});
       fetchData();
     } catch (error) {
       alert('Erreur lors de la modification', error);
