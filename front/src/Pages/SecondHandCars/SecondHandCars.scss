@@ -37,6 +37,13 @@
     background-color: app.$elementColor;
   }
 
+  .loading-sch {
+    height: 90%;
+    width: 100%;
+    margin-top: 20px;
+    font-size: 20px;
+  }
+
 }
 
 @media screen and (min-width: 769px) {
@@ -75,6 +82,18 @@
     background-color: app.$elementColor;
   }
 
+  .loading-sch {
+    height: 90%;
+    width: 80%;
+    margin-top: 20px;
+    font-size: 30px;
+  }
+}
+
+.loading-sch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .secondhand-container {

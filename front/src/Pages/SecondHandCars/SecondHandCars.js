@@ -1,8 +1,8 @@
 import './SecondHandCars.scss';
 import '../../App.scss'
-import axios from 'axios';
 import { useState, useEffect, useRef} from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 const Vente = () => {
@@ -17,37 +17,39 @@ const Vente = () => {
   const kmTwoInput = useRef(); 
   const endpoint = process.env.REACT_APP_CAR_SCW_ENDPOINT;
 
-  // fetch cars and images from database
-  const fetchData = async () => {
-    try {
-      // collect info of cars from db
-      const carResponse = await axios.get(`${process.env.REACT_APP_API}/car`);
-      setCars(carResponse.data);
-      setSortedCars(carResponse.data);
-
-      // collect images of cars from s3
-      const imageResponse = await axios.get(`${process.env.REACT_APP_API}/carimage`);
-      const imageList = imageResponse.data.reduce((acc, image) => {
-        const carId = image.car_id;
-        const img = image.path;
-        const list = JSON.parse(img).map((path) => `${endpoint}${path}`);
-        if (acc[carId]) {
-          acc[carId].push(...list);
-        } else {
-          acc[carId] = list;
-        }
-        return acc;
-      }, {});
-
-      setImg(imageList);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {  
+    // fetch cars and images from database
+    const fetchData = async () => {
+      try {
+        // collect info of cars from db
+        const response = await axios.get(`${process.env.REACT_APP_API}/car`);
+        setCars(response.data);
+        setSortedCars(response.data);
+          
+        // collect images of cars from s3
+        const imgResponse = await axios.get(`${process.env.REACT_APP_API}/carimage`);    
+        const imageList = imgResponse.data.reduce((acc, image) => {
+          const carId = image.car_id;
+          const img = image.path;
+          const list = JSON.parse(img).map((path) => `${endpoint}${path}`);
+          if (acc[carId]) {
+            acc[carId].push(...list);
+          } else {
+            acc[carId] = list;
+          }
+          return acc;
+        }, {});
+        setImg(imageList);
+
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     fetchData();
   }, []);
+
+
 
   const sortCars = () => {
     // // get all inputs
@@ -110,10 +112,10 @@ const Vente = () => {
             <button id='sort-btn-price' className='shc-button' onClick={resetSort}>Réinitialiser le tri</button>
           </div>   
       </section>
-     
+      {(cars == '' || img == '') ? <div className='loading-sch'>Chargement...</div> : (
       <section className='section-car-list'>
         <ul className="car-list">
-          {sortedCars.map((car, index) => (      
+          {sortedCars.map((car, index) => (     
             <li key={car.id} className="car-item" id={car.id} >
               <Link to={"/car/" + car.id}>
                 <div className="car-details">
@@ -135,8 +137,11 @@ const Vente = () => {
           ))}
         </ul>
       </section>
+      )}
     </div>
+    
   );
+  
 };
 
 export default Vente;
