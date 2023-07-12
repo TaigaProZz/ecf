@@ -65,9 +65,10 @@
   
   /* Wrapper for item list */
   .bm-item-list {
-    color: app.$barColor;
     display: flex;
     flex-direction: column;
+    color: aliceblue;
+
   }
   
   /* Individual item */
@@ -79,8 +80,6 @@
   .bm-item::hover, .bm-item::focus {
     color: aliceblue;
   }
-  
-
 }
 
 // large screen
@@ -112,7 +111,6 @@
     align-items: flex-end;
     margin: 10px;
     p {
-      width: 80%;
       margin: 0;
       padding: 0;
     }

@@ -65,10 +65,11 @@ function AdminAddEmployee(props) {
               <option value= "1">Admin</option>
             </select>
             <div className="password-container">
-              <label>Mot de passe</label>
+              <label>Mot de passe ( Attention : n'oubliez pas de bien noter le mot de passe généré, il vous sera impossible de le récuperer )</label>
               <input
                 type="text"
                 value={password}
+                placeholder='Cliquez sur "Générer" pour créer un mot de passe'
                 readOnly
               />
               <button className="generate-password" onClick={generatePassword}>

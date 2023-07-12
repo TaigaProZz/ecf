@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const cookieParser = require('cookie-parser');
+require('dotenv').config();
 
 // ignore restriction of cors
 app.use(cors({

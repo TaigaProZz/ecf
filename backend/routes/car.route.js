@@ -4,6 +4,7 @@ const connection = require('../database');
 const multer = require('multer');
 const AWS = require("aws-sdk");
 const { v4: uuidv4 } = require('uuid');
+require('dotenv').config();
 
 const s3 = new AWS.S3({
   endpoint: process.env.REACT_APP_SCW_ENDPOINT,
