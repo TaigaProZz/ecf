@@ -42,10 +42,9 @@ router.post('/', (req, res) => {
 
 // log out 
 router.get("/", (req, res) => {
-  return res
-    .clearCookie("session")
-    .status(200)
-    .json({ message: "Successfully logged out" });
+  return res.clearCookie('session')
+  .status(200)
+  .json({ message: 'Successfully logged out' })
 });
 
 module.exports = router;

@@ -15,24 +15,34 @@ function Login({ setUser }) {
   const login = async () => {
     const email = inputEmail.current.value;
     const password = inputPassword.current.value;
+    const user = { email, password };
     if (email === '' || password === '') {
       toast.warn('Veuillez remplir tous les champs');
       return;
     } else {
         try {
-          const response = await axios.post(`${process.env.REACT_APP_API}/auth`,  {
-            email: email,
-            password: password  
-          });
-          if (response.status === 200) {
-            toast.info(`${email}, vous êtes connecté`);
-            setUser(response.data)
-            navigate("/admin");
-          } else {
-            toast.warn("Veuillez vérifier vos informations saisies et réssayer")
-          }
+          await toast.promise(
+            axios.post(`${process.env.REACT_APP_API}/auth`, user),
+             {
+              pending: 'Connexion en cours...',
+              success: {
+                render({ data }) {
+                  console.log(data);
+                  setUser(data.data)
+                  navigate("/admin");
+                  return `${email}, vous êtes connecté`;
+                }
+              },
+              error: {
+                render({ data }) {
+                  return `Veuillez vérifier vos informations saisies et réssayer`;
+                }
+              }
+            }
+          );
+            
         } catch (error) {
-          console.log(error);
+          toast.error('Erreur lors de la connexion', error);
         }
       }
   }
