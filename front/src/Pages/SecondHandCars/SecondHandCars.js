@@ -49,8 +49,6 @@ const Vente = () => {
     fetchData();
   }, []);
 
-
-
   const sortCars = () => {
     // // get all inputs
     const priceOne = priceOneInput.current.value;

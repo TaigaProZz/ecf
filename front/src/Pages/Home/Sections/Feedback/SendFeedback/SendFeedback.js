@@ -14,19 +14,25 @@ function SendFeedback() {
   // function to send feedback  to db
   const sendData = async (name, message, rating, isVerified) => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_API}/feedback`, {
-        name: name,
-        message: message,
-        rating: rating,
-        isVerified: isVerified
-      })
-      if(response.status === 200) {
-        toast.success("Commentaire envoyé ! Il sera traité dans les meilleurs délais")
-        form.current.reset();
-      } else {
-        toast.error("Une erreur est survenue")
-      }
-      
+      await toast.promise(
+        axios.post(`${process.env.REACT_APP_API}/feedback`, {
+          name: name,
+          message: message,
+          rating: rating,
+          isVerified: isVerified
+        }),
+        {
+          pending: 'Envoi du commentaire...',
+          success: 
+          { 
+            render({ data }) {
+            form.current.reset();
+            return "Merci pour votre commentaire ! Il sera publié après modération"
+            }
+          },
+          error: 'Une erreur est survenue'
+        }
+      )      
     } catch (error) {
       console.log(error);
     }
