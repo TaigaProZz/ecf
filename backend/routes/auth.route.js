@@ -3,6 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const connection = require('../database');
 const bcrypt = require('bcrypt');
+require('dotenv').config();
 
 // login
 router.post('/', (req, res) => {
@@ -25,7 +26,7 @@ router.post('/', (req, res) => {
             } else {
               if (passwordMatch) {
                 const token = jwt.sign({ email: user.email}, 'key');
-                res.cookie('session', token, { maxAge: 3600000, httpOnly: true, secure: true, signed: true, sameSite: 'none', domain: process.env.DOMAIN});
+                res.cookie('session', token, { maxAge: 3600000, httpOnly: true, secure: true, signed: true, sameSite: 'none', domain: process.env.REACT_APP_DOMAIN});
                 res.status(200).json({name: user.name, permission: user.permission});
               } else {
                 res.status(401).json({ success: false, error: 'Mot de passe incorrect' });
@@ -43,7 +44,7 @@ router.post('/', (req, res) => {
 // log out 
 router.get("/", (req, res) => {
   res.clearCookie('session', {domain: 'ecf-node-serv.vercel.app'})
-     .clearCookie('session', {domain: process.env.DOMAIN})
+     .clearCookie('session', {domain: process.env.REACT_APP_DOMAIN})
   .status(200)
   .json({ message: 'Successfully logged out' })
 });
