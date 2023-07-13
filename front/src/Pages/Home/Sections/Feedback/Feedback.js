@@ -30,7 +30,7 @@ function SectionFeedback() {
   return (
     <section className="section-feedback-container">
         <div className="header">
-          <h2 className="subTitle">Car l'avis de nos clients comptent...</h2>
+          <h2 className="subTitle">Car l'avis de nos clients compte...</h2>
         </div>
         <div className="boxs">
           <Swiper

@@ -63,7 +63,7 @@ function Car() {
           <p>{element.description}</p>
         </div>
         <div className='car-contact-container'>
-          <h2>Interéssé ? Contactez-nous</h2>
+          <h2>Intéressé ? Contactez-nous</h2>
           <Link to={'/carcontact/' + element.id}>
             <button className='shc-button'><BsEnvelopeFill size={35} /></button>
           </Link>
