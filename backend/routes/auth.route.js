@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
               res.sendStatus(500);
             } else {
               if (passwordMatch) {
-                const token = jwt.sign({ email: user.email}, 'key');
+                const token = jwt.sign({ email: user.email}, 'key', { algorithm: "HS256", expiresIn: '30d'} );
                 res.cookie('session', token, { maxAge: 3600000, httpOnly: true, secure: false, signed: true, sameSite: 'none', domain: 'ecf-node-serv.vercel.app'});
                 res.status(200).json({name: user.name, permission: user.permission});
               } else {
