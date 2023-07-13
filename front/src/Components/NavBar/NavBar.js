@@ -13,7 +13,7 @@ function MyNav({ user, setUser }) {
 
   const logout = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API}/auth`);
+      const response = await axios.get(`${process.env.REACT_APP_API}/auth`, { withCredentials: true });
       if (response.status === 200) {
         setUser([]);
         toast.info("Vous êtes déconnecté");
