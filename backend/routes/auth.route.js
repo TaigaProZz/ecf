@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
             } else {
               if (passwordMatch) {
                 const token = jwt.sign({ email: user.email}, 'key');
-                res.cookie('session', token, { maxAge: 3600000, httpOnly: true, secure: true, signed: true, sameSite: 'none', domain: process.env.REACT_APP_DOMAIN });
+                res.cookie('session', token, { maxAge: 3600000, httpOnly: true, secure: true, signed: true, sameSite: 'none', domain: 'ecf-phi.vercel.app' });
                 res.status(200).json({name: user.name, permission: user.permission});
               } else {
                 res.status(401).json({ success: false, error: 'Mot de passe incorrect' });
@@ -42,7 +42,7 @@ router.post('/', (req, res) => {
 
 // log out 
 router.get("/", (req, res) => {
-  return res.clearCookie('session')
+  return res.clearCookie('session', {domain: 'ecf-phi.vercel.app'})
   .status(200)
   .json({ message: 'Successfully logged out' })
 });
