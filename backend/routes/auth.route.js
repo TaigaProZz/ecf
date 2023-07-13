@@ -43,11 +43,8 @@ router.post('/', (req, res) => {
 
 // log out 
 router.get("/", (req, res) => {
-  res.clearCookie('session', {domain: 'ecf-node-serv.vercel.app', path: '/', httpOnly: true, secure: true, sameSite: 'none'})
-     .clearCookie('session', {domain: '.ecf-node-serv.vercel.app', path: '/', httpOnly: true, secure: true, sameSite: 'none'})
-     .clearCookie('session', {domain: 'ecf-phi.vercel.app', path: '/', httpOnly: true, secure: true, sameSite: 'none'})
+  res.clearCookie('session', {domain: '.ecf-node-serv.vercel.app', path: '/', httpOnly: true, secure: true, sameSite: 'none'})
   .status(200)
-
   .json({ message: 'Successfully logged out' })
 });
 
