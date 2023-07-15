@@ -1,7 +1,9 @@
-import { useState } from 'react';
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import '../../AdminComponents/PopUp/AdminPopUp.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
+import { useState } from 'react';
+import Popup from 'reactjs-popup';
 
 function AdminAddCar(props) {
   const [title, setTitle] = useState('');
@@ -46,7 +48,7 @@ function AdminAddCar(props) {
     // check if file is an image
     if (!isValidImageFile(event.target.files[0])) {
       event.target.value = null;
-      return alert('Invalid image file');
+      return toast.error('Le fichier doit être une image');
     }
 
     const files = event.target.files;
@@ -69,7 +71,7 @@ function AdminAddCar(props) {
         return updatedImages;
       });
     };
-
+    toast.success('Image ajoutée');
     reader.readAsDataURL(image);
   };
 
@@ -96,6 +98,7 @@ function AdminAddCar(props) {
   const resetImages = () => {
     setPreviewImages([]);
     setImages([]);
+    toast.success('Images effacées');
   };
 
 
@@ -176,8 +179,13 @@ function AdminAddCar(props) {
               Ajouter
             </button>
           </div>
+          <ToastContainer 
+            position= "bottom-right" 
+            theme='dark'
+          />
         </div>
       )}
+   
     </Popup>
   );
 }
