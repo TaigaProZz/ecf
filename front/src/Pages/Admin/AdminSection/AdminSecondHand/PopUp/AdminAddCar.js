@@ -43,6 +43,12 @@ function AdminAddCar(props) {
   };
 
   const handleImagesChange = (event, index) => {
+    // check if file is an image
+    if (!isValidImageFile(event.target.files[0])) {
+      event.target.value = null;
+      return alert('Invalid image file');
+    }
+
     const files = event.target.files;
     // only one image per input
     const image = files[0]; 
@@ -67,6 +73,12 @@ function AdminAddCar(props) {
     reader.readAsDataURL(image);
   };
 
+  function isValidImageFile(file) {
+    const allowedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+    const fileName = file.name.toLowerCase();
+    return allowedExtensions.some(extension => fileName.endsWith(extension));
+  }
+
   const handleAddCar = () => {
     const newCar = {
       title,
@@ -80,6 +92,12 @@ function AdminAddCar(props) {
     };
     props.onAddCar(newCar);
   };
+
+  const resetImages = () => {
+    setPreviewImages([]);
+    setImages([]);
+  };
+
 
   return (
     <Popup trigger={props.btn} modal nested>
@@ -133,6 +151,7 @@ function AdminAddCar(props) {
               onChange={handleYearChange}
             />
             <span>Images</span>
+            <button className="admin-add-btn" onClick={resetImages} > Effacer les images </button>
             {[...Array(6)].map((_, index) => (
               <div key={index} className="image-input">
                 <span key={index}>Image {index + 1}</span>
@@ -141,10 +160,12 @@ function AdminAddCar(props) {
                     <img className='preview-image' src={previewImages[index]} alt={`Preview ${index + 1}`} />
                   ) : (
                     <input
-                    type="file"
-                    id={`image${index + 1}`}
-                    onChange={(event) => handleImagesChange(event, index)}
-                  />
+                      type="file"
+                      accept="image/jpeg, image/png, image/jpg"
+                      size="5242880"
+                      id={`image${index + 1}`}
+                      onChange={(event) => handleImagesChange(event, index)}
+                    />
                   )}
                 </label>
               </div>
