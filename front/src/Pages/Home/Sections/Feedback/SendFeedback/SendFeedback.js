@@ -1,6 +1,6 @@
 import './SendFeedback.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { useRef, useState } from 'react';
 import axios from 'axios';
