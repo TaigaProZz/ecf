@@ -67,4 +67,7 @@ or
 ```
 npm start
 ```
+
+### You can connect to admin dashboard with : email : a  password : a
+
 # Enjoy !
