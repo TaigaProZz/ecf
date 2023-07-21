@@ -27,7 +27,6 @@ function Login({ setUser }) {
               pending: 'Connexion en cours...',
               success: {
                 render({ data }) {
-                  console.log(data);
                   setUser(data.data)
                   navigate("/admin");
                   return `${email}, vous êtes connecté`;
