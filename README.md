@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Start app localy 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## First, you need to clone the repo :
+```
+git clone git@github.com:TaigaProZz/ecf.git
+```
 
-## Available Scripts
+## Now, install dependencies of project :
+**Be sure to have Node.js installed.** ( v18.xx preferable )
 
-In the project directory, you can run:
+Go in `backend` and `front` folder, open your terminal and install it. Use npm or yarn :
+```
+yarn install
+```
+or 
+```
+npm install
+```
 
-### `npm start`
+## Setup your MySQL Database :
+- download MySQL Installer from official website, and install MySQL Server. Make sure to configure it well, you'll need it later.
+![image](https://github.com/TaigaProZz/ecf/assets/74510014/d9043320-8bc2-4503-8a9e-bccb2bb96c5b)
+![image](https://github.com/TaigaProZz/ecf/assets/74510014/e4d5aa11-181b-4306-9832-71c0b7eee1b1)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Start your database :
+- open your `cmd` in **administrator mode**, and execute :
+```
+net start MySQL80 ( replace MySQL80 with the name you choose, refeer to screen above )
+```
+## Add and create table :
+- download this extension on vs code
+![image](https://github.com/TaigaProZz/ecf/assets/74510014/7aa3831a-44ae-40b7-a632-4012d07cc11e)
+- connect to it with user that you created during the SQL Installation
+- execute all SQL Files of sql folder that you cloned before
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Create .env file :
+- create .env file in root of backend folder, paste this, and change values as you need :
+```
+REACT_APP_DATABASE_HOST= localhost
+REACT_APP_DATABASE_USERNAME= your_username
+REACT_APP_DATABASE_PASSWORD= your_password
+REACT_APP_DATABASE_NAME= your_database_name
+REACT_APP_DATABASE_PORT = your_port
+REACT_APP_DOMAIN= http://localhost:3000 ( check in your console when front is started )
+REACT_APP_API_PORT = 3307
 
-### `npm test`
+// log for bucket, dont need to have one, only for add new cars
+SCW_ACCESS_KEY= ''
+SCW_SECRET_KEY= ''
+SCW_DEFAULT_ORGANIZATION_ID= ''
+SCW_DEFAULT_PROJECT_ID= ''
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- create .env file in root of front folder, paste this, and change values as you need :
+```
+REACT_APP_API= http://localhost:3307
 
-### `npm run build`
+// endpoint for add car, dont need to have one, only for add new cars
+REACT_APP_CAR_SCW_ENDPOINT= ''
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## You can start your project, front and back, with : 
+```
+yarn start
+```
+or 
+```
+npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### You can connect to admin dashboard with : email : vincentparrot@gmail.com  password : a
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Enjoy !
