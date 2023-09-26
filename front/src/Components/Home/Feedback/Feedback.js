@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import FeedbackList from './FeedbackItem/FeedbackItem';
-import CommentBox from './SendFeedback/SendFeedback';
+import FeedbackItem from './FeedbackItem/FeedbackItem';
+import FeedbackSender from './FeedbackSender/FeedbackSender';
 import axios from 'axios';
 import './Feedback.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -13,7 +13,7 @@ import 'swiper/css/effect-coverflow';
 function SectionFeedback() {
   const [feedbacks, setFeedbacks] = useState([]);
 
-  // function to fetch all feedback from db
+  // fetch all feedback from db
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,42 +39,30 @@ function SectionFeedback() {
             grabCursor={true}
             centeredSlides={true}
             slidesPerView={'auto'}
-            effect={'coverflow'}
-            coverflowEffect={{
-              rotate: 10,
-              stretch: 100,
-              depth: 50,
-              modifier: 1,
-              slideShadows: true,
-              
-            }}
-
-            // breakpoint
             breakpoints={{
               640: {
                 slidesPerView: 1,
                 spaceBetween: 20,
               },
-              768: {
+              700: {
                 slidesPerView: 2,
                 spaceBetween: 30,
               },
-              1024: {
+              968: {
                 slidesPerView: 3,
                 spaceBetween: 30,
               },
             }}
-            >
+          >
             {feedbacks.map((feedback) => (
               <SwiperSlide key={feedback.id}>
-                <FeedbackList name={feedback.name} text={feedback.message} rating={feedback.rating} />
+                <FeedbackItem name={feedback.name} text={feedback.message} rating={feedback.rating} />
               </SwiperSlide>
             ))}
-            
           </Swiper> 
         </div>
-        <div className="sendFeedbackList">
-          <CommentBox />
+        <div className="send-feedback-list">
+          <FeedbackSender />
         </div>
     </section>
   );

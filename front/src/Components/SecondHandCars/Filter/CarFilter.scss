@@ -1,0 +1,60 @@
+@use "src/App" as app;
+
+
+@media screen and (max-width: 768px) {
+  .section-sort {
+    height: auto;
+    width: 100%;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: app.$elementColor;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .section-sort {
+    max-height: 500px;
+    width: 400px;
+    margin-top: 30px;
+    margin-left: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: app.$elementColor;
+  }
+}
+
+.section-sort {
+  height: auto;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: app.$elementColor;
+}
+
+.price, .year, .km {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  label {
+    font-size: 20px;
+  }
+}
+
+.slider-selection {
+  width: 20px;
+  height: 10%;
+}
+
+.slider-container {
+  width: 80%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}

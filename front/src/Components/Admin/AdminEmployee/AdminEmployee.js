@@ -67,33 +67,10 @@ function AdminEmployees () {
   // MANAGE SERVICE function
   const handleManageEmployee = async (newEmployee, originalEmployee) => {
     const finalEmployee = {
-      name : '',
-      email : '',
-      permission : '',
+      name: newEmployee.name || originalEmployee.name,
+      email: newEmployee.email || originalEmployee.email,
+      permission: newEmployee.permission || originalEmployee.permission,
     };
-
-    // check if input changed from original
-    if (newEmployee.name === originalEmployee.name || newEmployee.name === '') {
-      finalEmployee.name = originalEmployee.name;
-    } else {
-      finalEmployee.name = newEmployee.name;
-    }
-
-    if (newEmployee.email === originalEmployee.email || newEmployee.email === '') {
-      finalEmployee.email = originalEmployee.email;
-    } else {
-      finalEmployee.email = newEmployee.email;
-    }
-
-    if (newEmployee.permission === originalEmployee.permission 
-      || newEmployee.permission === undefined 
-      || newEmployee.permission === ''
-      || newEmployee.permission === null
-      ) {
-      finalEmployee.permission = originalEmployee.permission;
-    } else {
-      finalEmployee.permission = newEmployee.permission;
-    }
  
     try {
       await toast.promise (

@@ -8,16 +8,17 @@ function Car() {
   const [element, setElement] = useState(null);
   const [images, setImages] = useState([]);
   const params = useParams();
+  const paramsId = params.id;
 
   // get infos of car from database
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const carResponse = await axios.get(`${process.env.REACT_APP_API}/car/${params.id}`);
+        const carResponse = await axios.get(`${process.env.REACT_APP_API}/car/${paramsId}`);
         const car = carResponse.data;
         setElement(car[0]);
 
-        const imageResponse = await axios.get(`${process.env.REACT_APP_API}/carimage/${params.id}`);
+        const imageResponse = await axios.get(`${process.env.REACT_APP_API}/carimage/${paramsId}`);
         const images = imageResponse.data;
         const imageList = JSON.parse(images[0].path);
         console.log(imageList);
@@ -28,7 +29,7 @@ function Car() {
       }
     };
     fetchData();
-  }, [params.id]);
+  }, [paramsId]);
 
   // check if car is null
   if (!element) {

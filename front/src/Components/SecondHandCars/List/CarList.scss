@@ -1,0 +1,33 @@
+@use "src/App" as app;
+
+
+@media screen and (max-width: 768px) {
+  .car-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .car-list {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.loading-sch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.car-item:hover {
+  opacity: 0.7;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}

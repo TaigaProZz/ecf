@@ -1,54 +1,17 @@
 @use "src/App" as app;
 
-
 @media screen and (max-width: 768px) {
   .secondhand-container {
+    margin-top: 100px;
     flex-direction: column;
     height: auto;
   }
-
-  .car-list {
-    width: 100vw;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .car-item {
-    height: 35vh;
-    width: 40vh;
-    padding: 10px;
-    margin: 10px;
-  }
-
-  .section-car-list {
-    height: auto;
-    width: 100vw;
-  }
-
-  .section-sort {
-    height: auto;
-    width: 100%;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: app.$elementColor;
-  }
-
-  .loading-sch {
-    height: 90%;
-    width: 100%;
-    margin-top: 20px;
-    font-size: 20px;
-  }
-
 }
 
 @media screen and (min-width: 769px) {
   .secondhand-container {
-    max-height: calc(75vh - 20px);
+    margin-top: 120px;
+    min-height: calc(100vh - 340px);
     flex-direction: row;
   }
  
@@ -58,61 +21,14 @@
     padding: 20px;
     overflow-y: auto;
   }
-
-  .car-list {
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .car-item {
-    height: 45vh;
-    width: calc(30% - 20px);
-    padding: 10px;
-    margin: 10px;
-  }
-
-  .section-sort {
-    height: auto;
-    width: 20%;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: app.$elementColor;
-  }
-
-  .loading-sch {
-    height: 90%;
-    width: 80%;
-    margin-top: 20px;
-    font-size: 30px;
-  }
-}
-
-.loading-sch {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .secondhand-container {
   display: flex;
-  margin-top: 10vh;
-  min-height: calc(75vh - 20px);
   a {
     width: 100%;
     height: 100%;
   }
-}
-
-.section-sort {
-  height: auto;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: app.$elementColor;
 }
 
 .section-car-list {
@@ -120,78 +36,6 @@
   justify-content: center;
 }
 
-.car-item {
-  display: flex;
-  flex-direction: column;
-  background-color: app.$elementColor;
-  border-radius: 12px;
-}
-
-.car-details {
-  height: 100%;
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.car-image {
-  width: 80%;
-  height: 50%;
-  object-fit: contain;
-}
-
-.secondhand-car-details {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 50%;
-
-}
-
-.secondhand-car-description {
-  display: flex;
-  flex-direction: column;
-  align-items: self-start;
-  justify-content: center;
-  width: 50%;
-  height: 100%;
-  font-size: 15px;
-  p {
-    padding: 0;
-    margin: 0px 0px 5px 0px;
-  }
-  
-}
-
-.price, .year, .km {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  label {
-    font-size: 20px;
-  }
-}
-
-.sort-input {
-  width: 80%;
-}
-
-.car-item h3 {
-  margin: 0;
-}
-
-.car-item:hover {
-  opacity: 0.7;
-  transform: scale(1.05);
-  transition: all 0.3s ease-in-out;
-}
-  
 .shc-button, .car-price-shape {
   height: 50px;
   width: 120px;
@@ -205,7 +49,6 @@
   color: app.$mainFontColor;
   font-family: app.$mainFont;
   border: none;
- 
   a {
     text-decoration: none;
   }

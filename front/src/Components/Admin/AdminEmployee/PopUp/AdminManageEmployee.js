@@ -5,7 +5,6 @@ import '../../AdminComponents/PopUp/AdminPopUp.scss';
 import ValidatePopUp from '../../AdminComponents/PopUp/ValidatePopUp';
 
 function AdminManageEmployee(props) {
-  const [showConfirmation, setShowConfirmation] = useState(false); 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [permission, setPermission] = useState(null);
@@ -81,7 +80,6 @@ function AdminManageEmployee(props) {
               onConfirmation={(choice) => handleConfirmation(choice, props.employee.name)}
               btn={<button className="add-popup-btn">Modifier</button>}
               txt='modifier les changements'
-              handleButtonClick={showConfirmation}
             >
             </ValidatePopUp>
           </div>

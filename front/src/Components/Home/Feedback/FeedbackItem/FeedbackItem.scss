@@ -1,28 +1,28 @@
 @use 'src/App.scss' as app;
 
-
 // mobile
 @media screen and (max-width: 768px) {
-  .feedback-list {
-    height: 150px;
+  .feedback-item {
     width: 100%;
-    background-color: app.$buttonColor;
-    color: white;
-    border-radius: 12px;
   }
 }
+
+// large screen
 @media screen and (min-width: 769px) {
-
-  .feedback-list {
-    height: 250px;
-    width: 100%;
-    background-color: app.$buttonColor;
-    color: white;
-    border-radius: 12px;
+  .feedback-item {
+    width: 320px;
+    padding: 6px;
   }
 }
 
-.feedback-list-rating {
+.feedback-item {
+  height: 250px;
+  background-color: app.$buttonColor;
+  color: white;
+  border-radius: 12px;
+}
+
+.feedback-item-rating {
   display: inline-flex;
   height: 20%;
   width: 100%;
@@ -31,14 +31,14 @@
   color: yellow;
 }
 
-.feedback-list-name {
+.feedback-item-name {
   height: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.feedback-list-text {
+.feedback-item-text {
   height: 60%;
   display: flex;
   justify-content: center;

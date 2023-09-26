@@ -1,0 +1,96 @@
+@use "src/App" as app;
+
+
+@media screen and (max-width: 768px) {
+  .car-item {
+    height: 35vh;
+    width: 90%;
+    margin: 20px 0px 0px 0px;
+  }
+  
+  .secondhand-car-button {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .secondhand-car-description {
+    padding: 10px;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .car-item {
+    height: 530px;
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .secondhand-car-description {
+    font-size: 15px;
+  }
+}
+
+.car-item {
+  display: flex;
+  flex-direction: column;
+  background-color: app.$elementColor;
+  border-radius: 12px;
+}
+
+.car-details {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.car-image {
+  width: 80%;
+  height: 50%;
+  object-fit: contain;
+}
+
+.secondhand-car-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50%;
+}
+
+.secondhand-car-description {
+  display: flex;
+  flex-direction: column;
+  align-items: self-start;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  p {
+    padding: 0;
+    margin: 0px 0px 5px 0px;
+  }
+}
+
+.price, .year, .km {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.car-item h3 {
+  margin: 0;
+}
+
+.car-item:hover {
+  opacity: 0.7;
+  transform: scale(1.05);
+  transition: all 0.3s ease-in-out;
+}

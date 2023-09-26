@@ -1,4 +1,4 @@
-import './Contact.scss';
+import '../Contact.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import { useRef } from 'react';

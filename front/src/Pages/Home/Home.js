@@ -1,15 +1,13 @@
-import './Sections/Sections.scss';
-import WelcomeSection from './Sections/Welcome/Welcome';
-// import SecondSection from './Sections/Presentation/Presentation';
-import SecondHandSection from './Sections/SecondHand/SecondHand';
-import ServiceSection from './Sections/AllServices/AllServices';
-import FeedbackSection from './Sections/Feedback/Feedback';
+import '../../Components/Home/Sections.scss';
+import WelcomeSection from '../../Components/Home/Welcome/Welcome';
+import SecondHandSection from '../../Components/Home/SecondHand/SecondHand';
+import ServiceSection from '../../Components/Home/AllServices/AllServices';
+import FeedbackSection from '../../Components/Home/Feedback/Feedback';
 
 function Home() {
   return (
     <div>
       <WelcomeSection />
-      {/* <SecondSection /> */}
       <ServiceSection />
       <SecondHandSection />
       <FeedbackSection />

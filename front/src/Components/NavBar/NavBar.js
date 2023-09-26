@@ -10,6 +10,7 @@ import axios from 'axios';
 function MyNav({ user, setUser }) {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  if (user === null) setUser({});
 
   const logout = async () => {
     try {

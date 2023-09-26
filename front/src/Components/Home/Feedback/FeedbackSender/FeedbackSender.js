@@ -1,11 +1,11 @@
-import './SendFeedback.scss';
+import './FeedbackSender.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
 import { useRef, useState } from 'react';
 import axios from 'axios';
 
-function SendFeedback() {
+function FeedbackSender() {
   const inputNameRef = useRef(null);
   const inputMessageRef = useRef(null);
   const form = useRef(null);
@@ -99,4 +99,4 @@ function SendFeedback() {
   );
 };
 
-export default SendFeedback;
+export default FeedbackSender;

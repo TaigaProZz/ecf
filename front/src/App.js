@@ -1,8 +1,8 @@
 import Home from './Pages/Home/Home';
 import Vente from './Pages/SecondHandCars/SecondHandCars';
-import Contact from './Pages/Contact/Contact';
 import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer';
+import Contact from './Pages/Contact/BasicContact/Contact';
 import CarContact from './Pages/Contact/CarContact/CarContact';
 import Login from './Pages/Login/Login';
 import Admin from './Pages/Admin/Admin';
@@ -15,15 +15,16 @@ function App() {
   const [user, setUser] = useState({});
   
   const getUser = async () => {
+    console.log('get user');
     try {
       const response = await axios.get(`${process.env.REACT_APP_API}/user`, { withCredentials: true });
-      if (response.data) {
+      if (response.status === 200) {
         setUser(response.data);
-      } else {
-        setUser(null);
-      }
+      } 
     } catch (error) {
-      console.log(error);
+      if (error.response && error.response.status === 401) {
+        setUser({});
+      }
     }
   }
 

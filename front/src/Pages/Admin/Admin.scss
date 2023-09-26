@@ -3,7 +3,6 @@
 @media screen and (max-width: 768px) {
   .admin-bar-button {
     height: 60%;
-    width: 20vw; 
     display: flex;
     font-family: app.$mainFont;
     align-items: center;
@@ -14,19 +13,18 @@
     font-size: 12px;
   }
 
-   .admin-section-container {
+  .admin-section-container {
     width: 100%;
-    height: 80vh;
-    margin-top: 10vh;
+    height: 100%;
     background-color: app.$backgroundColor;
     color: aliceblue;
-    
-      button {
-      color: aliceblue;
-      border-radius: 12px;
-      background-color: app.$buttonColor;
-      border-color: app.$buttonColor;
-    }
+    margin-top: 120px;
+    button {
+    color: aliceblue;
+    border-radius: 12px;
+    background-color: app.$buttonColor;
+    border-color: app.$buttonColor;
+   }
   }
 
   .admin-add-btn {
@@ -43,7 +41,7 @@
 
 @media screen and (min-width: 769px) {
   .admin-bar-button {
-    height: 80%;
+    height: 100%;
     width: 20vw; 
     display: flex;
     font-family: app.$mainFont;
@@ -58,11 +56,10 @@
 
   .admin-section-container {
     width: 100%;
-    height: calc(100% - 15vh);
-    margin-top: 15vh;
+    height: 100%;
     background-color: app.$backgroundColor;
+    margin-top: 120px;
     color: aliceblue;
-    
       button {
       color: aliceblue;
       border-radius: 12px;
@@ -86,15 +83,15 @@
 
 .admin-container {
   width: 100%;
-  height: 90vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 10vh;
+  margin-top: 120px;
 }
 
 .admin-bar {
   width: 100vw;
-  height: 10vh;
+  height: 100px;
   position: fixed;
   overflow-x: auto;
   display: flex;

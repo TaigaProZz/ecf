@@ -1,29 +1,29 @@
 import './Admin.scss';
 import { useEffect, useState } from 'react';
-import AdminService from './AdminSection/AdminService/AdminService';
-import AdminSchedule from './AdminSection/AdminSchedule/AdminSchedule';
-import AdminEmployee from './AdminSection/AdminEmployee/AdminEmployee.js';
-import AdminSecondHand from './AdminSection/AdminSecondHand/AdminSecondHand';
-import AdminFeedback from './AdminSection/AdminFeedback/AdminFeedback';
+import AdminService from '../../Components/Admin/AdminService/AdminService';
+import AdminSchedule from '../../Components/Admin/AdminSchedule/AdminSchedule';
+import AdminEmployee from '../../Components/Admin/AdminEmployee/AdminEmployee.js';
+import AdminSecondHand from '../../Components/Admin/AdminSecondHand/AdminSecondHand';
+import AdminFeedback from '../../Components/Admin/AdminFeedback/AdminFeedback';
 
 const ADMIN_SECTIONS = {
-  'Services' : {
+  'Services': {
     component: <AdminService />,
     isAdmin: true
   },
-  'Horaires' : {
+  'Horaires': {
     component: <AdminSchedule />,
     isAdmin: true
   },
-  'Employés' : {
+  'Employés': {
     component: <AdminEmployee />,
     isAdmin: true
   },
-  'Vente véhicules' : {
+  'Vente véhicules': {
     component: <AdminSecondHand />,
     isAdmin: false
   },
-  'Commentaires' : {
+  'Commentaires': {
     component: <AdminFeedback />,
     isAdmin: false
   }
@@ -38,33 +38,28 @@ function Admin({ user }) {
     setAdmin(user.permission === 1);
   }, [user.permission])
 
-  console.log(user);
-  if(user === 'null') {
-    console.log("user is null");
-    return <div>Vous devez être connecté pour accéder à cette page.</div>
-  } else {
-    console.log("user is nueeeeell");
-
-  }
-
   return (
     <div className="admin-container">
-      <div className="admin-bar">
-        {
-          // hide some admin sections if user is not admin
-          Object.keys(ADMIN_SECTIONS).map((section, index) => 
-            (isAdmin || !ADMIN_SECTIONS[section].isAdmin) && <button key={index} className='admin-bar-button' onClick={() => setContainer(ADMIN_SECTIONS[section].component)}>{section}</button>
-          )
-        }
-      </div>
-      
-      <div className='admin-section-container'>
-        {/* <span className='permission-box'>Vous êtes : {isAdmin ? "Admin" : "Employé"}  </span> */}
-        {container}
-      </div>
+      {!(user.permission === 0 || user.permission === 1) ? <div>Vous devez être connecté pour accéder à cette page.</div> : (
+        <>
+          <div className="admin-bar">
+            {
+              // hide some admin sections if the user is not an admin
+              Object.keys(ADMIN_SECTIONS).map((section, index) =>
+                (isAdmin || !ADMIN_SECTIONS[section].isAdmin) &&
+                <button key={index} className='admin-bar-button' onClick={() => setContainer(ADMIN_SECTIONS[section].component)}>
+                  {section}
+                </button>
+              )
+            }
+          </div>
+          <div className='admin-section-container'>
+            {container}
+          </div>
+        </>
+      )}
     </div>
   )
 }
-
 
 export default Admin;

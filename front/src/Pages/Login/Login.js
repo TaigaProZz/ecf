@@ -9,14 +9,13 @@ function Login({ setUser }) {
   const navigate = useNavigate();
   const inputEmail = useRef(null);
   const inputPassword = useRef(null);
-  // set with credentials to true
   axios.defaults.withCredentials = true;
  
   const login = async () => {
     const email = inputEmail.current.value;
     const password = inputPassword.current.value;
     const user = { email, password };
-    if (email === '' || password === '') {
+    if (email.trim() === '' || password.trim() === '') {
       toast.warn('Veuillez remplir tous les champs');
       return;
     } else {
@@ -33,15 +32,14 @@ function Login({ setUser }) {
                 }
               },
               error: {
-                render({ data }) {
-                  return `Veuillez vérifier vos informations saisies et réssayer`;
+                render(error) {
+                  return `Erreur lors de la connexion : ${error.data.response.data.error || 'Veuillez vérifier vos informations saisies et réessayer'}`;
                 }
               }
             }
           );
-            
         } catch (error) {
-          toast.error('Erreur lors de la connexion', error);
+          console.log('Erreur lors de la connexion', error);
         }
       }
   }
@@ -65,7 +63,11 @@ function Login({ setUser }) {
         <div className='center'>
         <button className='home-button' id="login-btn" type="submit" onClick={login}>Connexion</button>
         </div>
-      </div>  
+      </div>
+      <ToastContainer 
+        position= "bottom-right" 
+        theme='dark'
+      />
     </div>
   )
 }

@@ -84,6 +84,16 @@
 
 // large screen
 @media screen and (min-width: 769px) {
+  .my-nav {
+    width: 100vw;
+    height: 120px;
+    background-color: app.$barColor;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+  }
+
   .nav-logo {
     width: 33.33%;
     display: flex; 
@@ -114,16 +124,6 @@
       margin: 0;
       padding: 0;
     }
-  }
-
-  .my-nav {
-    width: 100vw;
-    height: 10vh;
-    background-color: app.$barColor;
-    position: fixed;
-    display: flex;
-    align-items: center;
-    z-index: 1;
   }
   
   .burger, Menu, .bm-menu, .bm-burger-button {

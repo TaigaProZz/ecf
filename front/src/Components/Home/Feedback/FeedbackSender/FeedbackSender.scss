@@ -1,0 +1,100 @@
+@use 'src/App.scss' as app;
+
+@media screen and (max-width: 768px) {
+  .box {
+    width: 60%;
+    height: 360px;
+    background-color: app.$buttonColor;
+    border-radius: 12px;
+    padding: 10px;
+    form {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    h2 {
+      text-decoration: underline;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+  }
+  
+  .inputName, .inputMessage {
+    height: 40px;
+    width: 60%;
+  }
+  
+  .inputRadio {
+    display: inline-flex;
+  }
+  
+  .send-feedback-row {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+}
+
+
+@media screen and (min-width: 769px) {
+  .box {
+    width: 100%;
+    max-width: 1000px;
+    height: 370px;
+    background-color: app.$buttonColor;
+    border-radius: 12px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    form {
+      width: 100%;
+      height: 100%;
+    }
+    h2 {
+      text-decoration: underline;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+  }
+  
+  
+  .inputName, .inputMessage {
+    height: 40px;
+    width: 60%;
+  }
+  
+  .inputRadio {
+    display: inline-flex;
+  }
+  
+  .send-feedback-row {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+
+}
+
+
+.rating {
+  display: flex;
+  margin-left: 10px;
+  height: auto;
+}
+
+.star {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 3px;
+  color: yellow;
+}

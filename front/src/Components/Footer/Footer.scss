@@ -1,12 +1,5 @@
 @use "../../App" as app;
 
-.my-footer {
-  height: 15vh;
-  width: 100vw;
-  background-color: app.$barColor;
-  display: flex;
-}
-
 li.footer-list-elt {
   list-style: none;
  
@@ -16,24 +9,31 @@ ul {
   padding: 0;
 }
 
-
-
 // mobile
 @media screen and (max-width: 768px) {
-  .footer-schedule-container {
+  .my-footer {
+    height: auto;
+    width: 100vw;
+    background-color: app.$barColor;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    font-size: 9px;
+    padding: 20px 0px 20px 0px;
   }
 
   .footer-schedule-container {
-    width: 50%;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .footer-schedule-container {
     display: flex;
     justify-content: center;
   }  
 
-  .right-side-footer{
-    width: 50%;
+  .contact-section-footer {
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -42,6 +42,12 @@ ul {
   .footer-logo, .footer-btn {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-btn {
+    margin-bottom: 10px;
   }
 
   .footer-logo {
@@ -67,8 +73,27 @@ ul {
     background-color: app.$buttonColor;
   }
 
+  .footer-contact-btn {
+    height: 45px;
+    width: 106px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: none;
+    padding: 10px;
+    font-size: app.$buttonMobileFontSize;
+    background-color: app.$buttonColor;
+  }
+
+
   .contact-btn-text {
     margin-left: 5px;
+  }
+
+  .contact-btn-title {
+    font-size: 16px;
+    margin-bottom: 10px;
   }
 
   .footer-logo > img {
@@ -80,6 +105,10 @@ ul {
 
 @media screen and (min-width: 769px) {
   .my-footer{
+    height: 200px;
+    width: 100vw;
+    background-color: app.$barColor;
+    display: flex;
     padding: 10px 0 10px 0;
   }
 
@@ -89,10 +118,10 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5vh;
+    font-size: 16px;
   }  
 
-  .right-side-footer {
+  .contact-section-footer {
     width: 77.77%;
     display: flex;
     justify-content: space-evenly;
@@ -103,8 +132,9 @@ ul {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    flex-direction: column;
   }
+
 
   .logo-footer {
     width: 250px;
@@ -126,6 +156,10 @@ ul {
 
   .contact-btn-text {
     margin-left: 15px;
+  }
+
+  .contact-btn-title {
+    margin-bottom: 20px;
   }
 
   .footer-logo > img {
