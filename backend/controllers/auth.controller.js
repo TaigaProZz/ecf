@@ -2,7 +2,6 @@ require('dotenv').config();
 const authService = require('../services/auth.service');
 const Controller = require('./controller');
 
-
 class AuthController extends Controller
 {
   constructor (service) {
@@ -15,6 +14,7 @@ class AuthController extends Controller
       const result = await this.service.login(request.body);
       if (result.success) {
         response.cookie('session', result.token, {
+          domain: '.ecf-node-serv.vercel.app',
           maxAge: 2600000,
           httpOnly: true,
           secure: true,
@@ -33,7 +33,7 @@ class AuthController extends Controller
   }
 
   logout(request, response) {
-    response.clearCookie('session');
+    response.clearCookie('session', {domain:'.ecf-node-serv.vercel.app', path: '/', httpOnly: true, secure: true, sameSite: 'none'})
     this.setResponse({}, response);
   } 
 }
