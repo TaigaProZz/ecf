@@ -13,7 +13,7 @@ class AuthController extends Controller
       const result = await this.service.login(request.body);
       if (result.success) {
         response.cookie('session', result.token, {
-          domain: '.ecf-phi.vercel.app',
+          domain: 'ecf-phi.vercel.app',
           maxAge: 2600000,
           httpOnly: true,
           secure: true,
