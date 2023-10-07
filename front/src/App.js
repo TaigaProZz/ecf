@@ -10,12 +10,12 @@ import Car from './Pages/Car/Car';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [user, setUser] = useState({});
   
   const getUser = async () => {
-    console.log('get user');
     try {
       const response = await axios.get(`${process.env.REACT_APP_API}/user`, { withCredentials: true });
       if (response.status === 200) {
@@ -45,6 +45,10 @@ function App() {
         <Route path="/car/:id" element={<Car />} />               
       </Routes>       
       <Footer />
+      <ToastContainer
+        position='bottom-right'
+        theme='dark'
+      />
     </BrowserRouter>
   );
 }

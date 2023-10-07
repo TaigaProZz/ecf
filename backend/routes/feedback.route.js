@@ -1,66 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../database');
+const controller = require('../controllers/feedback.controller');
+const cookieController = require('../controllers/cookie.controller');
 
 // get feedbacks 
-router.get('/', (req, res) => {
-  const query = 'SELECT * FROM feedbacks';
-  connection.query(query, (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.send(results);
-    }
-  });
-});
+router.get('/', controller.getAll.bind(controller));
+router.get('/verified', controller.getAllVerified.bind(controller));
+
 
 // post feedbacks 
-router.post('/', (req, res) => {
-  try {
-    const { name, message, rating, isVerified } = req.body;
-    const query = 'INSERT INTO feedbacks (name, message, rating, isVerified) VALUES (?, ?, ?, ?)';
-    connection.query(query, [name, message, rating, isVerified], (error, results) => {
-      if (error) {
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
-    });
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
-});
+router.post('/', controller.create.bind(controller));
 
 // update feedback validation 
-router.put('/:id', (req, res) => {
-  const feedbackId = req.params.id;
-  const isVerified = req.body.isVerified;
-  const query = 'UPDATE feedbacks SET isVerified = ? WHERE id = ?';
-  connection.query(query, [isVerified, feedbackId], (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.sendStatus(200);
-    }
-  });
-});
+router.put('/:id', cookieController.getCookie.bind(cookieController), controller.update.bind(controller));
 
 // delete feedback
-router.delete('/:id', (req, res) => {
-  const feedbackId = req.params.id;
-  const query = 'DELETE FROM feedbacks WHERE id = ?';
-  connection.query(query, [feedbackId], (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.sendStatus(200);
-    }
-  });
-});
-
+router.delete('/:id', cookieController.getCookie.bind(cookieController), controller.delete.bind(controller));
 
 module.exports = router;

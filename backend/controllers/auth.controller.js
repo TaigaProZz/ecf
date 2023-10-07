@@ -14,7 +14,7 @@ class AuthController extends Controller
       const result = await this.service.login(request.body);
       if (result.success) {
         response.cookie('session', result.token, {
-          domain: '.ecf-node-serv.vercel.app',
+          domain: process.env.REACT_APP_DOMAIN_COOKIE,
           maxAge: 2600000,
           httpOnly: true,
           secure: true,
@@ -33,7 +33,7 @@ class AuthController extends Controller
   }
 
   logout(request, response) {
-    response.clearCookie('session', {domain:'.ecf-node-serv.vercel.app', path: '/', httpOnly: true, secure: true, sameSite: 'none'})
+    response.clearCookie('session', {domain: process.env.REACT_APP_DOMAIN_COOKIE, path: '/', httpOnly: true, secure: true, sameSite: 'none'})
     this.setResponse({}, response);
   } 
 }

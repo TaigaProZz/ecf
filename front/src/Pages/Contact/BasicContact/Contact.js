@@ -1,6 +1,6 @@
 import '../Contact.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useRef } from 'react';
 import axios from 'axios';
 
@@ -29,23 +29,26 @@ function Contact() {
   // check every input and send message to db
   const submit = (e) => {
     e.preventDefault();
-    if (
-      nameInputRef.current.value === '' ||
-      phoneInputRef.current.value === '' ||
-      emailInputRef.current.value === '' ||
-      msgInputRef.current.value === ''
-    ) {
+    
+    const name = nameInputRef.current.value;
+    const phone = phoneInputRef.current.value;
+    const email = emailInputRef.current.value;
+    const message = msgInputRef.current.value;
+  
+    const validationResult = checkInputs(name, phone, email, message);
+  
+    if (validationResult === "empty") {
       toast.warn('Veuillez remplir tous les champs');
+    } else if (validationResult === "email") {
+      toast.error('L\'adresse e-mail n\'est pas valide');
+    } else if (validationResult === "phone") {
+      toast.error('Le numéro de téléphone n\'est pas valide');
     } else {
-      const name = nameInputRef.current.value;
-      const phone = phoneInputRef.current.value;
-      const email = emailInputRef.current.value;
-      const message = msgInputRef.current.value;
-      // envoyer le message en bdd
+      // Les données sont valides, envoyez le message en bdd
       sendData(name, phone, email, message);
       form.current.reset();
       toast.success('Votre message a bien été envoyé');
-    }  
+    }
   }
 
   return (
@@ -72,12 +75,31 @@ function Contact() {
           <button className='home-button' onClick={submit}>Envoyer</button>
         </div>
       </form> 
-      <ToastContainer 
-        position='bottom-right'
-        theme='dark'
-      /> 
     </div>
   );
+}
+
+function checkInputs(name, phone, email, message) {
+  if (email === '' || phone === '' || message === '' || name === '') {
+    return "empty";
+  } else if(!validateEmail(email)) {
+      return "email";
+  } else if(!validatePhone(phone)) {
+      return "phone";
+  }
+  else {
+    return true;
+  }
+}
+
+function validateEmail(email) {
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/u;
+  return regex.test(email);
+}
+
+function validatePhone(phone) {
+  const regex = /^[0-9]{10}$/u;
+  return regex.test(phone);
 }
 
 export default Contact;

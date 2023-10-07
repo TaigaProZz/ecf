@@ -58,7 +58,7 @@ function CarFilter (props) {
     <section className="section-sort">
       <h2 className='center' htmlFor="sort">Trier par :</h2>
       <div className='price'>
-        <label>Prix :</label>
+        <span>Prix :</span>
         <div className='slider-container'>
           <p>{priceValues.map(value => value + "€").join(' - ')}</p>
           <Slider 
@@ -72,7 +72,7 @@ function CarFilter (props) {
         </div>
       </div>
       <div className='year'>
-        <label>Année :</label>
+        <span>Année :</span>
         <div className='slider-container'>
           <p>{yearValues.map(value => value).join(' - ')}</p>
           <Slider 
@@ -86,7 +86,7 @@ function CarFilter (props) {
         </div>
       </div>
       <div className='km'>
-        <label>Km :</label>
+        <span>Km :</span>
         <div className='slider-container'>
           <p>{kmValues.map(value => value + "km").join(' - ')}</p>
           <Slider 

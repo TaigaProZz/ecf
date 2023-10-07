@@ -1,20 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken');
 const connection = require('../database');
+const jwt = require('jsonwebtoken');
 
 // get user infos
 router.get('/', (req, res) => {
-  const token = req.signedCookies.session;
-  if (!token) {
-    return res.status(401);
-  }
-
   try {
+    const token = req.signedCookies.session;
+    if (!token || typeof token === 'undefined' || token === null) return res.status(401).json({ message: 'Pas connecté' });
     const secretKey = 'key';
     const decoded = jwt.verify(token, secretKey);
     const email = decoded.email;
-
+    if(!email) return res.status(401).json({ message: 'JWT invalide' });
+    console.log("user");
+  
     const query = "SELECT permission, name FROM users WHERE email = ?";
     connection.query(query, [email], (error, results) => {
       if (results.length === 0) {
@@ -27,7 +26,7 @@ router.get('/', (req, res) => {
   } catch (error) {
     console.error('Erreur lors de la vérification du JWT', error);
     return res.status(401).json({ message: 'JWT invalide' });
-  }
+  } 
 })
 
 

@@ -1,15 +1,15 @@
 import './Login.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 function Login({ setUser }) {
   const navigate = useNavigate();
   const inputEmail = useRef(null);
   const inputPassword = useRef(null);
-  axios.defaults.withCredentials = true;
  
   const login = async () => {
     const email = inputEmail.current.value;
@@ -64,10 +64,6 @@ function Login({ setUser }) {
         <button className='home-button' id="login-btn" type="submit" onClick={login}>Connexion</button>
         </div>
       </div>
-      <ToastContainer 
-        position= "bottom-right" 
-        theme='dark'
-      />
     </div>
   )
 }

@@ -23,11 +23,10 @@ function FeedbackSender() {
         }),
         {
           pending: 'Envoi du commentaire...',
-          success: 
-          { 
+          success: { 
             render({ data }) {
-            setRating(null);
-            return "Merci pour votre commentaire ! Il sera publié après modération"
+              setRating(null);
+              return "Merci pour votre commentaire ! Il sera publié après modération";
             }
           },
           error: 'Une erreur est survenue'
@@ -75,12 +74,12 @@ function FeedbackSender() {
         <h2>Envoyez nous un commentaire !</h2>
         <div className='send-feedback-row'>
           <label htmlFor="name">Nom :</label>
-          <input ref={inputNameRef} type='text' className='inputName' placeholder="Votre nom"></input>
+          <input ref={inputNameRef} id='name' type='text' className='inputName' placeholder="Votre nom"></input>
         </div>
         
         <div className='send-feedback-row'>
           <label htmlFor="message">Message :</label>
-          <input ref={inputMessageRef} type='text' className='inputMessage' placeholder="Votre message"></input>
+          <input ref={inputMessageRef} id='message' type='text' className='inputMessage' placeholder="Votre message"></input>
         </div>
 
         <div className='send-feedback-row'>

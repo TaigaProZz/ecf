@@ -1,6 +1,6 @@
 import './AdminSecondHand.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { BsPlusSquare } from 'react-icons/bs';
 import PopUpAddCar from './PopUp/AdminAddCar';
@@ -141,10 +141,6 @@ function AdminSecondHand () {
         onAddCar={addCar}
         >
       </PopUpAddCar>
-      <ToastContainer 
-        position='bottom-right'
-        theme='dark'
-      />
     </div>
   )
 }

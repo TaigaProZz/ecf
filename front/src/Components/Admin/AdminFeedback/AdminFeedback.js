@@ -1,6 +1,6 @@
 import './AdminFeedback.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
 import { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
@@ -120,7 +120,6 @@ function AdminFeedback () {
   // add feedback to db
   const addFeedback = async (newFeedback) => {
     // check if feedback's inputs are empty
-    console.log(newFeedback);
     if(newFeedback.name === '' || newFeedback.rating === '' || newFeedback.message === '') {
       toast.warn('Veuillez remplir tous les champs');
       return;
@@ -210,11 +209,7 @@ function AdminFeedback () {
         type='Ajouter un feedback'
         onAddFeedback={addFeedback}
         >
-      </PopUpAddFeedback>  
-      <ToastContainer 
-          position= "bottom-right" 
-          theme='dark'
-      />       
+      </PopUpAddFeedback>        
     </div>  
   ) 
 }

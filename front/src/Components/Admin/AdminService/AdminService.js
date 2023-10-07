@@ -1,6 +1,6 @@
 import './AdminService.scss'
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { BsPlusSquare } from 'react-icons/bs'
 import { FaTrash, FaPen } from 'react-icons/fa'
 import { useState, useEffect } from 'react';
@@ -142,11 +142,6 @@ function AdminServices () {
           type='Ajouter un service'
           onAddService={addService}>
         </PopUpAddService>
-        <ToastContainer 
-          position= "bottom-right" 
-          theme='dark'
-        />
-
       </div>
     </div>
   )

@@ -1,6 +1,6 @@
 import '../Contact.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 // import { CARS } from '../../../Data/cars.js'
@@ -75,16 +75,16 @@ function Contact() {
   return (
     <div className="contact-container">
       <form ref={form} className='contact-form'>
-        <h2 className='center'>Formulaire de contact</h2>
-        <div className='row'>
+        <h1 className='form-title'>Formulaire de contact</h1>
+        <div className='name-row row'>
           <label>Nom prénom :</label>
           <input ref={nameInputRef} type='text' placeholder='Entrez votre nom prénom'></input>
         </div>
-        <div className='row'>
+        <div className='phone-row row'>
           <label>Téléphone :</label>
           <input ref={phoneInputRef} type='tel' placeholder='Entrez votre numéro de téléphone'></input>
         </div>
-        <div className='row'>
+        <div className='email-row row'>
           <label>Email :</label>
           <input ref={emailInputRef} type='email' placeholder='Entrez votre email'></input>
         </div>
@@ -99,11 +99,7 @@ function Contact() {
         <div className='center'>
           <button className='home-button' type='submit' onClick={submit}>Envoyer</button>
         </div>
-      </form>  
-      <ToastContainer 
-        position='bottom-right'
-        theme='dark'
-      />
+      </form>
     </div>
   );
 }

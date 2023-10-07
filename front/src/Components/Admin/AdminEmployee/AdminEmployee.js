@@ -1,6 +1,6 @@
 import './AdminEmployee.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { FaPen } from 'react-icons/fa';
 import { BsPlusSquare } from 'react-icons/bs';
@@ -26,7 +26,7 @@ function AdminEmployees () {
   }
 
   // ADD SERVICE function
-  const addEmployee = async (employee) => {
+  const handleSubmit = async (employee) => {
     // check if input are not null
     if (employee.name.trim() === '' || employee.email.trim() === '' || employee.permission.trim() === '') {
       toast.warn('Veuillez remplir tous les champs');
@@ -44,16 +44,18 @@ function AdminEmployees () {
           email: employee.email,
           password: employee.password,
           permission: employee.permission,
-      }), {
+      }), 
+      {
+        toastId: 'employee-toast',
         pending: 'Envoi des données...',
         success: {
-          render({ data }) {
+          render() {  
             fetchData();
             return 'Employé ajouté avec succès !';
           }
         },
         error: {
-          render({ data }) {
+          render({data}) {
             return `Erreur lors de l'envoi des données : ${data}`;
           }
         }
@@ -120,13 +122,9 @@ function AdminEmployees () {
         <AdminAddEmployee
           btn={<button  className='admin-add-btn'>Ajouter un employé <BsPlusSquare size={30} /></button>}
           type='Ajouter un employé'
-          onAddEmployee={addEmployee}
+          onSubmit={handleSubmit}
           >
         </AdminAddEmployee>
-        <ToastContainer 
-          position= "bottom-right" 
-          theme='dark'
-        />
     </div>
   )
 }

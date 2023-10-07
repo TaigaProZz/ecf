@@ -1,7 +1,7 @@
 import 'reactjs-popup/dist/index.css';
 import '../../AdminComponents/PopUp/AdminPopUp.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { useState } from 'react';
 import Popup from 'reactjs-popup';
 
@@ -179,10 +179,6 @@ function AdminAddCar(props) {
               Ajouter
             </button>
           </div>
-          <ToastContainer 
-            position= "bottom-right" 
-            theme='dark'
-          />
         </div>
       )}
    

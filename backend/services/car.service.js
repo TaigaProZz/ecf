@@ -45,7 +45,7 @@ class CarService {
   getAll() {
     return this.query('SELECT * FROM cars');
   }
-
+  
   getById(id) {
     return this.query('SELECT * FROM cars WHERE id = ?', [id]);
   }

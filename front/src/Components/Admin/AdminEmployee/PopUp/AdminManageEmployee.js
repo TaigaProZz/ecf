@@ -46,30 +46,32 @@ function AdminManageEmployee(props) {
           </button>
           <div className="header">Modifier un employé</div>
           <div className="content">
-            <label>Nom prénom</label>
+            <label htmlFor='name'>Nom prénom</label>
             <input
               type="text"
+              id='name'
               placeholder={props.employee.name}
               value = {name}
               onChange={handleName}
             />
 
-            <label>Email</label>
+            <label htmlFor='email'>Email</label>
             <input
               type="text"
+              id='email'
               placeholder={props.employee.email}
               value = {email}
               onChange={handleEmail}
             />
 
-            <label>Mot de passe</label>
+            <span>Mot de passe</span>
             <button className="add-popup-btn">
               Réinitialiser le mot de passe
             </button>
 
-            <label>Permission</label>
+            <label htmlFor='permission'>Permission</label>
             <span>Permission actuelle : {props.employee.permission ? "Admin" : "Employe"}</span>
-            <select onChange={handlePermission} value={permission}>
+            <select onChange={handlePermission} value={permission} id='permission'>
               <option value= ''>-- Laissez vide pour ne pas modifier</option>
               <option value= "0">Utilisateur</option>
               <option value= "1">Admin</option>
