@@ -1,66 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../database');
+const controller = require('../controllers/service.controller');
+const cookieController = require('../controllers/cookie.controller');
 
 // get service 
-router.get('/', (req, res) => {
-  const query = 'SELECT * FROM services';
-  connection.query(query, (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.send(results);
-    }
-  });
-});
+router.get('/', controller.getAll.bind(controller));
 
 // update service 
-router.put('/:id', (req, res) => {
-   const servicesId = req.params.id;
-   const msg = req.body.services;
-   const query = 'UPDATE services SET services = ? WHERE id = ?';
-   connection.query(query, [msg, servicesId], (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.sendStatus(200);
-    }
-  });
-});
+router.put('/:id', cookieController.getCookie.bind(cookieController), controller.update.bind(controller));
 
 // delete service 
-router.delete('/:id', (req, res) => {
-  const serviceId = req.params.id;
-  const query = 'DELETE FROM services WHERE id = ?';
-  connection.query(query, [serviceId], (error, results) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-    } else {
-      res.sendStatus(200);
-    }
-  });
-});
+router.delete('/:id', cookieController.getCookie.bind(cookieController), controller.delete.bind(controller));
 
 // post SERVICES 
-router.post('/', (req, res) => {
-  try {
-    const service = req.body.services;
-    const query = 'INSERT INTO services (services) VALUES (?)';
-    connection.query(query, [service], (error, results) => {
-      if (error) {
-        console.log(error);
-        res.sendStatus(500);
-      } else {
-        res.sendStatus(200);
-      }
-    });
-  } catch (error) {
-      console.error(error);
-      res.sendStatus(500);
-    }
-});
+router.post('/', cookieController.getCookie.bind(cookieController), controller.create.bind(controller));
 
 module.exports = router;

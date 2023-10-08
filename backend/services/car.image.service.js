@@ -1,7 +1,7 @@
 const util = require('util');
 const connection = require('../database');
 
-class UserService {
+class CarImageService {
   
   constructor() {
     this.query = util.promisify(connection.query).bind(connection);
@@ -20,4 +20,4 @@ class UserService {
   }
 }
 
-module.exports = new UserService();
+module.exports = new CarImageService();

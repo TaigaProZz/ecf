@@ -1,5 +1,6 @@
 const util = require('util');
 const connection = require('../database');
+const jwt = require('jsonwebtoken');
 
 class UserService {
   
@@ -7,12 +8,28 @@ class UserService {
     this.query = util.promisify(connection.query).bind(connection);
   }
 
-  getAll() {
-    return this.query('SELECT id, name, email, grade FROM users');
-  }
-
-  updatePermission(id, grade) {
-    return this.query('UPDATE users SET grade = ? WHERE id = ?', [grade, id]);
+  getAll(req) {
+    return new Promise((resolve, reject) => {
+      const token = req;
+      if (!token || typeof token === 'undefined' || token === null) {
+        reject('Pas connecté');
+        return; 
+      }
+      const secretKey = process.env.JWT_TOKEN_SECRET;
+      try {
+        const decoded = jwt.verify(token, secretKey);
+        const email = decoded.email;
+        if(!email) {
+          reject('Email non trouvé');
+          return;
+        } else {
+          resolve(this.query('SELECT permission, name FROM users WHERE email = ?', [email]));
+        }
+      } catch(err) {
+        reject(err);
+        return;
+      } 
+    });
   }
 }
 

@@ -1,19 +1,27 @@
 const util = require('util');
 const connection = require('../database');
 
-class UserService {
+class ServiceService {
   
   constructor() {
     this.query = util.promisify(connection.query).bind(connection);
   }
 
   getAll() {
-    return this.query('SELECT id, name, email, grade FROM users');
+    return this.query('SELECT * FROM services');
   }
 
-  updatePermission(id, grade) {
-    return this.query('UPDATE users SET grade = ? WHERE id = ?', [grade, id]);
+  update(id, service) {
+    return this.query('UPDATE services SET services = ? WHERE id = ?', [service, id]);
+  }
+
+  create(service) {
+    return this.query('INSERT INTO services (services) VALUES (?)', [service]);
+  }
+
+  delete(id) {
+    return this.query('DELETE FROM services WHERE id = ?', [id]);
   }
 }
 
-module.exports = new UserService();
+module.exports = new ServiceService();

@@ -63,9 +63,9 @@ function MyNav({ user, setUser }) {
             <Link to="/contact">Contact</Link>
             {user.name && <Link to="/admin">Admin</Link>}
           </div>
-          <div className="nav-user">
+          <div className="nav-user" >
             {user.name && <Link onClick={logout}>Déconnexion</Link>}
-            {!user.name && <Link to="/login"><BiUser size={40}/></Link>}
+            {!user.name && <Link to="/login" data-qa='user-btn'><BiUser size={40}/></Link>}
             {user.name && <p>{user.name}, vous êtes connecté(e)</p>} 
           </div>
         </div>

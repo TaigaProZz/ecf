@@ -1,15 +1,15 @@
-const conversationService = require('../services/conversation.service');
+const scheduleService = require('../services/schedule.service');
 const Controller = require('./controller');
 
-class ConversationController extends Controller
+class ScheduleController extends Controller
 {
   constructor (service) {
     super();
     this.service = service;
   }
 
-  getAllById (request, response) {
-    this.service.getAllById(request.params.id).then(result => {
+  getAll (request, response) {
+    this.service.getAll().then(result => {
       this.setResponse(result, response);
     }).catch(error => {
       console.log(error);
@@ -17,8 +17,8 @@ class ConversationController extends Controller
     });
   }
 
-  create (request, response) {
-    this.service.create(request.body).then(result => {
+  update (request, response) {
+    this.service.update(request.body).then(result => {
       this.setResponse(result, response);
     }).catch(error => {
       console.log(error);
@@ -27,4 +27,4 @@ class ConversationController extends Controller
   }
 }
 
-module.exports = new ConversationController(conversationService);
+module.exports = new ScheduleController(scheduleService);

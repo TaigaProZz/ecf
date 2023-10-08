@@ -1,24 +1,15 @@
-const conversationService = require('../services/conversation.service');
+const userService = require('../services/user.service');
 const Controller = require('./controller');
 
-class ConversationController extends Controller
+class UserController extends Controller
 {
   constructor (service) {
     super();
     this.service = service;
   }
 
-  getAllById (request, response) {
-    this.service.getAllById(request.params.id).then(result => {
-      this.setResponse(result, response);
-    }).catch(error => {
-      console.log(error);
-      this.setError(error, response);
-    });
-  }
-
-  create (request, response) {
-    this.service.create(request.body).then(result => {
+  getAll(request, response) {
+    this.service.getAll(request.signedCookies.session).then(result => {
       this.setResponse(result, response);
     }).catch(error => {
       console.log(error);
@@ -27,4 +18,4 @@ class ConversationController extends Controller
   }
 }
 
-module.exports = new ConversationController(conversationService);
+module.exports = new UserController(userService);

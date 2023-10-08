@@ -19,7 +19,7 @@ function App() {
     try {
       const response = await axios.get(`${process.env.REACT_APP_API}/user`, { withCredentials: true });
       if (response.status === 200) {
-        setUser(response.data);
+        setUser(response.data[0]);
       } 
     } catch (error) {
       if (error.response && error.response.status === 401) {

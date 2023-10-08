@@ -1,6 +1,5 @@
 const util = require('util');
 const connection = require('../database');
-
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -21,7 +20,7 @@ class AuthService {
     const passwordMatch = await bcrypt.compare(password, user[0].password);
 
     if (passwordMatch) {
-      const token = jwt.sign({ email: user[0].email }, 'key', {
+      const token = jwt.sign({ email: user[0].email }, process.env.JWT_TOKEN_SECRET, {
         algorithm: 'HS256',
         expiresIn: '30d',
       });

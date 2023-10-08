@@ -24,9 +24,7 @@ function AdminSchedule () {
 
   // handle all inputs
   const handleMorningOpeningBlur = (e, index) => {
-    // copy the original array 
     const updatedSchedule = [...modifiedSchedule];
-    // update schedule by ID selected from input
     updatedSchedule[index] = {
       ...updatedSchedule[index],
       id: schedule[index].id,
@@ -71,33 +69,58 @@ function AdminSchedule () {
       const updateItem = {
         id: data.id,
       };
-      // check if inputs are empty. if empty, dont update it and keep original, or take new value to update it
+      // Vérifiez si les champs sont vides et si oui, conservez la valeur par défaut
       if (data.morningOpening !== "") {
-        updateItem.morningOpening = data.morningOpening || scheduleItem.morning_opening;
+        updateItem.morningOpening = data.morningOpening;
+      } else {
+        updateItem.morningOpening = scheduleItem.morning_opening;
       }
       if (data.morningClosing !== "") {
-        updateItem.morningClosing = data.morningClosing || scheduleItem.morning_closing;
+        updateItem.morningClosing = data.morningClosing;
+      } else {
+        updateItem.morningClosing = scheduleItem.morning_closing;
       }
       if (data.afternoonOpening !== "") {
-        updateItem.afternoonOpening = data.afternoonOpening || scheduleItem.afternoon_opening;
+        updateItem.afternoonOpening = data.afternoonOpening;
+      } else {
+        updateItem.afternoonOpening = scheduleItem.afternoon_opening;
       }
       if (data.afternoonClosing !== "") {
-        updateItem.afternoonClosing = data.afternoonClosing || scheduleItem.afternoon_closing;
+        updateItem.afternoonClosing = data.afternoonClosing;
+      } else {
+        updateItem.afternoonClosing = scheduleItem.afternoon_closing;
       }
       return updateItem;
     });
 
-    // and send it to db
-    toast.promise (
-      axios.post(`${process.env.REACT_APP_API}/schedule`, updates),
-      {
-        toastId: 'schedule-toast',
-        pending: 'Promise is pending',
-        success: 'Promise resolved 👌',
-        error: 'Promise rejected 🤯'
-      }
-    )
+    if (updates.length === 0) {
+      toast.error("Aucune modification n'a été effectuée");
+      return;
+    }
 
+    // and send it to db
+    try {
+      await toast.promise(
+        axios.post(`${process.env.REACT_APP_API}/schedule`, updates),
+        {
+          pending: 'Enregistrement en cours...',
+          success: {
+            render({ data }) {
+              setModifiedSchedule([]);
+              fetchData();
+              return `Données enregistrées avec succès !`;
+            }
+          },
+          error: {
+            render({ data }) {
+              return `Erreur lors de l'enregistrement des données : ${data.error}`;
+            }
+          }
+        }
+      );     
+    } catch (error) {
+      toast.error("Erreur lors de l'enregistrement des données :", error);
+    }  
   };
   
   return (
@@ -111,13 +134,15 @@ function AdminSchedule () {
                 <div className='admin-day-input'>
                   <label>Matin de</label>
                   <input placeholder={elt.morning_opening} 
-                    onBlur={(e) => handleMorningOpeningBlur(e, index)}
+                    defaultValue={elt.morning_opening}
+                    onChange={(e) => handleMorningOpeningBlur(e, index)}
                     />
                 </div>
                 <div className='admin-day-input'>
                   <label>à</label>
                   <input placeholder={elt.morning_closing}
-                    onBlur={(e) => handleMorningClosingBlur(e, index)}
+                    defaultValue={elt.morning_closing}
+                    onChange={(e) => handleMorningClosingBlur(e, index)}
                   />
                 </div>
               </div>
@@ -125,13 +150,15 @@ function AdminSchedule () {
                 <div className='admin-day-input'>
                   <label>Après-midi de</label>
                   <input placeholder={elt.afternoon_opening}
-                    onBlur={(e) => handleAfternoonOpeningBlur(e, index)}
+                    defaultValue={elt.afternoon_opening}
+                    onChange={(e) => handleAfternoonOpeningBlur(e, index)}
                   />
                 </div>
                 <div className='admin-day-input'>
                   <label>à</label>
                   <input placeholder={elt.afternoon_closing} 
-                    onBlur={(e) => handleAfternoonClosingBlur(e, index)}
+                    defaultValue={elt.afternoon_closing}
+                    onChange={(e) => handleAfternoonClosingBlur(e, index)}
                   />
                 </div>   
               </div>

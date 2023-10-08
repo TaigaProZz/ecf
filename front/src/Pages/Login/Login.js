@@ -1,7 +1,7 @@
 import './Login.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 axios.defaults.withCredentials = true;
@@ -10,6 +10,23 @@ function Login({ setUser }) {
   const navigate = useNavigate();
   const inputEmail = useRef(null);
   const inputPassword = useRef(null);
+
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API}/user`, { withCredentials: true });
+        if (response.status === 200) {
+          setUser(response.data.data);
+          navigate("/admin");
+        }
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+    checkUser();
+  }, [navigate, setUser]);
+
  
   const login = async () => {
     const email = inputEmail.current.value;
@@ -33,7 +50,7 @@ function Login({ setUser }) {
               },
               error: {
                 render(error) {
-                  return `Erreur lors de la connexion : ${error.data.response.data.error || 'Veuillez vérifier vos informations saisies et réessayer'}`;
+                  return `Erreur lors de la connexion. Veuillez vérifier vos informations saisies et réessayer`;
                 }
               }
             }

@@ -1,7 +1,7 @@
 const util = require('util');
 const connection = require('../database');
 
-class UserService {
+class FeedbackService {
   
   constructor() {
     this.query = util.promisify(connection.query).bind(connection);
@@ -30,4 +30,4 @@ class UserService {
   }
 }
 
-module.exports = new UserService();
+module.exports = new FeedbackService();
