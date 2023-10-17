@@ -51,6 +51,7 @@ function Login({ setUser }) {
               },
               error: {
                 render(error) {
+                  console.log(error);
                   return 'Erreur lors de la connexion. Veuillez vérifier vos informations saisies et réessayer';
                 }
               }
