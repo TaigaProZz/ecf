@@ -1,4 +1,5 @@
 import './Login.scss';
+import EmptyFields from '../../Components/Popup/EmptyFields';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { useEffect, useRef } from 'react';
@@ -33,7 +34,7 @@ function Login({ setUser }) {
     const password = inputPassword.current.value;
     const user = { email, password };
     if (email.trim() === '' || password.trim() === '') {
-      toast.warn('Veuillez remplir tous les champs');
+      toast.warn(<EmptyFields message='Veuillez remplir tous les champs' />);
       return;
     } else {
         try {
@@ -50,7 +51,7 @@ function Login({ setUser }) {
               },
               error: {
                 render(error) {
-                  return `Erreur lors de la connexion. Veuillez vérifier vos informations saisies et réessayer`;
+                  return 'Erreur lors de la connexion. Veuillez vérifier vos informations saisies et réessayer';
                 }
               }
             }
