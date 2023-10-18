@@ -16,8 +16,7 @@ class CookieService {
         return;
       }
 
-      const secretKey = 'key';
-      jwt.verify(token, secretKey, (err, decoded) => {
+      jwt.verify(token, process.env.JWT_TOKEN_SECRET, (err, decoded) => {
         if (err) {
           reject(err);
           return;

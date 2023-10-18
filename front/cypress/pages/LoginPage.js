@@ -11,26 +11,29 @@ class LoginPage {
     return cy.get('[id="login-password-input"]');
   }
 
-  fillEmailInput(email) {
-    const field = this.getEmailInput();
-    field.clear();
-    field.type(email);
+  getLoginBtn() {
+    return cy.get('[id="login-btn"]');
   }
 
   fillEmailInput(email) {
     const field = this.getEmailInput();
     field.clear();
     field.type(email);
+    return this;
+  }
+
+  fillEmailInput(email) {
+    const field = this.getEmailInput();
+    field.clear();
+    field.type(email);
+    return this;
   }
 
   fillPasswordInput(password) {
     const field = this.getPasswordInput();
     field.clear();
     field.type(password);
-  }
-
-  getLoginBtn() {
-    return cy.get('[id="login-btn"]');
+    return this;
   }
 
   clickLoginBtn() {

@@ -8,9 +8,9 @@ const connection = mysql.createConnection(
     user: process.env.REACT_APP_DATABASE_USERNAME,
     password: process.env.REACT_APP_DATABASE_PASSWORD,
     database: process.env.REACT_APP_DATABASE_NAME,
-    ssl : {
-      rejectUnauthorized: true
-    }
+    // ssl : {
+    //   rejectUnauthorized: true
+    // }
   }
 );
 

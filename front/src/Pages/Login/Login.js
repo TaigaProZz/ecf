@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-axios.defaults.withCredentials = true;
 
 function Login({ setUser }) {
   const navigate = useNavigate();
