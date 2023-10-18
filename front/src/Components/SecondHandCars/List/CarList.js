@@ -8,10 +8,11 @@ function CarList (props) {
       { props.carData.sortedCars.map((car) => {
         return (
           <>
-            {(car.length === 0) ? <div className='loading-sch'>Chargement...</div> : (
-              <div className="car-item" id={car.id}>
+            {(car.length === 0) ? <div className='loading-sch'>Chargement...</div> : 
+            (
+              <div className="car-item" id={car.id} key={car.id}>
                 <Link to={"/car/" + car.id}>    
-                  <CarItem key={car.id} car={car} img={props.carData.img} />
+                  <CarItem car={car} img={props.carData.img} />
                 </Link> 
               </div>
             )}

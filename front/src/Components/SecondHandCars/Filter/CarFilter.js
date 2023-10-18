@@ -1,44 +1,41 @@
 import 'rc-slider/assets/index.css';
 import './CarFilter.scss'
 import Slider from 'rc-slider';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function CarFilter (props) {
-  const [priceValues, setPriceValues] = useState([1, 200000]);
-  const [yearValues, setYearValues] = useState([1990, 2023]);
-  const [kmValues, setKmValues] = useState([1, 800000]);
+  const maxPrice = 500000;
+  const maxYear = 2023;
+  const maxKm = 500000;
+
+  const [priceValues, setPriceValues] = useState([1, maxPrice]);
+  const [yearValues, setYearValues] = useState([1990, maxYear]);
+  const [kmValues, setKmValues] = useState([1, maxKm]);
+
+  useEffect(() => {
+    const filteredCars = filterCars(props.carData.cars);
+    props.setCarData((prev) => ({
+      ...prev,
+      sortedCars: filteredCars,
+    }));
+  }, [priceValues, yearValues, kmValues, props]);
 
   const handlePriceChange = (values) => {
     setPriceValues(values);
-    const filteredCars = filterCars(props.carData.cars);
-    props.setCarData((prev) => ({
-      ...prev,
-      sortedCars: filteredCars,
-    }));
-  };
-
-  const handleKmChange = (values) => {
-    setKmValues(values);
-    const filteredCars = filterCars(props.carData.cars);
-    props.setCarData((prev) => ({
-      ...prev,
-      sortedCars: filteredCars,
-    }));
   };
 
   const handleYearChange = (values) => {
     setYearValues(values);
-    const filteredCars = filterCars(props.carData.cars);
-    props.setCarData((prev) => ({
-      ...prev,
-      sortedCars: filteredCars,
-    }));
+  };
+
+  const handleKmChange = (values) => {
+    setKmValues(values);
   };
 
   const resetSort = () => {
-    setPriceValues([1, 200000]);
-    setYearValues([1990, 2023]);
-    setKmValues([1, 800000]);
+    setPriceValues([1, maxPrice]);
+    setYearValues([1990, maxYear]);
+    setKmValues([1, maxKm]);
     props.setCarData((prev) => ({
       ...prev,
       sortedCars: props.carData.cars,
@@ -65,9 +62,9 @@ function CarFilter (props) {
             range={true}
             allowCross={false}
             min={1} 
-            max={200000} 
+            max={maxPrice} 
             defaultValue={priceValues} 
-            onChange={handlePriceChange} 
+            onChange={value => handlePriceChange(value)} 
           />
         </div>
       </div>
@@ -77,11 +74,11 @@ function CarFilter (props) {
           <p>{yearValues.map(value => value).join(' - ')}</p>
           <Slider 
             range={true}
-            allowCross={false}
+            allowCross={true}
             min={1990} 
-            max={2023} 
+            max={maxYear} 
             defaultValue={yearValues} 
-            onChange={handleYearChange} 
+            onChange={value => handleYearChange(value)} 
           />
         </div>
       </div>
@@ -93,7 +90,7 @@ function CarFilter (props) {
             range={true}
             allowCross={false}
             min={0} 
-            max={800000} 
+            max={maxKm} 
             defaultValue={kmValues} 
             onChange={handleKmChange} 
           />
