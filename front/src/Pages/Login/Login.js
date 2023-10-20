@@ -11,6 +11,7 @@ function Login({ setUser }) {
   const inputEmail = useRef(null);
   const inputPassword = useRef(null);
 
+  // check if user is already logged in
   useEffect(() => {
     const checkUser = async () => {
       try {
@@ -63,26 +64,23 @@ function Login({ setUser }) {
   }
 
   return (
-    <div className="login-container">
+    <div className='login-container'>
+    <div className='login-header'>
+      <img src='img/logo.png' alt='logo figsale'></img>
+    </div>
+    <form className='login-form-container'>
       <div className='login-form'>
-        <h1 className='form-title'>Se connecter</h1>
-        <div className='login-email-row'>
-          <label className='login-email-text'>Email :</label>
-          <div className='login-email-input'>
-            <input ref={inputEmail} type='email' id='login-email-input'></input>
-          </div>
-        </div>
-        <div className='login-password-row'>
-          <label className='login-password-text'>Mot de passe :</label>
-          <div className='login-password-input'>
-            <input ref={inputPassword} type='password' id='login-password-input'></input>
-          </div>
-        </div>
-        <div className='center'>
-        <button className='home-button' id="login-btn" type="submit" onClick={login}>Connexion</button>
+        <label htmlFor="email">Email</label>
+        <input type="email" id="email" name="email" ref={inputEmail} placeholder='email@example.com' maxLength={32} />
+
+        <label htmlFor="password">Mot de passe</label>
+        <input type="password" id="password" name="password" ref={inputPassword} placeholder='Saisissez votre mot de passe' />
+        <div className='login-button-container'>
+          <button type="submit" onClick={login}>Se connecter</button> 
         </div>
       </div>
-    </div>
+    </form>
+  </div>
   )
 }
 

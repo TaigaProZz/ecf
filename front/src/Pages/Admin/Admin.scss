@@ -96,7 +96,7 @@ table {
 }
 
 th {
-  background-color: app.$buttonColor;
+  background-color: app.$barColor;
   border-bottom: 1px solid black;
 }
 
@@ -105,18 +105,13 @@ td {
   text-align: center;
   font-weight: 100;
   cursor: pointer;
+  background-color: #464e68;
+  color: rgb(255, 255, 255);
   img {
     height: 100%;
     width: 100%;
     object-fit: contain;
   }
-}
-
-table tr:nth-child(odd) td{
-  background-color: rgb(114, 114, 114);
-}
-table tr:nth-child(even) td{
-  background-color: rgb(49, 49, 49);
 }
 
 .admin-add-btn {
@@ -132,7 +127,8 @@ table tr:nth-child(even) td{
 
 button {
   color: aliceblue;
-  border-radius: 12px;
+  border-radius: 5px;
+  border: none;
   background-color: app.$buttonColor;
   border-color: app.$buttonColor;
 }

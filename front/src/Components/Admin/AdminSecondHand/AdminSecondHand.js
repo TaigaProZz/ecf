@@ -1,10 +1,9 @@
-import './AdminSecondHand.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
-import { useEffect, useState } from 'react';
-import { BsPlusSquare } from 'react-icons/bs';
 import PopUpAddCar from '../AdminComponents/PopUp/CarAdd';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
+import { toast } from 'react-toastify';
+import { BsPlusSquare } from 'react-icons/bs';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function AdminSecondHand () {
@@ -108,40 +107,69 @@ function AdminSecondHand () {
   };
 
   return (
-    <div className='admin-secondhand-container'>
-      <div className='admin-secondhand'>
-        <div className='admin-secondhand-categorie-row'>
-          <span className='admin-secondhand-categorie-element'>ID</span>
-          <span className='admin-secondhand-categorie-element'>Titre</span>
-          <span className='admin-secondhand-categorie-element'>Prix</span>
-          <span className='admin-secondhand-categorie-element'>Gérer</span>
-        </div> 
-        { cars.map((elt, index) => {
-          return (
-            <div key={index} className='admin-secondhand-list-row'>
-              <span className='admin-secondhand-list-element'>{elt.id}</span>
-              <span className='admin-secondhand-list-element'>{elt.title}</span>
-              <span className='admin-secondhand-list-element'>{elt.price} €</span>
-              <div className='admin-secondhand-manage-container'>
-                {/* <button className='admin-secondhand-manage-button'>Modifier</button> */}
+    <div className='table-container'>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Prix</th>
+            <th>Gérer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cars.map((elt) => {
+            return (
+              <tr key={elt.id}>
+                <td>{elt.id}</td>
+                <td>{elt.title}</td>
+                <td>{elt.price}</td>
+                <td>
                 <ValidatePopUp
-                  btn={<button className='admin-secondhand-manage-button' onClick={deleteCar}>Supprimer</button>}
+                  btn={<button onClick={deleteCar}>Supprimer</button>}
                   onConfirmation={(choice) => deleteCar(choice, elt.id)}
                   txt='supprimer cette voiture'
-                  >
-                </ValidatePopUp>
-
-              </div>
-            </div> 
-          )
+                />
+                </td>
+              </tr>
+            );
           })}
-      </div>
+        </tbody>
+      </table>
       <PopUpAddCar
-        btn={<button className='admin-add-btn'>Ajouter une voiture <BsPlusSquare size={30} /></button>}
+        btn={<button>Ajouter une voiture <BsPlusSquare size={30} /></button>}
         onAddCar={addCar}
-        >
-      </PopUpAddCar>
+        />
     </div>
+    // <div className='admin-secondhand-container'>
+    //   <div className='admin-secondhand'>
+    //     <div className='admin-secondhand-categorie-row'>
+    //    
+    //     </div> 
+    //     { cars.map((elt, index) => {
+    //       return (
+    //         <div key={index} className='admin-secondhand-list-row'>
+    //    
+    //           <div className='admin-secondhand-manage-container'>
+    //             {/* <button className='admin-secondhand-manage-button'>Modifier</button> */}
+    //             <ValidatePopUp
+    //               btn={<button className='admin-secondhand-manage-button' onClick={deleteCar}>Supprimer</button>}
+    //               onConfirmation={(choice) => deleteCar(choice, elt.id)}
+    //               txt='supprimer cette voiture'
+    //               >
+    //             </ValidatePopUp>
+
+    //           </div>
+    //         </div> 
+    //       )
+    //       })}
+    //   </div>
+    //   <PopUpAddCar
+    //     btn={<button className='admin-add-btn'>Ajouter une voiture <BsPlusSquare size={30} /></button>}
+    //     onAddCar={addCar}
+    //     >
+    //   </PopUpAddCar>
+    // </div>
   )
 }
 export default AdminSecondHand;

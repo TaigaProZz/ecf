@@ -1,13 +1,13 @@
-import './AdminService.scss'
 import 'react-toastify/dist/ReactToastify.css';
+import PopUpAddService from '../AdminComponents/PopUp/ServiceAdd';
+import PopUpUpdateService from '../AdminComponents/PopUp/ServiceUpdate';
+import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
 import { toast } from 'react-toastify';
 import { BsPlusSquare } from 'react-icons/bs'
 import { FaTrash, FaPen } from 'react-icons/fa'
 import { useState, useEffect } from 'react';
-import PopUpAddService from '../AdminComponents/PopUp/ServiceAdd';
-import PopUpUpdateService from '../AdminComponents/PopUp/ServiceUpdate';
+
 import axios from 'axios';
-import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
 
 function AdminServices () {
   const [services, setServices] = useState([]);
@@ -112,37 +112,46 @@ function AdminServices () {
   }
 
   return ( 
-    <div className='admin-service-container'>
-      <div className='admin-service-list-container'>
-        { services.map((service, index) => (
-          <div key={index} className='admin-service-row'>
-            <div>
-              <h2>{service.services}</h2>
-            </div>
-            <div className='icons'>
-            <PopUpUpdateService 
-              btn={<div className='pen-icon'> <FaPen size={30} /></div>}
-              type='Modifier un service'
-              id={service.id}
-              onChangeService={updateService}>
-            </PopUpUpdateService>
-            <ValidatePopUp
-              btn={<div> <FaTrash size={30} /> </div>} 
-              onConfirmation={(choice) => {deleteService(choice, service.id)}} 
-              txt={"valider"}
-              handleButtonClick={showConfirmation}
-            />
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className='admin-service-btn'>
-        <PopUpAddService 
-          btn={<button className='admin-add-btn'>Ajouter un service <BsPlusSquare size={30} /></button>}
-          type='Ajouter un service'
-          onAddService={addService}>
-        </PopUpAddService>
-      </div>
+    <div className='table-container'>
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Gérer</th>
+            <th>Supprimer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {services.map((elt) => {
+            return (
+              <tr key={elt.id}>
+                <td>{elt.services}</td>
+                <td>
+                  <PopUpUpdateService 
+                    btn={<div className='pen-icon'> <FaPen size={30} /></div>}
+                    type='Modifier un service'
+                    id={elt.id}
+                    onChangeService={updateService}
+                  />
+                </td>
+                <td>
+                  <ValidatePopUp
+                    btn={<div> <FaTrash size={30} /> </div>} 
+                    onConfirmation={(choice) => {deleteService(choice, elt.id)}} 
+                    txt={"valider"}
+                    handleButtonClick={showConfirmation}
+                  />
+              </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+      <PopUpAddService 
+        btn={<button className='admin-add-btn'>Ajouter un service <BsPlusSquare size={30} /></button> }
+        type='Ajouter un service'
+        onAddService={addService}
+      />
     </div>
   )
 } 

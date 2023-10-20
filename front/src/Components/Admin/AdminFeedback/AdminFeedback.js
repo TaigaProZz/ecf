@@ -1,11 +1,9 @@
-import './AdminFeedback.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
+import PopUpAddFeedback from '../AdminComponents/PopUp/FeedbackAdd';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
-import { useEffect, useState } from 'react';
-import { AiFillStar } from 'react-icons/ai';
+import { toast } from 'react-toastify';
 import { BsPlusSquare } from 'react-icons/bs';
-import PopUpAddFeedback from '../AdminComponents/PopUp/FeedbackAdd'
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function AdminFeedback () {
@@ -110,13 +108,6 @@ function AdminFeedback () {
     }
   }
 
-  // sort list, set non verified feedback first
-  const sortedFeedback = () => {
-    const sortedList = [...feedback];
-    sortByVerified(sortedList);
-    setFeedback(sortedList);
-  }
-
   // add feedback to db
   const addFeedback = async (newFeedback) => {
     // check if feedback's inputs are empty
@@ -147,70 +138,70 @@ function AdminFeedback () {
       toast.error("Erreur lors de l'ajout", error)
     }
   }
+  
+  // sort list, set non verified feedback first
+  const sortedFeedback = () => {
+    const sortedList = [...feedback];
+    sortByVerified(sortedList);
+    setFeedback(sortedList);
+  }
 
   return(
-    <div className="admin-feedback-container">
-      <div className="admin-feedback">
-        <div className='admin-feedback-categorie-row'>
-          <span className='admin-feedback-categorie-element'>Nom</span>
-          <span className='admin-feedback-categorie-element'>Message</span>
-          <span className='admin-feedback-categorie-element'>Note</span>
-          <span className='admin-feedback-categorie-element' onClick={sortedFeedback}>Est Vérifié</span>
-          <span className='admin-feedback-categorie-element'>Valider</span>
-        </div>
-        <div className="admin-feedback-list">
-          { feedback.map((feedback, index) => { 
+    <div className='table-container'>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Message</th>
+            <th>Note</th>
+            <th onClick={sortedFeedback}>Est vérifié</th>
+            <th>Gérer</th>
+            <th>Supprimer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {feedback.map((elt) => {
             return (
-              <div key={index} className='admin-feedback-list-row'>
-                <span className='admin-feedback-list-element'>{feedback.name}</span>
-                <span className='admin-feedback-list-element'>{feedback.message}</span>
-                <span className='admin-feedback-list-element'>{feedback.rating} <AiFillStar /></span>
-                <span className='admin-feedback-list-element'>
-                  { feedback.isVerified === 0 ? 'Non' : 'Oui' }
-                </span>
-                { feedback.isVerified === 0 
-                  ? <div className='admin-feedback-validate-container'>
-                      <ValidatePopUp 
-                        btn={<button className="admin-feedback-list-button">Valider</button>} 
-                        onConfirmation={(choice) => {handleValidate(choice, feedback.id)}} 
-                        txt={"valider"}
-                        handleButtonClick={showConfirmation}
-                      />
-                      <ValidatePopUp  
-                        btn={<button className="admin-feedback-list-button">Supprimer</button>} 
-                        onConfirmation={(choice) => {handleDelete(choice, feedback.id)}} 
-                        txt={"supprimer"}
-                        handleButtonClick={showConfirmation}
-                      /> 
-                    </div> 
-                  :
-                  <div className='admin-feedback-validate-container'>
-                      <ValidatePopUp  
-                        btn={<button className="admin-feedback-list-button">Cacher</button>} 
-                        onConfirmation={(choice) => {handleHide(choice, feedback.id)}} 
-                        txt={"cacher"}
-                        handleButtonClick={showConfirmation}
-                      /> 
-                      <ValidatePopUp  
-                        btn={<button className="admin-feedback-list-button">Supprimer</button>} 
-                        onConfirmation={(choice) => {handleDelete(choice, feedback.id)}} 
-                        txt={"supprimer"}
-                        handleButtonClick={showConfirmation}
-                      /> 
-                  </div>   
-                }
-              </div> 
-            )
-          })}  
-        </div> 
-      </div>
+              <tr key={elt.id}>
+                <td>{elt.name}</td>
+                <td>{elt.message}</td>
+                <td>{elt.rating}</td>
+                <td>{elt.isVerified === 0 ? 'Non' : 'Oui'}</td>
+                <td>
+                  { elt.isVerified === 0 ?
+                    <ValidatePopUp 
+                      btn={<button>Valider</button>} 
+                      onConfirmation={(choice) => {handleValidate(choice, elt.id)}} 
+                      txt={"valider"}
+                      handleButtonClick={showConfirmation}
+                    /> :
+                    <ValidatePopUp  
+                      btn={<button>Cacher</button>} 
+                      onConfirmation={(choice) => {handleHide(choice, elt.id)}} 
+                      txt={"cacher"}
+                      handleButtonClick={showConfirmation}
+                    /> 
+                  }
+                </td>
+                <td>
+                  <ValidatePopUp  
+                    btn={<button>Supprimer</button>} 
+                    onConfirmation={(choice) => {handleDelete(choice, elt.id)}} 
+                    txt={"supprimer"}
+                    handleButtonClick={showConfirmation}
+                  /> 
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
       <PopUpAddFeedback
         btn={<button className='admin-add-btn'>Ajouter un commentaire <BsPlusSquare size={30} /></button>}
         type='Ajouter un feedback'
         onAddFeedback={addFeedback}
-        >
-      </PopUpAddFeedback>        
-    </div>  
+      />   
+    </div>
   ) 
 }
 

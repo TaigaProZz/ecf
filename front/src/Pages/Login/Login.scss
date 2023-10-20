@@ -1,64 +1,159 @@
-@use "src/App" as app;
+@use 'src/App.scss' as app;
 
 @media screen and (max-width: 768px) {
+  
   .login-container {
-    min-height: calc(100% - 440px);  
+    margin-top: 120px;
+  }
+  
+  .login-form-container {
+    min-height: calc(100vh - 430px);
+    width: 100%;
+  }
+
+  .login-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    img {
+      height: 70px;
+      max-width: 100%;
+      width: 160px;
+    }
+  }
+
+  .login-form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  .login-form {
+    width: 50vw;
+    padding: 50px;
+    background-color: app.$barColor;
+    // color: app.$font-color-bar;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: none;
+    border-radius: 8px;
+    button, input, textarea {
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-radius: 8px;
+    }
+    label {
+      margin-bottom: 5px;
+    }
+    input {
+      height: 20px;
+      width: 100%;
+      padding: 10px 10px 10px 10px;
+      margin-bottom: 20px;
+    }
+    textarea {
+      height: 180px;
+      width: 100%;
+      padding: 10px 10px 10px 10px;
+      font-family: 'Orkney', sans-serif;
+      margin-bottom: 20px;
+    }
+    button {
+      height: 45px;
+      width: 40%;
+      background-color: app.$buttonColor;
+    }
+  }
+
+  .login-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    button {
+      width: 100%;
+    }
   }
 }
 
 @media screen and (min-width: 769px) {
   .login-container {
-    margin-top: 120px;
-    min-height: calc(100% - 340px);
+    min-height: calc(100vh - 370px);
+    width: 100%;
+    margin-top: 150px;
   }
-}
 
-.login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 120px;
-}
+  .login-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    img {
+      height: 140px;
+      width: 320px;
+    }
+  }
 
-.login-form {
-  background-color: app.$elementColor;
-  width: 750px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  border-radius: 12px;
-  margin: 10px;
-  input {
-    resize: none;
-    height: auto;
-    width: 60%;
-    margin: 10px;
-    padding: 8px;    
+  .login-form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  .login-form {
+    width: 400px;
+    padding: 40px;
+    background-color: app.$barColor;
+    // color: app.$font-color-bar;
+    display: flex;
+    flex-direction: column;
     border: none;
+    border-radius: 8px;
+    button, input, textarea {
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-radius: 8px;
+    }
+    label {
+      margin-bottom: 5px;
+    }
+    input {
+      height: 30px;
+      width: 100%;
+      padding-left: 10px;
+      margin-bottom: 20px;
+    }
+    textarea {
+      height: 180px;
+      width: 100%;
+      padding: 10px 0px 0px 10px;
+      font-family: 'Orkney', sans-serif;
+      margin-bottom: 20px;
+    }
+    button {
+      height: 45px;
+      width: 40%;
+      background-color: app.$buttonColor;
+    }
   }
-}
 
-.login-password-row, .login-email-row {
-  height: auto;
-  width: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 10px;
-}
-
-.login-password-text, .login-email-text  {
-  width: 33%;
-}
-
-.login-password-input, .login-email-input  {
-  width: 60%;
-  display: inline-flex;
-  justify-content: flex-end;
-}
-
-#login-password-input, #login-email-input  {
-  width: 100%;
+  .login-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    button {
+      width: 60%;
+    }
+  }
 }

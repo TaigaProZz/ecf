@@ -1,11 +1,10 @@
-import './AdminEmployee.scss';
 import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
-import { useEffect, useState } from 'react';
-import { FaPen } from 'react-icons/fa';
-import { BsPlusSquare } from 'react-icons/bs';
 import AdminAddEmployee from '../AdminComponents/PopUp/EmployeeAdd';
 import AdminManageEmployee from '../AdminComponents/PopUp/EmployeeManage';
+import { toast } from 'react-toastify';
+import { FaPen } from 'react-icons/fa';
+import { BsPlusSquare } from 'react-icons/bs';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function AdminEmployees () {
@@ -98,37 +97,37 @@ function AdminEmployees () {
     
   return (
     <div className='table-container'>
-    <table>
-      <thead>
-        <tr>
-          <th>Nom prénom</th>
-          <th>Email</th>
-          <th>Gérer</th>
-        </tr>
-      </thead>
-      <tbody>
-        {employees.map((elt) => {
-          return (
-            <tr key={elt.id}>
-              <td>{elt.name}</td>
-              <td>{elt.email}</td>
-              <td><AdminManageEmployee
-                  employee={elt}
-                  btn={<FaPen  size={30} />}
-                  onManageEmployee={handleManageEmployee}
-              >
-              </AdminManageEmployee> </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom prénom</th>
+            <th>Email</th>
+            <th>Gérer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {employees.map((elt) => {
+            return (
+              <tr key={elt.id}>
+                <td>{elt.name}</td>
+                <td>{elt.email}</td>
+                <td>
+                  <AdminManageEmployee
+                    employee={elt}
+                    btn={<FaPen  size={30} />}
+                    onManageEmployee={handleManageEmployee}
+                  />
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     <AdminAddEmployee
-      btn={<button  className='admin-add-btn'>Ajouter un employé <BsPlusSquare size={30} /></button>}
+      btn={<button className='admin-add-btn'>Ajouter un employé <BsPlusSquare size={30} /></button>}
       type='Ajouter un employé'
       onSubmit={handleSubmit}
-      >
-    </AdminAddEmployee>
+    />
   </div>
   )
 }
