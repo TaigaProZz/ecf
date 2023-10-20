@@ -1,104 +1,138 @@
-@use "../../App" as app;
+@use 'src/App.scss' as app;
 
 @media screen and (max-width: 768px) {
-  .admin-bar-button {
-    height: 60%;
+  .admin-container {
+    min-height: calc(100vh - 230px);
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 120px;
+  }
+  .admin-header {
+    display: none;
+  }
+
+  .admin-main-container {
+    height: 500px;
+    width: 100%;
     display: flex;
-    font-family: app.$mainFont;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    background: app.$buttonColor;
-    border: none;
-    border-radius: 12px 12px 0px 0px;
-    font-size: 12px;
   }
 
-  .admin-section-container {
-    width: 100%;
+  .admin-menu {
+    display: none;
+  }
+
+  .admin-menu-item {
+    cursor: pointer;
+  }
+
+  .admin-content-container {
     height: 100%;
-    background-color: app.$backgroundColor;
-    color: aliceblue;
-    margin-top: 120px;
-    button {
-    color: aliceblue;
-    border-radius: 12px;
-    background-color: app.$buttonColor;
-    border-color: app.$buttonColor;
-   }
+    width: 90%;
+    overflow-y: auto;
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.27);
   }
-
-  .admin-add-btn {
-    width: 100px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-top: 5px;
-    border: none;
-  }
-
 }
 
 @media screen and (min-width: 769px) {
-  .admin-bar-button {
-    height: 100%;
-    width: 20vw; 
-    display: flex;
-    font-family: app.$mainFont;
-    align-items: center;
-    justify-content: center;
-    background: app.$buttonColor;
-    border-width: 3px 1px 0px 1px;
-    border-style: solid;
-    border-color: aliceblue;
-    border-radius: 12px 12px 0px 0px;
+  .admin-container {
+    min-height: calc(100vh - 230px);
+    width: 100%;
+    margin-top: 130px;
+    margin-bottom: 40px;
   }
 
-  .admin-section-container {
+  .admin-header {
+    height: 250px;
     width: 100%;
-    height: 100%;
-    background-color: app.$backgroundColor;
-    margin-top: 120px;
-    color: aliceblue;
-      button {
-      color: aliceblue;
-      border-radius: 12px;
-      background-color: app.$buttonColor;
-      border-color: app.$buttonColor;
+    display: flex;
+    justify-content: center;
+    img {
+      height: 200px;
+      width: 350px;
     }
   }
 
-  .admin-add-btn {
+  .admin-main-container {
+    height: 500px;
+    width: calc(100% - 80px);
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
-    margin-top: 10px;
-    width: 200px;
-    height: 80px;
-    border: none;
-    background-color: app.$buttonColor;
+    padding: 0px 40px 0px 40px;
   }
 
+  .admin-menu {
+    height: calc(100% - 20px);
+    width: calc(400px - 20px);
+    padding: 10px;
+    background-color: app.$buttonColor;
+    // color: app.$font-color-bar;
+  }
+
+  .admin-menu-item {
+    cursor: pointer;
+  }
+
+  .admin-content-container {
+    min-height: 80%;
+    height: 100%;
+    width: 80%;
+    overflow-y: auto;
+    margin-left: 20px;
+    box-shadow: 0px 4px 9px 0px rgba(0, 0, 0, 0.27);
+  }
 }
 
-.admin-container {
-  width: 100%;
+.table-container {
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-top: 120px;
+  width: 100%;
 }
 
-.admin-bar {
-  width: 100vw;
-  height: 100px;
-  position: fixed;
-  overflow-x: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+table {
+  width: 100%;
 }
 
-.admin-bar-button:hover {
-  background: app.$buttonHoverColor;
+th {
+  background-color: app.$buttonColor;
+  border-bottom: 1px solid black;
+}
+
+td {
+  height: 40px;
+  text-align: center;
+  font-weight: 100;
+  cursor: pointer;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+table tr:nth-child(odd) td{
+  background-color: rgb(114, 114, 114);
+}
+table tr:nth-child(even) td{
+  background-color: rgb(49, 49, 49);
+}
+
+.admin-add-btn {
+  width: 100px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 5px;
+  border: none;
+  background-color: app.$buttonColor;
+}
+
+button {
+  color: aliceblue;
+  border-radius: 12px;
+  background-color: app.$buttonColor;
+  border-color: app.$buttonColor;
 }

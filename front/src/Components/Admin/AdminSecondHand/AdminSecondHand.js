@@ -3,7 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { BsPlusSquare } from 'react-icons/bs';
-import PopUpAddCar from './PopUp/AdminAddCar';
+import PopUpAddCar from '../AdminComponents/PopUp/CarAdd';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
 import axios from 'axios';
 

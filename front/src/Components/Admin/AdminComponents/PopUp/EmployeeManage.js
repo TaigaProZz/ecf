@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import '../../AdminComponents/PopUp/AdminPopUp.scss';
-import ValidatePopUp from '../../AdminComponents/PopUp/ValidatePopUp';
+import ValidatePopUp from './ValidatePopUp';
 
 function AdminManageEmployee(props) {
   const [name, setName] = useState('');

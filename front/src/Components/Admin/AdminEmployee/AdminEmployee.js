@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { FaPen } from 'react-icons/fa';
 import { BsPlusSquare } from 'react-icons/bs';
-import AdminAddEmployee from './PopUp/AdminAddEmployee';
-import AdminManageEmployee from './PopUp/AdminManageEmployee';
+import AdminAddEmployee from '../AdminComponents/PopUp/EmployeeAdd';
+import AdminManageEmployee from '../AdminComponents/PopUp/EmployeeManage';
 import axios from 'axios';
 
 function AdminEmployees () {
@@ -35,6 +35,7 @@ function AdminEmployees () {
     // check type of variable
     if (typeof employee.name !== 'string' || typeof employee.email !== 'string' ) {
       toast.warn('Vérifiez les informations');
+      return;
     }
     // send it to db
     try {
@@ -46,7 +47,6 @@ function AdminEmployees () {
           permission: employee.permission,
       }), 
       {
-        toastId: 'employee-toast',
         pending: 'Envoi des données...',
         success: {
           render() {  
@@ -79,7 +79,7 @@ function AdminEmployees () {
         axios.put(`${process.env.REACT_APP_API}/employee/${originalEmployee.id}`, finalEmployee), {
           pending: 'Envoi des données...',
           success: {
-            render({ data }) {
+            render() {
               fetchData();
               return 'Employé modifié avec succès !';
             }
@@ -97,35 +97,39 @@ function AdminEmployees () {
   };
     
   return (
-    <div className='admin-employee-container'>
-      <div className='admin-employee'>
-        <div className='admin-employee-categorie-row'>
-          <span className='admin-employee-categorie-element'>Nom prénom</span>
-          <span className='admin-employee-categorie-element'>Email</span>
-          <span className='admin-employee-categorie-element'>Gérer</span>
-        </div> 
-        { employees.map((elt, index) => {
+    <div className='table-container'>
+    <table>
+      <thead>
+        <tr>
+          <th>Nom prénom</th>
+          <th>Email</th>
+          <th>Gérer</th>
+        </tr>
+      </thead>
+      <tbody>
+        {employees.map((elt) => {
           return (
-            <div key={index} className='admin-employee-list-row'>
-              <span className='admin-employee-list-element'>{elt.name}</span>
-              <span className='admin-employee-list-element'>{elt.email}</span>
-              <AdminManageEmployee
+            <tr key={elt.id}>
+              <td>{elt.name}</td>
+              <td>{elt.email}</td>
+              <td><AdminManageEmployee
                   employee={elt}
-                  btn={<div className='admin-employee-list-element'><FaPen  size={30} /></div>}
+                  btn={<FaPen  size={30} />}
                   onManageEmployee={handleManageEmployee}
               >
-              </AdminManageEmployee> 
-            </div> 
-          )
+              </AdminManageEmployee> </td>
+            </tr>
+          );
         })}
-      </div>
-        <AdminAddEmployee
-          btn={<button  className='admin-add-btn'>Ajouter un employé <BsPlusSquare size={30} /></button>}
-          type='Ajouter un employé'
-          onSubmit={handleSubmit}
-          >
-        </AdminAddEmployee>
-    </div>
+      </tbody>
+    </table>
+    <AdminAddEmployee
+      btn={<button  className='admin-add-btn'>Ajouter un employé <BsPlusSquare size={30} /></button>}
+      type='Ajouter un employé'
+      onSubmit={handleSubmit}
+      >
+    </AdminAddEmployee>
+  </div>
   )
 }
 

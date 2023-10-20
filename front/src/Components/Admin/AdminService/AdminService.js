@@ -4,8 +4,8 @@ import { toast } from 'react-toastify';
 import { BsPlusSquare } from 'react-icons/bs'
 import { FaTrash, FaPen } from 'react-icons/fa'
 import { useState, useEffect } from 'react';
-import PopUpAddService from './AdminPopUp/AdminAddService';
-import PopUpUpdateService from './AdminPopUp/AdminUpdateService';
+import PopUpAddService from '../AdminComponents/PopUp/ServiceAdd';
+import PopUpUpdateService from '../AdminComponents/PopUp/ServiceUpdate';
 import axios from 'axios';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
 

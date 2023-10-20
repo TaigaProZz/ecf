@@ -5,7 +5,7 @@ import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
 import { useEffect, useState } from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { BsPlusSquare } from 'react-icons/bs';
-import PopUpAddFeedback from './PopUp/AdminPopUpAddFeedback'
+import PopUpAddFeedback from '../AdminComponents/PopUp/FeedbackAdd'
 import axios from 'axios';
 
 function AdminFeedback () {
