@@ -148,7 +148,7 @@ function AdminServices () {
         </tbody>
       </table>
       <PopUpAddService 
-        btn={<button className='admin-add-btn'>Ajouter un service <BsPlusSquare size={30} /></button> }
+        btn={<button>Ajouter un service <BsPlusSquare size={30} /></button> }
         type='Ajouter un service'
         onAddService={addService}
       />

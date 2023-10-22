@@ -165,7 +165,7 @@ function AdminSecondHand () {
     //       })}
     //   </div>
     //   <PopUpAddCar
-    //     btn={<button className='admin-add-btn'>Ajouter une voiture <BsPlusSquare size={30} /></button>}
+    //     btn={<button>Ajouter une voiture <BsPlusSquare size={30} /></button>}
     //     onAddCar={addCar}
     //     >
     //   </PopUpAddCar>

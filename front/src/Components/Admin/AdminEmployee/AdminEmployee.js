@@ -124,7 +124,7 @@ function AdminEmployees () {
         </tbody>
       </table>
     <AdminAddEmployee
-      btn={<button className='admin-add-btn'>Ajouter un employé <BsPlusSquare size={30} /></button>}
+      btn={<button>Ajouter un employé <BsPlusSquare size={30} /></button>}
       type='Ajouter un employé'
       onSubmit={handleSubmit}
     />

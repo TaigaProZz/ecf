@@ -154,7 +154,7 @@ function AdminAddCar(props) {
               onChange={handleYearChange}
             />
             <span>Images</span>
-            <button className="admin-add-btn" onClick={resetImages} > Effacer les images </button>
+            <button onClick={resetImages} > Effacer les images </button>
             {[...Array(6)].map((_, index) => (
               <div key={index} className="image-input">
                 <span key={index}>Image {index + 1}</span>

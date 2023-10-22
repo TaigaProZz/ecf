@@ -14,14 +14,15 @@ function Car() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // get car info
         const carResponse = await axios.get(`${process.env.REACT_APP_API}/car/${paramsId}`);
         const car = carResponse.data;
         setElement(car[0]);
 
+        // get car images
         const imageResponse = await axios.get(`${process.env.REACT_APP_API}/carimage/${paramsId}`);
         const images = imageResponse.data;
         const imageList = JSON.parse(images[0].path);
-        console.log(imageList);
         setImages(imageList);
 
       } catch (error) {

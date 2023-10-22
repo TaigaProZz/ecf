@@ -1,8 +1,8 @@
-import '../Contact.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { useRef } from 'react';
 import axios from 'axios';
+import ContactComponent from '../../../Components/Contact/Contact';
 
 function Contact() {
   const nameInputRef = useRef(null);
@@ -52,35 +52,20 @@ function Contact() {
   }
 
   return (
-    <div className="contact-container">
-      <form ref={form} className='contact-form'>
-        <h1 className='form-title'>Formulaire de contact</h1>
-        <div className='name-row row'>
-          <label>Nom prénom :</label>
-          <input ref={nameInputRef} type='text' className='center' placeholder='Entrez votre nom prénom'></input>
-        </div>
-        <div className='phone-row row'>
-          <label>Téléphone :</label>
-          <input ref={phoneInputRef} type='tel' placeholder='Entrez votre numéro de téléphone'></input>
-        </div>
-        <div className='email-row row'>
-          <label>Email :</label>
-          <input ref={emailInputRef} type='email' placeholder='Entrez votre email'></input>
-        </div>
-        <div className='msg-row row'>
-          <label>Message:</label>
-          <textarea ref={msgInputRef} type='text' className='msg-input' placeholder='Entrez votre message'></textarea>
-        </div>
-        <div className='contact-sendbtn-container'>
-          <button className='home-button' onClick={submit}>Envoyer</button>
-        </div>
-      </form> 
-    </div>
+    <ContactComponent 
+      submit={submit} 
+      form={form} 
+      nameInputRef={nameInputRef} 
+      phoneInputRef={phoneInputRef}
+      emailInputRef={emailInputRef}
+      msgInputRef={msgInputRef}
+      isCustom={false}
+    />
   );
 }
 
 function checkInputs(name, phone, email, message) {
-  if (email === '' || phone === '' || message === '' || name === '') {
+  if (email.trim() === '' || phone.trim() === '' || message.trim() === '' || name.trim() === '') {
     return "empty";
   } else if(!validateEmail(email)) {
       return "email";

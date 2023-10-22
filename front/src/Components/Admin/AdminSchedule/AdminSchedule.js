@@ -165,7 +165,7 @@ function AdminSchedule () {
             </div> 
           )
         })}
-        <button className='admin-add-btn' onClick={handleSave}>Enregistrer</button>
+        <button  onClick={handleSave}>Enregistrer</button>
       </div>
     </div>
   );

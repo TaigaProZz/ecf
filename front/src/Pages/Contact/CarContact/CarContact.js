@@ -1,10 +1,9 @@
-import '../Contact.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
-// import { CARS } from '../../../Data/cars.js'
 import axios from 'axios';
+import ContactComponent from '../../../Components/Contact/Contact';
 
 function Contact() {
   const params = useParams();
@@ -52,56 +51,64 @@ function Contact() {
   // check every input, and send message to database
   const submit = (e) => {
     e.preventDefault();
-    if (
-      nameInputRef.current.value === '' ||
-      phoneInputRef.current.value === '' ||
-      emailInputRef.current.value === '' ||
-      msgInputRef.current.value === ''
-    ) {
+    
+    const name = nameInputRef.current.value;
+    const phone = phoneInputRef.current.value;
+    const email = emailInputRef.current.value;
+    const message = msgInputRef.current.value;
+  
+    const validationResult = checkInputs(name, phone, email, message);
+  
+    if (validationResult === "empty") {
       toast.warn('Veuillez remplir tous les champs');
+    } else if (validationResult === "email") {
+      toast.error('L\'adresse e-mail n\'est pas valide');
+    } else if (validationResult === "phone") {
+      toast.error('Le numéro de téléphone n\'est pas valide');
     } else {
-      const subject = element.title + ' réf: ' + element.id;
-      const name = nameInputRef.current.value;
-      const phone = phoneInputRef.current.value;
-      const email = emailInputRef.current.value;
-      const message = msgInputRef.current.value;
-      // envoyer le message en bdd
-      sendData(subject, name, phone, email, message);
+      // Les données sont valides, envoyez le message en bdd
+      sendData(name, phone, email, message);
       form.current.reset();
       toast.success('Votre message a bien été envoyé');
     }
   }
 
   return (
-    <div className="contact-container">
-      <form ref={form} className='contact-form'>
-        <h1 className='form-title'>Formulaire de contact</h1>
-        <div className='name-row row'>
-          <label>Nom prénom :</label>
-          <input ref={nameInputRef} type='text' placeholder='Entrez votre nom prénom'></input>
-        </div>
-        <div className='phone-row row'>
-          <label>Téléphone :</label>
-          <input ref={phoneInputRef} type='tel' placeholder='Entrez votre numéro de téléphone'></input>
-        </div>
-        <div className='email-row row'>
-          <label>Email :</label>
-          <input ref={emailInputRef} type='email' placeholder='Entrez votre email'></input>
-        </div>
-        <div className='row'>
-          <label>Voiture:</label>
-          <textarea disabled ref={msgInputRef} id='car-contact-car' placeholder={element.title + ' réf: ' + element.id}></textarea>
-        </div>
-        <div className='msg-row row'>
-          <label>Message:</label>
-          <textarea ref={msgInputRef} id='car-contact-msg' placeholder='Entrez votre message'></textarea>
-        </div>
-        <div className='center'>
-          <button className='home-button' type='submit' onClick={submit}>Envoyer</button>
-        </div>
-      </form>
-    </div>
+    <ContactComponent 
+      submit={submit} 
+      form={form} 
+      nameInputRef={nameInputRef} 
+      phoneInputRef={phoneInputRef}
+      emailInputRef={emailInputRef}
+      msgInputRef={msgInputRef}
+      element={element}
+      isCustom={true}
+    />
   );
+}
+
+
+function checkInputs(name, phone, email, message) {
+  if (email.trim() === '' || phone.trim() === '' || message.trim() === '' || name.trim() === '') {
+    return "empty";
+  } else if(!validateEmail(email)) {
+      return "email";
+  } else if(!validatePhone(phone)) {
+      return "phone";
+  }
+  else {
+    return true;
+  }
+}
+
+function validateEmail(email) {
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/u;
+  return regex.test(email);
+}
+
+function validatePhone(phone) {
+  const regex = /^[0-9]{10}$/u;
+  return regex.test(phone);
 }
 
 export default Contact;

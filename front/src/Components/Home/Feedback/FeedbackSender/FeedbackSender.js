@@ -79,20 +79,20 @@ function FeedbackSender() {
         
         <div className='send-feedback-row'>
           <label htmlFor="message">Message :</label>
-          <input ref={inputMessageRef} id='message' type='text' className='inputMessage' placeholder="Votre message"></input>
+          <textarea ref={inputMessageRef} id='message' type='text' className='inputMessage' placeholder="Votre message" max={300}></textarea>
         </div>
 
         <div className='send-feedback-row'>
           <div className="inputRadio">
-            <div>Note :</div>
+            <span htmlFor='rating'>Note :</span>
             <div className="rating">
               {renderStars(rating)}
             </div>
           </div>
         </div> 
         <div className='center'>
-            <button className='home-button' onClick={submit}>Envoyer</button>
-          </div>  
+          <button className='home-button' onClick={submit}>Envoyer</button>
+        </div>  
       </form>
     </div>
   );

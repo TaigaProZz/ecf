@@ -18,7 +18,7 @@ function CarFilter (props) {
       ...prev,
       sortedCars: filteredCars,
     }));
-  }, [priceValues, yearValues, kmValues, props]);
+  }, [priceValues, yearValues, kmValues]);
 
   const handlePriceChange = (values) => {
     setPriceValues(values);

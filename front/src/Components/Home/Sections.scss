@@ -27,6 +27,10 @@
   .home-sch-btn {
     margin-top: 30px;
   }
+
+  .ul-service > li {
+    margin-bottom: 5px;
+  }
 }
 
 @media screen and (min-width: 769px) {
@@ -68,7 +72,7 @@
   background-color: app.$button-color;
   padding: 0.5em;
   height: auto;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow-y: auto;
 }
 

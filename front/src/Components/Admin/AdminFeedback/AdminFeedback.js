@@ -197,7 +197,7 @@ function AdminFeedback () {
         </tbody>
       </table>
       <PopUpAddFeedback
-        btn={<button className='admin-add-btn'>Ajouter un commentaire <BsPlusSquare size={30} /></button>}
+        btn={<button>Ajouter un commentaire <BsPlusSquare size={30} /></button>}
         type='Ajouter un feedback'
         onAddFeedback={addFeedback}
       />   
