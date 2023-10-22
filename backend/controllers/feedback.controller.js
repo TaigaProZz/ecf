@@ -36,7 +36,6 @@ class FeedbackController extends Controller
   }
 
   update (request, response) {
-    console.log(request.body);
     this.service.update(request.params.id, request.body).then(result => {
       this.setResponse(result, response);
     }).catch(error => {

@@ -79,7 +79,7 @@ function FeedbackSender() {
         
         <div className='send-feedback-row'>
           <label htmlFor="message">Message :</label>
-          <textarea ref={inputMessageRef} id='message' type='text' className='inputMessage' placeholder="Votre message" max={300}></textarea>
+          <textarea ref={inputMessageRef} id='message' type='text' className='inputMessage' placeholder="Votre message" maxLength={300}></textarea>
         </div>
 
         <div className='send-feedback-row'>

@@ -21,8 +21,8 @@ class FeedbackService {
     [name, message, rating, isVerified]);
   }
 
-  update(id, grade) {
-    return this.query('UPDATE feedbacks SET isVerified = ? WHERE id = ?', [grade, id]);
+  update(id, body) {
+    return this.query('UPDATE feedbacks SET isVerified = ? WHERE id = ?', [body.isVerified, id]);
   }
 
   delete(id) {
