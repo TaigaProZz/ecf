@@ -15,6 +15,7 @@
     "react-burger-menu": "^3.0.9",
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
+    "react-medium-image-zoom": "^5.1.8",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.11.2",
     "react-scripts": "^5.0.1",

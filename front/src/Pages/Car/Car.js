@@ -1,14 +1,25 @@
+
+import './Car.scss';
+import 'react-medium-image-zoom/dist/styles.css'
+import 'swiper/scss';
+import 'swiper/scss/navigation';
+import 'swiper/scss/pagination';
 import { Link, useParams } from 'react-router-dom';
 import { useState, useEffect} from 'react';
 import { BsEnvelopeFill } from 'react-icons/bs';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, FreeMode} from 'swiper/modules';
+import Zoom from 'react-medium-image-zoom';
 import axios from 'axios';
-import './Car.scss';
 
 function Car() {
   const [element, setElement] = useState(null);
   const [images, setImages] = useState([]);
+  const [mainSwiper, setMainSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const params = useParams();
   const paramsId = params.id;
+  const pathExtension = process.env.REACT_APP_CAR_SCW_ENDPOINT;
 
   // get infos of car from database
   useEffect(() => {
@@ -32,27 +43,72 @@ function Car() {
     fetchData();
   }, [paramsId]);
 
+  
+  const handleMainSwiperSlideChange = () => {
+    if (mainSwiper && thumbsSwiper) {
+      const activeIndex = mainSwiper.activeIndex;
+      thumbsSwiper.slideTo(activeIndex)
+    }
+  };
+
+  const handleThumbsSwiperSlideChange = () => {
+    if (mainSwiper && thumbsSwiper) {
+      const activeIndex = thumbsSwiper.activeIndex;
+      mainSwiper.slideTo(activeIndex)
+    }
+  };
+
   // check if car is null
   if (!element) {
     return null;
   }
 
-  const pathExtension = process.env.REACT_APP_CAR_SCW_ENDPOINT;
+  const imageList = images.map((img, index) => (
+    <SwiperSlide key={index}>
+      <Zoom>
+        <img src={pathExtension + img} alt={"load error"}/>
+      </Zoom>
+    </SwiperSlide>
+  ));
+  
+  const imageSubList = images.map((img, index) => (
+    <SwiperSlide key={index}>
+      <img src={pathExtension + img} alt={"load error"}/>
+    </SwiperSlide>
+  ));
 
   return (
     <div className="car-page-container">
       <div className='left-side'>
-        <section className='images-section'>
-          <img className='main-image' src={pathExtension + images[0]} alt='voiture' />
-          <div className='sub-image-container'>
-            <div className='sub-image'> 
-              {images.map((img, index) => (
-                <img key={index} className='cars-image' src={pathExtension + img} alt='voiture' />
-              ))}
-            </div>
-          </div>
-        </section>
+        <div className='car-item-main-image'>
+          <Swiper
+              onSwiper={setMainSwiper}
+              navigation = {true}
+              pagination = {true}
+              modules={[Navigation, Pagination, FreeMode]}
+              onSlideChange={handleMainSwiperSlideChange}
+            >
+            {imageList}
+          </Swiper>
+        </div>
+        <div className='car-item-sub-images'>
+          {images.length > 1 ? 
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              spaceBetween={10}
+              slidesPerView={'auto'}
+              navigation = {true}
+              centeredSlides={true}
+              modules={[Navigation, Pagination]}
+              onSlideChange={handleThumbsSwiperSlideChange} 
+            >
+              {imageSubList}
+            </Swiper> 
+            : null 
+          }
+        </div>
       </div>
+
       <div className='right-side'>
         <h1>{element.brand} {element.model}</h1>
         <h2 className='title'>{element.title}</h2>
