@@ -29,7 +29,7 @@
     width: 130px;
     height: 70px;
     font-size: 16px;
-    background-color: app.$elementColor;
+    background-color: app.$element-color;
     border-radius: 12px;
     margin-bottom: 5px;
   }
@@ -43,7 +43,7 @@
   .sub-image-container {
     width: 100%;
     height: 40%;
-    background-color: app.$elementColor;
+    background-color: app.$element-color;
   }
 
   .sub-image {
@@ -89,7 +89,7 @@
     width: 160px;
     height: 70px;
     font-size: 24px;
-    background-color: app.$elementColor;
+    background-color: app.$element-color;
     border-radius: 12px;
   }
 
@@ -102,7 +102,7 @@
   .sub-image-container {
     width: 100%;
     height: calc(40% - 40px);
-    background-color: app.$elementColor;
+    background-color: app.$element-color;
   }
 
   .sub-image {
@@ -121,7 +121,7 @@
   height: auto;
   width: 90%;
   border-radius: 12px;
-  background-color: app.$elementColor;
+  background-color: app.$element-color;
 }
 
 .ref {

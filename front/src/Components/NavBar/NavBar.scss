@@ -60,7 +60,7 @@
   
   /* Morph shape necessary with bubble or elastic */
   .bm-morph-shape {
-    fill: app.$elementColor;
+    fill: app.$element-color;
   }
   
   /* Wrapper for item list */
@@ -87,7 +87,7 @@
   .my-nav {
     width: 100vw;
     height: 120px;
-    background-color: app.$barColor;
+    background-color: app.$bar-color;
     position: fixed;
     display: flex;
     align-items: center;
@@ -108,7 +108,7 @@
     width: 33.33%;
     display: flex; 
     justify-content: center;
-    font-family: app.$mainFont;
+    font-family: app.$main-font;
     a {
       padding: 10px;
     }

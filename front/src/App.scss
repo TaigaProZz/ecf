@@ -1,25 +1,25 @@
-$mainFont: 'Francois One', sans-serif;
-$mainFontColor : aliceblue;
-$backgroundColor: #141B33;
-$barColor: #293045;
-$elementColor: #20273D;
-$buttonColor: #373D51;
-$buttonHoverColor: #4D5371;
-$inputColor: #3F4458;
+$main-font: 'Francois One', sans-serif;
+$main-font-color : aliceblue;
+$background-color: #141B33;
+$bar-color: #293045;
+$element-color: #20273D;
+$button-color: #373D51;
+$button-hover-color: #4D5371;
+$input-color: #3F4458;
 
 // font sizes
-$h1DesktopFontSize: 48px;
-$h1MobileFontSize: 32px;
-$h2DesktopFontSize: 24px;
-$h2MobileFontSize: 18px;
-$anchorDesktopFontSize: 20px;
-$anchorMobileFontSize: 14px;
-$buttonDesktopFontSize: 18px;
-$buttonMobileFontSize: 12px;
-$placeholderDesktopFontSize: 18px;
-$placeholderMobileFontSize: 12px;
-$labelDesktopFontSize: 24px;
-$labelMobileFontSize: 16px;
+$h1-desktop-font-size: 48px;
+$h1-mobile-font-size: 32px;
+$h2-desktop-font-size: 24px;
+$h2-mobile-font-size: 18px;
+$anchor-desktop-font-size: 20px;
+$anchor-mobile-font-size: 14px;
+$button-desktop-font-size: 18px;
+$button-mobile-font-size: 12px;
+$placeholder-desktop-font-size: 18px;
+$placeholder-mobile-font-size: 12px;
+$label-desktop-font-size: 24px;
+$label-mobile-font-size: 16px;
 
 // small screen
 @media screen and (max-width: 768px) {
@@ -27,33 +27,33 @@ $labelMobileFontSize: 16px;
     font-size: 12px;
   }
   h1 {
-    font-size: $h1MobileFontSize;
+    font-size: $h1-mobile-font-size;
   }
 
   h2 {
-    font-size: $h2MobileFontSize;
+    font-size: $h2-mobile-font-size;
   }
 
   a {
-    font-size: $anchorMobileFontSize;
+    font-size: $anchor-mobile-font-size;
   }
 
   button {
-    font-size: $buttonMobileFontSize;
+    font-size: $button-mobile-font-size;
   }
 
   input::placeholder, textarea::placeholder {
-    font-size: $placeholderMobileFontSize;
+    font-size: $placeholder-mobile-font-size;
   }
 
   .home-button {
     height: 50px;
     width: 130px;
     border-radius: 12px;
-    background-color: $buttonColor;
-    color: $mainFontColor;
-    border-color: $mainFontColor;
-    font-family: $mainFont;
+    background-color: $button-color;
+    color: $main-font-color;
+    border-color: $main-font-color;
+    font-family: $main-font;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,23 +64,23 @@ $labelMobileFontSize: 16px;
   } 
 
   input {
-    color: $mainFontColor;
-    background-color: $inputColor;
+    color: $main-font-color;
+    background-color: $input-color;
     border-color: white;
     border-radius: 12px;
     font-size: 16px;
   }
 
   textarea {
-    color: $mainFontColor;
-    background-color: $inputColor;
+    color: $main-font-color;
+    background-color: $input-color;
     border-color: white;
     border-radius: 12px;
     font-size: 16px;
   }
 
   label {
-    font-size: $labelMobileFontSize;
+    font-size: $label-mobile-font-size;
   }
 }
 
@@ -88,33 +88,33 @@ $labelMobileFontSize: 16px;
 @media screen and (min-width: 769px) {
 
   h1 {
-    font-size: $h1DesktopFontSize;
+    font-size: $h1-desktop-font-size;
   }
   
   h2 {
-    font-size: $h2DesktopFontSize;
+    font-size: $h2-desktop-font-size;
   }
 
   a {
-    font-size: $anchorDesktopFontSize;
+    font-size: $anchor-desktop-font-size;
   }
 
   button {
-    font-size: $buttonDesktopFontSize;
+    font-size: $button-desktop-font-size;
   }
 
   input::placeholder, textarea::placeholder {
-    font-size: $placeholderDesktopFontSize;
+    font-size: $placeholder-desktop-font-size;
   }
   
   .home-button {
     height: 70px;
     width: 200px;
     border-radius: 12px;
-    background-color: $buttonColor;
-    color: $mainFontColor;
-    border-color: $mainFontColor;
-    font-family: $mainFont;
+    background-color: $button-color;
+    color: $main-font-color;
+    border-color: $main-font-color;
+    font-family: $main-font;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -125,23 +125,23 @@ $labelMobileFontSize: 16px;
   } 
 
   input {
-    color: $mainFontColor;
-    background-color: $inputColor;
+    color: $main-font-color;
+    background-color: $input-color;
     border-color: white;
     border-radius: 12px;
     font-size: 20px;
   }
 
   textarea {
-    color: $mainFontColor;
-    background-color: $inputColor;
+    color: $main-font-color;
+    background-color: $input-color;
     border-color: white;
     border-radius: 12px;
     font-size: 20px;
   }
 
   label {
-    font-size: $labelDesktopFontSize;
+    font-size: $label-desktop-font-size;
   }
   .ul-service {
     font-size: 20px;
@@ -160,20 +160,20 @@ html, body, #root {
   width: 100%;
   margin: 0;
   padding: 0;
-  font-family: $mainFont;  
-  color: $mainFontColor;
-  background-color: $backgroundColor;
+  font-family: $main-font;  
+  color: $main-font-color;
+  background-color: $background-color;
   position: absolute;
   overflow-x: hidden;
   a {
-    color: $mainFontColor;
+    color: $main-font-color;
     text-decoration: none;
   }
   button {
-    color: $mainFontColor;
+    color: $main-font-color;
   }
   button:hover {
-    background: $buttonHoverColor;
+    background: $button-hover-color;
   }
 
 
@@ -184,4 +184,17 @@ html, body, #root {
   align-items: center;
   flex-direction: row;
   justify-content: center;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #9c9898;
+  border-radius: 25px;
 }
