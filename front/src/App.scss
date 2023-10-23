@@ -85,6 +85,19 @@ $label-mobile-font-size: 16px;
   label {
     font-size: $label-mobile-font-size;
   }
+  ::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #9c9898;
+    border-radius: 25px;
+  }
 }
 
 // large screen
@@ -159,6 +172,18 @@ $label-mobile-font-size: 16px;
   li.li-service:not(:last-child) { 
     margin-bottom: 20px;  
  }
+ ::-webkit-scrollbar {
+  width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #9c9898;
+    border-radius: 25px;
+  }
 }
 
 // all screens
@@ -194,17 +219,4 @@ html, body, #root {
   align-items: center;
   flex-direction: row;
   justify-content: center;
-}
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #9c9898;
-  border-radius: 25px;
 }

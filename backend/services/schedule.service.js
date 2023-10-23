@@ -13,16 +13,15 @@ class ScheduleService {
 
   async update(body) {
     const updates = body;
-    console.log(updates);
     const query =
       'UPDATE schedule SET morning_opening = ?, morning_closing = ?, afternoon_opening = ?, afternoon_closing = ? WHERE id = ?';
     try {
       for (const update of updates) {
         const values = [
-          update.morningOpening !== null ? update.morningOpening : null,
-          update.morningClosing !== null ? update.morningClosing : null,
-          update.afternoonOpening !== null ? update.afternoonOpening : null,
-          update.afternoonClosing !== null ? update.afternoonClosing : null,
+          update.morning_opening,
+          update.morning_closing,
+          update.afternoon_opening,
+          update.afternoonClosing,
           update.id,
         ];
       await new Promise((resolve, reject) => {

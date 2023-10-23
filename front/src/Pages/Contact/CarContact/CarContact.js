@@ -17,10 +17,10 @@ function Contact() {
   const location = useLocation()
   const { car } = location.state;
 
-  // eee
+  // set car data
   useEffect(() => {
     setElement(car);
-  }, [location.state]);
+  }, [car]);
 
   // function to send msg to database
   const sendData = async (subject, name, phone, email, message) => {
@@ -62,7 +62,6 @@ function Contact() {
     }
   }
 
-  
   // check if car is null
   if (!element) {
     return null; 

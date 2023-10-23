@@ -6,13 +6,14 @@ import axios from 'axios';
 
 function AdminSchedule () {
   const [schedule, setSchedule] = useState(null);
-  const [modifiedSchedule, setModifiedSchedule] = useState([]);
+  const [modifiedSchedule, setModifiedSchedule] = useState(null);
 
   // fetch schedule
   const fetchData = async () => {
     const response = await axios.get(`${process.env.REACT_APP_API}/schedule`);
     const result = response.data
     setSchedule(result);
+    setModifiedSchedule(result);
   }
   useEffect(() => {
     fetchData();
@@ -28,7 +29,7 @@ function AdminSchedule () {
     updatedSchedule[index] = {
       ...updatedSchedule[index],
       id: schedule[index].id,
-      morningOpening: e.target.value,
+      morning_opening: e.target.value,
     };
     setModifiedSchedule(updatedSchedule);
   };
@@ -38,7 +39,7 @@ function AdminSchedule () {
     updatedSchedule[index] = {
       ...updatedSchedule[index],
       id: schedule[index].id,
-      morningClosing: e.target.value,
+      morning_closing: e.target.value,
     };
     setModifiedSchedule(updatedSchedule);
   };
@@ -48,7 +49,7 @@ function AdminSchedule () {
     updatedSchedule[index] = {
       ...updatedSchedule[index],
       id: schedule[index].id,
-      afternoonOpening: e.target.value,
+      afternoon_opening: e.target.value,
     };
     setModifiedSchedule(updatedSchedule);
   };
@@ -58,50 +59,16 @@ function AdminSchedule () {
     updatedSchedule[index] = {
       ...updatedSchedule[index],
       id: schedule[index].id,
-      afternoonClosing: e.target.value,
+      afternoon_closing: e.target.value,
     };
     setModifiedSchedule(updatedSchedule);
   };
 
   const handleSave = async () => {
-    const updates = modifiedSchedule.map((data, index) => {
-      const scheduleItem = schedule[index];
-      const updateItem = {
-        id: data.id,
-      };
-      // Vérifiez si les champs sont vides et si oui, conservez la valeur par défaut
-      if (data.morningOpening !== "") {
-        updateItem.morningOpening = data.morningOpening;
-      } else {
-        updateItem.morningOpening = scheduleItem.morning_opening;
-      }
-      if (data.morningClosing !== "") {
-        updateItem.morningClosing = data.morningClosing;
-      } else {
-        updateItem.morningClosing = scheduleItem.morning_closing;
-      }
-      if (data.afternoonOpening !== "") {
-        updateItem.afternoonOpening = data.afternoonOpening;
-      } else {
-        updateItem.afternoonOpening = scheduleItem.afternoon_opening;
-      }
-      if (data.afternoonClosing !== "") {
-        updateItem.afternoonClosing = data.afternoonClosing;
-      } else {
-        updateItem.afternoonClosing = scheduleItem.afternoon_closing;
-      }
-      return updateItem;
-    });
-
-    if (updates.length === 0) {
-      toast.error("Aucune modification n'a été effectuée");
-      return;
-    }
-
     // and send it to db
     try {
       await toast.promise(
-        axios.post(`${process.env.REACT_APP_API}/schedule`, updates),
+        axios.post(`${process.env.REACT_APP_API}/schedule`, modifiedSchedule),
         {
           pending: 'Enregistrement en cours...',
           success: {

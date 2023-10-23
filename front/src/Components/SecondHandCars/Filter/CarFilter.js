@@ -12,9 +12,19 @@ function CarFilter (props) {
   const [yearValues, setYearValues] = useState([1990, maxYear]);
   const [kmValues, setKmValues] = useState([1, maxKm]);
 
+  const filterCars = (cars) => {
+    return cars.filter((car) => {
+      const priceInRange = car.price >= priceValues[0] && car.price <= priceValues[1];
+      const yearInRange = car.year >= yearValues[0] && car.year <= yearValues[1];
+      const kmInRange = car.km >= kmValues[0] && car.km <= kmValues[1];
+      return priceInRange && yearInRange && kmInRange;
+    });
+  };
+
   useEffect(() => {
-    const filteredCars = filterCars(props.carData.cars);
-    props.setCarData((prev) => ({
+    const { carData, setCarData } = props;
+    const filteredCars = filterCars(carData.cars);
+    setCarData((prev) => ({
       ...prev,
       sortedCars: filteredCars,
     }));
@@ -40,15 +50,6 @@ function CarFilter (props) {
       ...prev,
       sortedCars: props.carData.cars,
     }));
-  };
-
-  const filterCars = (cars) => {
-    return cars.filter((car) => {
-      const priceInRange = car.price >= priceValues[0] && car.price <= priceValues[1];
-      const yearInRange = car.year >= yearValues[0] && car.year <= yearValues[1];
-      const kmInRange = car.km >= kmValues[0] && car.km <= kmValues[1];
-      return priceInRange && yearInRange && kmInRange;
-    });
   };
 
   return (

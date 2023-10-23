@@ -37,11 +37,17 @@ const ADMIN_SECTIONS = {
 function Admin({ user }) {
   const [container, setContainer] = useState(<AdminFeedback />);
   const [isAdmin, setAdmin] = useState(false);
+  const [activeItem, setActiveItem] = useState('Commentaires');
 
   useEffect(() => {
     if (!user.permission) return;
     setAdmin(user.permission === 1);
   }, [user.permission])
+
+  const handleClick = (menuItem) => {
+    setContainer(menuItem.component)
+    setActiveItem(menuItem.name); 
+  }
 
   return (
     <div className='admin-container'>
@@ -56,13 +62,13 @@ function Admin({ user }) {
               const menuItem = ADMIN_SECTIONS[section];
               if (isAdmin|| !menuItem.isAdmin) {
                 return (
-                  <h3
+                  <a
                     key={index}
-                    className='admin-menu-item'
-                    onClick={() => setContainer(menuItem.component)}
+                    className={menuItem.name === activeItem ? 'admin-menu-item active' : 'admin-menu-item'}
+                    onClick={() => handleClick(menuItem)}
                   >
                     {menuItem.name}
-                  </h3>
+                  </a>
                 );
               }
               return null;
