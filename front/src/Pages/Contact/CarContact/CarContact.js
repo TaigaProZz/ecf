@@ -1,37 +1,26 @@
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import ContactComponent from '../../../Components/Contact/Contact';
 
 function Contact() {
   const params = useParams();
+  const paramsId = params.id;
   const [element, setElement] = useState(null);
   const nameInputRef = useRef(null);
   const phoneInputRef = useRef(null);
   const emailInputRef = useRef(null);
   const msgInputRef = useRef(null);
   const form = useRef(null);
+  const location = useLocation()
+  const { car } = location.state;
 
-  // get infos of car from database
+  // eee
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_API}/car/${params.id}`);
-        const car = response.data;
-        setElement(car[0]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, [params.id]);
-
-  // check if car is null
-  if (!element) {
-    return null; 
-  }
+    setElement(car);
+  }, [location.state]);
 
   // function to send msg to database
   const sendData = async (subject, name, phone, email, message) => {
@@ -73,6 +62,12 @@ function Contact() {
     }
   }
 
+  
+  // check if car is null
+  if (!element) {
+    return null; 
+  }
+
   return (
     <ContactComponent 
       submit={submit} 
@@ -82,6 +77,7 @@ function Contact() {
       emailInputRef={emailInputRef}
       msgInputRef={msgInputRef}
       element={element}
+      id={paramsId}
       isCustom={true}
     />
   );

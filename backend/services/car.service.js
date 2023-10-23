@@ -47,7 +47,13 @@ class CarService {
   }
   
   getById(id) {
-    return this.query('SELECT * FROM cars WHERE id = ?', [id]);
+    return this.query(
+      `SELECT title, brand, model, description, price, km, year, path 
+      FROM cars 
+      INNER JOIN cars_image 
+      ON cars.id = cars_image.car_id
+      WHERE cars.id = ?`, [id]
+    );
   }
 
   deleteCar(id) {

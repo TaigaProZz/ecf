@@ -13,7 +13,7 @@ import Zoom from 'react-medium-image-zoom';
 import axios from 'axios';
 
 function Car() {
-  const [element, setElement] = useState(null);
+  const [car, setCar] = useState(null);
   const [images, setImages] = useState([]);
   const [mainSwiper, setMainSwiper] = useState(null);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -28,14 +28,9 @@ function Car() {
         // get car info
         const carResponse = await axios.get(`${process.env.REACT_APP_API}/car/${paramsId}`);
         const car = carResponse.data;
-        setElement(car[0]);
-
-        // get car images
-        const imageResponse = await axios.get(`${process.env.REACT_APP_API}/carimage/${paramsId}`);
-        const images = imageResponse.data;
-        const imageList = JSON.parse(images[0].path);
+        const imageList = JSON.parse(car[0].path);
+        setCar(car[0]);
         setImages(imageList);
-
       } catch (error) {
         console.log(error);
       }
@@ -59,7 +54,7 @@ function Car() {
   };
 
   // check if car is null
-  if (!element) {
+  if (!car) {
     return null;
   }
 
@@ -110,19 +105,19 @@ function Car() {
       </div>
 
       <div className='right-side'>
-        <h1>{element.brand} {element.model}</h1>
-        <h2 className='title'>{element.title}</h2>
+        <h1>{car.brand} {car.model}</h1>
+        <h2 className='title'>{car.title}</h2>
         <div className='car-price'>
-          <p>{element.price} €</p>
+          <p>{car.price} €</p>
         </div>
         <div className='car-fiche'>
           <h2>Fiche Technique</h2>
-          <p className='ref'>Référence : {element.id}</p>
-          <p>{element.description}</p>
+          <p className='ref'>Référence : {car.id}</p>
+          <p>{car.description}</p>
         </div>
         <div className='car-contact-container'>
           <h2>Intéressé ? Contactez-nous</h2>
-          <Link to={'/carcontact/' + element.id}>
+          <Link to={'/carcontact/' + paramsId} state={{car}}>
             <button className='shc-button'><BsEnvelopeFill size={35} /></button>
           </Link>
         </div>

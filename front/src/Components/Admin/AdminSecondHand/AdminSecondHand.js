@@ -141,35 +141,6 @@ function AdminSecondHand () {
         onAddCar={addCar}
         />
     </div>
-    // <div className='admin-secondhand-container'>
-    //   <div className='admin-secondhand'>
-    //     <div className='admin-secondhand-categorie-row'>
-    //    
-    //     </div> 
-    //     { cars.map((elt, index) => {
-    //       return (
-    //         <div key={index} className='admin-secondhand-list-row'>
-    //    
-    //           <div className='admin-secondhand-manage-container'>
-    //             {/* <button className='admin-secondhand-manage-button'>Modifier</button> */}
-    //             <ValidatePopUp
-    //               btn={<button className='admin-secondhand-manage-button' onClick={deleteCar}>Supprimer</button>}
-    //               onConfirmation={(choice) => deleteCar(choice, elt.id)}
-    //               txt='supprimer cette voiture'
-    //               >
-    //             </ValidatePopUp>
-
-    //           </div>
-    //         </div> 
-    //       )
-    //       })}
-    //   </div>
-    //   <PopUpAddCar
-    //     btn={<button>Ajouter une voiture <BsPlusSquare size={30} /></button>}
-    //     onAddCar={addCar}
-    //     >
-    //   </PopUpAddCar>
-    // </div>
   )
 }
 export default AdminSecondHand;

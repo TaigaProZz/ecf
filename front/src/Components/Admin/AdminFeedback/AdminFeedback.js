@@ -111,7 +111,7 @@ function AdminFeedback () {
   // add feedback to db
   const addFeedback = async (newFeedback) => {
     // check if feedback's inputs are empty
-    if(newFeedback.name === '' || newFeedback.rating === '' || newFeedback.message === '') {
+    if(newFeedback.name.trim() === '' || newFeedback.rating.trim() === '' || newFeedback.message.trim() === '') {
       toast.warn('Veuillez remplir tous les champs');
       return;
     }
@@ -164,7 +164,7 @@ function AdminFeedback () {
             return (
               <tr key={elt.id}>
                 <td>{elt.name}</td>
-                // split message to display it on multiple lines
+                {/* split message to display it on multiple lines */}
                 <td>{elt.message.replace(/(.{60})/g, "$1\n")}</td>
                 <td>{elt.rating}</td>
                 <td>{elt.isVerified === 0 ? 'Non' : 'Oui'}</td>

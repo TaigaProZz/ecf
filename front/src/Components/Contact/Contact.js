@@ -22,7 +22,7 @@ function ContactComponent (props) {
           props.isCustom ? (
             <div className='row'>
               <label htmlFor="car-contact-car">Voiture:</label>
-              <textarea disabled ref={props.msgInputRef} id='car-contact-car' placeholder={props.element.title + ' réf: ' + props.element.id}></textarea>
+              <textarea disabled ref={props.msgInputRef} id='car-contact-car' placeholder={props.element.title + ' réf: ' + props.id}></textarea>
             </div>
           ) : null
         }
