@@ -1,8 +1,10 @@
 import 'react-toastify/dist/ReactToastify.css';
 import PopUpAddCar from '../AdminComponents/PopUp/CarAdd';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
-import { toast } from 'react-toastify';
 import { BsPlusSquare } from 'react-icons/bs';
+import { FaRegEdit } from 'react-icons/fa';
+import { IoTrashBinOutline } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -107,7 +109,14 @@ function AdminSecondHand () {
   };
 
   return (
-    <div className='table-container'>
+    <>
+      <header className='admin-header'>
+        <PopUpAddCar
+          btn={<button className='admin-button-add'>Ajouter une voiture <BsPlusSquare size={24} /></button>}
+          onAddCar={addCar}
+        />
+      </header>
+      <div className='table-container'>
       <table>
         <thead>
           <tr>
@@ -115,6 +124,7 @@ function AdminSecondHand () {
             <th>Titre</th>
             <th>Prix</th>
             <th>Gérer</th>
+            <th>Supprimer</th>
           </tr>
         </thead>
         <tbody>
@@ -124,9 +134,10 @@ function AdminSecondHand () {
                 <td>{elt.id}</td>
                 <td>{elt.title}</td>
                 <td>{elt.price}</td>
+                <td><FaRegEdit size={24} /></td>
                 <td>
                 <ValidatePopUp
-                  btn={<button onClick={deleteCar}>Supprimer</button>}
+                  btn={<button className='admin-table-btn' onClick={deleteCar}><IoTrashBinOutline size={24} /></button>}
                   onConfirmation={(choice) => deleteCar(choice, elt.id)}
                   txt='supprimer cette voiture'
                 />
@@ -136,11 +147,8 @@ function AdminSecondHand () {
           })}
         </tbody>
       </table>
-      <PopUpAddCar
-        btn={<button>Ajouter une voiture <BsPlusSquare size={30} /></button>}
-        onAddCar={addCar}
-        />
     </div>
+  </>
   )
 }
 export default AdminSecondHand;

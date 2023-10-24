@@ -1,8 +1,11 @@
 import 'react-toastify/dist/ReactToastify.css';
 import PopUpAddFeedback from '../AdminComponents/PopUp/FeedbackAdd';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
-import { toast } from 'react-toastify';
 import { BsPlusSquare } from 'react-icons/bs';
+import { IoTrashBinOutline } from 'react-icons/io5';
+import { BiHide } from 'react-icons/bi';
+import { BsPatchCheck } from 'react-icons/bs';
+import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -147,7 +150,18 @@ function AdminFeedback () {
   }
 
   return(
-    <div className='table-container'>
+    <>
+      {/* add button */}	
+      <header className='admin-header'>
+        <PopUpAddFeedback
+          btn={<button className='admin-button-add'>Ajouter un commentaire <BsPlusSquare size={30} /></button>}
+          type='Ajouter un feedback'
+          onAddFeedback={addFeedback}
+        />  
+      </header>
+
+      {/* content table */}	
+      <div className='table-container'>
       <table>
         <thead>
           <tr>
@@ -171,13 +185,13 @@ function AdminFeedback () {
                 <td>
                   { elt.isVerified === 0 ?
                     <ValidatePopUp 
-                      btn={<button>Valider</button>} 
+                      btn={<button className='admin-table-btn'><BsPatchCheck size={24} /></button>} 
                       onConfirmation={(choice) => {handleValidate(choice, elt.id)}} 
                       txt={"valider"}
                       handleButtonClick={showConfirmation}
                     /> :
                     <ValidatePopUp  
-                      btn={<button>Cacher</button>} 
+                      btn={<button className='admin-table-btn'><BiHide size={24} /></button>} 
                       onConfirmation={(choice) => {handleHide(choice, elt.id)}} 
                       txt={"cacher"}
                       handleButtonClick={showConfirmation}
@@ -186,7 +200,7 @@ function AdminFeedback () {
                 </td>
                 <td>
                   <ValidatePopUp  
-                    btn={<button>Supprimer</button>} 
+                    btn={<button className='admin-table-btn'><IoTrashBinOutline size={24} /></button>} 
                     onConfirmation={(choice) => {handleDelete(choice, elt.id)}} 
                     txt={"supprimer"}
                     handleButtonClick={showConfirmation}
@@ -197,12 +211,10 @@ function AdminFeedback () {
           })}
         </tbody>
       </table>
-      <PopUpAddFeedback
-        btn={<button>Ajouter un commentaire <BsPlusSquare size={30} /></button>}
-        type='Ajouter un feedback'
-        onAddFeedback={addFeedback}
-      />   
-    </div>
+    </div> 
+    </>
+
+   
   ) 
 }
 

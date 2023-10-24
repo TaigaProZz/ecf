@@ -1,5 +1,5 @@
-import './AdminSchedule.scss';
 import 'react-toastify/dist/ReactToastify.css';
+import { LiaSaveSolid } from 'react-icons/lia';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -91,41 +91,70 @@ function AdminSchedule () {
   };
   
   return (
-    <div className="admin-schedule-container">
-      <div className="admin-schedule">
-        {schedule.map((elt, index) => {
-          return (         
-            <div key={index} className='admin-day-row'>
-              {/* display day name */}
-              <h3 className='admin-day-name'>{elt.day}</h3>
-              <div className='admin-morning-container'>
-                <div className='admin-day-input'>
-                  {/* display morning opening and closing hours */}
-                  <span>Matin de</span>
-                  <input type="time" defaultValue={elt.morning_opening} onChange={(e) => handleMorningOpeningChange(e, index)}></input>
-                </div>
-                <div className='admin-day-input'>
-                  <span>à</span>
-                  <input type="time" defaultValue={elt.morning_closing} onChange={(e) => handleMorningClosingChange(e, index)}></input>
-                </div>
-              </div>
-              <div className='admin-afternoon-container'>
-                <div className='admin-day-input'>
-                  {/* display afternoon opening and closing hours */}
-                  <span>Après-midi de</span>
-                  <input type="time" defaultValue={elt.afternoon_opening} onChange={(e) => handleAfternoonOpeningChange(e, index)}></input>
-                </div>
-                <div className='admin-day-input'>
-                  <span>à</span>
-                  <input type="time" defaultValue={elt.afternoon_closing} onChange={(e) => handleAfternoonClosingChange(e, index)}></input>
-                </div>   
-              </div>
-            </div> 
-          )
-        })}
-        <button onClick={handleSave}>Enregistrer</button>
+    <>
+      <header className='admin-header'>
+        <button className='admin-button-add' onClick={handleSave}>Enregistrer <LiaSaveSolid size={24} /></button>
+      </header>
+
+      <div className='table-container'>
+        <table>
+          <thead>
+            <tr>
+              <th scope='col'> </th>
+              <th scope='col'>Lundi</th>
+              <th scope='col'>Mardi</th>
+              <th scope='col'>Mercredi</th>
+              <th scope='col'>Jeudi</th>
+              <th scope='col'>Vendredi</th>
+              <th scope='col'>Samedi</th>
+              <th scope='col'>Dimanche</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Ouverture matin</th>
+              {schedule.map((elt, index) => {
+                return (
+                  <td key={index}>
+                    <input type="time" defaultValue={elt.morning_opening} onChange={(e) => handleMorningOpeningChange(e, index)}></input>
+                  </td>
+                );
+              })}
+            </tr>
+            <tr>
+              <th>Fermeture matin</th>
+              {schedule.map((elt, index) => {
+                return (
+                  <td key={index}>
+                    <input type="time" defaultValue={elt.morning_closing} onChange={(e) => handleMorningClosingChange(e, index)}></input>
+                  </td>
+                );
+              })}
+            </tr>
+            <tr>
+              <th>Ouverture après-midi</th>
+              {schedule.map((elt, index) => {
+                return (
+                  <td key={index}>
+                    <input type="time" defaultValue={elt.afternoon_opening} onChange={(e) => handleAfternoonOpeningChange(e, index)}></input>
+                  </td>
+                );
+              })}
+            </tr>
+            <tr>
+              <th>Fermeture après-midi</th>
+              {schedule.map((elt, index) => {
+                return (
+                  <td key={index}>
+                    <input type="time" defaultValue={elt.afternoon_closing} onChange={(e) => handleAfternoonClosingChange(e, index)}></input>
+                  </td>
+                );
+              })}
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
+    </>
   );
 } 
 

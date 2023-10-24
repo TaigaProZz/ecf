@@ -2,11 +2,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import PopUpAddService from '../AdminComponents/PopUp/ServiceAdd';
 import PopUpUpdateService from '../AdminComponents/PopUp/ServiceUpdate';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
-import { toast } from 'react-toastify';
 import { BsPlusSquare } from 'react-icons/bs'
-import { FaTrash, FaPen } from 'react-icons/fa'
+import { FaRegEdit } from 'react-icons/fa';
+import { IoTrashBinOutline } from 'react-icons/io5';
+import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
-
 import axios from 'axios';
 
 function AdminServices () {
@@ -52,7 +52,6 @@ function AdminServices () {
       toast.error("Erreur lors de l'ajout", error)
     }
   };
-
 
   // DELETE SERVICE function
   const deleteService = async (choice, id) => { 
@@ -112,7 +111,15 @@ function AdminServices () {
   }
 
   return ( 
-    <div className='table-container'>
+    <>
+      <header className='admin-header'>
+        <PopUpAddService 
+          btn={<button className='admin-button-add'>Ajouter un service <BsPlusSquare size={24} /></button> }
+          type='Ajouter un service'
+          onAddService={addService}
+        />
+      </header>
+      <div className='table-container'>
       <table>
         <thead>
           <tr>
@@ -128,7 +135,7 @@ function AdminServices () {
                 <td>{elt.services}</td>
                 <td>
                   <PopUpUpdateService 
-                    btn={<div className='pen-icon'> <FaPen size={30} /></div>}
+                    btn={<div className='pen-icon'><FaRegEdit size={24} /></div>}
                     type='Modifier un service'
                     id={elt.id}
                     onChangeService={updateService}
@@ -136,7 +143,7 @@ function AdminServices () {
                 </td>
                 <td>
                   <ValidatePopUp
-                    btn={<div> <FaTrash size={30} /> </div>} 
+                    btn={<div><IoTrashBinOutline size={24} /></div>} 
                     onConfirmation={(choice) => {deleteService(choice, elt.id)}} 
                     txt={"valider"}
                     handleButtonClick={showConfirmation}
@@ -147,12 +154,9 @@ function AdminServices () {
           })}
         </tbody>
       </table>
-      <PopUpAddService 
-        btn={<button>Ajouter un service <BsPlusSquare size={30} /></button> }
-        type='Ajouter un service'
-        onAddService={addService}
-      />
     </div>
+  </>
+   
   )
 } 
 

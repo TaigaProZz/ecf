@@ -2,7 +2,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AdminAddEmployee from '../AdminComponents/PopUp/EmployeeAdd';
 import AdminManageEmployee from '../AdminComponents/PopUp/EmployeeManage';
 import { toast } from 'react-toastify';
-import { FaPen } from 'react-icons/fa';
+import { FaPen, FaRegEdit } from 'react-icons/fa';
 import { BsPlusSquare } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -96,39 +96,44 @@ function AdminEmployees () {
   };
     
   return (
-    <div className='table-container'>
-      <table>
-        <thead>
-          <tr>
-            <th>Nom prénom</th>
-            <th>Email</th>
-            <th>Gérer</th>
-          </tr>
-        </thead>
-        <tbody>
-          {employees.map((elt) => {
-            return (
-              <tr key={elt.id}>
-                <td>{elt.name}</td>
-                <td>{elt.email}</td>
-                <td>
-                  <AdminManageEmployee
-                    employee={elt}
-                    btn={<FaPen  size={30} />}
-                    onManageEmployee={handleManageEmployee}
-                  />
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    <AdminAddEmployee
-      btn={<button>Ajouter un employé <BsPlusSquare size={30} /></button>}
-      type='Ajouter un employé'
-      onSubmit={handleSubmit}
-    />
-  </div>
+    <>
+      <header className='admin-header'>
+        <AdminAddEmployee
+          btn={<button className='admin-button-add'>Ajouter un employé <BsPlusSquare size={24} /></button>}
+          type='Ajouter un employé'
+          onSubmit={handleSubmit}
+        />      
+      </header>
+      <div className='table-container'>
+        <table>
+          <thead>
+            <tr>
+              <th>Nom prénom</th>
+              <th>Email</th>
+              <th>Gérer</th>
+            </tr>
+          </thead>
+          <tbody>
+            {employees.map((elt) => {
+              return (
+                <tr key={elt.id}>
+                  <td>{elt.name}</td>
+                  <td>{elt.email}</td>
+                  <td>
+                    <AdminManageEmployee
+                      employee={elt}
+                      btn={<FaRegEdit size={24} />}
+                      onManageEmployee={handleManageEmployee}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </>
+    
   )
 }
 

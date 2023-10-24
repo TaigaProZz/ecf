@@ -53,26 +53,23 @@ function Admin({ user }) {
     <div className='admin-container'>
       {!(user.permission === 0 || user.permission === 1) ? <div>Vous devez être connecté pour accéder à cette page.</div> : (
         <>
-          <div className='admin-header'>
-            <img src='img/logo.png' alt='figsale logo'></img>
-          </div>
           <div className='admin-main-container'>
             <div className='admin-menu'>
-            {Object.keys(ADMIN_SECTIONS).map((section, index) => {
-              const menuItem = ADMIN_SECTIONS[section];
-              if (isAdmin|| !menuItem.isAdmin) {
-                return (
-                  <span
-                    key={index}
-                    className={menuItem.name === activeItem ? 'admin-menu-item active' : 'admin-menu-item'}
-                    onClick={() => handleClick(menuItem)}
-                  >
-                    {menuItem.name}
-                  </span>
-                );
-              }
-              return null;
-            })}
+              {Object.keys(ADMIN_SECTIONS).map((section, index) => {
+                const menuItem = ADMIN_SECTIONS[section];
+                if (isAdmin|| !menuItem.isAdmin) {
+                  return (
+                    <span
+                      key={index}
+                      className={menuItem.name === activeItem ? 'admin-menu-item active' : 'admin-menu-item'}
+                      onClick={() => handleClick(menuItem)}
+                    >
+                      {menuItem.name}
+                    </span>
+                  );
+                }
+                return null;
+              })}
             </div>
             <div className='admin-content-container'>
               {container}

@@ -1,13 +1,15 @@
 @use 'src/App.scss' as app;
 
 @media screen and (max-width: 768px) {
-  select {
-    width: 50%;
-    background-color: app.$button-color;
-    color: aliceblue;
-  }
-  input {
-    width: 60%;
+  .admin-popup-modal {
+    select {
+      width: 50%;
+      background-color: app.$button-color;
+      color: aliceblue;
+    }
+    input {
+      width: 60%;
+    }
   }
 
   .generate-password {
