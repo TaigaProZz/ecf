@@ -30,12 +30,12 @@
 }
 
 @media screen and (min-width: 769px) {
-
   .admin-schedule {
     display: flex;
     flex-direction: column;
     width: 90%;
     height: 100%;
+  
   }
 
   .admin-day-row {
@@ -47,16 +47,17 @@
     padding: 10px;
     background: #20273D;
     border: 1px solid #FFFFFF;
-    input {
-      width: 20vh;
-      height: 10%;
-    }
   }
 
   .admin-day-name {
     width: 15%;
   }
-
+  input {
+    width: 100px;
+  }
+  .admin-day-input {
+    margin-left: 20px;
+  }
 }
   
 .admin-schedule-container {
@@ -79,7 +80,7 @@
 }
 
 .admin-day-input {
-  margin-left: 5%;
+  margin-left: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;

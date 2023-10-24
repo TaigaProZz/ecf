@@ -157,10 +157,12 @@ th {
 
 td {
   height: 40px;
+  max-width: 500px;
   text-align: center;
   font-weight: 100;
   background-color: #464e68;
   color: rgb(255, 255, 255);
+  overflow-wrap: anywhere;
   cursor: pointer;
   img {
     height: 100%;

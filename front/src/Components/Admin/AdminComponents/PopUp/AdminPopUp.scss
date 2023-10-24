@@ -18,19 +18,21 @@
 }
 
 @media screen and (min-width: 769px) {
-  select {
-    width: 30%;
-    background-color: app.$button-color;
-    color: aliceblue;
-  }
-  input {
-    width: 30%;
-  }
-
-  .generate-password {
-    margin-top: 15px;
-    width: 100px;
-    height: 39px;
+  .admin-popup-modal {
+    select {
+      width: 30%;
+      background-color: app.$button-color;
+      color: aliceblue;
+    }
+    input {
+      width: 30%;
+    }
+  
+    .generate-password {
+      margin-top: 15px;
+      width: 100px;
+      height: 39px;
+    }
   }
 }
 

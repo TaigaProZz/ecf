@@ -62,13 +62,13 @@ function Admin({ user }) {
               const menuItem = ADMIN_SECTIONS[section];
               if (isAdmin|| !menuItem.isAdmin) {
                 return (
-                  <a
+                  <span
                     key={index}
                     className={menuItem.name === activeItem ? 'admin-menu-item active' : 'admin-menu-item'}
                     onClick={() => handleClick(menuItem)}
                   >
                     {menuItem.name}
-                  </a>
+                  </span>
                 );
               }
               return null;

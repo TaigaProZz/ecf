@@ -165,7 +165,7 @@ function AdminFeedback () {
               <tr key={elt.id}>
                 <td>{elt.name}</td>
                 {/* split message to display it on multiple lines */}
-                <td>{elt.message.replace(/(.{60})/g, "$1\n")}</td>
+                <td>{elt.message}</td>
                 <td>{elt.rating}</td>
                 <td>{elt.isVerified === 0 ? 'Non' : 'Oui'}</td>
                 <td>

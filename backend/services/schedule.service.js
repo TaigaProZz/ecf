@@ -21,7 +21,7 @@ class ScheduleService {
           update.morning_opening,
           update.morning_closing,
           update.afternoon_opening,
-          update.afternoonClosing,
+          update.afternoon_closing,
           update.id,
         ];
       await new Promise((resolve, reject) => {

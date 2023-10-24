@@ -24,7 +24,7 @@ function AdminSchedule () {
   }
 
   // handle all inputs
-  const handleMorningOpeningBlur = (e, index) => {
+  const handleMorningOpeningChange = (e, index) => {
     const updatedSchedule = [...modifiedSchedule];
     updatedSchedule[index] = {
       ...updatedSchedule[index],
@@ -34,7 +34,7 @@ function AdminSchedule () {
     setModifiedSchedule(updatedSchedule);
   };
   
-  const handleMorningClosingBlur = (e, index) => {
+  const handleMorningClosingChange = (e, index) => {
     const updatedSchedule = [...modifiedSchedule];
     updatedSchedule[index] = {
       ...updatedSchedule[index],
@@ -44,7 +44,7 @@ function AdminSchedule () {
     setModifiedSchedule(updatedSchedule);
   };
   
-  const handleAfternoonOpeningBlur = (e, index) => {
+  const handleAfternoonOpeningChange = (e, index) => {
     const updatedSchedule = [...modifiedSchedule];
     updatedSchedule[index] = {
       ...updatedSchedule[index],
@@ -54,7 +54,7 @@ function AdminSchedule () {
     setModifiedSchedule(updatedSchedule);
   };
   
-  const handleAfternoonClosingBlur = (e, index) => {
+  const handleAfternoonClosingChange = (e, index) => {
     const updatedSchedule = [...modifiedSchedule];
     updatedSchedule[index] = {
       ...updatedSchedule[index],
@@ -96,43 +96,34 @@ function AdminSchedule () {
         {schedule.map((elt, index) => {
           return (         
             <div key={index} className='admin-day-row'>
+              {/* display day name */}
               <h3 className='admin-day-name'>{elt.day}</h3>
               <div className='admin-morning-container'>
                 <div className='admin-day-input'>
-                  <label>Matin de</label>
-                  <input placeholder={elt.morning_opening} 
-                    defaultValue={elt.morning_opening}
-                    onChange={(e) => handleMorningOpeningBlur(e, index)}
-                    />
+                  {/* display morning opening and closing hours */}
+                  <span>Matin de</span>
+                  <input type="time" defaultValue={elt.morning_opening} onChange={(e) => handleMorningOpeningChange(e, index)}></input>
                 </div>
                 <div className='admin-day-input'>
-                  <label>à</label>
-                  <input placeholder={elt.morning_closing}
-                    defaultValue={elt.morning_closing}
-                    onChange={(e) => handleMorningClosingBlur(e, index)}
-                  />
+                  <span>à</span>
+                  <input type="time" defaultValue={elt.morning_closing} onChange={(e) => handleMorningClosingChange(e, index)}></input>
                 </div>
               </div>
               <div className='admin-afternoon-container'>
                 <div className='admin-day-input'>
-                  <label>Après-midi de</label>
-                  <input placeholder={elt.afternoon_opening}
-                    defaultValue={elt.afternoon_opening}
-                    onChange={(e) => handleAfternoonOpeningBlur(e, index)}
-                  />
+                  {/* display afternoon opening and closing hours */}
+                  <span>Après-midi de</span>
+                  <input type="time" defaultValue={elt.afternoon_opening} onChange={(e) => handleAfternoonOpeningChange(e, index)}></input>
                 </div>
                 <div className='admin-day-input'>
-                  <label>à</label>
-                  <input placeholder={elt.afternoon_closing} 
-                    defaultValue={elt.afternoon_closing}
-                    onChange={(e) => handleAfternoonClosingBlur(e, index)}
-                  />
+                  <span>à</span>
+                  <input type="time" defaultValue={elt.afternoon_closing} onChange={(e) => handleAfternoonClosingChange(e, index)}></input>
                 </div>   
               </div>
             </div> 
           )
         })}
-        <button  onClick={handleSave}>Enregistrer</button>
+        <button onClick={handleSave}>Enregistrer</button>
       </div>
     </div>
   );
