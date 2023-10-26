@@ -5,11 +5,10 @@ import CarList from '../../Components/SecondHandCars/List/CarList';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Vente = () => {
+const SecondHandCars = () => {
   const [carData, setCarData] = useState({
     cars: [],
-    sortedCars: [],
-    img: [],
+    sortedCars: []
   });
 
   // fetch cars and images from database
@@ -21,14 +20,6 @@ const Vente = () => {
         ...prev,
         cars: response.data,
         sortedCars: response.data,
-      }));
-      
-      // collect images of cars from s3
-      const imgResponse = await axios.get(`${process.env.REACT_APP_API}/carimage`);    
-      const imageList = handleImages(imgResponse);
-      setCarData((prev) => ({
-        ...prev,
-        img: imageList,
       }));
     } catch (error) {
       console.log(error);
@@ -54,19 +45,4 @@ const Vente = () => {
   );
 };
 
-function handleImages (response) {
-  const imgList = response.data.reduce((acc, image) => {
-    const carId = image.car_id;
-    const img = image.path;
-    const list = JSON.parse(img).map((path) => `${process.env.REACT_APP_CAR_SCW_ENDPOINT}${path}`);
-    if (acc[carId]) {
-      acc[carId].push(...list);
-    } else {
-      acc[carId] = list;
-    }
-    return acc;
-  }, {});
-  return imgList;
-}
-
-export default Vente;
+export default SecondHandCars;

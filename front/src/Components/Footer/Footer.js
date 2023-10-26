@@ -26,7 +26,7 @@ function MyFooter() {
 
   return ( 
     <div className='my-footer'>
-      <div className='footer-schedule-container'>
+      <div className='footer-schedule center-column'>
         <ul>
           {schedule.map((elt, index) => {
             // display " Fermé " if morngin opening and closing are equal to 0 and display the afternoon if afternoon opening and closing are equal to 0
@@ -35,23 +35,21 @@ function MyFooter() {
           })}
         </ul> 
       </div>
-      <div className='contact-section-footer'>
-        <div className='footer-btn'>
-        <span className='contact-btn-title'>Contactez nous ici :</span>
-          <div className='btn'>
-            <Link to='/contact'>   
-              <button className='footer-contact-btn'>
-                <BsEnvelopeFill />
-                <span className='contact-btn-text'>Contact</span>
-              </button>
-            </Link>
-          </div>
+      <div className='footer-btn center-column'>
+      <span className='contact-btn-title'>Contactez nous ici :</span>
+        <div className='btn'>
+          <Link to='/contact'>   
+            <button className='footer-contact-btn'>
+              <BsEnvelopeFill />
+              <span className='contact-btn-text'>Contact</span>
+            </button>
+          </Link>
         </div>
-        <div className='footer-logo'>
-          <img className='logo-footer' src='/img/logo.png' alt="Garage V.Parrot Logo"/>
-          <p>Trouvez nous au : 10 rue xxx 90000</p>
-        </div>
-      </div>  
+      </div>
+      <div className='footer-logo center-column'>
+        <img className='logo-footer' src='/img/logo.png' alt="Garage V.Parrot Logo"/>
+        <p>Trouvez nous au : 10 rue xxx 90000</p>
+      </div>
     </div>
   );
 }

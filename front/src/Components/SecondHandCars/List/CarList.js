@@ -9,12 +9,12 @@ function CarList (props) {
       { props.carData.sortedCars.map((car) => {
         return (
           // prevent duplicate key error with react fragment
-          <React.Fragment key={car.id}>
+          <React.Fragment key={car.car_id}>
             {(car.length === 0) ? <div className='loading-sch'>Chargement...</div> : 
             (
-              <div className="car-item" id={car.id} key={car.id}>
-                <Link to={"/car/" + car.id}>    
-                  <CarItem car={car} img={props.carData.img} />
+              <div className="car-item" id={car.car_id} key={car.car_id}>
+                <Link to={"/car/" + car.car_id}>    
+                  <CarItem car={car} />
                 </Link> 
               </div>
             )}

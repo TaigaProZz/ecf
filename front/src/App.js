@@ -9,8 +9,8 @@ import Admin from './Pages/Admin/Admin';
 import Car from './Pages/Car/Car';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
+import axios from 'axios';
 
 function App() {
   const [user, setUser] = useState({});
@@ -22,7 +22,7 @@ function App() {
         setUser(response.data[0]);
       } 
     } catch (error) {
-      if (error.response && error.response.status === 401) {
+      if (error.response && error.response.status === 401 ) {
         setUser({});
       }
     }

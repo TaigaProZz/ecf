@@ -1,10 +1,13 @@
 import './CarItem.scss';
 
 function CarItem (props) {
-  const { car, img } = props;
+  const { car } = props;
+  const pathExtension = process.env.REACT_APP_CAR_SCW_ENDPOINT;
+  const img = JSON.parse(car.path)[0];
+
   return (
     <div className="car-details">
-      <img src={img[car.id]?.[0]} alt={car.brand} className="car-image" />
+      <img src={pathExtension + img} alt={car.brand} className="car-image" />
       <div className='secondhand-car-details'>
         <div className='secondhand-car-description'>
           <h3>{car.brand}</h3>

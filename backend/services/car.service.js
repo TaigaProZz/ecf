@@ -43,7 +43,10 @@ class CarService {
   }
 
   getAll() {
-    return this.query('SELECT * FROM cars');
+    return this.query(
+      `SELECT * FROM cars
+      INNER JOIN cars_image
+      ON cars.id = cars_image.car_id`);
   }
   
   getById(id) {

@@ -12,7 +12,7 @@ ul {
 // mobile
 @media screen and (max-width: 768px) {
   .my-footer {
-    height: auto;
+    height: 300px;
     width: 100vw;
     background-color: app.$bar-color;
     display: flex;
@@ -69,6 +69,7 @@ ul {
     border-radius: 8px;
     border: none;
     padding: 10px;
+    margin-top: 10px;
     margin-bottom: 5px;
     background-color: app.$button-color;
   }
@@ -104,37 +105,15 @@ ul {
 }
 
 @media screen and (min-width: 769px) {
-  .my-footer{
+  .my-footer {
     height: 200px;
     width: 100vw;
     background-color: app.$bar-color;
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     padding: 10px 0 10px 0;
   }
-
-  .footer-schedule-container {
-    width: 33.33%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 16px;
-  }  
-
-  .contact-section-footer {
-    width: 77.77%;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
-  }
-
-  .footer-btn, .footer-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-
 
   .logo-footer {
     width: 250px;
@@ -166,9 +145,11 @@ ul {
     width: 200px;
     height: 87px;
   }
-  
-  .footer-logo {
-    flex-direction: column;
-  }
+}
 
+.center-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
