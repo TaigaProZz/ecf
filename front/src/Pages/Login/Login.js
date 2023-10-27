@@ -29,7 +29,8 @@ function Login({ setUser }) {
   }, [setUser]);
 
  
-  const login = async () => {
+  const login = async (event) => {
+    event.preventDefault();
     const email = inputEmail.current.value;
     const password = inputPassword.current.value;
     const user = { email, password };
@@ -64,6 +65,7 @@ function Login({ setUser }) {
 
         <label htmlFor="password">Mot de passe</label>
         <input type="password" id="password" name="password" ref={inputPassword} placeholder='Saisissez votre mot de passe' autoComplete='current-password' required/>
+
         <div className='login-button-container'>
           <button type="submit">Se connecter</button> 
         </div>
@@ -79,7 +81,7 @@ function Login({ setUser }) {
         pending: 'Connexion en cours...',
         success: {
           render({ data }) {
-            setUser(data.data)
+            setUser(data.data);
             navigate("/admin");
             return `${email}, vous êtes connecté`;
           }
