@@ -30,7 +30,7 @@ function MyFooter() {
         <ul>
           {schedule.map((elt, index) => {
             // display " Fermé " if morngin opening and closing are equal to 0 and display the afternoon if afternoon opening and closing are equal to 0
-            if(elt.morning_opening === 0 && elt.morning_closing === 0) return <li key={index} className='footer-list-elt'>{elt.day.slice(0,3)}.: Fermé, {elt.afternoon_opening} - {elt.afternoon_closing}</li>
+            if(!elt.isOpened) return <li key={index} className='footer-list-elt'>{elt.day.slice(0,3)}.: Fermé</li>
             return <li key={index} className='footer-list-elt'>{elt.day.slice(0,3)}.: {elt.morning_opening} - {elt.morning_closing}, {elt.afternoon_opening} - {elt.afternoon_closing}</li>
           })}
         </ul> 
