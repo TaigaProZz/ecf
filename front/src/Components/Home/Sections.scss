@@ -68,12 +68,14 @@
 }
 
 .service-list {
+  margin-left: 10px;
   max-height: 60%;
   background-color: app.$button-color;
   padding: 0.5em;
   height: auto;
   border-radius: 8px;
   overflow-y: auto;
+  overflow-wrap: anywhere;
 }
 
 .homeImg {
