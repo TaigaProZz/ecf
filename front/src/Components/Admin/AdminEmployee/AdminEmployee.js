@@ -122,7 +122,7 @@ function AdminEmployees () {
                   <td>
                     <AdminManageEmployee
                       employee={elt}
-                      btn={<FaRegEdit size={24} />}
+                      btn={<div><FaRegEdit size={24} /></div>}
                       onManageEmployee={handleManageEmployee}
                     />
                   </td>

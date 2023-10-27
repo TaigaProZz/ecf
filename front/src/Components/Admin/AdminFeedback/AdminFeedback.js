@@ -185,13 +185,13 @@ function AdminFeedback () {
                 <td>
                   { elt.isVerified === 0 ?
                     <ValidatePopUp 
-                      btn={<button className='admin-table-btn'><BsPatchCheck size={24} /></button>} 
+                      btn={<div><BsPatchCheck size={24} /></div>} 
                       onConfirmation={(choice) => {handleValidate(choice, elt.id)}} 
                       txt={"valider"}
                       handleButtonClick={showConfirmation}
                     /> :
                     <ValidatePopUp  
-                      btn={<button className='admin-table-btn'><BiHide size={24} /></button>} 
+                      btn={<div><BiHide size={24} /></div>} 
                       onConfirmation={(choice) => {handleHide(choice, elt.id)}} 
                       txt={"cacher"}
                       handleButtonClick={showConfirmation}
@@ -200,7 +200,7 @@ function AdminFeedback () {
                 </td>
                 <td>
                   <ValidatePopUp  
-                    btn={<button className='admin-table-btn'><IoTrashBinOutline size={24} /></button>} 
+                    btn={<div><IoTrashBinOutline size={24} /></div>} 
                     onConfirmation={(choice) => {handleDelete(choice, elt.id)}} 
                     txt={"supprimer"}
                     handleButtonClick={showConfirmation}

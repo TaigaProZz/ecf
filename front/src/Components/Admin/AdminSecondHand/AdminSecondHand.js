@@ -137,7 +137,7 @@ function AdminSecondHand () {
                 <td><FaRegEdit size={24} /></td>
                 <td>
                 <ValidatePopUp
-                  btn={<button className='admin-table-btn' onClick={deleteCar}><IoTrashBinOutline size={24} /></button>}
+                  btn={<div onClick={deleteCar}><IoTrashBinOutline size={24} /></div>}
                   onConfirmation={(choice) => deleteCar(choice, elt.id)}
                   txt='supprimer cette voiture'
                 />

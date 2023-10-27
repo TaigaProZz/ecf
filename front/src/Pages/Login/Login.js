@@ -15,14 +15,16 @@ function Login({ setUser }) {
   useEffect(() => {
     const checkUser = async () => {
       try {
+        console.info('Vérification de connexion ...');
         const response = await axios.get(`${process.env.REACT_APP_API}/user`, { withCredentials: true });
         if (response.status === 200) {
           setUser(response.data.data);
           navigate("/admin");
+          console.info('Utilisateur  connecté ! Redirection vers la page admin');
         }
       }
       catch (error) {
-        console.log(error);
+        console.info('Utilisateur non connecté !');
       }
     }
     checkUser();
@@ -55,24 +57,43 @@ function Login({ setUser }) {
 
   return (
     <div className='login-container'>
-    <div className='login-header'>
-      <img src='img/logo.png' alt='logo figsale'></img>
-    </div>
-    <form className='login-form-container' onSubmit={login}>
-      <div className='login-form'>
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" ref={inputEmail} placeholder='email@example.com' maxLength={32} autoComplete='email' required/>
-
-        <label htmlFor="password">Mot de passe</label>
-        <input type="password" id="password" name="password" ref={inputPassword} placeholder='Saisissez votre mot de passe' autoComplete='current-password' required/>
-
-        <div className='login-button-container'>
-          <button type="submit">Se connecter</button> 
-        </div>
+      {/* logo */}
+      <div className='login-header'>
+        <img src='img/logo.png' alt='logo figsale'></img>
       </div>
-    </form>
-  </div>
-  )
+      {/* call login function when submit button is clicked */}
+      <form className='login-form-container' onSubmit={login}>
+        <div className='login-form'>
+          {/* email input */}
+          <label htmlFor="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            ref={inputEmail} 
+            placeholder='email@example.com' 
+            autoComplete='email' 
+            required 
+          />
+          {/* password input */}
+          <label htmlFor="password">Mot de passe</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            ref={inputPassword} 
+            placeholder='Saisissez votre mot de passe' 
+            autoComplete='current-password' 
+            required 
+          />
+          {/* login button */}
+          <div className='login-button-container'>
+            <button type="submit">Se connecter</button> 
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 
   async function ToastLogin (user, email) {
     toast.promise(
