@@ -24,7 +24,7 @@ function AdminEmployees () {
     return;
   }
 
-  // ADD SERVICE function
+  // ADD EMPLOYEE function
   const handleSubmit = async (employee) => {
     // check if input are not null
     if (employee.name.trim() === '' || employee.email.trim() === '' || employee.permission.trim() === '') {
@@ -65,7 +65,7 @@ function AdminEmployees () {
     }
   };
 
-  // MANAGE SERVICE function
+  // MANAGE EMPLOYEE function
   const handleManageEmployee = async (newEmployee, originalEmployee) => {
     const finalEmployee = {
       name: newEmployee.name || originalEmployee.name,

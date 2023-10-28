@@ -145,7 +145,7 @@ function AdminServices () {
                   <ValidatePopUp
                     btn={<div><IoTrashBinOutline size={24} /></div>} 
                     onConfirmation={(choice) => {deleteService(choice, elt.id)}} 
-                    txt={"valider"}
+                    txt={"supprimer"}
                     handleButtonClick={showConfirmation}
                   />
               </td>
