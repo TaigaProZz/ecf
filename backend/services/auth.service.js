@@ -1,5 +1,6 @@
 const util = require('util');
 const connection = require('../database');
+const validator = require('../validator/validatorEmail');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -11,6 +12,8 @@ class AuthService {
 
   async login(body) {
     const { email, password } = body;
+   
+    if(!validator.validateEmail(email)) return { success: false, error: 'Email incorrect' };
     const user = await this.query('SELECT * FROM users WHERE email = ?', [email]);
 
     if (user.length === 0) {

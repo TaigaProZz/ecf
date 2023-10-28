@@ -15,7 +15,7 @@ class AuthController extends Controller
       if (result.success) {
         response.cookie('session', result.token, {
           domain: process.env.REACT_APP_DOMAIN_COOKIE,
-          maxAge: 2600000,
+          maxAge: 2592000000,
           httpOnly: true,
           secure: true,
           signed: true,
