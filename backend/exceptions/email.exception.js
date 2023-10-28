@@ -1,7 +1,7 @@
 class EmailNotValidError extends Error {
-  constructor(message,  response = "msg") {
+  constructor(message,  response = "Email Invalide") {
       super(message);
-      this.name = 'msg';
+      this.name = 'Email non valide';
       this.response = response;
   }
 }

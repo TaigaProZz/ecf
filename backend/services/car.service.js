@@ -50,7 +50,8 @@ class CarService {
     return this.query(
       `SELECT * FROM cars
       INNER JOIN cars_image
-      ON cars.id = cars_image.car_id`);
+      ON cars.id = cars_image.car_id`
+    );
   }
   
 
@@ -78,7 +79,7 @@ class CarService {
    * @returns 
    */
 
-  updateCar(id, car, images) {
+  updateCar(id, car) {
     return this.query('UPDATE cars SET ? WHERE id = ?', [car, id]);
   }
 
