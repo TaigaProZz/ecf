@@ -1,6 +1,7 @@
 require('dotenv').config();
 const authService = require('../services/auth.service');
 const Controller = require('./controller');
+const emailValidator = require('../validators/email.validator');
 
 class AuthController extends Controller
 {
@@ -11,6 +12,7 @@ class AuthController extends Controller
   
   async login(request, response) {
     try {
+      emailValidator.isValid(request.body.email);
       const result = await this.service.login(request.body);
       if (result.success) {
         response.cookie('session', result.token, {
