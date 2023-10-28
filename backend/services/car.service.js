@@ -59,6 +59,10 @@ class CarService {
     );
   }
 
+  updateCar(id, car, images) {
+    return this.query('UPDATE cars SET ? WHERE id = ?', [car, id]);
+  }
+
   deleteCar(id) {
     return this.query('DELETE FROM cars WHERE id = ?', [id]);
   } 

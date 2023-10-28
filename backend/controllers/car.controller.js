@@ -35,6 +35,15 @@ class CarController extends Controller
     });
   }
 
+  updateCar (request, response) {
+    this.service.updateCar(request.params.id, request.body, request.files).then(result => {
+      this.setResponse(result, response);
+    }).catch(error => {
+      console.log(error);
+      this.setError(error, response);
+    });
+  }
+
   deleteCar (request, response) {
     this.service.deleteCar(request.params.id).then(result => {
       this.setResponse(result, response);

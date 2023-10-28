@@ -1,6 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css';
 import PopUpAddCar from '../AdminComponents/PopUp/CarAdd';
 import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
+import ManageCarPopUp from '../AdminComponents/PopUp/CarManage';
 import { BsPlusSquare } from 'react-icons/bs';
 import { FaRegEdit } from 'react-icons/fa';
 import { IoTrashBinOutline } from 'react-icons/io5';
@@ -108,6 +109,30 @@ function AdminSecondHand () {
     }
   };
 
+  const handleCarUpdate = async (car) => {
+    try {
+      await toast.promise (
+        axios.put(`${process.env.REACT_APP_API}/car/${car.get('id')}`, car),
+        {
+          pending: 'Envoi des données...',
+          success: {
+            render({ data }) {
+              fetchData();
+              return `Voiture modifiée avec succès !`;
+            }
+          },
+          error: {
+            render({ data }) {
+              return `Erreur lors de l'envoi des données : ${data}`;
+            }
+          }
+        }
+      )
+    } catch (error) { 
+      toast.error("Erreur lors de l'envoi des données", error);
+    }
+  };
+
   return (
     <>
       <header className='admin-header'>
@@ -134,13 +159,20 @@ function AdminSecondHand () {
                 <td>{elt.id}</td>
                 <td>{elt.title}</td>
                 <td>{elt.price}</td>
-                <td><FaRegEdit size={24} /></td>
                 <td>
-                <ValidatePopUp
-                  btn={<div onClick={deleteCar}><IoTrashBinOutline size={24} /></div>}
-                  onConfirmation={(choice) => deleteCar(choice, elt.id)}
-                  txt='supprimer cette voiture'
-                />
+                  <ManageCarPopUp
+                    btn={<div><FaRegEdit size={24} /></div>}
+                    type='Modifier une voiture'
+                    onUpdateCar={(car) => handleCarUpdate(car)}
+                    element={elt}
+                  />
+                  </td>
+                <td>
+                  <ValidatePopUp
+                    btn={<div onClick={deleteCar}><IoTrashBinOutline size={24} /></div>}
+                    onConfirmation={(choice) => deleteCar(choice, elt.id)}
+                    txt='supprimer cette voiture'
+                  />
                 </td>
               </tr>
             );
