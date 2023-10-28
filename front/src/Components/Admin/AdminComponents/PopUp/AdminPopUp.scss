@@ -7,8 +7,11 @@
       background-color: app.$button-color;
       color: aliceblue;
     }
-    input {
-      width: 60%;
+    input, textarea {
+      width: 90%;
+    }
+    textarea {
+      min-height: 70px;
     }
   }
 
@@ -26,20 +29,29 @@
       background-color: app.$button-color;
       color: aliceblue;
     }
-    input {
-      width: 30%;
+    input, textarea {
+      width: 90%;
     }
-  
+    textarea {
+      min-height: 100px;
+    }
     .generate-password {
       margin-top: 15px;
       width: 100px;
       height: 39px;
     }
   }
+  .popup-overlay {
+    margin-top: 120px;
+    overflow-y: auto;
+  }
 }
 
 .popup-content {
   width: 80%;
+  padding: 2px;
+  background-color: app.$element-color;
+  border: none;
 }
 
 .admin-popup-modal {
@@ -47,7 +59,7 @@
 }
 
 .admin-popup-modal > .header {
-  width: 100%;
+  width: calc(100% - 10px);
   border-bottom: 1px solid gray;
   text-align: center;
   padding: 5px;
@@ -55,16 +67,15 @@
 
 .admin-popup-modal > .content {
   height: auto;
-  max-height: 80vh;
-  width: 100%;
+  width: calc(100% - 10px);
+  display: flex;
+  flex-direction: column;
   padding: 10px 5px;
-  overflow-y: auto;
 }
 
 .admin-popup-modal > .actions {
-  width: 100%;
+  width: calc(100% - 10px);
   padding: 10px 5px;
-  margin: auto;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -81,20 +92,15 @@
   cursor: pointer;
   position: absolute;
   display: block;
-  padding: 2px 5px;
+  padding: 4px 9px;
   line-height: 20px;
-  right: -10px;
-  top: -10px;
+  right: 10px;
+  top: 10px;
   background-color: app.$button-color;
   border-radius: 8px;
   border: 1px solid #cfcece;
 }
 
-.content {
-  display: flex;
-  flex-direction: column;
-  height: 80vh;
-}
 
 .add-popup-btn {
   display: flex;
@@ -116,12 +122,6 @@
   width: 50%;
   height: 100%;
   object-fit: contain;
-}
-
-.popup-content {
-  padding: 2px;
-  background-color: app.$element-color;
-  border: none;
 }
 
 .generate-password {

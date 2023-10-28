@@ -2,7 +2,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AdminAddEmployee from '../AdminComponents/PopUp/EmployeeAdd';
 import AdminManageEmployee from '../AdminComponents/PopUp/EmployeeManage';
 import { toast } from 'react-toastify';
-import { FaPen, FaRegEdit } from 'react-icons/fa';
+import { FaRegEdit } from 'react-icons/fa';
 import { BsPlusSquare } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -72,7 +72,7 @@ function AdminEmployees () {
       email: newEmployee.email || originalEmployee.email,
       permission: newEmployee.permission || originalEmployee.permission,
     };
- 
+
     try {
       await toast.promise (
         axios.put(`${process.env.REACT_APP_API}/employee/${originalEmployee.id}`, finalEmployee), {

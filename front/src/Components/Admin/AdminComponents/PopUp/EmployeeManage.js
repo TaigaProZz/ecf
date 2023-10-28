@@ -7,7 +7,7 @@ import ValidatePopUp from './ValidatePopUp';
 function AdminManageEmployee(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [permission, setPermission] = useState(null);
+  const [permission, setPermission] = useState('');
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -72,7 +72,7 @@ function AdminManageEmployee(props) {
             <label htmlFor='permission'>Permission</label>
             <span>Permission actuelle : {props.employee.permission ? "Admin" : "Employe"}</span>
             <select onChange={handlePermission} value={permission} id='permission'>
-              <option value= ''>-- Laissez vide pour ne pas modifier</option>
+              <option value= {props.employee.permission}>-- Laissez vide pour ne pas modifier</option>
               <option value= "0">Utilisateur</option>
               <option value= "1">Admin</option>
             </select>
