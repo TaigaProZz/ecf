@@ -12,8 +12,6 @@ class AuthService {
 
   async login(body) {
     const { email, password } = body;
-   
-    if(!validator.validateEmail(email)) return { success: false, error: "Format d'email incorrect" };
     const user = await this.query('SELECT * FROM users WHERE email = ?', [email]);
 
     if (user.length === 0) {

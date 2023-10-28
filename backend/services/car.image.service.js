@@ -14,10 +14,6 @@ class CarImageService {
   getAll() {
     return this.query('SELECT * FROM cars_image');
   }
-
-  updatePermission(id, grade) {
-    return this.query('UPDATE users SET grade = ? WHERE id = ?', [grade, id]);
-  }
 }
 
 module.exports = new CarImageService();

@@ -7,16 +7,16 @@ class ServiceService {
     this.query = util.promisify(connection.query).bind(connection);
   }
 
+  create(service) {
+    return this.query('INSERT INTO services (services) VALUES (?)', [service]);
+  }
+
   getAll() {
     return this.query('SELECT * FROM services');
   }
 
   update(id, service) {
     return this.query('UPDATE services SET services = ? WHERE id = ?', [service, id]);
-  }
-
-  create(service) {
-    return this.query('INSERT INTO services (services) VALUES (?)', [service]);
   }
 
   delete(id) {
