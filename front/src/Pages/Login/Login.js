@@ -72,8 +72,7 @@ function Login({ setUser }) {
             name="email" 
             ref={inputEmail} 
             placeholder='email@example.com' 
-            autoComplete='email' 
-            required 
+            autoComplete='email'
           />
           {/* password input */}
           <label htmlFor="password">Mot de passe</label>
@@ -83,12 +82,11 @@ function Login({ setUser }) {
             name="password" 
             ref={inputPassword} 
             placeholder='Saisissez votre mot de passe' 
-            autoComplete='current-password' 
-            required 
+            autoComplete='current-password'  
           />
           {/* login button */}
           <div className='login-button-container'>
-            <button type="submit">Se connecter</button> 
+            <button type="submit" id='login-button'>Se connecter</button> 
           </div>
         </div>
       </form>

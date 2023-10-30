@@ -1,6 +1,5 @@
 const util = require('util');
 const connection = require('../database');
-const validator = require('../validators/email.validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 

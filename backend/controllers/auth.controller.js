@@ -35,7 +35,13 @@ class AuthController extends Controller
   }
 
   logout(request, response) {
-    response.clearCookie('session', {domain: process.env.REACT_APP_DOMAIN_COOKIE, path: '/', httpOnly: true, secure: true, sameSite: 'none'})
+    response.clearCookie('session', {
+      domain: process.env.REACT_APP_DOMAIN_COOKIE, 
+      path: '/', 
+      httpOnly: true, 
+      secure: true, 
+      sameSite: 'none'
+    });
     this.setResponse({}, response);
   } 
 }

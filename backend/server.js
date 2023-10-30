@@ -14,7 +14,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser('secret'));
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
 /***  ROUTES ***/
 app.use("/user", require("./routes/user.route"));
