@@ -9,7 +9,8 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       return config;
     },
-    supportFile: "cypress/support/index.js",
+    supportFile: "support/index.js",
+    specPattern: "e2e/**/*.cy.js",
     scrollBehavior: false
   }
 });

@@ -4,15 +4,15 @@ class LoginPage {
   }
 
   getEmailInput() {
-    return cy.get('[id="login-email-input"]');
+    return cy.get('[id="email"]');
   }
 
   getPasswordInput() {
-    return cy.get('[id="login-password-input"]');
+    return cy.get('[id="password"]');
   }
 
   getLoginBtn() {
-    return cy.get('[id="login-btn"]');
+    return cy.get('[id="login-button"]');
   }
 
   fillEmailInput(email) {

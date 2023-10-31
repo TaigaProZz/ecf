@@ -18,7 +18,7 @@ Cypress.Commands.add('checkPopupSuccessMessage', (message) => {
 })
 
 Cypress.Commands.add('checkPopupWarnMessage', (message) => {
-  cy.get('.Toastify__toast--warn').should('contain', message);
+  cy.get('.Toastify__toast--warning').should('contain', message);
 })
 
 
