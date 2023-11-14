@@ -41,6 +41,7 @@ function Contact() {
   const submit = (e) => {
     e.preventDefault();
     
+    const subject = element.title + ' réf: ' + element.car_id;
     const name = nameInputRef.current.value;
     const phone = phoneInputRef.current.value;
     const email = emailInputRef.current.value;
@@ -56,7 +57,7 @@ function Contact() {
       toast.error('Le numéro de téléphone n\'est pas valide');
     } else {
       // Les données sont valides, envoyez le message en bdd
-      sendData(name, phone, email, message);
+      sendData(subject, name, phone, email, message);
       form.current.reset();
       toast.success('Votre message a bien été envoyé');
     }
