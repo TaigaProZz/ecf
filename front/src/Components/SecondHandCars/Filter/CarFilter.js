@@ -65,6 +65,7 @@ function CarFilter (props) {
             min={1} 
             max={maxPrice} 
             defaultValue={priceValues} 
+            value={priceValues}
             onChange={value => handlePriceChange(value)} 
           />
         </div>
@@ -79,6 +80,7 @@ function CarFilter (props) {
             min={1990} 
             max={maxYear} 
             defaultValue={yearValues} 
+            value={yearValues}
             onChange={value => handleYearChange(value)} 
           />
         </div>
@@ -93,6 +95,7 @@ function CarFilter (props) {
             min={0} 
             max={maxKm} 
             defaultValue={kmValues} 
+            value={kmValues}
             onChange={handleKmChange} 
           />
         </div>
