@@ -1,5 +1,4 @@
 import './Login.scss';
-import EmptyFields from '../../Components/Popup/EmptyFields';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 import { useEffect, useRef } from 'react';
@@ -39,17 +38,17 @@ function Login({ setUser }) {
 
     // check if inputs are empty
     if (email.trim() === '' || password.trim() === '') {
-      toast.warn(<EmptyFields message='Veuillez remplir tous les champs' />);
+      toast.warn('Veuillez remplir tous les champs');
       return;
     }
     // check if email is valid
     if (!validateEmail(email)) {
-      toast.error(<EmptyFields message="L'adresse e-mail n'est pas valide" />);
+      toast.error("L'adresse e-mail n'est pas valide");
       return;
     }
 
     try {
-      await ToastLogin(user, email);
+      await ToastLogin(user);
     } catch (error) {
       console.log('Erreur lors de la connexion', error);
     }
@@ -93,7 +92,7 @@ function Login({ setUser }) {
     </div>
   );
 
-  async function ToastLogin (user, email) {
+  async function ToastLogin (user) {
     toast.promise(
       axios.post(`${process.env.REACT_APP_API}/auth`, user),
         {
@@ -102,12 +101,11 @@ function Login({ setUser }) {
           render({ data }) {
             setUser(data.data);
             navigate("/admin");
-            return `${email}, vous êtes connecté`;
+            return `${user.email}, vous êtes connecté`;
           }
         },
         error: {
-          render(error) {
-            console.log(error);
+          render() {
             return 'Erreur lors de la connexion. Veuillez vérifier vos informations saisies et réessayer';
           }
         }
