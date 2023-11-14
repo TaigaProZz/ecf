@@ -34,6 +34,15 @@ class EmployeeController extends Controller
       this.setError(error, response);
     });
   }
+
+  delete (request, response) {
+    this.service.delete(request.params.id).then(result => {
+      this.setResponse(result, response);
+    }).catch(error => {
+      console.log(error);
+      this.setError(error, response);
+    });
+  }
 }
 
 module.exports = new EmployeeController(employeeService);

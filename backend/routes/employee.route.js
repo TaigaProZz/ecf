@@ -12,4 +12,7 @@ router.post('/', cookieController.getCookie.bind(cookieController), controller.c
 // put employee
 router.put('/:id', cookieController.getCookie.bind(cookieController), controller.update.bind(controller));
 
+// delete employee
+router.delete('/:id', cookieController.getCookie.bind(cookieController), controller.delete.bind(controller));
+
 module.exports = router;

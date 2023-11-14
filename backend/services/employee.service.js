@@ -45,6 +45,10 @@ class EmployeeService {
     const { name, email, permission } = body;
     return this.query('UPDATE users SET name = ?, email = ?, permission = ? WHERE id = ?', [name, email, permission, id]);
   }
+
+  delete(id) {
+    return this.query('DELETE FROM users WHERE id = ?', [id]);
+  }
 }
 
 module.exports = new EmployeeService();

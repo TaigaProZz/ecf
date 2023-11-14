@@ -6,9 +6,12 @@ import { FaRegEdit } from 'react-icons/fa';
 import { BsPlusSquare } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import ValidatePopUp from '../AdminComponents/PopUp/ValidatePopUp';
+import { IoTrashBinOutline } from 'react-icons/io5';
 
 function AdminEmployees () {
   const [employees, setEmployee] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   // get all employees
   const fetchData = async () => {
@@ -36,6 +39,13 @@ function AdminEmployees () {
       toast.warn('Vérifiez les informations');
       return;
     }
+
+    // check email format
+    if (!validateEmail(employee.email)) {
+      toast.error('L\'adresse e-mail n\'est pas valide');
+      return;
+    }
+
     // send it to db
     try {
       await toast.promise (
@@ -94,7 +104,36 @@ function AdminEmployees () {
       toast.error("Erreur lors de l'envoi des données", error);
     }
   };
-    
+  
+  
+  // DELETE EMPLOYEE function
+  const deleteEmployee = async (choice, id) => { 
+    if(choice === 'valider') {
+      try {
+        await toast.promise (
+          axios.delete(`${process.env.REACT_APP_API}/employee/` + id),
+          {
+            pending: 'Suppression de l\'employé...',
+            success: {
+              render() {
+                fetchData();
+                return 'Employé supprimé';
+              }
+            },
+            error: {
+              render({ data }) {
+                return `Erreur lors de la suppression : ${data}`;
+              }
+            }
+          }
+        )
+      } catch (error) {
+        toast.error('Erreur lors de la suppression', error);
+      }
+      setShowConfirmation(false);
+    }
+  }
+
   return (
     <>
       <header className='admin-header'>
@@ -111,6 +150,7 @@ function AdminEmployees () {
               <th>Nom prénom</th>
               <th>Email</th>
               <th>Gérer</th>
+              <th>Supprimer</th>
             </tr>
           </thead>
           <tbody>
@@ -126,6 +166,14 @@ function AdminEmployees () {
                       onManageEmployee={handleManageEmployee}
                     />
                   </td>
+                  <td>
+                    <ValidatePopUp
+                      btn={<div><IoTrashBinOutline size={24} /></div>} 
+                      onConfirmation={(choice) => {deleteEmployee(choice, elt.id)}} 
+                      txt={"supprimer"}
+                      handleButtonClick={showConfirmation}
+                    />
+                  </td>
                 </tr>
               );
             })}
@@ -136,5 +184,11 @@ function AdminEmployees () {
     
   )
 }
+
+function validateEmail(email) {
+  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/u;
+  return regex.test(email);
+}
+
 
 export default AdminEmployees;
