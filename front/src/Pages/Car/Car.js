@@ -112,7 +112,7 @@ function Car() {
         </div>
         <div className='car-fiche'>
           <h2>Fiche Technique</h2>
-          <p className='ref'>Référence : {car.id}</p>
+          <p className='ref'>Référence : {paramsId}</p>
           <p>{car.description}</p>
         </div>
         <div className='car-contact-container'>
