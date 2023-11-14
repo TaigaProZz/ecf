@@ -114,7 +114,7 @@ function AdminFeedback () {
   // add feedback to db
   const addFeedback = async (newFeedback) => {
     // check if feedback's inputs are empty
-    if(newFeedback.name.trim() === '' || newFeedback.rating.trim() === '' || newFeedback.message.trim() === '') {
+    if(newFeedback.name.trim() === '' || newFeedback.message.trim() === '') {
       toast.warn('Veuillez remplir tous les champs');
       return;
     }

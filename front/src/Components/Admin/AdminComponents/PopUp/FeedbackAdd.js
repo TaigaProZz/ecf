@@ -5,7 +5,7 @@ import '../../AdminComponents/PopUp/AdminPopUp.scss';
 
 function PopUpAddFeedback(props) {
   const [name, setName] = useState('');
-  const [rating, setRating] = useState('');
+  const [rating, setRating] = useState(1);
   const [message, setMessage] = useState('');
 
   // handle inputs change
@@ -50,7 +50,6 @@ function PopUpAddFeedback(props) {
             <span>Note ( entre 1 et 5 )</span>
             <select
               value={rating}
-              defaultValue={1}
               onChange={handleRatingChange}
             >
               <option value="1">1 étoile</option>
