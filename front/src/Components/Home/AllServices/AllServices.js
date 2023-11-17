@@ -21,7 +21,7 @@ function SectionAllServices() {
   return (
     <section className='section-container-v1 light-section'>
       <div className="left-section-v1">
-        <img className="homeImg" src='/img/car_repair.png' alt="Garage V.Parrot Logo" />
+        <img className="homeImg" src='/img/car_repair.webp' alt="Garage V.Parrot Logo" />
 
       </div>
       <div className="right-section-v1">  

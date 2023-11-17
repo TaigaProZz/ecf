@@ -58,7 +58,7 @@ function Login({ setUser }) {
     <div className='login-container'>
       {/* logo */}
       <div className='login-header'>
-        <img src='img/logo.png' alt='logo figsale'></img>
+        <img src='img/logo.webp' alt='logo figsale'></img>
       </div>
       {/* call login function when submit button is clicked */}
       <form className='login-form-container' onSubmit={login}>

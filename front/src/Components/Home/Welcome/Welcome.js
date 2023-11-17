@@ -16,7 +16,7 @@ function SectionPresentation() {
           </Link>
         </section>
         <section className='welcome-right-section'>
-          <img className="homeImg" src='/img/car_atelier.png' alt="Garage V.Parrot Logo" />
+          <img className="homeImg" src='/img/car_atelier.webp' alt="Garage V.Parrot Logo" />
         </section>
       </div>
   );

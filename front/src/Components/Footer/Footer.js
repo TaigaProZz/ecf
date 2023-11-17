@@ -47,7 +47,7 @@ function MyFooter() {
         </div>
       </div>
       <div className='footer-logo center-column'>
-        <img className='logo-footer' src='/img/logo.png' alt="Garage V.Parrot Logo"/>
+        <img className='logo-footer' src='/img/logo.webp' alt="Garage V.Parrot Logo"/>
         <p>Trouvez nous au : 10 rue xxx 90000</p>
       </div>
     </div>

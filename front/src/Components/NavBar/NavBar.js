@@ -55,7 +55,7 @@ function MyNav({ user, setUser }) {
       <main id="page-wrap">
         <div className='my-nav'>      
           <div className='nav-logo'>
-            <Link to="/"><img src='/img/logo.png' alt="Garage V.Parrot Logo" /></Link>
+            <Link to="/"><img src='/img/logo.webp' alt="Garage V.Parrot Logo" /></Link>
           </div>
           <div className="nav-links">
             <Link to="/">Accueil</Link>

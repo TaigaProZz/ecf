@@ -15,7 +15,7 @@ function SectionsSale() {
           </Link>
         </div>
         <div className="right-section-v2">
-          <img className="homeImg" src='/img/cars_buy.png' alt="Garage V.Parrot Logo" />
+          <img className="homeImg" src='/img/cars_buy.webp' alt="Garage V.Parrot Logo" />
         </div>
    
     </section>
